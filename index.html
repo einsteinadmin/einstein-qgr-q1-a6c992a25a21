@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einstein Q1'26 Roundtable QGR — Packet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2b4e;
+    --navy-light: #1a3a5c;
+    --navy-2: #2a4a72;
+    --orange: #EF8B22;
+    --orange-dark: #b85c00;
+    --orange-bg: #fff4e0;
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --red: #c62828;
+    --red-light: #ffebee;
+    --amber: #ef6c00;
+    --amber-bg: #fff3e0;
+    --gray-50: #f8f9fa;
+    --gray-100: #f0f2f5;
+    --gray-200: #dde3e8;
+    --gray-300: #c8d0d8;
+    --gray-400: #b0bec5;
+    --gray-600: #5c6670;
+    --gray-800: #1a1a1a;
+    --blue: #1565c0;
+    --blue-bg: #e3f2fd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.55;
+    margin: 0;
+    background: var(--gray-50);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1320px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+  /* Sidebar */
+  .sidebar {
+    background: var(--navy);
+    color: white;
+    padding: 24px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    font-size: 12.5px;
+  }
+  .sidebar h4 {
+    color: var(--orange);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 16px 0 8px 0;
+    font-weight: 700;
+  }
+  .sidebar h4:first-of-type { margin-top: 0; }
+  .sidebar a {
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 1px;
+    line-height: 1.35;
+    border-left: 2px solid transparent;
+    transition: background 120ms, border-color 120ms, color 120ms;
+  }
+  .sidebar a:hover {
+    background: rgba(239, 139, 34, 0.16);
+    color: var(--orange);
+    border-left-color: var(--orange);
+  }
+  .sidebar a:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 1px;
+  }
+  .sidebar .toc-section { margin-bottom: 14px; }
+  .sidebar .brand {
+    font-weight: 900;
+    font-size: 15px;
+    color: white;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .sidebar .brand .quarter {
+    display: block;
+    font-weight: 400;
+    font-size: 11.5px;
+    color: var(--gray-300);
+    margin-top: 2px;
+  }
+  /* Content */
+  .content {
+    padding: 32px 48px 64px 48px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  /* Title block */
+  .title-block {
+    border-left: 6px solid var(--orange);
+    padding: 4px 0 4px 18px;
+    margin-bottom: 24px;
+  }
+  .title-block h1 {
+    color: var(--navy);
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+  }
+  .title-block .subtitle {
+    color: var(--gray-600);
+    font-size: 13.5px;
+    margin: 0;
+  }
+  .title-block .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .title-block .meta-row span strong { color: var(--navy); }
+  /* Headings */
+  h2 {
+    color: var(--navy);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 40px 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--navy);
+  }
+  h3 {
+    color: var(--navy-light);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 22px 0 6px 0;
+  }
+  h4 {
+    color: var(--gray-800);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 16px 0 4px 0;
+  }
+  p { margin: 6px 0 10px 0; }
+  ul, ol { margin: 6px 0 10px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  strong { color: var(--gray-800); font-weight: 700; }
+  code {
+    background: var(--gray-100);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+    word-break: break-all;
+  }
+  a { color: var(--navy); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin: 28px 0;
+  }
+  /* Anchor offset so sticky-jump landings clear top of viewport */
+  section[id], div[id^="c"] { scroll-margin-top: 24px; }
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 18px 0;
+    font-size: 12.5px;
+  }
+  th {
+    background: var(--navy);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  td {
+    padding: 6px 10px;
+    border: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--gray-50); }
+  /* Hero / Three-Lens block */
+  .hero-card {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 14px 0 32px 0;
+    box-shadow: 0 6px 18px rgba(13,43,78,0.15);
+  }
+  .hero-card .hero-label {
+    color: var(--orange);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .hero-card h2 {
+    border: none;
+    margin: 0 0 4px 0;
+    padding: 0;
+    color: white;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .hero-card p { color: rgba(255,255,255,0.86); margin: 4px 0 0 0; font-size: 13.5px; }
+  /* Hero headline row — giant grade + headline text */
+  .hero-headline-row {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    margin: 4px 0 4px 0;
+  }
+  .hero-grade-mega {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-top: 2px;
+  }
+  .hero-grade-mega-letter {
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange);
+    color: var(--navy);
+    border-radius: 50%;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 4px 14px rgba(239,139,34,0.35);
+  }
+  .hero-grade-mega-label {
+    color: var(--orange);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+  }
+  .hero-headline-text { flex: 1; min-width: 0; }
+  .hero-headline-text h2 { margin: 0 0 6px 0; }
+  .evidence-label {
+    color: var(--orange);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    margin: 18px 0 8px 0;
+    border-top: 1px solid rgba(239,139,34,0.3);
+    padding-top: 14px;
+  }
+  .lens-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 0 0 4px 0;
+  }
+  .lens-card {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border-top: 3px solid var(--orange);
+    min-width: 0;
+  }
+  .lens-card .lens-grade {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--navy);
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .lens-card .lens-name {
+    color: var(--orange);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .lens-card .lens-rationale {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.92);
+  }
+  .progression {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: rgba(239,139,34,0.14);
+    border: 1px solid rgba(239,139,34,0.45);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 16px 0 0 0;
+    color: white;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .progression .prog-grades {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+  }
+  .progression .prog-grade {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--navy);
+    font-weight: 900;
+    font-size: 13px;
+  }
+  .progression .prog-arrow {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .progression .prog-text {
+    color: rgba(255,255,255,0.92);
+    font-weight: 500;
+  }
+  /* Stat tile grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .stat-tile {
+    background: var(--gray-50);
+    border-left: 4px solid var(--orange);
+    padding: 14px 16px;
+    border-radius: 0 4px 4px 0;
+  }
+  .stat-tile.green { border-left-color: var(--green); }
+  .stat-tile.red { border-left-color: var(--red); }
+  .stat-tile.amber { border-left-color: var(--amber); }
+  .stat-tile .stat-label {
+    color: var(--gray-600);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .stat-tile .stat-value {
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .stat-tile .stat-delta {
+    color: var(--gray-600);
+    font-size: 11.5px;
+    font-weight: 500;
+    margin-top: 3px;
+  }
+  .stat-tile .stat-delta.pos { color: var(--green); font-weight: 700; }
+  .stat-tile .stat-delta.neg { color: var(--red); font-weight: 700; }
+  /* Headline list */
+  .headline-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+    counter-reset: headline-counter;
+  }
+  .headline-list li {
+    counter-increment: headline-counter;
+    background: var(--gray-50);
+    border-left: 4px solid var(--orange);
+    padding: 12px 16px 12px 48px;
+    margin: 8px 0;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+  .headline-list li::before {
+    content: counter(headline-counter);
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    background: var(--orange);
+    color: white;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 12px;
+  }
+  /* Component card grid */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 16px 0;
+  }
+  .comp-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-top: 4px solid var(--navy);
+    border-radius: 8px;
+    padding: 18px 20px 16px 20px;
+    box-shadow: 0 2px 8px rgba(13,43,78,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .comp-card.full { grid-column: span 2; }
+  .comp-card.green { border-top-color: var(--green); }
+  .comp-card.red { border-top-color: var(--red); }
+  .comp-card.amber { border-top-color: var(--amber); }
+  .comp-card.placeholder { border-top-color: var(--gray-400); background: var(--gray-50); }
+  .comp-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .comp-title {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+  }
+  .comp-num {
+    color: var(--orange);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 11px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .badge.green { background: var(--green-light); color: var(--green); }
+  .badge.red { background: var(--red-light); color: var(--red); }
+  .badge.amber { background: var(--amber-bg); color: var(--amber); }
+  .badge.gray { background: var(--gray-100); color: var(--gray-600); }
+  .badge.navy { background: var(--navy); color: white; }
+  .comp-summary {
+    font-size: 13px;
+    color: var(--gray-800);
+    margin: 6px 0 12px 0;
+    line-height: 1.5;
+  }
+  .comp-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 8px;
+    margin: 6px 0 12px 0;
+  }
+  .comp-stat-row.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .comp-stat-row.four { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .mini-stat {
+    background: var(--gray-50);
+    padding: 10px 12px;
+    border-radius: 4px;
+    border-left: 3px solid var(--orange);
+    min-width: 0;
+  }
+  .mini-stat .ms-label {
+    color: var(--gray-600);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .mini-stat .ms-value {
+    color: var(--navy);
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+  .mini-stat .ms-sub {
+    color: var(--gray-600);
+    font-size: 11px;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+  .mini-stat.green { border-left-color: var(--green); }
+  .mini-stat.red { border-left-color: var(--red); }
+  .mini-stat.amber { border-left-color: var(--amber); }
+  .comp-meta {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+  }
+  .comp-meta .open-link {
+    background: var(--navy);
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .comp-meta .open-link:hover { background: var(--orange); }
+  .open-link.disabled-link, .comp-meta .open-link.disabled-link {
+    background: var(--gray-200);
+    color: var(--gray-600) !important;
+    cursor: default;
+    font-style: italic;
+  }
+  .open-link.disabled-link:hover, .comp-meta .open-link.disabled-link:hover { background: var(--gray-200); }
+  .comp-meta .meta-source {
+    color: var(--gray-600);
+    font-size: 11px;
+  }
+  /* Compact tables inside cards */
+  .comp-card table {
+    margin: 8px 0;
+    font-size: 11.5px;
+  }
+  .comp-card th {
+    padding: 6px 8px;
+    font-size: 10.5px;
+  }
+  .comp-card td {
+    padding: 5px 8px;
+  }
+  /* Horizontal-scroll wrapper for wide tables on narrow screens */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 8px 0;
+    border-radius: 4px;
+  }
+  .table-scroll table { margin: 0; }
+  /* Inline mini-bar visualizing % vs 100% target band */
+  .pct-bar {
+    display: inline-block;
+    position: relative;
+    width: 72px;
+    height: 7px;
+    background: var(--gray-100);
+    border-radius: 3px;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  .pct-bar .pct-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--green);
+    border-radius: 3px;
+  }
+  .pct-bar.under .pct-fill { background: var(--red); }
+  .pct-bar.amber .pct-fill { background: var(--amber); }
+  .pct-bar.over .pct-fill { background: var(--navy-2); }
+  /* 100% target tick */
+  .pct-bar::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: 60%;
+    width: 1px;
+    background: rgba(13,43,78,0.55);
+  }
+  /* Strategic Foundation card */
+  .strat-card {
+    background: var(--orange-bg);
+    border: 1px solid rgba(239,139,34,0.5);
+    border-left: 6px solid var(--orange);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin: 16px 0 22px 0;
+  }
+  .strat-card h2 {
+    border: none;
+    margin: 0 0 6px 0;
+    padding: 0;
+    font-size: 18px;
+    color: var(--navy);
+  }
+  .strat-card p { color: var(--gray-800); }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .pillar-tile {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-top: 3px solid var(--orange);
+    border-radius: 4px;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .pillar-tile span.pillar-num {
+    display: block;
+    color: var(--orange-dark);
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .pillar-tile .pillar-anchor {
+    display: block;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--gray-200);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--gray-600);
+    letter-spacing: 0.1px;
+    line-height: 1.35;
+  }
+  .pillar-tile .pillar-anchor.g { color: var(--green); }
+  .pillar-tile .pillar-anchor.a { color: var(--orange-dark); }
+  .pillar-tile .pillar-anchor.r { color: var(--red); }
+  /* QG scorecard mini */
+  .qg-scorecard {
+    width: 100%;
+    margin-top: 4px;
+  }
+  .qg-scorecard td {
+    padding: 4px 6px;
+    border: none;
+    font-size: 12px;
+    background: transparent !important;
+  }
+  .qg-scorecard td.leader { font-weight: 700; color: var(--navy); width: 90px; }
+  .qg-scorecard .grade-row { display: flex; gap: 3px; align-items: center; }
+  .grade-pill {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 0;
+    flex-shrink: 0;
+  }
+  .grade-pill.sg { background: #1b5e20; }
+  .grade-pill.g { background: #66bb6a; }
+  .grade-pill.r { background: var(--red); }
+  .grade-pill.ung { background: var(--gray-300); }
+  /* Critical Number rocks — bold navy ring + gap before non-critical pills */
+  .grade-pill.critical {
+    box-shadow: 0 0 0 2px var(--navy);
+  }
+  .qg-scorecard .grade-row .grade-pill.critical + .grade-pill:not(.critical) {
+    margin-left: 9px;
+    position: relative;
+  }
+  .qg-scorecard .grade-row .grade-pill.critical + .grade-pill:not(.critical)::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 1px;
+    bottom: 1px;
+    width: 1px;
+    background: var(--gray-300);
+  }
+  /* Strategic Foundation — sub-headers for Flywheel + PACe sections */
+  .strat-card .strat-subhead {
+    margin: 22px 0 4px 0;
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 700;
+    border: none;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .strat-card .strat-subhead-lede {
+    font-size: 12px;
+    color: var(--gray-700);
+    margin: 0 0 10px 0;
+  }
+  /* Flywheel grid — 6 components, score-anchored */
+  .flywheel-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0,1fr));
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .fw-tile {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-top: 3px solid var(--orange);
+    border-radius: 4px;
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .fw-tile .fw-num {
+    display: block;
+    color: var(--orange-dark);
+    font-size: 9.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .fw-tile .fw-score {
+    display: inline-block;
+    background: var(--gray-100);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 4px;
+    letter-spacing: 0.4px;
+  }
+  .fw-tile .fw-anchor {
+    display: block;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--gray-200);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    line-height: 1.35;
+  }
+  .fw-tile .fw-anchor.g { color: var(--green); }
+  .fw-tile .fw-anchor.a { color: var(--orange-dark); }
+  .fw-tile .fw-anchor.r { color: var(--red); }
+  /* PACe at-a-glance — 12 boxes + 2 layer bars */
+  .pace-glance {
+    margin-top: 6px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .pace-layer-bar {
+    background: #fafafa;
+    border: 1px solid var(--gray-200);
+    border-left: 4px solid var(--gray-300);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 11.5px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pace-layer-bar.g { border-left-color: var(--green); }
+  .pace-layer-bar.a { border-left-color: var(--orange-dark); }
+  .pace-layer-bar.r { border-left-color: var(--red); }
+  .pace-layer-label {
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    white-space: nowrap;
+  }
+  .pace-flow-arrow {
+    text-align: center;
+    font-size: 14px;
+    color: var(--orange);
+    margin: 4px 0 2px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .pace-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0,1fr));
+    gap: 6px;
+    margin: 6px 0 6px;
+  }
+  .pace-mini-box {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 8px 8px 6px;
+    font-size: 10px;
+    color: var(--navy);
+    font-weight: 600;
+    line-height: 1.35;
+    position: relative;
+    border-left: 4px solid var(--gray-200);
+  }
+  .pace-mini-box.g { border-left-color: var(--green); }
+  .pace-mini-box.a { border-left-color: var(--orange-dark); }
+  .pace-mini-box.r { border-left-color: var(--red); }
+  .pace-mini-box .pmb-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    color: var(--orange-dark);
+    display: block;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .pace-mini-box .pmb-name { display: block; font-weight: 700; font-size: 10.5px; }
+  .pace-mini-box .pmb-who { display: block; font-weight: 500; font-size: 9.5px; color: var(--gray-600); margin-top: 3px; }
+  .pace-mini-box .pmb-close {
+    position: absolute;
+    top: -7px;
+    right: 4px;
+    background: var(--orange);
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+  .pace-color-summary {
+    font-size: 11px;
+    color: var(--gray-700);
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  /* Conversation Starters */
+  .convo-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .convo-card {
+    background: var(--gray-50);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 16px;
+  }
+  .convo-card .convo-tag {
+    color: var(--orange-dark);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .convo-card .convo-q {
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 6px 0;
+    font-size: 13.5px;
+  }
+  .convo-card .convo-context {
+    font-size: 12px;
+    color: var(--gray-800);
+    margin: 0;
+  }
+  /* Method callout */
+  .method-callout {
+    background: var(--orange-bg);
+    border-left: 6px solid var(--orange);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+  }
+  .method-callout strong { color: var(--orange-dark); }
+  .info-callout {
+    background: var(--blue-bg);
+    border-left: 6px solid var(--blue);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+  }
+  .warn-callout {
+    background: var(--red-light);
+    border-left: 6px solid var(--red);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+  }
+  /* ============ INLINE COMMENT SYSTEM ============
+     Highlight any text → "Add note" button appears → type → saved.
+     Notes show as yellow highlights with 💬 indicator.
+     Click "My Notes" FAB top-right to see all notes + copy to send to Albert.
+     Saved in localStorage (per-browser).
+  ============================================== */
+  mark.cam-note {
+    background: #fff3cd;
+    border-bottom: 2px solid var(--orange);
+    padding: 0 1px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: inherit;
+  }
+  mark.cam-note:hover { background: #ffe680; }
+  mark.cam-note::after {
+    content: "💬";
+    font-size: 0.7em;
+    vertical-align: super;
+    margin-left: 1px;
+    line-height: 1;
+  }
+  #note-popover {
+    position: fixed;
+    background: white;
+    border: 2px solid var(--orange);
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    z-index: 9999;
+    display: none;
+    width: 320px;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  #note-popover .pop-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  #note-popover textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 6px;
+    border: 1px solid var(--gray-300);
+    border-radius: 3px;
+    font-size: 12.5px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+  #note-popover .note-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #note-popover button {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  #note-popover .save-btn { background: var(--orange); color: white; }
+  #note-popover .cancel-btn { background: var(--gray-200); color: var(--gray-800); }
+  #note-popover .delete-btn { background: var(--red); color: white; margin-right: auto; }
+  #note-popover .hint {
+    font-size: 10.5px;
+    color: var(--gray-600);
+    margin-top: 4px;
+  }
+  .add-note-btn {
+    position: fixed;
+    z-index: 1000;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 5px 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Roboto', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .add-note-btn:hover { background: var(--orange-dark); }
+  .notes-fab {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 100;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 18px;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  .notes-fab:hover { background: var(--navy-light); }
+  .notes-fab .count {
+    background: var(--orange);
+    color: white;
+    border-radius: 10px;
+    padding: 1px 7px;
+    margin-left: 6px;
+    font-size: 10px;
+    min-width: 18px;
+    display: inline-block;
+    text-align: center;
+  }
+  .notes-fab .count.zero { background: rgba(255,255,255,0.25); }
+  #notes-panel {
+    position: fixed;
+    top: 56px;
+    right: 16px;
+    width: 380px;
+    max-height: 75vh;
+    background: white;
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 99;
+    display: none;
+    overflow: hidden;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  #notes-panel.open { display: flex; flex-direction: column; }
+  #notes-panel .panel-head {
+    background: var(--navy);
+    color: white;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #notes-panel .panel-head h3 { margin: 0; font-size: 14px; font-weight: 700; }
+  #notes-panel .panel-head .close-x {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.35);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+  }
+  #notes-panel .panel-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    background: var(--gray-50);
+  }
+  #notes-panel .note-item {
+    background: #fff8e1;
+    border-left: 4px solid var(--orange);
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+    cursor: pointer;
+    line-height: 1.45;
+  }
+  #notes-panel .note-item:hover { background: #fff3cd; }
+  #notes-panel .note-section {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  #notes-panel .note-quote {
+    font-style: italic;
+    color: var(--gray-600);
+    font-size: 11px;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  #notes-panel .note-comment {
+    color: var(--gray-800);
+    font-weight: 500;
+  }
+  #notes-panel .panel-footer {
+    padding: 10px;
+    border-top: 1px solid var(--gray-200);
+    background: white;
+    display: flex;
+    gap: 6px;
+  }
+  #notes-panel .panel-footer button {
+    flex: 1;
+    padding: 7px 10px;
+    border: 1px solid var(--gray-300);
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  #notes-panel .panel-footer button.primary {
+    background: var(--orange);
+    color: white;
+    border-color: var(--orange);
+  }
+  #notes-panel .notes-empty {
+    text-align: center;
+    padding: 36px 14px;
+    color: var(--gray-600);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  @media print { mark.cam-note, .add-note-btn, .notes-fab, #notes-panel, #note-popover { display: none !important; } }
+  @media print { mark.cam-note { background: transparent !important; border-bottom: none !important; } mark.cam-note::after { content: "" !important; } }
+  /* Data-source attribution tags */
+  .data-source {
+    font-size: 10.5px;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-300);
+    padding: 5px 9px;
+    margin: 4px 0 12px 0;
+    border-radius: 0 3px 3px 0;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .data-source strong {
+    font-style: normal;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .data-source code {
+    font-size: 10px;
+    font-style: normal;
+    background: white;
+    padding: 1px 5px;
+  }
+  /* Weight comparison visualization */
+  .weight-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 4px;
+    margin: 12px 0 6px 0;
+    font-size: 11.5px;
+  }
+  .weight-grid > div {
+    padding: 8px 10px;
+    background: white;
+    border: 1px solid var(--gray-200);
+  }
+  .weight-grid .wh {
+    background: var(--navy);
+    color: white;
+    font-weight: 700;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .weight-grid .wb {
+    font-weight: 700;
+    color: var(--navy);
+    background: var(--gray-50);
+  }
+  .weight-grid .wpolicy { color: var(--orange-dark); font-weight: 700; }
+  .weight-grid .wprotocol { color: var(--navy); font-weight: 700; }
+  .weight-grid .wcalc { color: var(--red); font-weight: 700; }
+  .weight-grid .miss { color: var(--red); font-style: italic; font-weight: 700; }
+  .weight-bar {
+    display: inline-block;
+    height: 8px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .weight-bar.policy { background: var(--orange); }
+  .weight-bar.protocol { background: var(--navy); }
+  .weight-bar.calc { background: var(--red); }
+  /* Coaching vs raw events math card */
+  .coach-math {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    font-size: 12px;
+  }
+  .coach-math .cm-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 6px 0;
+    align-items: center;
+  }
+  .coach-math .cm-row.head {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--gray-300);
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+  }
+  .coach-math .cm-up {
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .coach-math .cm-down {
+    color: var(--green);
+    font-weight: 700;
+  }
+  /* References table */
+  .refs {
+    font-size: 11.5px;
+  }
+  .refs td:first-child { width: 30%; font-weight: 700; color: var(--navy); }
+  .refs code { font-size: 10.5px; }
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 2px solid var(--navy);
+    font-size: 12px;
+    color: var(--gray-600);
+    text-align: center;
+  }
+  .footer strong { color: var(--navy); }
+  /* Chips/labels */
+  .chip {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .chip.orange { background: var(--orange); color: var(--navy); }
+  .chip.green { background: var(--green); }
+  .chip.red { background: var(--red); }
+  .chip.gray { background: var(--gray-400); }
+  /* Legend */
+  .legend {
+    font-size: 11px;
+    color: var(--gray-600);
+    margin: 4px 0 12px 0;
+  }
+  .legend .grade-pill { vertical-align: middle; margin-right: 4px; }
+  /* Scorecards section — branch + dept tiles */
+  .scorecard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 14px 0 22px 0;
+  }
+  .scorecard-tile {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-top: 4px solid var(--gray-300);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    position: relative;
+  }
+  .scorecard-tile.live {
+    border-top-color: var(--green);
+    background: white;
+  }
+  .scorecard-tile.live:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(13,43,78,0.12);
+  }
+  .scorecard-tile.placeholder {
+    background: var(--gray-50);
+    border-top-color: var(--gray-300);
+    cursor: default;
+    opacity: 0.85;
+  }
+  .scorecard-tile-eyebrow {
+    color: var(--orange);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .scorecard-tile-name {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+  }
+  .scorecard-tile-meta {
+    color: var(--gray-600);
+    font-size: 11.5px;
+    margin: 0;
+  }
+  .scorecard-tile-bottom {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .scorecard-tile.live .scorecard-tile-bottom { color: var(--green); }
+  .scorecard-tile.placeholder .scorecard-tile-bottom { color: var(--gray-600); }
+  .scorecard-grade-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: var(--orange);
+    color: var(--navy);
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .scorecard-section-sub-title {
+    color: var(--gray-600);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 18px 0 4px 0;
+  }
+  /* Q2 Forward Look — theme placeholder pair (Sales + Claims) */
+  .theme-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .theme-pair.three {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+  .theme-pair-half {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .theme-pair-half .tp-tag {
+    color: var(--orange);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+  .theme-pair-half .tp-name {
+    color: var(--gray-600);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    font-style: italic;
+  }
+  .theme-pair-half .tp-context {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--gray-600);
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .theme-pair { grid-template-columns: 1fr; }
+    .theme-pair.three { grid-template-columns: 1fr; }
+  }
+  /* Responsive */
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .lens-row { grid-template-columns: 1fr; }
+    .hero-headline-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .hero-grade-mega { flex-direction: row; gap: 12px; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .comp-card.full { grid-column: span 1; }
+    .convo-list { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    .content { padding: 24px 22px 48px 22px; }
+  }
+  /* Print */
+  @media print {
+    @page { margin: 0.5in; }
+    body { background: white; font-size: 11pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .layout { grid-template-columns: 1fr; max-width: none; box-shadow: none; }
+    .sidebar { display: none; }
+    .content { padding: 0; max-width: 100%; }
+    h2 { page-break-after: avoid; break-after: avoid; }
+    h3, h4 { page-break-after: avoid; break-after: avoid; }
+    table, .comp-card, .hero-card, .strat-card, .convo-card, .stat-tile, .lens-card, .pillar-tile, .mini-stat, .info-callout, .method-callout, .warn-callout, .data-source, .headline-list li, .theme-pair-half {
+      box-shadow: none;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .comp-grid { display: block; }
+    .comp-card { margin-bottom: 14px; grid-column: auto !important; }
+    .convo-list { display: block; }
+    .convo-card { margin-bottom: 10px; }
+    a { color: var(--navy); text-decoration: underline; }
+    .comp-meta .open-link {
+      background: white !important;
+      color: var(--navy) !important;
+      border: 1px solid var(--navy);
+    }
+    .hero-card {
+      background: var(--navy) !important;
+      color: white !important;
+    }
+    .footer { page-break-before: avoid; }
+    /* Change log: expand for print */
+    details.change-log-collapsed[open],
+    details.change-log-collapsed { display: block; }
+    details.change-log-collapsed > summary { display: none; }
+  }
+
+  /* ============ COLLAPSIBLE CHANGE LOG ============ */
+  details.change-log-collapsed {
+    margin-top: 8px;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    background: var(--gray-50);
+  }
+  details.change-log-collapsed > summary {
+    cursor: pointer;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-600);
+    list-style: none;
+    user-select: none;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  details.change-log-collapsed > summary::-webkit-details-marker { display: none; }
+  details.change-log-collapsed > summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 12px;
+    color: var(--orange);
+    transition: transform 0.15s ease;
+  }
+  details.change-log-collapsed[open] > summary::before { transform: rotate(90deg); }
+  details.change-log-collapsed > summary:hover { background: var(--gray-100); color: var(--navy); }
+  details.change-log-collapsed[open] > summary {
+    border-bottom: 1px solid var(--gray-200);
+    border-radius: 6px 6px 0 0;
+  }
+  details.change-log-collapsed > .table-scroll {
+    padding: 12px 16px 16px;
+    background: white;
+    border-radius: 0 0 6px 6px;
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <!-- ============== SIDEBAR ============== -->
+  <nav class="sidebar">
+    <div class="brand">
+      Q1'26 QGR Packet
+      <span class="quarter">Roundtable · 4/28-29</span>
+    </div>
+
+    <div class="toc-section">
+      <h4>Open With</h4>
+      <a href="#cover">Cover &amp; Three-Lens Grade</a>
+      <a href="#exec-summary">Executive Summary</a>
+      <a href="#strategic-foundation">Strategic Foundation</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Components</h4>
+      <a href="#c1-financial">1 · Financial Analysis</a>
+      <a href="#c2-personnel">2 · Personnel &amp; Availability</a>
+      <a href="#c3-rocks">3 · Rocks Scorecard</a>
+      <a href="#c4-bbe">4 · BBE / Driver's Ed</a>
+      <a href="#c5-enps-mover">5 · eNPS — Movers</a>
+      <a href="#c6-enps-salaried">6 · eNPS — Salaried</a>
+      <a href="#c7-nps">7 · Customer NPS</a>
+      <a href="#c8-sales-lookback">8 · CX Sales Lookback</a>
+      <a href="#c9-claims-mm-lookback">9 · Claims &amp; Magic Moments</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Scorecards</h4>
+      <a href="#scorecards">Branch + Dept Scorecards</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Wishlist</h4>
+      <a href="#lb-abc">A/B/C Player Distribution</a>
+      <a href="#lb-praise">Praise Tracker</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Discuss</h4>
+      <a href="#convo">Conversation Starters</a>
+      <a href="#asks">Open Asks &amp; Risks</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Look Ahead</h4>
+      <a href="#q2-forward">Q2 Forward Look</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Reference</h4>
+      <a href="#references">Files, IDs, Pulses</a>
+      <a href="#change-log">Change Log</a>
+    </div>
+  </nav>
+
+  <!-- ============== CONTENT ============== -->
+  <main class="content">
+
+    <!-- ============== COVER ============== -->
+    <section id="cover">
+      <div class="title-block">
+        <h1>Q1 FY'26 Quarterly Goal Review — Roundtable Packet</h1>
+        <p class="subtitle">Single canonical pre-read for the 4/28-29 leadership QGR. Hybrid format: embedded summaries below + deep links into the full artifacts.</p>
+        <div class="meta-row">
+          <span><strong>Quarter:</strong> Q1 FY'26 · Feb 1 – Apr 30, 2026 (CRM cut-off Apr 18)</span>
+          <span><strong>QGR Days:</strong> 4/28 – 4/29</span>
+          <span><strong>Prepared by:</strong> Albert (Cameron's COS)</span>
+          <span><strong>Last update:</strong> 2026-04-27</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-label">Three-Lens Quarterly Grade</div>
+        <div class="hero-headline-row">
+          <div class="hero-grade-mega" aria-label="Overall Q1 grade: B">
+            <span class="hero-grade-mega-letter">B</span>
+            <span class="hero-grade-mega-label">The Grade</span>
+          </div>
+          <div class="hero-headline-text">
+            <h2>Q1 FY'26 lands a B — strong market read on top of a C absolute miss against budget.</h2>
+            <p>Revenue +6.9% YoY, NOI +37.5% YoY, margin +1.8 pts. Below internal budget on revenue and personnel, but solidly above the moving-industry benchmark in a contracting market. Trend lens reinforces the B grade — Q1 momentum is back after a soft Q4 close.</p>
+          </div>
+        </div>
+        <div class="evidence-label">Evidence — Three Lenses</div>
+        <div class="lens-row">
+          <div class="lens-card">
+            <div class="lens-grade">C</div>
+            <div class="lens-name">Lens 1 · Absolute (vs Budget)</div>
+            <div class="lens-rationale">Revenue 93.7% of plan. NOI 57.2% of plan (-$340K). Personnel 95% — five-of-five biweekly periods under company-wide. TUR / NPS / Margin on plan; NOI miss is the absolute drag.</div>
+          </div>
+          <div class="lens-card">
+            <div class="lens-grade">B</div>
+            <div class="lens-name">Lens 2 · Market-Adjusted</div>
+            <div class="lens-rationale">+6.9% revenue YoY in a market the moving industry reports as flat-to-down. Avg ticket +12.8%. Outpaced peers materially.</div>
+          </div>
+          <div class="lens-card">
+            <div class="lens-grade">B</div>
+            <div class="lens-name">Lens 3 · Historical Trend</div>
+            <div class="lens-rationale">NOI +37.5% YoY, margin expansion two quarters running. Strongest Q1 we've posted YoY — though we still came in below our own forecast, which keeps the composite at B.</div>
+          </div>
+        </div>
+        <div class="progression">
+          <span class="prog-grades" aria-label="Lens progression: C, B, B">
+            <span class="prog-grade">C</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-grade">B</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-grade">B</span>
+          </span>
+          <span class="prog-text">Market-adjusted and trend lenses lift the absolute miss into a defensible <strong style="color:white;">B</strong> for the quarter.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== EXEC SUMMARY ============== -->
+    <section id="exec-summary">
+      <h2>Executive Summary — Q1 at a Glance</h2>
+      <p>The numbers below are the headline references for the QGR conversation. Each is sourced from the deeper component cards beneath — every section also carries a 📍 source tag so any number can be traced to its origin in seconds.</p>
+      <div class="stat-grid">
+        <div class="stat-tile green">
+          <div class="stat-label">Revenue YoY</div>
+          <div class="stat-value">+6.9%</div>
+          <div class="stat-delta pos">vs. flat industry</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">NOI YoY</div>
+          <div class="stat-value">+37.5%</div>
+          <div class="stat-delta pos">+1.8 pt margin</div>
+        </div>
+        <div class="stat-tile amber">
+          <div class="stat-label">Personnel-Budget</div>
+          <div class="stat-value">95%</div>
+          <div class="stat-delta neg">5/5 periods under</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">Mover eNPS</div>
+          <div class="stat-value">+46</div>
+          <div class="stat-delta">vs +48 in Q3'25 — stable</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">Fleet Events QoQ</div>
+          <div class="stat-value">−36.4%</div>
+          <div class="stat-delta pos">1,056 → 672 · 1 claim ($15K)</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">Avg Ticket</div>
+          <div class="stat-value">+12.8%</div>
+          <div class="stat-delta pos">YoY price+mix</div>
+        </div>
+        <div class="stat-tile amber">
+          <div class="stat-label">Conversion (blended)</div>
+          <div class="stat-value">33.2%</div>
+          <div class="stat-delta">funnel reset post 4/5</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">Team-wide QG Success</div>
+          <div class="stat-value">69%</div>
+          <div class="stat-delta">35 / 51 graded · just below 70-80% band</div>
+        </div>
+      </div>
+      <div class="data-source">📍 <strong>Source map:</strong> Revenue / NOI / Margin / Avg Ticket — Skill v3.2 § Financial KPIs (Component 1). Personnel-Budget — Brian's 4/27 walkthrough + Forecaster v5 (Component 2). eNPS — Mover eNPS Survey 4/8-15 (Component 5). Fleet Events / Claims — Samsara API + Cameron 4/27 (Component 4). Conversion — EMMA / Mongo direct pull, canonical $-formula (Component 1). QG Success — Cascading Goals Sheet self-grades (single source of truth) + Cameron's 2 overrides (Component 3).</div>
+
+      <h3>Top 5 Headlines</h3>
+      <ol class="headline-list">
+        <li><strong>Best Q1 we've posted — but we forecasted for even better.</strong> Revenue +6.9% YoY, NOI +37.5%, margin +1.8 pts in a contracting industry. We beat our past; we didn't beat our own plan, which is why the grade is B.</li>
+        <li><strong>Two branches confirmed availability-constrained.</strong> Leander (72% of personnel budget) and Houston (77%) cleared the dual-gate test (≤85% personnel + ≥90% hrs/employee). They account for ~$135K of the $340K Q1 NOI miss.</li>
+        <li><strong>Fleet safety improvement is bigger than the raw event drop.</strong> Events down 36% QoQ, but enforcement got 12 points stricter (dismissal rate 48% → 36%). Coaching volume on contested behaviors up 50–156%. Just 1 insurance claim, $15K, all quarter.</li>
+        <li><strong>Mover engagement holds at +46 eNPS</strong> (vs +48 Q3'25). Tampa, South Austin, Houston standouts. Three branches flagged for direct intervention: San Antonio (+5), Fort Worth (+0), Garland (+0).</li>
+        <li><strong>QG success rate at 69%</strong> (35 of 51 graded) — just below the 70-80% healthy band. Three Critical Number rocks Red: Matisen Dashboards, Carly Damage Accountability, Nhel Sales Coaching/Estimate Accuracy. Cameron applied 2 overrides (Cameron Fleet Safety, Mike Trucks).</li>
+      </ol>
+    </section>
+
+    <!-- ============== STRATEGIC FOUNDATION ============== -->
+    <section id="strategic-foundation">
+      <h2>Strategic Foundation — Pillars, Flywheel, PACe, OPSP</h2>
+      <div class="strat-card">
+        <h2>The Five Strategic Pillars (locked 4/14 with Rob Lynch)</h2>
+        <p>Every Q1 result below should be read against these five pillars — they are the lens for grading rocks and shaping Q2.</p>
+        <div class="pillar-grid">
+          <div class="pillar-tile">
+            <span class="pillar-num">Pillar 1</span>Mover-First<br>Economics
+            <span class="pillar-anchor a">eNPS +46 · stable<br>pay-ceiling = #1 detractor theme</span>
+          </div>
+          <div class="pillar-tile">
+            <span class="pillar-num">Pillar 2</span>Operational<br>Excellence <span style="font-size:9px;font-weight:600;color:var(--orange-dark);background:rgba(239,139,34,0.12);padding:1px 6px;border-radius:8px;letter-spacing:0.5px;text-transform:uppercase;display:inline-block;margin-left:2px;vertical-align:middle;" title="4/28 Roundtable — naming alternatives parked, definition holds">⚠ naming</span>
+            <span class="pillar-anchor a">Fleet events −36% QoQ<br>Personnel 95% · 5/5 under</span>
+          </div>
+          <div class="pillar-tile">
+            <span class="pillar-num">Pillar 3</span>Financial<br>Excellence
+            <span class="pillar-anchor g">Revenue +6.9% YoY<br>NOI +37.5% · margin +1.8 pts</span>
+          </div>
+          <div class="pillar-tile">
+            <span class="pillar-num">Pillar 4</span>Remarkable<br>Customer Experience
+            <span class="pillar-anchor a">NPS above benchmark<br>$-conv reset to 27.4% post-4/5</span>
+          </div>
+          <div class="pillar-tile">
+            <span class="pillar-num">Pillar 5</span>Growth<br>&amp; Innovation
+            <span class="pillar-anchor a">Avg ticket +12.8%<br>Dashboards = Red · acq eval = Q2</span>
+          </div>
+        </div>
+        <h3 class="strat-subhead">The Flywheel — Six Components Compounding</h3>
+        <p class="strat-subhead-lede">Great Movers → Smart Move Experience → Trust → Demand → Capacity → Reinvest → back to Great Movers. AI = cross-functional enabler. Scoring 1–10 per component (Rob Lynch session 4/14): <strong>≥7 reads Green, 5–6 Amber, &lt;5 Red</strong>.</p>
+        <div class="flywheel-grid">
+          <div class="fw-tile">
+            <span class="fw-num">1 · 12:00<span class="fw-score">6/10</span></span>Attract &amp; Develop<br>Great Movers
+            <span class="fw-anchor a">96% home-grown leadership<br>~6/10 mover quality</span>
+          </div>
+          <div class="fw-tile">
+            <span class="fw-num">2 · 2:00<span class="fw-score">7/10</span></span>Deliver Smart<br>Move Experience
+            <span class="fw-anchor g">Smart Move System live<br>NPS holding above benchmark</span>
+          </div>
+          <div class="fw-tile">
+            <span class="fw-num">3 · 4:00<span class="fw-score">8/10</span></span>Earn Trust<br>at Scale
+            <span class="fw-anchor g">4.9★ on 8,000+ reviews<br>strongest leg of the wheel</span>
+          </div>
+          <div class="fw-tile">
+            <span class="fw-num">4 · 6:00<span class="fw-score">6/10</span></span>Win Demand
+            <span class="fw-anchor a">$ conversion 27.4% post-funnel<br>40% target · funnel reset</span>
+          </div>
+          <div class="fw-tile">
+            <span class="fw-num">5 · 8:00<span class="fw-score">6/10</span></span>Optimize<br>Capacity
+            <span class="fw-anchor a">TUR 66.3% (target 65%+)<br>midweek fill = lever</span>
+          </div>
+          <div class="fw-tile">
+            <span class="fw-num">6 · 10:00<span class="fw-score">7/10</span></span>Reinvest Profit<br>in People + Tech
+            <span class="fw-anchor g">Prosper VCFO live<br>$10,456 profit/truck</span>
+          </div>
+        </div>
+
+        <h3 class="strat-subhead">PACe — E=MCash² at a Glance</h3>
+        <p class="strat-subhead-lede">Susko's Process Accountability Chart (sourced from OPSP, refined with Rob Lynch). Twelve process boxes drive revenue; Strategic + Foundation layers bracket the loop. <strong>Box 2 is the lone Red and the highest-leverage fix this quarter.</strong></p>
+        <div class="pace-glance">
+          <div class="pace-layer-bar g">
+            <span class="pace-layer-label">Strategic Layer 🟢</span>
+            <span><strong>Strategic Planning &amp; Business Development</strong> · WHO: Cameron · KPI: Revenue growth rate</span>
+          </div>
+          <div class="pace-flow-arrow">↓ &nbsp; sets direction</div>
+          <div class="pace-grid">
+            <div class="pace-mini-box g"><span class="pmb-num">01</span><span class="pmb-name">Generate Demand</span><span class="pmb-who">Kickpoint / Matisen</span></div>
+            <div class="pace-mini-box r"><span class="pmb-num">02</span><span class="pmb-name">Convert on Demand</span><span class="pmb-who">Amanda</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">03</span><span class="pmb-name">Run the Move</span><span class="pmb-who">Mike / Brian</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">04</span><span class="pmb-name">Collect Money</span><span class="pmb-who">Paul</span></div>
+            <div class="pace-mini-box g"><span class="pmb-num">05</span><span class="pmb-name">Post-Move CX / Claims</span><span class="pmb-who">Carly</span><span class="pmb-close">CLOSE</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">06</span><span class="pmb-name">Fleet Management</span><span class="pmb-who">Mike</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">07</span><span class="pmb-name">Inventory Mgmt</span><span class="pmb-who">Mike</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">08</span><span class="pmb-name">Recruitment &amp; Onboarding</span><span class="pmb-who">Anne</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">09</span><span class="pmb-name">Mover Performance Mgmt</span><span class="pmb-who">Anne (+Brian)</span></div>
+            <div class="pace-mini-box g"><span class="pmb-num">10</span><span class="pmb-name">Event Planning / Culture</span><span class="pmb-who">Brian</span></div>
+            <div class="pace-mini-box g"><span class="pmb-num">11</span><span class="pmb-name">Manager Performance Eval</span><span class="pmb-who">Cameron / Anne</span></div>
+            <div class="pace-mini-box a"><span class="pmb-num">12</span><span class="pmb-name">Financial Reporting</span><span class="pmb-who">Paul</span></div>
+          </div>
+          <div class="pace-flow-arrow">↑ &nbsp; data flows up</div>
+          <div class="pace-layer-bar a">
+            <span class="pace-layer-label">Foundation Layer 🟡</span>
+            <span><strong>Data Management</strong> · WHO: Matisen · KPIs: Database costs · Dashboard uptime · Data accuracy</span>
+          </div>
+          <div class="pace-color-summary">12 boxes total: 🟢 4 Green &middot; 🟡 7 Amber &middot; 🔴 1 Red &nbsp;|&nbsp; Per-box Next Steps + QG-tagged Q2 rock candidates baked into the live link below.</div>
+        </div>
+
+        <p style="margin:14px 0 0 0;font-size:12px;display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="open-link" href="https://einsteinadmin.github.io/einstein-pillars/" target="_blank">Open Live Pillars →</a>
+          <a class="open-link" href="https://einsteinadmin.github.io/einstein-flywheel/" target="_blank">Open Live Flywheel →</a>
+          <a class="open-link" href="https://einsteinadmin.github.io/einstein-pace/" target="_blank">Open Live PACe →</a>
+        </p>
+      </div>
+
+      <div class="info-callout">
+        <strong>OPSP placeholder:</strong> Q2 OPSP refresh is scheduled for the 4/28-29 Roundtable. Until then, the Q1 Growth Toolkit (`Cam's Q1 26 Growth Toolkit copy 2.pdf`, on Cameron's desktop) is the working snapshot. The Strategic Pillars HTML and live Flywheel above are the canonical strategic frame for this quarter's review.
+      </div>
+      <div class="data-source">📍 <strong>Source:</strong> Pillars locked at 4/14/2026 strategy day with Rob Lynch / Burst Consulting · Internal Strategic Pillars doc (Drive <code>1dfsJQqtKf2FV1R1BwrqvK5WIHHnblzm8_8FytnRgrgE</code>) · Flywheel components confirmed at same session · OPSP rebuild due during 4/28-29 Roundtable</div>
+    </section>
+
+    <!-- ============== COMPONENTS ============== -->
+    <h2>Component Cards — The Q1 Story in Nine Pieces</h2>
+    <p>Each card embeds the headline data + key numbers + a one-click deep link to the full artifact. Read left-to-right, top-to-bottom.</p>
+
+    <div class="comp-grid">
+
+      <!-- ===== 1 · FINANCIAL ANALYSIS ===== -->
+      <div class="comp-card full green" id="c1-financial">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 1</p>
+            <h3 class="comp-title">Financial Analysis — Revenue, NOI, Conversion, Marketing</h3>
+          </div>
+          <span class="badge green">B (Three-Lens)</span>
+        </div>
+        <p class="comp-summary">
+          Revenue $5.47M (+6.9% YoY), NOI $454K (+37.5%), margin 8.31% (+1.8 pts). Marketing efficiency improved: $219K spend (-8% YoY) generated $27.54 booked+serviced per dollar (+30%). The 4/5 contact-capture funnel change reset conversion — Cohort A (pre) 35.5%, Cohort B (post) 27.4%; the latter is the Q2 baseline. <strong>Sessions caveat:</strong> total sessions -17% YoY but call/quote form fills +8-14 pts. Likely AI search effect (Gemini, Claude reading content and answering users without site visits) — needs Kickpoint confirmation.
+        </p>
+        <div class="info-callout" style="font-size:12px;">
+          <strong>All conversion uses the canonical $ formula</strong> (Matisen 4/24 standard): <code>(Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $)</code>. The Presentation's two N. Austin numbers are both $-basis but measure different things: §3.2 (-14.5 pts) = full Q1'26 vs Q1'25 YoY; §3.5 (-8.6 pts) = portion attributed to the +8.3% price step.
+        </div>
+
+        <div class="data-source">📍 <strong>Source:</strong> EMMA / Mongo direct pull · Window Feb 1 – Apr 18, 2026 (CRM cut-off) · 12-day lookback applied per Skill v3.2 · QuickBooks P&amp;L for NOI / Margin · Pricing Sheet v3 for Avg Ticket · Marketing ROI Tracker for spend + ROAS</div>
+        <div class="comp-stat-row four">
+          <div class="mini-stat green"><div class="ms-label">Revenue</div><div class="ms-value">$5.47M</div><div class="ms-sub">+6.9% YoY</div></div>
+          <div class="mini-stat green"><div class="ms-label">NOI</div><div class="ms-value">$454K</div><div class="ms-sub">+37.5% YoY · 8.31% margin</div></div>
+          <div class="mini-stat amber"><div class="ms-label">NOI vs. Plan</div><div class="ms-value">57.2%</div><div class="ms-sub">−$340K vs $795K target</div></div>
+          <div class="mini-stat green"><div class="ms-label">Avg Ticket</div><div class="ms-value">$1,502</div><div class="ms-sub">+12.8% YoY ($1,332 → $1,502)</div></div>
+        </div>
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Cohort</th><th>Window</th><th>$ Conversion</th><th>Read</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cohort A — Pre-funnel</td><td>Feb 1 – Apr 4</td><td>35.5%</td><td>Old normal — directly comparable to Q4'25</td></tr>
+            <tr><td>Cohort B — Post-funnel</td><td>Apr 5 – Apr 18</td><td>27.4%</td><td>New baseline; lead volume +58% from contact-capture gate</td></tr>
+            <tr><td>Direct-Book subset</td><td>Q1 FY'26 (full)</td><td>~86%</td><td>Self-serve auto-booking flow — small share of leads, very high close</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="comp-meta">
+          <span class="meta-source">Source: Skill v3.2 · Drive `1RvTCfAUFE0M3k30q0A7v2T_PoUwe_9qR`</span>
+          <a class="open-link" href="financial-analysis/Q1_2026_QGR_Analysis_Presentation.html" target="_blank">Open Full Presentation →</a>
+        </div>
+      </div>
+
+      <!-- ===== 2 · PERSONNEL ===== -->
+      <div class="comp-card full red" id="c2-personnel">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 2</p>
+            <h3 class="comp-title">Personnel &amp; Availability — Cameron's Critical #</h3>
+          </div>
+          <span class="badge red">C · 95% of Budget</span>
+        </div>
+        <p class="comp-summary">
+          95% of personnel budget company-wide (C grade), under in 5/5 biweekly periods. Leander (72%), Houston (77%), and South Austin (86%) all chronic-F — availability-constrained, severity ranking Leander > Houston > S. Austin. Leander + Houston confirmed via the dual-gate availability test, ~$135K of the $340K Q1 NOI miss. <strong>Confirmed at 4/27 leadership review.</strong> <strong>Houston caveat:</strong> TUR plan of 92% was aggressive given the availability ramp — part of the miss is plan-side. Same lever for all three: hire-rate / Indeed funnel review, priority calibrated to severity.
+        </p>
+        <div class="data-source">📍 <strong>Source:</strong> "Budget Counter" tab in <em>Current Employee Schedule</em> (Drive <code>1wnBbFiGlH1xQNXoLqwcfk1s_ZvxdqVtwIVePLHjiZSw</code>) · Numerator = Column C (Actual FTE) · Denominator = Column F (Sales Forecaster FTE Budget, biweekly slice) · Forecaster source: Sales Forecaster v5 (Drive <code>1f7BmmgugOsMxYZoqlXE47iw2pnzDcF10tBugws_xqAc</code>) · NOT Column Z (drifts 3-5 pts easier — pulse 11859699107 for cleanup)</div>
+        <div class="comp-stat-row">
+          <div class="mini-stat red"><div class="ms-label">Leander</div><div class="ms-value">72%</div><div class="ms-sub">5/5 under · F · CONFIRMED</div></div>
+          <div class="mini-stat red"><div class="ms-label">Houston</div><div class="ms-value">77%</div><div class="ms-sub">5/5 under · F · CONFIRMED</div></div>
+          <div class="mini-stat amber"><div class="ms-label">South Austin</div><div class="ms-value">86%</div><div class="ms-sub">5/5 under · F · soft gap</div></div>
+        </div>
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Branch</th><th>2/9–2/22</th><th>2/23–3/8</th><th>3/9–3/22</th><th>3/23–4/5</th><th>4/6–4/19</th><th>Q1 Avg</th><th style="min-width:88px;">vs. 100%</th><th>Grade</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>North Austin</td><td>107%</td><td>118%</td><td>95%</td><td>101%</td><td>106%</td><td><strong>105%</strong></td><td><span class="pct-bar over"><span class="pct-fill" style="width:63%;"></span></span></td><td>A</td></tr>
+            <tr><td>South Austin</td><td>85%</td><td>88%</td><td>80%</td><td>84%</td><td>92%</td><td><strong>86%</strong></td><td><span class="pct-bar amber"><span class="pct-fill" style="width:52%;"></span></span></td><td>F</td></tr>
+            <tr><td><strong>Leander</strong> 🔴</td><td>72%</td><td>69%</td><td>67%</td><td>83%</td><td>67%</td><td><strong>72%</strong></td><td><span class="pct-bar under"><span class="pct-fill" style="width:43%;"></span></span></td><td>F</td></tr>
+            <tr><td>San Antonio</td><td>98%</td><td>96%</td><td>95%</td><td>105%</td><td>90%</td><td><strong>97%</strong></td><td><span class="pct-bar amber"><span class="pct-fill" style="width:58%;"></span></span></td><td>C</td></tr>
+            <tr><td><strong>Houston</strong> 🔴</td><td>69%</td><td>73%</td><td>73%</td><td>92%</td><td>80%</td><td><strong>77%</strong></td><td><span class="pct-bar under"><span class="pct-fill" style="width:46%;"></span></span></td><td>F</td></tr>
+            <tr><td>Dallas</td><td>94%</td><td>105%</td><td>95%</td><td>103%</td><td>113%</td><td><strong>102%</strong></td><td><span class="pct-bar"><span class="pct-fill" style="width:61%;"></span></span></td><td>B</td></tr>
+            <tr><td>McKinney</td><td>121%</td><td>108%</td><td>85%</td><td>111%</td><td>98%</td><td><strong>105%</strong></td><td><span class="pct-bar over"><span class="pct-fill" style="width:63%;"></span></span></td><td>A</td></tr>
+            <tr><td>Fort Worth 🟦</td><td>130%</td><td>132%</td><td>116%</td><td>103%</td><td>120%</td><td><strong>120%</strong></td><td><span class="pct-bar over"><span class="pct-fill" style="width:72%;"></span></span></td><td>A++ over</td></tr>
+            <tr><td>Garland 🟦</td><td>137%</td><td>107%</td><td>112%</td><td>116%</td><td>103%</td><td><strong>115%</strong></td><td><span class="pct-bar over"><span class="pct-fill" style="width:69%;"></span></span></td><td>A++ over</td></tr>
+            <tr><td>Tampa</td><td>116%</td><td>122%</td><td>84%</td><td>104%</td><td>103%</td><td><strong>106%</strong></td><td><span class="pct-bar over"><span class="pct-fill" style="width:64%;"></span></span></td><td>A (calibration only)</td></tr>
+            <tr style="font-weight:700;background:var(--orange-bg);"><td>Company</td><td>95%</td><td>97%</td><td>87%</td><td>98%</td><td>96%</td><td><strong>95%</strong></td><td><span class="pct-bar amber"><span class="pct-fill" style="width:57%;"></span></span></td><td>C</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="legend" style="margin-top:6px;">
+          Bar shows Q1 average vs. 100% Forecaster Budget (tick at 100%).
+          <span class="pct-bar under" style="margin-left:8px;width:36px;"><span class="pct-fill" style="width:50%;"></span></span> &lt;85%
+          <span class="pct-bar amber" style="margin-left:8px;width:36px;"><span class="pct-fill" style="width:55%;"></span></span> 85–99%
+          <span class="pct-bar over" style="margin-left:8px;width:36px;"><span class="pct-fill" style="width:65%;"></span></span> ≥100%
+        </p>
+        <div class="data-source">📍 <strong>Source:</strong> Per-period values pulled directly from Budget Counter Column C (Actual Count, fractional FTE) ÷ Column F (Forecaster FTE Budget) · Branch FTE budgets verified against Sales Forecaster v5 within rounding 4/27 · Q1 measurement window 2/9 → 4/19 (Q1 fiscal itself runs Feb 1 – Apr 30; the 4/20-5/3 period falls in Q2)</div>
+        <div class="method-callout">
+          <strong>Methodology lock:</strong> Numerator = Column C (Actual FTE), Denominator = Column F (Forecaster FTE Budget). NOT Column Z, which drifts 3-5 pts easier and is scheduled for cleanup (Sky Board pulse 11859699107, due 5/25).
+        </div>
+        <div class="comp-meta">
+          <span class="meta-source">Source: Personnel Budget Handoff · 4/27 walkthrough w/ Brian · See <a href="#scorecards">Scorecards</a> for the per-branch rolled-up view (Brian's idea, N. Austin sample live)</span>
+          <span class="open-link disabled-link">Full Handoff (internal — Personnel_Budget_Handoff.md)</span>
+        </div>
+      </div>
+
+      <!-- ===== 3 · ROCKS SCORECARD ===== -->
+      <div class="comp-card full" id="c3-rocks">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 3</p>
+            <h3 class="comp-title">Rocks Scorecard — Per-Leader Grades</h3>
+          </div>
+          <span class="badge amber">69% Success · 35 of 51 graded</span>
+        </div>
+        <p class="comp-summary">
+          11 leaders, 57 rocks (51 graded + 6 Controllers ungraded — pending Cameron's final cut). Cameron + Paul + Controllers grade live at QGR Days 2-3. Two Cameron overrides locked: Cameron #1 Fleet Safety SG→G (Driver's Ed: 19.8% at-risk doesn't hit &lt;10% SG bar), Mike #5 Sell Trucks R→G ($58K late-Q sales).
+        </p>
+        <div class="data-source">📍 <strong>Source:</strong> Q1 Cascading Goals Sheet (Drive <code>1BuA4XcANZwQ3Hfds-1fpthE6QOO3UeZQtrTcTT8nQSk</code>, gid <code>242346082</code>) — single source of truth for grades · Leader self-grades pulled via openpyxl color-cell parse · AAR comments via Drive <code>listComments</code> API · Cameron's 2 overrides (Cameron Fleet Safety, Mike Trucks) applied 4/27</div>
+        <p class="legend">
+          <span class="grade-pill sg"></span> Super Green
+          &nbsp; <span class="grade-pill g"></span> Green
+          &nbsp; <span class="grade-pill r"></span> Red
+          &nbsp; <span class="grade-pill ung"></span> Ungraded / Pending
+          &nbsp;&nbsp;&nbsp;<span style="display:inline-flex;align-items:center;gap:6px;padding-left:10px;border-left:1px solid var(--gray-300);"><span class="grade-pill g critical"></span> <strong>Critical #</strong> (first 2 pills, navy outline)</span>
+        </p>
+        <div class="method-callout">
+          <strong>🏆 Q1 Major Wins — what to celebrate at the table:</strong>
+          <ul style="margin:8px 0 0 0; padding-left:20px;">
+            <li><strong>Matisen — Variable Pricing Phase 1 shipped <span class="grade-pill sg" title="Super Green"></span>.</strong> Deployed 3/31, only one sprint past original 3/16 target.</li>
+            <li><strong>Carly — Claims Time to Close 4.7 days <span class="grade-pill sg" title="Super Green"></span>.</strong> Under the 5-day SG threshold all quarter. Maria fully trained + already taking calls before maternity leave.</li>
+            <li><strong>Mike — Fleet Safety <span class="grade-pill g" title="Green"></span>.</strong> Quarterly avg 80.2 / 19.8% at-risk per dashboard. One claim all quarter — the operational lift Mike drove on the ground.</li>
+            <li><strong>Mike — Truck sales closed late.</strong> Sold 2 for $58K (one $5K above ask) — upgrading Albert's R projection to G.</li>
+            <li><strong>Brian — Manager Conference under budget</strong>, 100% attendance, 3.74/5 satisfaction. AI-tooling unlock — Replit-built apps drove most of his Greens.</li>
+            <li><strong>Amanda — Concierge Capstone MBA <span class="grade-pill sg" title="Super Green"></span>.</strong> Knocked the presentation out of the park.</li>
+          </ul>
+          <p style="margin:10px 0 0 0; font-size:11.5px; color:var(--gray-600);"><em>Full breakdown — Wins · Trends · Highlights · Landmines · Day 2-3 Conversation Points — lives in the QG Tracker (link below). Per-rock AAR threads open directly from the Cascading Goals sheet (leadership Drive) — read live during Days 2-3.</em></p>
+        </div>
+        <table class="qg-scorecard">
+          <tbody>
+            <tr><td class="leader">Cameron</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · Fleet Safety"></span><span class="grade-pill g critical" title="Critical # · Smart Move System"></span><span class="grade-pill sg"></span><span class="grade-pill sg"></span><span class="grade-pill g"></span><span class="grade-pill g"></span></div></td><td>2 SG · 4 G · 0 R <em>(grades live at QGR Days 2-3)</em></td></tr>
+            <tr><td class="leader">Paul</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · N. Austin Office / Leander Lease"></span><span class="grade-pill g critical" title="Critical # · Annual Manager Comp Review"></span><span class="grade-pill g"></span><span class="grade-pill r"></span><span class="grade-pill r"></span></div></td><td>0 SG · 3 G · 2 R <em>(grades live at QGR Days 2-3)</em></td></tr>
+            <tr><td class="leader">Amanda</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · Smart Move System Rollout"></span><span class="grade-pill g critical" title="Critical # · Omni Channel Marketing"></span><span class="grade-pill sg"></span><span class="grade-pill g"></span><span class="grade-pill g"></span></div></td><td>1 SG · 4 G · 0 R</td></tr>
+            <tr><td class="leader">Brian</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · Fleet Safety (BBE)"></span><span class="grade-pill g critical" title="Critical # · Scrum Accountability Pt 3"></span><span class="grade-pill g"></span><span class="grade-pill g"></span><span class="grade-pill r"></span></div></td><td>0 SG · 4 G · 1 R</td></tr>
+            <tr><td class="leader">Mike</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · Fleet Safety / Samsara"></span><span class="grade-pill g critical" title="Critical # · Mover Training Catalog/App"></span><span class="grade-pill g"></span><span class="grade-pill g"></span><span class="grade-pill r"></span></div></td><td>0 SG · 4 G · 1 R <em>(Cam override on #5 Trucks)</em></td></tr>
+            <tr><td class="leader">Matisen</td><td><div class="grade-row"><span class="grade-pill sg critical" title="Critical # · Variable Pricing"></span><span class="grade-pill r critical" title="Critical # · Dashboards/KPIs in EMMA"></span><span class="grade-pill sg"></span><span class="grade-pill r"></span><span class="grade-pill r"></span></div></td><td>2 SG · 0 G · 3 R</td></tr>
+            <tr><td class="leader">Anne</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · ClearCo Audits / Hiring Funnel"></span><span class="grade-pill g critical" title="Critical # · Hiring Targets (105% budget)"></span><span class="grade-pill r"></span><span class="grade-pill r"></span><span class="grade-pill r"></span></div></td><td>0 SG · 2 G · 3 R</td></tr>
+            <tr><td class="leader">Nhel</td><td><div class="grade-row"><span class="grade-pill r critical" title="Critical # · Sales Coaching / Estimate Accuracy"></span><span class="grade-pill g critical" title="Critical # · Sales Class Level 1"></span><span class="grade-pill sg"></span><span class="grade-pill g"></span><span class="grade-pill r"></span></div></td><td>1 SG · 2 G · 2 R</td></tr>
+            <tr><td class="leader">Carly</td><td><div class="grade-row"><span class="grade-pill g critical" title="Critical # · Magic Moments Rollout"></span><span class="grade-pill r critical" title="Critical # · Damage Accountability"></span><span class="grade-pill sg"></span><span class="grade-pill sg"></span><span class="grade-pill sg"></span></div></td><td>3 SG · 1 G · 1 R <em>(NEW on tracker)</em></td></tr>
+            <tr><td class="leader">Fabian</td><td><div class="grade-row"><span class="grade-pill sg critical" title="Critical #"></span><span class="grade-pill sg critical" title="Critical #"></span><span class="grade-pill r"></span><span class="grade-pill r"></span><span class="grade-pill r"></span></div></td><td>2 SG · 0 G · 3 R</td></tr>
+            <tr><td class="leader">Controllers</td><td><div class="grade-row"><span class="grade-pill ung critical" title="Critical # · pending"></span><span class="grade-pill ung critical" title="Critical # · pending"></span><span class="grade-pill ung"></span><span class="grade-pill ung"></span><span class="grade-pill ung"></span><span class="grade-pill ung"></span></div></td><td>Final cut — pending QGR</td></tr>
+          </tbody>
+        </table>
+        <h4 style="margin-top:14px;">Cameron's Overrides — Two Grades Adjusted</h4>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Leader</th><th>Rock</th><th>Self-Grade</th><th>Final</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cameron</strong></td><td>#1 Fleet Safety</td><td>SG</td><td><strong>G</strong></td><td>Driver's Ed dashboard: 19.8% at-risk doesn't clear the &lt;10% SG bar</td></tr>
+            <tr><td><strong>Mike</strong></td><td>#5 Sell Trucks</td><td>R</td><td><strong>G</strong></td><td>2 more sold late-Q for $58K (one $5K above ask) — knowledge Mike didn't have at self-grade time</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p style="font-size:12px;color:var(--gray-600);"><em>All other grades in the scorecard above are leader self-grades from the Cascading Goals sheet, accepted as-is.</em></p>
+        <div class="comp-meta">
+          <span class="meta-source">Source: Q1 Cascading Goals Sheet `1BuA4XcANZwQ3Hfds-1fpthE6QOO3UeZQtrTcTT8nQSk`</span>
+          <span class="open-link disabled-link">Full QG Tracker (internal artifact)</span>
+        </div>
+      </div>
+
+      <!-- ===== 4 · BBE / DRIVER'S ED ===== -->
+      <div class="comp-card full green" id="c4-bbe">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 4</p>
+            <h3 class="comp-title">BBE / Driver's Ed Theme — Fleet Safety Deep Dive</h3>
+          </div>
+          <span class="badge green">G · 80.2 avg · 1 claim ($15K)</span>
+        </div>
+        <p class="comp-summary">
+          Quarterly average 80.2, at-risk 19.8% → Green (SG bar of &lt;10% at-risk not hit). Safety events -36.4% QoQ (1,056 → 672). <strong>The improvement is bigger than the raw drop:</strong> dismissal rate tightened 48.2% → 36.2% (12 pts stricter) while coaching volume on contested behaviors rose 50–156%. Insurance: 1 claim, $15K, all quarter.
+        </p>
+        <div class="comp-stat-row four">
+          <div class="mini-stat green"><div class="ms-label">Events QoQ</div><div class="ms-value">−36.4%</div><div class="ms-sub">1,056 → 672</div></div>
+          <div class="mini-stat green"><div class="ms-label">Dismiss Rate</div><div class="ms-value">−12 pts</div><div class="ms-sub">48% → 36% stricter</div></div>
+          <div class="mini-stat green"><div class="ms-label">Insurance Claims</div><div class="ms-value">1</div><div class="ms-sub">$15K total Q1 cost</div></div>
+          <div class="mini-stat amber"><div class="ms-label">At-Risk %</div><div class="ms-value">19.8%</div><div class="ms-sub">Green; SG bar = &lt;10%</div></div>
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara API direct pull across 7 orgs (DFW + 6 standalone branches) · Endpoint <code>GET /fleet/safety-events</code> · Q1 window <code>2026-02-01 → 2026-04-19</code> · Q4 window <code>2025-11-01 → 2026-01-31</code> · Driver's Ed Dashboard board <code>18397855324</code> for at-risk % · Insurance claim count confirmed by Cameron 4/27</div>
+
+        <h4>8-Behavior Validation — 6 Align with Protocol Intent, 2 Explained by Stricter Enforcement</h4>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Behavior</th><th>Q4'25</th><th>Q1'26</th><th>Δ</th><th>Protocol Read</th></tr></thead>
+          <tbody>
+            <tr><td>Mobile Usage</td><td>99</td><td>33</td><td><strong style="color:var(--green);">−66.7%</strong></td><td>🏆 Aligned — headline win</td></tr>
+            <tr><td>No Seat Belt</td><td>60</td><td>18</td><td><strong style="color:var(--green);">−70.0%</strong></td><td>🏆 Aligned — headline win</td></tr>
+            <tr><td>Camera Obstruction</td><td>54</td><td>7</td><td><strong style="color:var(--green);">−87.0%</strong></td><td>🏆 Aligned — big win</td></tr>
+            <tr><td>Harsh Turn</td><td>17</td><td>8</td><td><strong style="color:var(--green);">−52.9%</strong></td><td>🏆 Aligned</td></tr>
+            <tr><td>Harsh Brake</td><td>40</td><td>21</td><td><strong style="color:var(--green);">−47.5%</strong></td><td>🏆 Aligned</td></tr>
+            <tr><td>Following Distance</td><td>464</td><td>291</td><td><strong style="color:var(--green);">−37.3%</strong></td><td>🏆 Aligned (universal soft spot — see calibration below)</td></tr>
+            <tr><td>Inattentive Driving</td><td>200</td><td>224</td><td><strong style="color:var(--amber);">+12.0%</strong></td><td>⚠️ Stricter standard — coached events +52% on flat behavior</td></tr>
+            <tr><td>Rolling Stop</td><td>25</td><td>59</td><td><strong style="color:var(--amber);">+136%</strong></td><td>⚠️ Stricter standard — coached events +156% on flat behavior</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>behaviorLabels[].name</code> field, aggregated by org · 8 of 11 tracked behaviors shown (Crash, Drowsy, Lane Departure excluded — see caveat below) · Pull scripts <code>/tmp/samsara_pull.py</code> + <code>/tmp/samsara_dismissals.py</code></div>
+
+        <h4>Coaching Volume vs Raw Events — How "Stricter Standards" Looks in the Math</h4>
+        <p style="font-size:13px;">Cameron's hypothesis at the 4/9 huddle: <em>"We're coaching more, dismissing less, and the score still went up."</em> The two contested behaviors validate it directly. Coaching volume grew far faster than the raw event count grew — meaning we caught more of the same behavior, not that drivers regressed.</p>
+        <div class="coach-math">
+          <div class="cm-row head">
+            <div>Behavior</div>
+            <div>Raw Events QoQ</div>
+            <div>Coached Events QoQ</div>
+            <div>Coaching/Event Ratio</div>
+          </div>
+          <div class="cm-row">
+            <div><strong>Rolling Stop</strong></div>
+            <div class="cm-up">+136% (25 → 59)</div>
+            <div class="cm-up">+156% (18 → 46)</div>
+            <div>Coaching grew 14% faster than raw events</div>
+          </div>
+          <div class="cm-row">
+            <div><strong>Inattentive Driving</strong></div>
+            <div class="cm-up">+12% (200 → 224)</div>
+            <div class="cm-up">+52% (99 → 151)</div>
+            <div>Coaching grew 4× faster than raw events</div>
+          </div>
+          <div class="cm-row">
+            <div><strong>Mobile Usage</strong></div>
+            <div class="cm-down">−67% (99 → 33)</div>
+            <div class="cm-down">−42% (42 → 21)</div>
+            <div>Of events that DID happen, coaching/keep rate ≈ 2× higher Q1 vs Q4</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--gray-600);margin-top:4px;"><em>Read this as: even where raw event counts ticked up, the underlying behavior was likely flat — we just kept more of them on the books. Mobile Usage shows the inverse pattern: events fell hard, but the events that remained were taken more seriously (dismissed at half the prior rate).</em></p>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>coachingState</code> field per event · Coaching count = events where state ∈ {<code>coached</code>, <code>needsCoaching</code>} · Dismissed count = state == <code>dismissed</code> · Cross-validated against Mike's Enhanced Samsara Scoring Protocol</div>
+
+        <h4>Branch Dismissal Rates — Where the Enforcement Lives</h4>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Branch</th><th>Events</th><th>Dismiss %</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td><strong>San Antonio</strong></td><td>96</td><td><strong style="color:var(--red);">51.0%</strong> 🚨</td><td>Highest in company. Probe whether event mix is genuinely lower-severity or branch is too lenient.</td></tr>
+            <tr><td>McKinney</td><td>88</td><td><strong style="color:var(--red);">43.2%</strong> 🚨</td><td>Dismissing 4 of 10 — not catching everything they should</td></tr>
+            <tr><td>N. Austin</td><td>139</td><td><strong style="color:var(--red);">41.0%</strong> 🚨</td><td>100% dismissal on small-sample Harsh Brake</td></tr>
+            <tr><td>Tampa</td><td>12</td><td>41.7%</td><td>Small sample</td></tr>
+            <tr><td>Dallas</td><td>137</td><td>35.8%</td><td>Mid</td></tr>
+            <tr><td>S. Austin</td><td>78</td><td>34.6%</td><td>Mid</td></tr>
+            <tr><td>Houston</td><td>71</td><td>26.8%</td><td>Stricter than avg</td></tr>
+            <tr><td>Garland</td><td>8</td><td>25.0%</td><td>Small sample</td></tr>
+            <tr><td><strong>Leander</strong></td><td>40</td><td><strong style="color:var(--green);">10.0%</strong></td><td>Strictest standards in company</td></tr>
+            <tr><td><strong>Fort Worth</strong></td><td>16</td><td><strong style="color:var(--green);">0.0%</strong></td><td>Zero dismissals all quarter — every event stayed on record</td></tr>
+            <tr style="background:var(--orange-bg);font-weight:700;"><td>Company</td><td>672</td><td>36.2%</td><td>−12 pts QoQ</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>coachingState</code> per branch tag (DFW org) or per standalone org (CTXH branches) · Dismissed = <code>dismissed</code> · Coached/Needs = <code>coached</code> + <code>needsCoaching</code></div>
+
+        <h4>Top Dismissed Behaviors by Branch — Where the Leniency Lives</h4>
+        <p style="font-size:13px;">Where dismissal rates are high <em>and</em> sample size is meaningful, the data tells a coaching-calibration story. Following Distance is the universal soft spot — 6 of 10 branches dismiss 40%+ of these events. Worth a Q2 conversation about whether following-distance enforcement needs a calibration pass, or whether the events are genuinely false positives in city traffic.</p>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Branch</th><th>Highest-dismissed behavior</th><th>Dismiss rate</th><th>Sample</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td><strong>N. Austin</strong></td><td>Following Distance</td><td><strong style="color:var(--red);">44%</strong></td><td>large (37 of 85)</td><td>Real signal — dismissing nearly half its top behavior</td></tr>
+            <tr><td>N. Austin</td><td>Harsh Brake</td><td>100% (3/3)</td><td>small</td><td>Tiny sample but wrong direction</td></tr>
+            <tr><td>N. Austin</td><td>No Seat Belt</td><td>80% (4/5)</td><td>small</td><td>Tiny sample but wrong direction</td></tr>
+            <tr><td><strong>San Antonio</strong></td><td>Inattentive Driving</td><td><strong style="color:var(--red);">48%</strong></td><td>large (23 of 48)</td><td>Real signal — drives the 51% overall rate</td></tr>
+            <tr><td>San Antonio</td><td>Camera Obstruction</td><td>100% (6/6)</td><td>medium</td><td>Likely defensible (glare, lens tape) — Q2 calibration</td></tr>
+            <tr><td>San Antonio</td><td>Following Distance</td><td>52% (15/29)</td><td>medium</td><td>Above company avg</td></tr>
+            <tr><td><strong>Dallas</strong></td><td>Following Distance</td><td>41% (29/70)</td><td>large</td><td>Mid-tier dismissal but biggest-volume behavior</td></tr>
+            <tr><td><strong>McKinney</strong></td><td>Following Distance</td><td>44% (23/52)</td><td>large</td><td>High dismissal on top behavior</td></tr>
+            <tr><td>Houston</td><td>Following Distance</td><td>48% (10/21)</td><td>medium</td><td>Following-distance pattern repeating</td></tr>
+            <tr><td>S. Austin</td><td>Following Distance</td><td>45% (10/22)</td><td>medium</td><td>Same pattern</td></tr>
+            <tr><td>Tampa</td><td>Mobile Usage</td><td>75% (3/4)</td><td>small</td><td>Small sample — re-check next cycle</td></tr>
+            <tr><td>Leander</td><td>Mobile Usage</td><td>33% (2/6)</td><td>small (rest 0%)</td><td>Strict overall</td></tr>
+            <tr><td>Ft. Worth</td><td>All</td><td><strong style="color:var(--green);">0%</strong></td><td>n/a</td><td>Zero dismissals all quarter</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara raw events × <code>coachingState</code>, grouped by <code>behaviorLabels[].name</code> per branch · Dismiss rate = dismissed / total events for that behavior at that branch</div>
+
+        <h4>Per-Event Weight Tables — Three Sources of Truth, None Aligned</h4>
+        <p style="font-size:13px;">Cameron's other hypothesis: <em>"We increased the per-event penalty and scores still went up."</em> We can't directly prove this — three internal weight tables are in active use today and they don't agree. The Samsara Scoring QA Brief documented this 4/12, and it's the reason the BBE narrative for Q1 stands on enforcement strictness alone (which is independently strong) rather than on a weight-change story. The visualization below makes the disagreement concrete.</p>
+        <div class="weight-grid">
+          <div class="wh">Behavior</div>
+          <div class="wh">Policy Table</div>
+          <div class="wh">Mike's Protocol</div>
+          <div class="wh">Bonus Calculator</div>
+
+          <div class="wb">Harsh Brake</div>
+          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
+          <div class="wprotocol">HIGH (8-15 pts) <span class="weight-bar protocol" style="width:36px;"></span></div>
+          <div class="wcalc">25 <span class="weight-bar calc" style="width:25px;"></span></div>
+
+          <div class="wb">Harsh Turn</div>
+          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
+          <div class="wprotocol">MEDIUM (3-7 pts) <span class="weight-bar protocol" style="width:18px;"></span></div>
+          <div class="wcalc">25 <span class="weight-bar calc" style="width:25px;"></span></div>
+
+          <div class="wb">Mobile Usage</div>
+          <div class="wpolicy">100 <span class="weight-bar policy" style="width:80px;"></span></div>
+          <div class="wprotocol">CRITICAL (15-25 pts) <span class="weight-bar protocol" style="width:60px;"></span></div>
+          <div class="wcalc">75 <span class="weight-bar calc" style="width:60px;"></span></div>
+
+          <div class="wb">Forward Collision Warning</div>
+          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
+          <div class="wprotocol">Low/Advisory <span class="weight-bar protocol" style="width:6px;"></span></div>
+          <div class="miss">— Missing entirely</div>
+        </div>
+        <p style="font-size:11.5px;color:var(--gray-600);margin-top:6px;"><em>Bar widths approximate the relative weight in each system. Forward Collision Warning is the cleanest break — it's a documented behavior in policy and protocol but is absent from the bonus calculator code entirely. That alone is enough to invalidate any "weights changed Q4 → Q1" claim until reconciliation lands.</em></p>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara Scoring QA Brief (Albert, 4/12/2026) · <code>Supporting Projects/Mike - Operations/Samsara Weighting/samsara-scoring-qa-brief.md</code> · Cross-references: Policy = HR Driver Safety Policy v2026 · Protocol = Mike's Enhanced Samsara Scoring Protocol · Calculator = bonus calculator JavaScript code in EMMA</div>
+
+        <div class="warn-callout">
+          <strong>Calculator-Code Mismatch — Flag for Q2 Reconciliation:</strong> Three different per-event weight tables are in active use today; reconciliation is a Q2 work item. The Q1 narrative is built on enforcement strictness, not weight changes. <strong>Q2 ask:</strong> Mike + Brian reconcile to a single source of truth before scoring anyone on the new system.
+        </div>
+        <div class="info-callout">
+          <strong>Caveat — Drowsy + Lane Departure:</strong> Both went from 44 / 37 events in Q4 to literal zero in Q1. Pending data validation with Gerald before claiming this as a real signal.
+        </div>
+
+        <div class="comp-meta">
+          <span class="meta-source">Source: Samsara API across 7 orgs · Driver's Ed Dashboard 18397855324 · QGR Packet Handover</span>
+          <span class="open-link disabled-link">Full Handover (internal — QGR_Packet_Handover.md)</span>
+        </div>
+      </div>
+
+      <!-- ===== 5 · eNPS MOVERS ===== -->
+      <div class="comp-card green" id="c5-enps-mover">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 5</p>
+            <h3 class="comp-title">eNPS — Mover Q1'26</h3>
+          </div>
+          <span class="badge green">+46</span>
+        </div>
+        <p class="comp-summary">
+          227 responses, +46 company eNPS (vs +48 Q3'25). Recognition (praised last 14 days) 77%. <strong>Three branches need direct intervention:</strong> Fort Worth +0 (45% recognition, 27% detractor rate), San Antonio +5 (29% detractor rate, pay-ceiling and corporate-direction themes leading), and Garland +0 (33% detractor rate at n=6 — worth a deeper read despite the small sample).
+        </p>
+        <div class="data-source">📍 <strong>Source:</strong> Mover eNPS Survey — Monday board <code>Mover eNPS Feedback Board</code> · 227 unique responses · Window 4/8 – 4/15/2026 · Albert-prepared analysis 4/16/2026 · Analysis Doc <code>1TpWZXiiO7KHFKQ93TlO3D1WuD3-o4Hr4muigH8zbQDQ</code> (leadership-only — exposes individual responses) · Aggregated Sheet <code>1h46xK76boqJK_qBVKoiJsrLYuF5Eil1fEIxT-_bG2mU</code> (general reference, anonymized rollups)</div>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Branch</th><th>n</th><th>eNPS</th><th>Recognition</th></tr></thead>
+          <tbody>
+            <tr><td>Tampa Bay</td><td>9</td><td><strong style="color:var(--green);">+100</strong></td><td>89%</td></tr>
+            <tr><td>Houston</td><td>23</td><td><strong style="color:var(--green);">+65</strong></td><td>91%</td></tr>
+            <tr><td>S. Austin</td><td>37</td><td><strong style="color:var(--green);">+62</strong></td><td>89%</td></tr>
+            <tr><td>N. Austin</td><td>46</td><td>+52</td><td><span style="color:var(--amber);">63%</span> ⚠️</td></tr>
+            <tr><td>Leander</td><td>15</td><td>+47</td><td>80%</td></tr>
+            <tr><td>N. Dallas</td><td>37</td><td>+46</td><td>78%</td></tr>
+            <tr><td>McKinney</td><td>22</td><td>+41</td><td>73%</td></tr>
+            <tr><td><strong>San Antonio</strong></td><td>21</td><td><strong style="color:var(--red);">+5</strong> 🚨</td><td>76%</td></tr>
+            <tr><td>Fort Worth</td><td>11</td><td><strong style="color:var(--red);">+0</strong> 🚨</td><td><span style="color:var(--red);">45%</span> 🚨</td></tr>
+            <tr><td><strong>Garland</strong></td><td>6</td><td><strong style="color:var(--red);">+0</strong> 🚨</td><td>100% <span style="color:var(--gray-600);font-size:11px;">(small n)</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Albert-built branch scorecard from Mover eNPS Survey raw data · Recognition column = % responding "Yes" to "Have you been praised in the last 14 days?"</div>
+        <h4>Detractor Themes (25 movers)</h4>
+        <ul style="font-size:12.5px;">
+          <li><strong>Pay/ceiling — 10</strong> (most-cited; current-ceiling fatigue)</li>
+          <li><strong>Samsara/monitoring concerns — 5</strong> (up from 2 last cycle)</li>
+          <li><strong>Corporate-direction concerns — 3</strong> (NEW theme, San Antonio)</li>
+          <li><strong>Career growth limits — 4</strong></li>
+          <li><strong>Mgmt/communication gaps — 3</strong></li>
+          <li><strong>Culture / coworker issues — 2</strong></li>
+        </ul>
+        <div class="data-source">📍 <strong>Source:</strong> Albert thematic coding of detractor (0-6) free-text comments · 25 detractors total · Counts sum &gt; 25 because some responses tagged with multiple themes</div>
+        <div class="info-callout">
+          <strong>Two artifacts, two audiences:</strong> The <strong>Analysis Doc</strong> contains individual response excerpts (start/stop/keep, detractor verbatims) and is <em>leadership-only</em> — restricted access. The <strong>Sheet</strong> holds aggregated, anonymized rollups (per-branch eNPS, recognition %, theme counts) and is open as general reference for any BM or leader who wants to slice their own branch's data.
+        </div>
+        <div class="comp-meta">
+          <span class="meta-source">Source: Mover eNPS Survey · 227 responses · 4/8-15</span>
+          <span style="display:inline-flex; gap:8px; flex-wrap:wrap;">
+            <a class="open-link" href="https://docs.google.com/spreadsheets/d/1h46xK76boqJK_qBVKoiJsrLYuF5Eil1fEIxT-_bG2mU/edit?usp=sharing" target="_blank">Open Sheet (General) →</a>
+            <span class="open-link disabled-link">Doc (Leadership only) — find via Drive search: <code>1TpWZXii…</code></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- ===== 6 · eNPS SALARIED PLACEHOLDER ===== -->
+      <div class="comp-card placeholder" id="c6-enps-salaried">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 6</p>
+            <h3 class="comp-title">eNPS — Salaried Q1'26</h3>
+          </div>
+          <span class="badge gray">Placeholder · No Q1 cycle</span>
+        </div>
+        <p class="comp-summary">
+          Salaried eNPS was <strong>not run this cycle</strong>. Prior reference point: Q3 2025 reading was <strong>+80</strong> (vs Q3'25 mover +48). Salaried trends typically decouple from mover trends — this cycle's snapshot is unavailable. Treat absence as data: Anne + leadership to decide whether to bundle salaried back into the next mover cycle, run separately mid-Q2, or align with annual review timing.
+        </p>
+        <div class="comp-stat-row two">
+          <div class="mini-stat"><div class="ms-label">Q1'26 Salaried</div><div class="ms-value">—</div><div class="ms-sub">Not run this cycle</div></div>
+          <div class="mini-stat"><div class="ms-label">Last Reading (Q3'25)</div><div class="ms-value">+80</div><div class="ms-sub">For comparison only</div></div>
+        </div>
+        <div class="info-callout">
+          <strong>Roundtable ask:</strong> Should the salaried survey re-enter the cadence in Q2, and at what cadence (monthly pulse via EMMA, full quarterly, or annual-only)? This is on the existing eNPS Cadence Redesign thread (Sky Board pulse 11741483648).
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> No Q1'26 cycle run — explicit decision to defer · Prior reference point Q3'25 (+80) from previous Salaried eNPS pulse · Cadence redesign live on Sky Board <code>11741483648</code> (Anne owns) · Treat absence as data, not noise</div>
+        <div class="comp-meta">
+          <span class="meta-source">Owner: Anne · Reference: eNPS Cadence Redesign thread</span>
+          <a class="open-link" href="https://einsteinmoving.monday.com/boards/1146915251/pulses/11741483648" target="_blank">Open Cadence Pulse →</a>
+        </div>
+      </div>
+
+      <!-- ===== 7 · CUSTOMER NPS ===== -->
+      <div class="comp-card green" id="c7-nps">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 7</p>
+            <h3 class="comp-title">Customer NPS</h3>
+          </div>
+          <span class="badge green">In Financial Analysis §5</span>
+        </div>
+        <p class="comp-summary">
+          Customer NPS lives inside the Financial Analysis Presentation, Section 5 (KPI deep-dives). Headline: branch-level NPS continues to track above the moving-industry benchmark across both regions. The 90-line target is met by most CTXH branches; DFWT improving but mixed. Detail and chart in the linked artifact — no need to duplicate here.
+        </p>
+        <div class="info-callout">
+          The financial analysis skill includes Customer NPS as a top-line KPI. Embedded chart "NPS by Branch" (with 90 target line) is in §5.3 of the Presentation HTML — open below.
+        </div>
+        <div class="data-source">📍 <strong>Source:</strong> Customer NPS feed embedded in Financial Analysis Skill v3.2 §5.3 · Branch-level rollups (CTXH + DFWT) · 90-line target per company NPS standard · Chart "NPS by Branch" rendered in linked Presentation, not duplicated here · Data window mirrors Q1'26 financial cut</div>
+        <div class="comp-meta">
+          <span class="meta-source">Source: NPS data feed · Financial Analysis Skill v3.2 §5</span>
+          <a class="open-link" href="financial-analysis/Q1_2026_QGR_Analysis_Presentation.html#nps" target="_blank">Open NPS Section →</a>
+        </div>
+      </div>
+
+      <!-- ===== 8 · CX SALES PERFORMANCE LOOKBACK ===== -->
+      <div class="comp-card full" id="c8-sales-lookback">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 8</p>
+            <h3 class="comp-title">CX Sales Performance Lookback</h3>
+          </div>
+          <span class="badge green">Q1 Captured · CX Sales Side</span>
+        </div>
+        <p class="comp-summary">
+          Individual-rep performance distribution across the Customer Experience Team (CET) sales reps — the centralized sales team, not branch-level front-line managers (those targets live with the BMs). Branch-level conversion + Amanda + Nhel's Q1 critical numbers are upstream in <a href="#c1-financial">Component 1</a> and <a href="#c3-rocks">Component 3</a>; this card surfaces the rep-by-rep cut. <em>Note:</em> One rep excluded — left mid-April, didn't work the full quarter.
+        </p>
+
+        <div class="mini-stat-row" style="display:flex; gap:12px; flex-wrap:wrap; margin:16px 0;">
+          <div class="mini-stat green" style="flex:1; min-width:160px;"><div class="ms-label">CET Sales Targets</div><div class="ms-value">111.5%</div><div class="ms-sub">Team SG · $2.62M of $2.35M target (ex-departed rep)</div></div>
+          <div class="mini-stat red" style="flex:1; min-width:160px;"><div class="ms-label">Estimate Accuracy</div><div class="ms-value">48.7%</div><div class="ms-sub">Team R · 20% variance bar · SG ≥56 / G ≥54 (revised mid-Q)</div></div>
+          <div class="mini-stat" style="flex:1; min-width:160px;"><div class="ms-label">Rep Distribution</div><div class="ms-value">4 SG · 6 R</div><div class="ms-sub">Sales Targets · 0 in the Green band (10 reps ex-departed rep)</div></div>
+        </div>
+
+        <details style="margin:16px 0; border:1px solid #e5e7eb; border-radius:8px; padding:12px 16px;">
+          <summary style="cursor:pointer; font-weight:600;">Full Q1 Rep Ranking — Sales Targets + Estimate Accuracy (10 reps, ex-departed rep) ▾</summary>
+          <table style="width:100%; margin-top:12px; border-collapse:collapse; font-size:0.92em;">
+            <thead>
+              <tr style="background:#f3f4f6;">
+                <th style="text-align:left; padding:6px 10px;">#</th>
+                <th style="text-align:left; padding:6px 10px;">Rep</th>
+                <th style="text-align:right; padding:6px 10px;">Sales Target %</th>
+                <th style="text-align:center; padding:6px 10px;">QG</th>
+                <th style="text-align:right; padding:6px 10px;">Est Acc (20% var)</th>
+                <th style="text-align:center; padding:6px 10px;">QG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:5px 10px;">1</td><td style="padding:5px 10px;">Jules Nicolas</td><td style="text-align:right; padding:5px 10px;">137.7%</td><td style="text-align:center;"><span class="grade-pill sg"></span></td><td style="text-align:right; padding:5px 10px;">55.1%</td><td style="text-align:center;"><span class="grade-pill g"></span></td></tr>
+              <tr><td style="padding:5px 10px;">2</td><td style="padding:5px 10px;">Zhang Pammit</td><td style="text-align:right; padding:5px 10px;">137.0%</td><td style="text-align:center;"><span class="grade-pill sg"></span></td><td style="text-align:right; padding:5px 10px;">45.8%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">3</td><td style="padding:5px 10px;">Arden Asilo</td><td style="text-align:right; padding:5px 10px;">109.8%</td><td style="text-align:center;"><span class="grade-pill sg"></span></td><td style="text-align:right; padding:5px 10px;">42.1%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">4</td><td style="padding:5px 10px;">Danah Celestial</td><td style="text-align:right; padding:5px 10px;">106.1%</td><td style="text-align:center;"><span class="grade-pill sg"></span></td><td style="text-align:right; padding:5px 10px;">50.0%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">5</td><td style="padding:5px 10px;">Amy Arbasa</td><td style="text-align:right; padding:5px 10px;">98.7%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">51.4%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">6</td><td style="padding:5px 10px;">Tetet Ablang</td><td style="text-align:right; padding:5px 10px;">96.4%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">55.0%</td><td style="text-align:center;"><span class="grade-pill g"></span></td></tr>
+              <tr><td style="padding:5px 10px;">7</td><td style="padding:5px 10px;">Joanna Ballon</td><td style="text-align:right; padding:5px 10px;">95.3%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">53.0%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">8</td><td style="padding:5px 10px;">Nicole Tolete</td><td style="text-align:right; padding:5px 10px;">92.7%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">47.9%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">9</td><td style="padding:5px 10px;">Jeline Lavarias</td><td style="text-align:right; padding:5px 10px;">88.4%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">46.2%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr><td style="padding:5px 10px;">10</td><td style="padding:5px 10px;">Donna Carrillo</td><td style="text-align:right; padding:5px 10px;">85.7%</td><td style="text-align:center;"><span class="grade-pill r"></span></td><td style="text-align:right; padding:5px 10px;">49.3%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+              <tr style="background:#f9fafb; font-weight:600;"><td style="padding:6px 10px;"></td><td style="padding:6px 10px;">Team (ex-departed rep)</td><td style="text-align:right; padding:6px 10px;">111.5%</td><td style="text-align:center;"><span class="grade-pill sg"></span></td><td style="text-align:right; padding:6px 10px;">48.7%</td><td style="text-align:center;"><span class="grade-pill r"></span></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px; font-size:0.88em; color:#6b7280;"><em>Sales Target QG bar: SG ≥105% · G ≥100% · R &lt;100%. Estimate Accuracy QG bar (revised mid-quarter after calculation correction): SG &gt;56% · G ≥54% · R &lt;54%, all measured against the % of estimates within ±20% variance company-wide.</em></p>
+        </details>
+
+        <div class="theme-pair three">
+          <div class="theme-pair-half">
+            <p class="tp-tag">Q1 Captured</p>
+            <p class="tp-name">CET Sales Targets by Rep</p>
+            <p class="tp-context">Team 111.5% SG (ex-departed rep) on the strength of 4 reps over 105%. 6 of 10 below the 100% Green bar — the gap between top and bottom is wide. Bottom 2 reps form the active coaching list.</p>
+          </div>
+          <div class="theme-pair-half">
+            <p class="tp-tag">Q1 Captured</p>
+            <p class="tp-name">Estimate Accuracy</p>
+            <p class="tp-context">48.7% team avg against the revised 54%/56% bar — Red. Only Tetet (55.0%) and Jules (55.1%) clear Green. The bar shifted mid-quarter after a calculation fix; even at the revised easier threshold the team is below it. Always-on metric in the CX sales lookback.</p>
+          </div>
+          <div class="theme-pair-half">
+            <p class="tp-tag">Coverage Gap</p>
+            <p class="tp-name">Realization Rate</p>
+            <p class="tp-context">Quoted $ realized as billed $ — captures margin leak between estimate and final invoice. Different lens than Estimate Accuracy (which is variance distribution). Not currently tracked — Q2+ collection target.</p>
+          </div>
+        </div>
+
+        <div class="info-callout">
+          <strong>Roundtable ask:</strong> Q2 cadence for individual-rep review — monthly leadership review, weekly branch-manager leaderboard, or both? And what's the auto-trigger for coaching escalation when a rep's Sales Target % stays below cohort for 2+ months?
+        </div>
+
+        <div class="data-source">📍 <strong>Source:</strong> CET tracking sheet (Drive <code>1b_GYrrot60fZivVTjLjKXoE7-ru0zGTN2wLEuEjqnuY</code>) tabs "Sales Q1 '26" + "Estimate Accuracy" · Sales Targets scope = Customer Experience Team sales reps only (front-line managers have separate branch-level targets) · Estimate Accuracy bar revised mid-quarter to 54%/56% after calculation correction · One rep excluded — left mid-April · Realization Rate pending Q2+ collection</div>
+
+        <div class="comp-meta">
+          <span class="meta-source">Owners: Amanda Ware · Nhel · Carly + Nhel's CET sheet</span>
+          <a class="open-link" href="#c3-rocks">View Q1 Sales Critical Numbers →</a>
+        </div>
+      </div>
+
+      <!-- ===== 9 · CLAIMS & MAGIC MOMENTS LOOKBACK ===== -->
+      <div class="comp-card full" id="c9-claims-mm-lookback">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 9</p>
+            <h3 class="comp-title">Claims &amp; Magic Moments Lookback</h3>
+          </div>
+          <span class="badge green">Q1 Captured · CX Claims Side</span>
+        </div>
+        <p class="comp-summary">
+          Carly's Q1 critical rocks (Magic Moments toolkit + claims dept work) are tracked at rock level in <a href="#c3-rocks">Component 3</a>. This card surfaces the operational metrics behind those rocks — Time to Close, Magic Moments delivered, audit accuracy, and wall damage reduction — pulled from Carly + Nhel's CET tracking sheet. Carly's maternity transition (Q3 window) is the planning horizon: these metrics need to run on a system, not on Carly's instinct.
+        </p>
+
+        <div class="mini-stat-row" style="display:flex; gap:12px; flex-wrap:wrap; margin:16px 0;">
+          <div class="mini-stat green" style="flex:1; min-width:160px;"><div class="ms-label">Claims Time to Close</div><div class="ms-value">4.7 days</div><div class="ms-sub">Team SG · Stephanie 4.52d / Jaci 4.91d · &lt;5d SG bar all quarter</div></div>
+          <div class="mini-stat green" style="flex:1; min-width:160px;"><div class="ms-label">Magic Moments</div><div class="ms-value">9 of 9</div><div class="ms-sub">SG · Carly 3 / Stephanie 3 / Jaci 3 · all hit goal of 3 each</div></div>
+          <div class="mini-stat green" style="flex:1; min-width:160px;"><div class="ms-label">A&amp;D Audit Accuracy</div><div class="ms-value">98% · 100%</div><div class="ms-sub">Both SG · Stephanie 11/12 perfect · Jaci 12/12 perfect</div></div>
+          <div class="mini-stat" style="flex:1; min-width:160px;"><div class="ms-label">Wall Damages (as of 4/10)</div><div class="ms-value">46 / $6,231</div><div class="ms-sub"><span class="grade-pill sg" title="Super Green on cost"></span> cost · <span class="grade-pill g" title="Green on count"></span> count · split grade vs goal 41 / $7,350</div></div>
+        </div>
+
+        <div class="theme-pair three">
+          <div class="theme-pair-half">
+            <p class="tp-tag">Q1 Captured</p>
+            <p class="tp-name">Claims Time to Close</p>
+            <p class="tp-context">Team blended 4.72 days against a 5-day SG bar. Both Stephanie (4.52d) and Jaci (4.91d) under SG every week of the quarter. Maria fully trained pre-maternity — bench depth confirmed.</p>
+          </div>
+          <div class="theme-pair-half">
+            <p class="tp-tag">Q1 Captured</p>
+            <p class="tp-name">A&amp;D Audit Accuracy</p>
+            <p class="tp-context">Stephanie 98% Q1 avg (one 80% in March — Leander missing damage pic), Jaci 100% across all 12 audits. Both SG. Audit rubric: photo/evidence (30) · coverage/waiver (25) · Monday docs (25) · vendor comms (20).</p>
+          </div>
+          <div class="theme-pair-half">
+            <p class="tp-tag">Q1 Captured</p>
+            <p class="tp-name">Wall Damages — Split Grade</p>
+            <p class="tp-context">46 events / $6,231 cost (as of 4/10) vs goal 41 events / $7,350 cost. <strong>SG on cost</strong> ($1,119 under target), <strong>G on count</strong> (5 events over SG count threshold of 41, but inside the 47-event Green bar). Anecdotal ~20-30% wall damage reduction from Magic Moments toolkit consistent with the cost-side win.</p>
+          </div>
+        </div>
+
+        <div class="info-callout">
+          <strong>Roundtable ask:</strong> Q2 working session for damage tracker / EMMA reconciliation? Carly + Matisen — before the Q3 maternity window narrows the calendar. Damage tracker doc and scorecards currently pull different data, which is why Carly's Damage Accountability rock landed Red despite the cost-side SG win above.
+        </div>
+
+        <div class="data-source">📍 <strong>Source:</strong> CET tracking sheet (Drive <code>1b_GYrrot60fZivVTjLjKXoE7-ru0zGTN2wLEuEjqnuY</code>) tabs "Claims Q1 '26" + "Claims Q1 '26 A&amp;D Scorecard" · Time to Close = weekly averages Feb 6 → Apr 23, outliers excluded · A&amp;D Scorecard = Stephanie + Jaci, 12 audits each, 100-point rubric · Wall Damages = move-date basis, snapshot 4/10 · CET Board <code>18319980089</code> for raw claims data</div>
+
+        <div class="comp-meta">
+          <span class="meta-source">Owners: Amanda Ware · Carly · Carly + Nhel's CET sheet</span>
+          <a class="open-link" href="https://einsteinmoving.monday.com/boards/18319980089" target="_blank">Open CET Board →</a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ============== SCORECARDS ============== -->
+    <section id="scorecards">
+      <h2>Scorecards — Branch + Department</h2>
+      <p>Brian's idea: collapse all the branch-by-branch tables in this packet into one rolled-up scorecard <em>per branch</em>, so a BM and their managers can see <strong>their</strong> Financial · Operational · Customer · People metrics in one place with a composite grade. Same logic extends to departments (Sales, Claims, IT, etc.). <strong>Sample built for North Austin</strong> as the v0; the rest are placeholders pending Roundtable greenlight.</p>
+      <div class="data-source">📍 <strong>Source:</strong> Concept = Brian Herzig (CTXH Regional Manager) · v0 build = Albert (4/28) · Composite math: 8 graded metrics weighted (TUR 25% heaviest as guiding capacity metric), reference data shown but not graded, drill-downs in plain language · Audience: BM + branch managers (friendly + actionable), not Roundtable-evaluative · Sources for v0: QGR Packet + FA Presentation v2.7 + CLAUDE.md QGR thread · Roundtable ask: build for all 10 branches + departments in Q2?</div>
+
+      <p class="scorecard-section-sub-title">Branch Scorecards · 10 locations</p>
+      <div class="scorecard-grid">
+
+        <a class="scorecard-tile live" href="branch-scorecard-naustin.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">North Austin</p>
+          <p class="scorecard-tile-meta">BM Calvin Hughes · 14 trucks · 14 personnel</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B+</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-saustin.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">South Austin</p>
+          <p class="scorecard-tile-meta">BM Chris Anderson · 11.7 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-leander.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">Leander</p>
+          <p class="scorecard-tile-meta">BM Frank Williams · 6 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">F</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-sanantonio.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">San Antonio</p>
+          <p class="scorecard-tile-meta">BM Dustin Street · 8 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B−</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-houston.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">Houston</p>
+          <p class="scorecard-tile-meta">BM Sergio Buenrostro · 8 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-dallas.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Dallas</p>
+          <p class="scorecard-tile-meta">BM Chris Beattie · 14 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B+</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-fortworth.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Fort Worth</p>
+          <p class="scorecard-tile-meta">BM Grant Hardison · 4 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-garland.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Garland</p>
+          <p class="scorecard-tile-meta">BM Terrell McReynolds · 3 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-mckinney.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">McKinney</p>
+          <p class="scorecard-tile-meta">BM Khevan Dueck · 6 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">A−</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-tampa.html" target="_blank">
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Tampa</p>
+          <p class="scorecard-tile-meta">BM Brandon Kelley · 2.5 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">A</span>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="scorecard-section-sub-title">Department Scorecards · cross-branch teams</p>
+      <div class="scorecard-grid">
+
+        <div class="scorecard-tile placeholder">
+          <p class="scorecard-tile-eyebrow">Customer Experience</p>
+          <p class="scorecard-tile-name">Sales</p>
+          <p class="scorecard-tile-meta">Lead Nhel · under Amanda Ware</p>
+          <div class="scorecard-tile-bottom"><span>Q2 add</span></div>
+        </div>
+
+        <div class="scorecard-tile placeholder">
+          <p class="scorecard-tile-eyebrow">Customer Experience</p>
+          <p class="scorecard-tile-name">Claims / CET</p>
+          <p class="scorecard-tile-meta">Lead Carly · under Amanda Ware</p>
+          <div class="scorecard-tile-bottom"><span>Q2 add</span></div>
+        </div>
+
+        <div class="scorecard-tile placeholder">
+          <p class="scorecard-tile-eyebrow">Operations</p>
+          <p class="scorecard-tile-name">Operations</p>
+          <p class="scorecard-tile-meta">Mike Vandenbroader · DFWT Regional + Head of Ops</p>
+          <div class="scorecard-tile-bottom"><span>Q2 add</span></div>
+        </div>
+
+        <div class="scorecard-tile placeholder">
+          <p class="scorecard-tile-eyebrow">IT</p>
+          <p class="scorecard-tile-name">IT</p>
+          <p class="scorecard-tile-meta">Matisen Harper · Director of IT</p>
+          <div class="scorecard-tile-bottom"><span>Q2 add</span></div>
+        </div>
+
+        <div class="scorecard-tile placeholder">
+          <p class="scorecard-tile-eyebrow">People</p>
+          <p class="scorecard-tile-name">Employee Experience / HR</p>
+          <p class="scorecard-tile-meta">Anne Bosse · Director of EE</p>
+          <div class="scorecard-tile-bottom"><span>Q2 add</span></div>
+        </div>
+
+      </div>
+
+      <div class="info-callout">
+        <strong>Roundtable ask:</strong> Do we want to build the full set — 10 branch scorecards + 5 department scorecards — for Q2? If yes, what's the data-collection priority order? (TUR, financials, NPS, eNPS, conversion are sourceable today; damages, manager AAR voice, dept-specific KPIs need collection.)
+      </div>
+    </section>
+
+    <!-- ============== LOOKBACK WISHLIST ============== -->
+    <section id="lookback-wishlist">
+      <h2>Wishlist — Org Health</h2>
+      <p>Two placeholders for organization-wide health metrics not yet captured at packet altitude. CX Sales + Claims data is now in <a href="#c8-sales-lookback">Component 8</a> and <a href="#c9-claims-mm-lookback">Component 9</a>; what's left below is the cross-department people picture (A/B/C Player distribution) and the recognition culture distill view (Praise Tracker).</p>
+      <div class="data-source">📍 <strong>Source:</strong> A/B/C Players = People Analyzers in collection (branch + department QGRs over next ~1 week) · Praise Tracker = Prepare for Praise board lifecycle data, no quarterly distill view yet · Both are Q2 collection / build targets</div>
+
+      <div class="comp-grid" style="grid-template-columns: 1fr;">
+
+        <!-- (CX Sales Lookback promoted to Component 8 · Claims & Magic Moments Lookback promoted to Component 9 — see comp-grid above) -->
+
+        <!-- ===== A/B/C PLAYER DISTRIBUTION ===== -->
+        <div class="comp-card placeholder full" id="lb-abc">
+          <div class="comp-head">
+            <div>
+              <p class="comp-num">Org Health · Cross-Department</p>
+              <h3 class="comp-title">A/B/C Player Distribution</h3>
+            </div>
+            <span class="badge gray">Wishlist · In Collection</span>
+          </div>
+          <p class="comp-summary">
+            People Analyzer framework — branches and departments complete A/B/C grids prior to their regional/department QGRs (rolling over the next ~1 week). First company-wide read available Q2 once all branches + departments have submitted. Pairs with Ideal Team Player rollout (Rob Lynch, Q2). Tells us where to coach vs replace; surfaces branches running on B-/C-talent risk before the busy season exposes the gap.
+          </p>
+
+          <div class="theme-pair three">
+            <div class="theme-pair-half">
+              <p class="tp-tag">In Collection</p>
+              <p class="tp-name">By Branch</p>
+              <p class="tp-context">Counts of A / B / C across all 10 locations · reveals which branches are A-heavy (templates to study) vs B-/C-heavy (coaching pipeline + replacement risk)</p>
+            </div>
+            <div class="theme-pair-half">
+              <p class="tp-tag">In Collection</p>
+              <p class="tp-name">By Department</p>
+              <p class="tp-context">Sales · Ops · CET · IT · Mgmt · distribution within each function · surfaces departmental bench depth and replacement risk by role</p>
+            </div>
+            <div class="theme-pair-half">
+              <p class="tp-tag">In Collection</p>
+              <p class="tp-name">Company-Wide</p>
+              <p class="tp-context">Total counts + % shifts cycle-over-cycle · pairs with hiring + coaching plans tied to Ideal Team Player rollout (Q2 with Rob Lynch)</p>
+            </div>
+          </div>
+
+          <div class="method-callout">
+            <strong>Roundtable ask:</strong> Two open framework questions for Day 2-3 — (a) <strong>Who defines A/B/C?</strong> Manager-rated, peer-rated, system-rated, or hybrid? (b) <strong>When does the first company-wide read happen?</strong> Q2 (this cycle's People Analyzers) or Q3 (after framework is locked + Rippling Performance module decided)? Pairs with the Rippling Performance module decision (~$20K/yr; Anne's existing thread).
+          </div>
+
+          <div class="data-source">📍 <strong>Source:</strong> People Analyzers in collection — branches + departments complete prior to their regional/department QGRs (rolling next ~1 week) · First company read = Q2 · Future home: Rippling Performance Mgmt module (~$20K/yr; pending decision per Anne's existing thread) · Owner: Anne · Pairs with Ideal Team Player rollout (Rob Lynch, Q2 — pulse <code>11752596124</code>)</div>
+
+          <div class="comp-meta">
+            <span class="meta-source">Owner: Anne · Q2-Q3 first read · Pairs with ITP rollout</span>
+            <a class="open-link" href="https://einsteinmoving.monday.com/boards/1146915251/pulses/11752596124" target="_blank">Open ITP Rollout Pulse →</a>
+          </div>
+        </div>
+
+        <!-- ===== MANAGER + SALARIED PRAISE TRACKER ===== -->
+        <div class="comp-card placeholder full" id="lb-praise">
+          <div class="comp-head">
+            <div>
+              <p class="comp-num">Org Health · Recognition Culture</p>
+              <h3 class="comp-title">Manager + Salaried Praise Tracker</h3>
+            </div>
+            <span class="badge gray">Wishlist · Partial Data</span>
+          </div>
+          <p class="comp-summary">
+            Praise distribution across managers + salaried staff — who gives recognition, who receives it, what themes get celebrated, and where the gaps are. Source data exists on the Prepare for Praise board (intake pulse <code>6898250292</code> + sub-item board <code>1468751187</code>); just hasn't been distilled into a quarterly recognition-culture view. Sister metric to Magic Moments Effectiveness (claims-side; in Card 2 above) — this card is the salaried + manager equivalent.
+          </p>
+
+          <div class="theme-pair three">
+            <div class="theme-pair-half">
+              <p class="tp-tag">Coverage Gap</p>
+              <p class="tp-name">Praise Given (by Manager)</p>
+              <p class="tp-context">Volume + cadence by Roundtable + BM · who's actively recognizing their teams vs who's quiet · trend over the quarter · cross-departmental reach</p>
+            </div>
+            <div class="theme-pair-half">
+              <p class="tp-tag">Coverage Gap</p>
+              <p class="tp-name">Praise Received (by Recipient)</p>
+              <p class="tp-context">Distribution across salaried staff · who's being recognized vs who's invisible · pairs with eNPS detractor analysis to flag morale risk</p>
+            </div>
+            <div class="theme-pair-half">
+              <p class="tp-tag">Coverage Gap</p>
+              <p class="tp-name">Themes</p>
+              <p class="tp-context">What gets celebrated — values delivery · ownership moments · cross-functional support · innovation · client saves · trend vs core values rollout</p>
+            </div>
+          </div>
+
+          <div class="info-callout">
+            <strong>Roundtable ask:</strong> Q2 cadence — monthly recognition rollup, weekly leaderboard, or quarterly QGR-aligned distillation? And visibility: leadership-only insight or shared with the team being recognized?
+          </div>
+
+          <div class="data-source">📍 <strong>Source:</strong> Prepare for Praise board (intake pulse <code>6898250292</code> · sub-item board <code>1468751187</code>) — existing Pending → Delivered → Done/Logged lifecycle · Cameron's praise submission workflow already captures intake · No quarterly distill view exists yet — explicit Q2 build target · Sister metric: Magic Moments Effectiveness (claims-side; in Card 2)</div>
+
+          <div class="comp-meta">
+            <span class="meta-source">Owner: Cameron + Roundtable · Q2 collection target</span>
+            <a class="open-link" href="https://einsteinmoving.monday.com/boards/549231076/pulses/6898250292" target="_blank">Open Praise Tracker →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============== CONVERSATION STARTERS ============== -->
+    <section id="convo">
+      <h2>Conversation Starters — For Days 2-3</h2>
+      <p>Open questions framed for group discussion. Each one is a real Q1 finding that the Roundtable can answer or escalate together.</p>
+      <div class="data-source">📍 <strong>Source:</strong> Synthesis from Components 1-9 + Cameron + Albert pre-Roundtable convo lab (4/27) · Each starter ties back to a specific Q1 finding traceable to its origin component above · Tagged by Strategic Pillar (1-5) for OPSP alignment · Curated for group discussion, not for unilateral decisions</div>
+      <div class="convo-list">
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 2 · Operational Excellence</div>
+          <p class="convo-q">Hire-rate vs Forecaster — which is wrong, and by branch?</p>
+          <p class="convo-context">Three branches were chronically under personnel budget every Q1 period (Leander 72%, Houston 77%, S. Austin 86%). Are we hiring too slowly, or is the Forecaster overshooting reality? Q2 starts the busy season — the cost of being wrong scales fast.</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 4 · Customer Experience</div>
+          <p class="convo-q">Branch Visits is a system problem, not an individual one.</p>
+          <p class="convo-context">Mike, Brian, AND Paul all missed the same goal. Three leaders, same miss. Either redesign the rhythm (recurring cadence, not a quarterly rock), drop the goal, or own that it's a system the Roundtable runs together.</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 5 · Growth &amp; Innovation</div>
+          <p class="convo-q">Conversion baseline reset — how do we score Q2 sales rocks?</p>
+          <p class="convo-context">The 4/5 contact-capture funnel change reset the company-wide conversion rate (35.5% → 27.4%). Until VP/funnel stabilizes, sales rocks tied to $-conversion need an explicit "old vs new baseline" tag. Otherwise we punish people for our own funnel change.</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 2 · Operational Excellence</div>
+          <p class="convo-q">Calculator-Code mismatch — Q2 reconciliation deadline?</p>
+          <p class="convo-context">Three Samsara per-event weight tables don't agree (Policy / Mike's Protocol / Bonus Calculator). Defensible Q1 story holds without the weights — but Q2 grading needs one source of truth before scoring anyone.</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 1 · Mover-First Economics</div>
+          <p class="convo-q">San Antonio mover engagement — new themes worth a deeper look.</p>
+          <p class="convo-context">eNPS +5 with 29% detractor rate. New themes surfaced: pay-ceiling fatigue and corporate-direction concerns. Healthy tension or flag for Anne + Brian to dig deeper at the branch level?</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 1 · Mover-First Economics</div>
+          <p class="convo-q">Mover pay ceiling — Q2 / 2027 decision?</p>
+          <p class="convo-context">Pay/ceiling is the #1 detractor theme (10 of 25) and the #1 START-DOING ask company-wide (53 mentions, 24%). Aligns with Rob Lynch's annual mover comp review rock. What's the 90-day signal we send vs the 2027 structural answer?</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 5 · Growth</div>
+          <p class="convo-q">Matisen Dashboards — Q2 first 4 weeks?</p>
+          <p class="convo-context">Dashboards/KPIs landed Red. Robert from LiftUp now engaged. Worth committing to a hard Q2 checkpoint (4-week landing) so the data layer doesn't bottleneck eNPS, conversion, and personnel investigations going forward.</p>
+        </div>
+        <div class="convo-card">
+          <div class="convo-tag">Pillar 4 · Customer Experience</div>
+          <p class="convo-q">Carly Damage Accountability blocker — Matisen + Carly Q2 session?</p>
+          <p class="convo-context">Damage tracker doc and scorecards pull different data. EMMA / data-bus problem. Worth a dedicated working session in Q2 — before Carly's maternity transition windows in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== OPEN ASKS ============== -->
+    <section id="asks">
+      <h2>Open Asks &amp; Risks (Pre-Roundtable)</h2>
+      <div class="data-source">📍 <strong>Source:</strong> Open threads from packet build (4/27) + Cameron's outstanding asks for Days 2-3 · Each ask points back to a specific component or rock · Mike + Gerald asks tied to Component 4 (BBE / Driver's Ed) · Anne ask tied to Component 2 (Personnel) · Matisen ask tied to Component 3 (Rocks Scorecard — Dashboards Red)</div>
+      <div class="table-scroll">
+      <table class="asks-table">
+        <thead><tr><th style="width:140px;">Owner</th><th>Ask</th><th>Why It Matters</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip">Mike</span></td><td>Did the bonus calculator weights actually change between Q4'25 and Q1'26?</td><td>Determines whether the entire fleet improvement came from enforcement strictness alone (still a strong story) or weight + enforcement combined.</td></tr>
+          <tr><td><span class="chip">Gerald</span></td><td>Drowsy / Lane Departure 44/37 → 0 events QoQ — reclassification or real?</td><td>Don't claim 100% reduction in the deck without verification.</td></tr>
+          <tr><td><span class="chip">Mike</span></td><td>Confirm 1-claim ($15K) figure for the deck.</td><td>Live data point referenced in the headline narrative.</td></tr>
+          <tr><td><span class="chip orange">Cameron + Paul</span></td><td>Live grades for own rocks (Days 2-3).</td><td>Self-grades pending — finalized Days 2-3.</td></tr>
+          <tr><td><span class="chip">Anne</span></td><td>Is Indeed sponsored-posting funnel for Leander + Houston the right Q2 acceleration lever?</td><td>Confirmed availability-constrained branches. Hire-rate is the strategic question.</td></tr>
+          <tr><td><span class="chip">Matisen</span></td><td>4-week Q2 landing commitment for Dashboards/KPIs.</td><td>Unblocks eNPS, conversion, personnel investigations downstream.</td></tr>
+          <tr><td><span class="chip orange">Roundtable</span></td><td>⚠ <strong>Sales Speed Prerequisite</strong> — sub-5-min response + multi-touch follow-up cadence (calls/SMS/email) before layering Magic Moments / concierge.</td><td>Rob Lynch's 4/28 hammer: lead volume +93% but competitors call within minutes — we don't. CX pillar compounds on a leaky funnel until this lands. Tied to Lead Treatment Framework pulse <code>11864128674</code> + Sales Capacity pulse <code>11864128795</code>.</td></tr>
+          <tr><td><span class="chip">Roundtable</span></td><td>Operational Excellence — naming question (parked, not changed). Definition holds: system-driven management practices.</td><td>Cameron's call: name stays for now, alternatives parked (Operating System Excellence / System-Driven Operations / Disciplined Ops at Scale / The Einstein Operating System). Revisit Q2.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ============== Q2 FORWARD LOOK ============== -->
+    <section id="q2-forward">
+      <h2>Q2 Forward Look — Theme Preview</h2>
+      <p>What we already know about Q2 going into Days 2-3. Mover branches compete in <strong>Einstein Games Season 3</strong> (locked, launching 5/23). CX teams (Sales + Claims) set their own themes — they don't have branch-vs-branch metrics, so the Games structure doesn't apply. Their theme placeholders hold until Day 3.</p>
+      <div class="data-source">📍 <strong>Source:</strong> Einstein Games S3 Roundtable Brief 4/27 (Cameron + Paul + Matisen prep, ~1.5 hrs, plan locked, production gates 4/29) · CX themes outstanding — Amanda Ware + Nhel + Carly to define Day 3 · Q2 cascading goals scaffold at Drive <code>1CEwbltgyvNbpl5_1pVsWL70qaCMGgDE9Jk7RGm1eAsM</code> · Q2 starts 5/1; full goals lock by Day 3</div>
+
+      <div class="comp-grid" style="grid-template-columns: 1fr;">
+
+        <!-- ===== LOCKED — Mover Theme: Einstein Games Season 3 ===== -->
+        <div class="comp-card green" id="q2-mover-theme">
+          <div class="comp-head">
+            <div>
+              <p class="comp-num">Mover Branches · 10 Locations</p>
+              <h3 class="comp-title">Einstein Games — Season 3</h3>
+            </div>
+            <span class="badge green">Locked · Launches 5/23</span>
+          </div>
+          <p class="comp-summary">
+            8-week season starts <strong>Saturday May 23</strong>. Championship 7/11. Final results posted 7/21 — before Q3 QGR prep so leaders walk in knowing where they finished. Conferences split <strong>regionally</strong>: CTXH (Brian) vs DFWT+Tampa (Mike). Top 2 per conference advance to playoffs. New mechanic this season: <strong>Multiplier Cards</strong> — 5 per team, one per metric (CSAT/Reviews, Damages, Driver Score, Contract Efficiency, Attendance), one playable per game week, must skip one of 6 regular-season weeks. New display layer (Replit + EMMA OpenSearch) replaces the fragile Glide app.
+          </p>
+
+          <div class="comp-stat-row">
+            <div class="mini-stat green"><div class="ms-label">Game 1</div><div class="ms-value">5/23</div><div class="ms-sub">Sat → Fri game weeks</div></div>
+            <div class="mini-stat green"><div class="ms-label">Championship</div><div class="ms-value">7/11</div><div class="ms-sub">Results posted 7/21</div></div>
+            <div class="mini-stat"><div class="ms-label">Conferences</div><div class="ms-value">2</div><div class="ms-sub">CTXH (5) vs DFWT+Tampa (5)</div></div>
+          </div>
+
+          <div class="info-callout">
+            <strong>Cameron's framing:</strong> Einstein Games is a quarterly system, not a one-off. Multiplier cards, conference structure, scoreboard app — all reusable infrastructure across future quarterly seasons.
+          </div>
+
+          <div class="warn-callout">
+            <strong>Production readiness gate — Wed 4/29:</strong> Robert (PM on dashboards) committed DB + MCP in production by then. Vlad's calculations QA'd. Trust recovery rule: if it's not working, it's not visible. Hard gate before launch.
+          </div>
+
+          <div class="data-source">📍 <strong>Source:</strong> Roundtable Brief 4/27 · Conference split = Cameron's call (regional, not size-based) · Multiplier card mechanic = locked concept, execution open · Scoring = win-loss primary; hybrid points TBD before launch · Display layer = Replit + EMMA OpenSearch DB · Playoff format = Top 2 per conf advance, Wk 7 = conf championships, Wk 8 = company championship</div>
+
+          <div class="comp-meta">
+            <span class="meta-source">Owner: Cameron + Matisen · Brief signed 4/27</span>
+            <a class="open-link" href="../Einstein%20Games%20Season%203/einstein-games-season-3-brief.html" target="_blank">Open Full Brief →</a>
+          </div>
+        </div>
+
+        <!-- ===== PLACEHOLDER — CX Themes: Sales + Claims ===== -->
+        <div class="comp-card placeholder" id="q2-cx-theme">
+          <div class="comp-head">
+            <div>
+              <p class="comp-num">CX Team · Non-Branch</p>
+              <h3 class="comp-title">CX Quarterly Themes — Sales + Claims</h3>
+            </div>
+            <span class="badge gray">Placeholder · Day 3</span>
+          </div>
+          <p class="comp-summary">
+            Sales and Claims don't have branch-vs-branch metrics to compete on, so the Einstein Games structure doesn't apply. Each side defines its own quarterly theme to keep its team focused and engaged. Themes finalize during Day 3 with Amanda Ware leading both sides.
+          </p>
+
+          <div class="theme-pair">
+            <div class="theme-pair-half">
+              <p class="tp-tag">Sales Team</p>
+              <p class="tp-name">Theme TBD</p>
+              <p class="tp-context">Owners: Amanda Ware + Nhel · Q1 sales coaching + VP Phase 1 carry forward · Conversion baseline reset (Apr 5 contact-capture funnel) is the live constraint on any conversion-tied target.</p>
+            </div>
+            <div class="theme-pair-half">
+              <p class="tp-tag">Claims Team</p>
+              <p class="tp-name">Theme TBD</p>
+              <p class="tp-context">Owners: Amanda Ware + Carly · Carly's maternity transition (Q3 window) is the planning horizon · Magic Moments rollout could anchor the theme · Damage tracker / EMMA reconciliation is open.</p>
+            </div>
+          </div>
+
+          <div class="info-callout">
+            <strong>Roundtable ask (Day 3):</strong> Each side names its theme + 2 critical numbers + supporting rocks. Get them onto the Q2 Cascading Goals sheet before Roundtable closes.
+          </div>
+
+          <div class="data-source">📍 <strong>Source:</strong> No locked content this cycle — explicit Day 3 deliverable · CX team structure: Amanda Ware (Director) → Nhel (Sales Team Lead) + Carly (Claims Mgr) · Q2 cascading goals sheet is the destination once themes set · Treat absence as a calendar item, not noise</div>
+
+          <div class="comp-meta">
+            <span class="meta-source">Owners: Amanda Ware · Nhel · Carly · Day 3 deliverable</span>
+            <span class="open-link disabled-link">Q2 Cascading Goals (leadership Drive — 1CEwbltgyvNbpl5…)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Open for Roundtable input — pulled from S3 Roundtable Brief -->
+      <div class="method-callout">
+        <strong>Open for Day 2-3 input — Einstein Games execution:</strong>
+        <ul style="margin:8px 0 0 0; padding-left:20px;">
+          <li><strong>Multiplier card execution complexity</strong> — Go for Season 3, or defer to Season 4? Paul wary of operational lift; Cameron wants the engagement lift for low-performing teams.</li>
+          <li><strong>Conference scheduling math</strong> — 5 teams / 6-game regular season — confirm distribution (4 in-conference + 2 cross-conference, or different rotation).</li>
+          <li><strong>Hybrid scoring</strong> — Pure win-loss, or layer in rank-based points (5 / 4 / 3 / 2 / 1) to reward consistency?</li>
+          <li><strong>Contract sync ownership</strong> — Apr 1-23 contracts not syncing distorts every games metric. Matisen heads-down on dashboards through 4/29; needs an owner outside Matisen.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============== REFERENCES ============== -->
+    <section id="references">
+      <h2>References — Files, IDs, Pulses</h2>
+      <div class="data-source">📍 <strong>Source:</strong> This table is the canonical source map for the packet — every Drive ID, file path, and pulse number cited above resolves here · Drive IDs open at <code>https://drive.google.com/file/d/{id}</code> · Monday board / pulse IDs open at <code>https://einsteinmoving.monday.com/boards/{board}/pulses/{pulse}</code> · Local file paths are relative to the EMC Projects workspace</div>
+      <div class="table-scroll">
+      <table class="refs">
+        <thead><tr><th>Reference</th><th>ID / Path</th></tr></thead>
+        <tbody>
+          <tr><td>Financial Analysis Presentation HTML v2.6</td><td><code>1Sff7S7qQnqOC76CQpoY9wnJIO6hMjMaU</code></td></tr>
+          <tr><td>Personnel Budget Handoff</td><td><code>1GEu-_PfY1wm4vZmqUtqyacuyzdK0EZp9</code></td></tr>
+          <tr><td>QGR Packet Handover</td><td><code>1jDNDuA4c-Jk2JNLnI-FElDPKdtDf3jqi</code></td></tr>
+          <tr><td>Q1 Cascading Goals Sheet</td><td><code>1BuA4XcANZwQ3Hfds-1fpthE6QOO3UeZQtrTcTT8nQSk</code> (gid <code>242346082</code>)</td></tr>
+          <tr><td>Q2 Cascading Goals Sheet</td><td><code>1CEwbltgyvNbpl5_1pVsWL70qaCMGgDE9Jk7RGm1eAsM</code></td></tr>
+          <tr><td>Einstein Games Season 3 — Roundtable Brief</td><td><code>Supporting Projects/Einstein Games Season 3/einstein-games-season-3-brief.html</code></td></tr>
+          <tr><td>Mover eNPS Q1'26 — Analysis Doc <em>(leadership-only · individual responses)</em></td><td><code>1TpWZXiiO7KHFKQ93TlO3D1WuD3-o4Hr4muigH8zbQDQ</code></td></tr>
+          <tr><td>Mover eNPS Q1'26 — Aggregated Sheet <em>(general reference · anonymized rollups)</em></td><td><code>1h46xK76boqJK_qBVKoiJsrLYuF5Eil1fEIxT-_bG2mU</code></td></tr>
+          <tr><td>Live Strategic Pillars</td><td><a href="https://einsteinadmin.github.io/einstein-pillars/" target="_blank">einsteinadmin.github.io/einstein-pillars</a> &nbsp;·&nbsp; local: <code>Supporting Projects/Scaling Up Coach/einstein-strategic-pillars.html</code></td></tr>
+          <tr><td>Live Flywheel</td><td><a href="https://einsteinadmin.github.io/einstein-flywheel/" target="_blank">einsteinadmin.github.io/einstein-flywheel</a></td></tr>
+          <tr><td>Live PACe (E=MCash²)</td><td><a href="https://einsteinadmin.github.io/einstein-pace/" target="_blank">einsteinadmin.github.io/einstein-pace</a> &nbsp;·&nbsp; local: <code>Supporting Projects/Scaling Up Coach/einstein-pace.html</code> &nbsp;·&nbsp; state: <code>einstein-pace-state.json</code></td></tr>
+          <tr><td>QG Success Tracker</td><td><code>Supporting Projects/Cascading Goals Tracker/einstein-qg-tracker.html</code></td></tr>
+          <tr><td>Goals Dashboard JSON</td><td><code>_shared/goals-dashboard/dashboard-data.json</code></td></tr>
+          <tr><td>Skill v3.2 (Financial Analysis)</td><td><code>1RvTCfAUFE0M3k30q0A7v2T_PoUwe_9qR</code></td></tr>
+          <tr><td>Driver's Ed Dashboard (Monday)</td><td>Board <code>18397855324</code></td></tr>
+          <tr><td>Q2 QGR Roundtable Drive folder</td><td><code>1TrjKoIwsEDWicPuamRk1yrkSX-XpMO-L</code></td></tr>
+          <tr><td>Tracking pulse — QGR Packet integration</td><td>Cam's Board <code>11860560073</code></td></tr>
+          <tr><td>Budget Counter cleanup pulse</td><td>Sky Board <code>11859699107</code> (Mike + Brian, due 5/25)</td></tr>
+          <tr><td>Leander+Houston availability pulse</td><td>Sky Board <code>11843721585</code> (due 5/31)</td></tr>
+          <tr><td>eNPS Cadence Redesign pulse</td><td>Sky Board <code>11741483648</code></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- ============== CHANGE LOG ============== -->
+    <section id="change-log">
+      <h2>Change Log</h2>
+      <p style="color: var(--gray-600); font-size: 14px; margin: 4px 0 0;">Iteration history for this packet. Useful for traceability; not intended as Roundtable conversation material.</p>
+      <details class="change-log-collapsed">
+        <summary>Show version history — 26 versions, v1.0 → v1.25</summary>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th style="width:90px;">Version</th><th style="width:110px;">Date</th><th>What Changed</th></tr></thead>
+          <tbody>
+            <tr><td>v1.0</td><td>2026-04-27</td><td>Phase 2a build — initial packet skeleton with all 9 component cards, three-lens grade hero, exec summary stat tiles, conversation starters, references. Hybrid format (embedded summaries + deep links). LQA + Salaried eNPS as explicit placeholders per locked decisions.</td></tr>
+          <tr><td>v1.1</td><td>2026-04-27</td><td>Visual polish pass — sidebar active-rail, hero progression chip pattern, inline % bars on personnel branch table, table-scroll wrappers, harden print stylesheet, color-coded delta values, decorative emoji removed (functional indicators only).</td></tr>
+          <tr><td>v1.2</td><td>2026-04-27</td><td>Cameron feedback round 1: (1) Garland added as third intervention branch on eNPS (headline + summary + table flag); (2) source attribution tags added across every major section (Exec Summary, Strategic Foundation, Component cards 1-5); (3) $ conversion methodology lock note added to Component 1 explaining canonical formula and reconciling N. Austin §3.2 vs §3.5 numbers; (4) BBE / Driver's Ed component expanded — added Coaching-vs-Raw-Events math card, Top-Dismissed-by-Branch detail table, and visual Per-Event Weight Comparison (Policy / Mike's Protocol / Bonus Calculator) showing the three-way mismatch.</td></tr>
+          <tr><td>v1.3</td><td>2026-04-27</td><td>Cameron + Matisen + Paul packet review: (1) Success rate corrected to 71% (36 of 51 graded rocks) — was incorrectly inherited as ~73%, now matches QG tracker computed math; (2) badge "~73% Success" → "71% Success"; (3) headline #5 reworded with explicit math; (4) QG tracker prose also corrected to 71% in parallel. Open question for spot-check: Matisen counted 12 SG / 24 G / 15 R verbally; tracker shows 11 SG / 25 G / 15 R — same total + same success rate, but one rock's grade may be inconsistent between sources. Likely candidate: Cameron Fleet Safety override application.</td></tr>
+          <tr><td>v1.4</td><td>2026-04-27</td><td>Discriminate filter pass on meeting-review feedback: (a) Component 1 — added AI-search-attribution caveat to marketing prose (Gemini snippets explanation for sessions-down / forms-up gap); (b) Component 2 — added Houston "92% TUR target was aggressive plan-side" and South Austin "behavioral / Chris closing trucks early" caveats; (c) eNPS deep link rewritten from local markdown to Google Doc (Cameron's flag); (d) skipped 7 lower-priority items from the meeting transcript that were either already in packet or not material to Roundtable conversation.</td></tr>
+          <tr><td>v1.5</td><td>2026-04-27</td><td>Inline comment system shipped: (1) highlight any text → "💬 Add note" button → type comment → wraps text in yellow <code>&lt;mark&gt;</code> with hover preview; (2) "My Notes" floating button top-right shows all notes in side panel with section context, jump-to-element on click; (3) "Copy for Albert" button exports all notes as markdown to clipboard for one-paste handoff to chat; (4) localStorage persistence per browser. Replaces the prior HTML-template review-note pattern (still works, but now Cameron has a Google-Sheets-style commenting flow). Also bumped to v1.5 and committed Q1'26 backlog pulses (5 created on Master Backlog 18408300070).</td></tr>
+          <tr><td>v1.6</td><td>2026-04-27</td><td>Cleanup pass: (1) removed the seeded review-note template pattern (B2/B3/B5 examples) and its toggle button — workflow is now exclusively the inline highlight-and-comment system; (2) removed all <code>.review-note</code> and <code>.review-toggle</code> CSS; (3) added "💾 Save to File" button to notes panel — uses File System Access API (Chrome/Edge) to write the live DOM with marks back to disk so Albert can open the file directly and read Cameron's notes inline. Falls back to download if FSA unavailable.</td></tr>
+          <tr><td>v1.7</td><td>2026-04-27</td><td>Cameron call: Cascading Goals sheet is single source of truth for grades; Albert pre-grade projections are internal calibration tooling, not Roundtable content. Removed: (1) entire 16-row "Albert-vs-Self Disagreements" table from Component 3; (2) "14 Disagreements" badge text; (3) Headline #5 mention of disagreements. Replaced with: focused 3-row "Cameron's Overrides" table (Cameron Fleet Safety, Mike Trucks, Nhel Sales Coaching) showing the only adjustments to leader self-grades + the rationale for each. Source attribution updated to call out Cascading Goals as canonical.</td></tr>
+          <tr><td>v1.8</td><td>2026-04-27</td><td>Critical # rocks now visually distinguished in the per-leader scorecard: first two pills in each row are the leader's two designated Critical Numbers, marked with a 2px navy ring outline, separated from the non-critical pills by a thin gray divider. Hover any pill to see which rock it represents. Legend updated. Pill order shifted from grade-sorted (SG first) to critical-first (criticals show whatever grade they actually landed at). Paul's row reflects his unique critical # placement (#1 + #4 in the cascading goals, not #1 + #2).</td></tr>
+          <tr><td>v1.9</td><td>2026-04-27</td><td>Cameron reversed the Nhel #1 Sales Coaching override: his original call (R → G*) was based on the conversion baseline being broken by the VP rollout, but the rock was actually scored on <em>estimate accuracy</em>, not conversion — and Nhel's estimate accuracy genuinely missed. Rock back to R. Cascading Goals tracker updated in parallel: Nhel Q1 2026 full {sg:1, g:2, r:2, asterisk:false} (was 1/3/1 with asterisk); Nhel Q1 2026 critical {sg:0, g:1, r:1} (was 0/2/0 with asterisk). Company success rate drops 71% → 69% (35 of 51 graded — just below the 70-80% healthy band). Headlines, badge, source map, exec summary tile, and Cameron's Overrides table all updated. Override count: 3 → 2 (Cameron Fleet Safety + Mike Trucks).</td></tr>
+          <tr><td>v1.10</td><td>2026-04-28</td><td>Wave 1 design pass — Tier 1 polish: (1) brand color aligned to Pantone 144 C (<code>#EF8B22</code>) — the prior <code>#F9A825</code> had drifted from the brand guide; (2) Change Log collapsed behind a <code>&lt;details&gt;</code> toggle so it stays available for traceability without consuming 16% of the audience read; (3) source attribution gap-filled across the back-half components (Salaried eNPS, NPS, AAR Comments, LQA, Conversation Starters, Open Asks, References) so every section answers "where did this number come from."</td></tr>
+          <tr><td>v1.11</td><td>2026-04-28</td><td>Wave 1 design pass — Tier 2 polish: (a) Type scale — h1 28→26px, hero h2 24→22px (line-height tightened 1.55→1.3), section h2 stays 20px, h3 15.5→16px, stat-tile values 24→22px. Cover headline now fits one line instead of wrapping to three; hero block ~10% shorter. (b) Cover hero hierarchy — added 84px "B" headline grade badge as the visual anchor with "THE GRADE" caption, restructured headline row so the B + sentence + supporting copy read as one block, slimmed lens cards (grade circles 38→28px, padding tightened) and added "EVIDENCE — THREE LENSES" header so the C/B/B cards are clearly subordinate to the headline B. (c) Strategic Foundation density beef-up — each pillar tile now carries a Q1 anchor line (color-coded G/A/R) so the five pillars become mini scorecards: P1 eNPS+46, P2 Fleet−36% & Personnel 95%, P3 Revenue+6.9% & NOI+37.5% (the only fully green pillar), P4 NPS above benchmark & conv reset, P5 Ticket+12.8% & Dashboards Red. (d) Cleanup — 4 lingering RGBA orange refs (rgba(249,168,37,...)) updated to brand orange rgb. (e) Component unification — info-callout extracted to <code>--blue</code> + <code>--blue-bg</code> tokens (previously hardcoded #1565c0/#e3f2fd).</td></tr>
+          <tr><td>v1.12</td><td>2026-04-28</td><td>Cameron caught the whiplash between B grade and "best first quarter in Einstein's history." Fix: (a) Headline #1 reframed from "Strongest first quarter in Einstein's history" → "Best Q1 we've posted — but we forecasted for even better. We beat our past; we didn't beat our own plan, which is why the grade is B." (b) Lens 3 rationale reframed from "strongest first quarter Einstein has posted" → "Strongest Q1 we've posted YoY — though we still came in below our own forecast, which keeps the composite at B." Data verification: source Financial Analysis only contains Q1'25 → Q1'26 YoY comparisons; multi-year Q1 stack (Q1'24, Q1'23, etc.) is NOT in the workspace, so "in history" was an extrapolation beyond data. "Best Q1 we've posted" is the safe defensible framing matching what's actually in the analysis.</td></tr>
+          <tr><td>v1.13</td><td>2026-04-28</td><td>Wave 1 design pass — Tier 3 polish (a11y + print): (a) A11y on grade pills — added JS that, on DOMContentLoaded, walks all 62 <code>.grade-pill</code> elements (14px color-only circles, too small for inline letters) and adds <code>role="img"</code> + <code>aria-label</code> derived from CSS class (sg/g/r/ung) + the existing <code>title</code> attribute. Critical Number rocks get "(Critical Number)" appended. Grade rows get <code>role="list"</code> with <code>role="listitem"</code> on each pill so screen readers announce them as a coherent set. Sighted color-blind users still have the per-row text totals ("2 SG · 4 G · 0 R") in column 3 as the canonical reading. (b) Print stylesheet — added <code>.lens-card</code>, <code>.pillar-tile</code>, <code>.mini-stat</code>, <code>.info-callout</code>, <code>.method-callout</code>, <code>.warn-callout</code>, <code>.data-source</code> to the <code>page-break-inside: avoid</code> list so these elements don't split across pages on PDF export. (c) Voice/heading/AAR/Convo passes deferred — inventory revealed they were either already correct (Convo Starters are cards, AAR is a placeholder by design) or low-value (section headings serve their function; rewriting risks regression).</td></tr>
+          <tr><td>v1.14</td><td>2026-04-28</td><td>Distill pass — cut prose without losing meaning: (a) <strong>Comp 1 Financial</strong> 138 → 80 words (-42%) — dropped avg-ticket repeat (already in stat tile), tightened conversion-cohort explanation, compressed AI-search hypothesis. (b) <strong>Comp 2 Personnel</strong> 138 → 84 words (-39%) — removed "Cameron's Q1 critical number" framing (already in section title), cut branch percentages duplicated in the mini-stats below, compressed Houston + S. Austin caveats. (c) <strong>Comp 4 BBE</strong> 83 → 56 words (-33%) — collapsed the "kept 12 pts more events at stricter standards" mechanic into a tighter dismissal-rate sentence. (d) <strong>Comp 5 Mover eNPS</strong> 80 → 67 words (-16%) — dropped Promoters/Passives/Detractors split (in stat tiles), tightened Garland phrasing. (e) <strong>Top 5 Headlines</strong> #4 50→32 words, #5 50→38 words — verb-first, redundant phrasing cut. (f) <strong>Canonical-$ formula callout</strong> 80 → 55 words — collapsed N. Austin reconciliation. Net prose cut ~250 words; total packet ~13% lighter on the prose-heavy components without losing any data point or caveat.</td></tr>
+          <tr><td>v1.15</td><td>2026-04-28</td><td>Q2 Forward Look section added between Open Asks and References — closes the packet on a forward-looking beat instead of risks. Two cards: (a) <strong>Mover Theme — Einstein Games Season 3</strong> (locked, launching 5/23): 8-week season, regional conference split (CTXH vs DFWT+Tampa), Multiplier Cards mechanic, new Replit/EMMA OpenSearch display layer, championship 7/11 / results 7/21. Sourced from the 4/27 Roundtable Brief (Cameron + Paul + Matisen). Production readiness gate Wed 4/29 flagged. Cameron's framing line embedded: "Einstein Games is a quarterly system, not a one-off." Deep link to the full brief HTML. (b) <strong>CX Quarterly Themes — Sales + Claims</strong> (placeholder, Day 3): explicit "TBD" pair card noting that CX teams don't have branch-vs-branch metrics so the Games structure doesn't apply; each side defines its own theme with Amanda Ware leading. Sales side notes conversion-baseline reset constraint; Claims side notes Carly's maternity transition + Magic Moments rollout. Roundtable ask: name theme + 2 critical numbers + supporting rocks before Day 3 closes. Plus a <code>method-callout</code> below the cards with 4 open Day 2-3 questions pulled directly from the Roundtable Brief (multiplier card execution, conference scheduling math, hybrid scoring, contract sync ownership). New TOC group <strong>Look Ahead</strong> with single anchor <code>#q2-forward</code>. Small CSS addition: <code>.theme-pair</code> + <code>.theme-pair-half</code> grid pattern for the Sales/Claims placeholder split (mobile breakpoint 720px collapses to single column). Print stylesheet updated — <code>.theme-pair-half</code> added to <code>page-break-inside: avoid</code> list. Einstein Games brief added to References table.</td></tr>
+          <tr><td>v1.18</td><td>2026-04-28</td><td>Component 8 (AAR Comments) removed + "Q1 Major Wins" callout added to Component 3. Cameron's structural call: the QG Success Tracker already integrates rocks scorecard + AAR distillation in one curated view, so the packet's C3+C8 split fragmented what the tracker unifies. Component 8 was effectively a pointer to the AAR threads ("read live during Days 2-3") rather than a content card — pulling its weight on the packet altitude was thin. Restructure: (a) Deleted C8 entirely. (b) Added a <code>method-callout</code> (orange brand treatment) to Component 3 between the legend and the rocks scorecard table, titled "🏆 Q1 Major Wins — what to celebrate at the table." Six wins surfaced — sourced from the QG Tracker's curated Wins + Highlights cards: Matisen Variable Pricing Phase 1 SG, Carly Claims Time to Close 4.7 days SG + Maria fully trained, Cameron Fleet Safety G with one claim all quarter, Mike $58K late-Q truck sales, Brian Manager Conference 100% attendance + AI tooling unlock, Amanda Concierge Capstone MBA SG. Each with appropriate grade pill inline. Closing line points to the QG Tracker for full breakdown (Wins · Trends · Highlights · Landmines · Convo Points) and links AAR threads on the Cascading Goals sheet for live read during Days 2-3. (c) TOC entry "8 · AAR Comments" removed. (d) Section header renamed: "Eight Pieces" → "Seven Pieces." Net effect: packet reads tighter at the rocks-scorecard altitude (wins surfaced, full depth one click away), the live-read pattern preserved, and the QG Tracker is now unambiguously the canonical curated view.</td></tr>
+          <tr><td>v1.17</td><td>2026-04-28</td><td>Component 9 (Last Quarter Actions placeholder) removed — Cameron's call: too granular for the packet altitude. LQA at the rock level already lives in Component 3 (rocks scorecard) + Component 8 (AAR comments); the non-rock-commitment-tracking purpose LQA was meant to serve doesn't merit a Component card. Section header renamed: "The Q1 Story in Nine Pieces" → "Eight Pieces." TOC entry "9 · Last Quarter Actions" removed. Card and its 20 lines of placeholder copy deleted. Visual-history v1.0 + v1.10 changelog rows preserve the audit trail of when LQA existed and why it was a placeholder, so the deletion is recoverable from history if framing ever shifts.</td></tr>
+          <tr><td>v1.19</td><td>2026-04-28</td><td>Day 2 Roundtable Strategy Workshop with Rob Lynch — surgical pillar-layer adjustments for Day 3: (a) Strategic Foundation — small "⚠ naming" badge added to the Pillar 2 (Operational Excellence) tile with hover-title noting alternatives are parked but definition holds. Cameron's call: name stays for now; conversation should anchor in system-driven management practices (QGRs, Monday boards, dashboards), not abstract "excellence." (b) Strategic Foundation pillar links rewired — "Open Pillars HTML →" now points to public site at <code>einsteinadmin.github.io/einstein-pillars/</code> (matches the Live Flywheel pattern; new public repo created today). (c) Open Asks &amp; Risks — two new rows added: <strong>Sales Speed Prerequisite</strong> (Rob's 4/28 hammer — sub-5-min response + multi-touch follow-up cadence is foundation under CX pillar; tied to Lead Treatment Framework pulse 11864128674 + Sales Capacity pulse 11864128795); <strong>Op Ex naming question</strong> (parked alternatives: Operating System Excellence / System-Driven Operations / Disciplined Ops at Scale / The Einstein Operating System). All other content from Roundtable workshop already lived in Pillars HTML (now v5) — packet edits kept surgical, no rebuild.</td></tr>
+          <tr><td>v1.16</td><td>2026-04-28</td><td>Lookback Wishlist section added between Component Cards and Conversation Starters — three placeholder cards forcing-functioning future data collection (same pattern as LQA + Salaried eNPS placeholders already in packet). (a) <strong>Sales Performance Lookback</strong> — beyond branch-level conversion (FA §3.2) and Amanda + Nhel's Q1 critical numbers (in Component 3), three sub-blocks for Q2 collection: Conversion by Rep (top + bottom 3 named, attempt rate, close rate, ticket size, Cohort A vs B by individual), Estimate Accuracy (quoted vs delivered $, Cameron-fed), Billable Efficiency (billable hours / scheduled, Cameron-fed). Catches the Daniel-at-240% pattern by system, not gut. Roundtable ask: Q2 cadence + auto-trigger threshold for coaching escalation. (b) <strong>Claims &amp; Magic Moments Lookback</strong> — Carly's Q1 critical rocks tracked at the rock level in Component 3; deeper KPI lookback in two sub-blocks: Claims KPIs (volume, $ paid gross + net of recovery, root cause distribution, recovery rate trend QoQ — pulled from Carly's reports + CET Board <code>18319980089</code>) and Magic Moments Effectiveness (recovery wins/week, cost per save, CSAT delta on saved jobs, NPS lift attribution — anecdotal 20-30% wall damage reduction noted but not packet-grade). Roundtable ask: Q2 working session for damage tracker / EMMA reconciliation, before Carly's Q3 maternity window. (c) <strong>A/B/C Player Distribution</strong> — People Analyzers in collection (branches + departments complete prior to their regional QGRs, rolling over next ~1 week). Three sub-blocks: By Branch (10 locations), By Department (Sales · Ops · CET · IT · Mgmt), Company-Wide trend. Pairs with Ideal Team Player rollout (Rob Lynch, Q2). Method-callout with two open framework questions: who defines A/B/C (manager / peer / system / hybrid) and when does first company-wide read happen (Q2 or Q3). New TOC group <strong>Wishlist</strong> with three anchors. CSS extension: <code>.theme-pair.three</code> 3-column variant (mobile breakpoint 720px collapses to single column). Section title: "Lookback Wishlist — CX Side &amp; Org Health." All three cards use <code>.comp-card placeholder full</code> (gray top-border + gray-50 background) for visual consistency with LQA + Salaried eNPS placeholders.</td></tr>
+          <tr><td>v1.20</td><td>2026-04-28</td><td>Q1 Major Wins callout — Fleet Safety attribution corrected: Cameron → Mike. Mike (DFWT Regional Mgr / Head of Ops) drove the operational lift on the ground (Samsara enforcement, dismissal-rate strictness, branch-manager coaching) — Cameron's role was QT management oversight. Wins line now reads "Mike — Fleet Safety [G]. Quarterly avg 80.2 / 19.8% at-risk per dashboard. One claim all quarter — the operational lift Mike drove on the ground." Footer also reconciled v1.18 → v1.20 (was stale relative to v1.19 Day 2 workshop edits). QG Tracker Wins card synced in parallel commit `3c1bdf2` so canonical source matches packet.</td></tr>
+          <tr><td>v1.26</td><td>2026-04-29</td><td>Strategic Foundation section densified — adds (1) <strong>Flywheel grid</strong>: replaces the single-line "Great Movers → ... " sentence with a 6-tile grid mirroring the pillar grid, each tile showing component name + 1–10 score badge + Q1 anchor stat color-coded G/A/R (3 Green, 3 Amber per Rob Lynch 4/14 scoring). (2) <strong>PACe at-a-glance</strong>: new compact 12-box visual with Strategic Layer + Foundation Layer bookend bars, color-coded mini-boxes (4 Green / 7 Amber / 1 Red), CLOSE marker on Box 5, and color-summary footer line. (3) <strong>Live PACe link</strong> added to the Open Live row alongside Pillars + Flywheel — points at <code>einsteinadmin.github.io/einstein-pace/</code> (new public repo created today, GitHub Pages enabled). (4) References table — Live PACe row added with public URL + local + state-file paths. The chart is a quarterly-archive artifact: editable in the browser, autosaves to JSON, becomes the brainstorm tool for Q2 rock-setting (QG-tagged Next Steps inside Boxes 2/3/4 are the seed list). Section title updated: "Pillars, Flywheel, OPSP" → "Pillars, Flywheel, PACe, OPSP." CSS additions: <code>.strat-subhead</code>, <code>.flywheel-grid</code> + <code>.fw-tile</code> (mirroring pillar-tile pattern), <code>.pace-glance</code> + <code>.pace-layer-bar</code> + <code>.pace-grid</code> + <code>.pace-mini-box</code>.</td></tr>
+          <tr><td>v1.25</td><td>2026-04-28</td><td>Scorecards section promoted to its own dedicated TOC group + section. Was nested as a callout inside Component 2 (Personnel) in v1.24; v1.25 elevates it because (a) scorecards aren't really "personnel" content, they're per-unit views that span all categories, (b) departments need scorecards too — IT, Sales, Claims, Ops, EE — and those don't naturally live anywhere in the existing structure, (c) scrolling to find a per-unit view shouldn't require knowing which Component to look at. <strong>New TOC group "Scorecards"</strong> between Components and Wishlist with single anchor <code>#scorecards</code>. <strong>New section "Scorecards — Branch + Department"</strong> with two grids: 10 branch tiles (1 live for N. Austin with B+ badge, 9 placeholder "Q2 add" tiles for the rest) + 5 department tiles (Sales, Claims/CET, Operations, IT, Employee Experience — all placeholders). Each tile has eyebrow tag (region/dept), name, BM/owner + truck count or sub-label, and bottom-row state ("Live · Open →" with grade badge for live tiles, "Q2 add" for placeholders). Tile CSS additions: <code>.scorecard-grid</code> (responsive auto-fill), <code>.scorecard-tile</code> with <code>.live</code> + <code>.placeholder</code> variants (live tiles get green top-border, hover-lift, link out; placeholders get gray top-border, gray-50 background, no link), <code>.scorecard-grade-badge</code> (32px orange composite badge mini-version of the cover hero). Component 2 personnel-table CTA simplified — info-callout removed, single-line reference link to <code>#scorecards</code> added inside the existing comp-meta. Roundtable ask embedded: do we build the full set in Q2? Data-collection priority order = open question for Day 3.</td></tr>
+          <tr><td>v1.24</td><td>2026-04-28</td><td>Branch Scorecard (Sample · v0) — Brian's idea materialized. Standalone HTML deliverable at <code>branch-scorecard-naustin.html</code> rolling up all of North Austin's Q1 metrics into one place with a weighted composite grade (B+, "Solid Mixed Quarter"). Eight graded metrics: TUR (25%, heaviest as the guiding capacity metric), Revenue + NOI to Plan (15%), $ Conversion YoY (15%), NPS (15%), Mover eNPS (10%), Recognition % (5%), Driver Score / Dismissals (10%), Personnel-Budget (5%). Reference data block (not graded): pricing elasticity, NOI/truck, moves/truck, BBE event volume, following-distance dismissal — context that informs but doesn't move the grade. Per-metric drill-downs explain why each metric matters in plain language. Q1 highlights/lowlights + Q2 watch sections. Audience: Calvin Hughes (BM) + Brian (regional) + managers at the branch — friendly + actionable framing, not Roundtable-evaluative. Composite math: SG=4 G=3 A=2 R=1, weighted sum / 4 × 100. North Austin = 73.75% → B+. Letter thresholds 90+/80+/75+/65+/55+/&lt;55 = A/A−/B+/B/C/D. Linked from Component 2 (Personnel) since that's where branch-level comparison lives — natural anchor for a roll-up artifact. Roundtable ask: do we build this for all 10 branches in Q2? Known data gaps for v0 sample: branch-level damages (Carly's CET Board, Q2 add) + Branch-Manager AAR voice block (BMs not on AAR system yet, future iteration).</td></tr>
+          <tr><td>v1.23</td><td>2026-04-28</td><td>Component 5 (Mover eNPS) — access-scope clarified after v1.22 conflated "view-only" (edit permission) with "leadership-only" (access scope). Two artifacts have <em>different</em> audiences: <strong>Analysis Doc</strong> contains individual responses (start/stop/keep, detractor verbatims) and is leadership-restricted; <strong>Aggregated Sheet</strong> holds anonymized per-branch rollups and is open as general reference. Added an info-callout above the comp-meta explaining this distinction so any BM or leader who pulls the packet knows which artifact to open. CTAs renamed: "Open Sheet (View Only)" → "Open Sheet (General)" + "Open Full eNPS Doc" → "Open Doc (Leadership)." Data-source line updated to mark each ID with its access scope. References table entries split with italic access-scope tags.</td></tr>
+          <tr><td>v1.22</td><td>2026-04-28</td><td>Component 5 (Mover eNPS) — second source link added. The Q1 2026 mover eNPS spreadsheet (the homework version Cameron distributed to leadership while he was in Monaco) was tracked down — file got trashed during 4/24 cleanup, Cameron restored it. Sheet ID <code>1h46xK76boqJK_qBVKoiJsrLYuF5Eil1fEIxT-_bG2mU</code> (view-only). Component 5 comp-meta now shows two CTAs: "Open Sheet (View Only) →" + "Open Full eNPS Doc →" (was Doc-only). Data-source line updated to reference both IDs. References table split: Mover eNPS Q1'26 — Analysis Doc + Mover eNPS Q1'26 — Sheet (view-only, leadership homework). Closes the loop for leaders doing their own slicing during Days 2-3.</td></tr>
+          <tr><td>v1.21</td><td>2026-04-28</td><td>Lookback Wishlist — fourth card added: <strong>Manager + Salaried Praise Tracker</strong>. Sister metric to Magic Moments Effectiveness (claims-side, Card 2) — this is the salaried/manager equivalent. Three sub-blocks (3-col theme-pair): (a) <strong>Praise Given (by Manager)</strong> — volume + cadence by Roundtable + BM, who's actively recognizing teams vs who's quiet, cross-departmental reach. (b) <strong>Praise Received (by Recipient)</strong> — distribution across salaried staff, who's invisible, pairs with eNPS detractor analysis to flag morale risk. (c) <strong>Themes</strong> — what gets celebrated (values delivery · ownership · cross-functional support · innovation · client saves · trend vs core values rollout). Source: existing Prepare for Praise board (intake pulse <code>6898250292</code> + sub-item board <code>1468751187</code>) with the Pending → Delivered → Done/Logged lifecycle Cameron's submission workflow already maintains. No quarterly distill view exists yet — explicit Q2 build target. Roundtable ask: Q2 cadence (monthly rollup vs weekly leaderboard vs quarterly QGR-aligned) + visibility (leadership-only insight or shared with recognized team). New TOC entry "Praise Tracker" added under Wishlist group. Footer + version-history bumped to v1.21.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      </details>
+    </section>
+
+    <div class="footer">
+      <strong>Einstein Q1 FY'26 Roundtable QGR Packet · v1.26</strong><br>
+      Prepared by Albert (Cameron's AI Chief of Staff) · 2026-04-27 · Wave 1 Tier 1+2+3 polish 2026-04-28<br>
+      For internal Roundtable use · Do not distribute outside leadership without Cameron's approval
+    </div>
+
+  </main>
+</div>
+<script>
+/* =========================================================
+   In-Line Comment System — Cameron's Notes
+   - Highlight any text → "Add note" button → type → save
+   - Notes wrap text in <mark class="cam-note"> with the comment
+   - Persisted in localStorage (per browser)
+   - "Copy for Albert" exports as markdown to paste in chat
+   ========================================================= */
+(function() {
+  const STORAGE_KEY = 'qgr-cam-notes-v1';
+  let activeId = null;
+  let pendingRange = null;
+  let pendingText = '';
+  let addBtn = null;
+
+  function uid() { return 'cn-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 4); }
+  function getNotes() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) { return []; } }
+  function setNotes(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); refreshCount(); }
+  function refreshCount() {
+    const c = document.querySelector('.notes-fab .count');
+    if (!c) return;
+    const n = getNotes().length;
+    c.textContent = n;
+    c.classList.toggle('zero', n === 0);
+  }
+
+  function getSection(node) {
+    let el = node.nodeType === 3 ? node.parentElement : node;
+    while (el && el !== document.body) {
+      if (el.classList && el.classList.contains('comp-card')) {
+        const t = el.querySelector('.comp-title');
+        if (t) return t.textContent.trim();
+      }
+      if (el.tagName === 'SECTION' && el.id) return el.id.replace(/-/g, ' ');
+      if (el.tagName === 'H2' || el.tagName === 'H3') return el.textContent.trim().substr(0, 60);
+      el = el.parentElement;
+    }
+    return '';
+  }
+
+  function wrapRange(range, comment, id) {
+    const mark = document.createElement('mark');
+    mark.className = 'cam-note';
+    mark.dataset.noteId = id;
+    mark.dataset.comment = comment;
+    mark.title = comment;
+    try {
+      range.surroundContents(mark);
+    } catch(e) {
+      // Range crosses element boundaries
+      const contents = range.extractContents();
+      mark.appendChild(contents);
+      range.insertNode(mark);
+    }
+  }
+
+  function unwrapMark(mark) {
+    const parent = mark.parentNode;
+    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    parent.normalize();
+  }
+
+  // ====== Selection → "Add note" button ======
+  function clearAddBtn() { if (addBtn) { addBtn.remove(); addBtn = null; } }
+
+  document.addEventListener('mouseup', (e) => {
+    setTimeout(() => {
+      if (e.target && (e.target.closest('#note-popover') || e.target.closest('.add-note-btn') || e.target.closest('#notes-panel') || e.target.closest('.notes-fab'))) return;
+      const sel = window.getSelection();
+      const text = sel.toString().trim();
+      if (!text || text.length < 2) { clearAddBtn(); return; }
+      if (sel.rangeCount === 0) return;
+      const range = sel.getRangeAt(0);
+      // Skip if inside existing note
+      let p = range.commonAncestorContainer;
+      while (p && p !== document.body) {
+        if (p.classList && p.classList.contains('cam-note')) { clearAddBtn(); return; }
+        p = p.parentElement;
+      }
+      const rect = range.getBoundingClientRect();
+      clearAddBtn();
+      addBtn = document.createElement('button');
+      addBtn.className = 'add-note-btn';
+      addBtn.textContent = '💬 Add note';
+      addBtn.style.top = Math.max(8, rect.top - 36) + 'px';
+      addBtn.style.left = Math.min(window.innerWidth - 130, rect.left) + 'px';
+      addBtn.addEventListener('mousedown', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        pendingRange = range.cloneRange();
+        pendingText = text;
+        showPopover(rect, null);
+        clearAddBtn();
+      });
+      document.body.appendChild(addBtn);
+    }, 10);
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    if (addBtn && !addBtn.contains(e.target)) clearAddBtn();
+  });
+
+  // ====== Popover ======
+  function showPopover(rect, existingId) {
+    const pop = document.getElementById('note-popover');
+    pop.style.display = 'block';
+    let top = rect.bottom + 8;
+    let left = rect.left;
+    if (top + 200 > window.innerHeight) top = rect.top - 200;
+    if (left + 320 > window.innerWidth) left = window.innerWidth - 336;
+    pop.style.top = Math.max(8, top) + 'px';
+    pop.style.left = Math.max(8, left) + 'px';
+    const ta = pop.querySelector('textarea');
+    const delBtn = pop.querySelector('.delete-btn');
+    activeId = existingId || null;
+    if (existingId) {
+      const note = getNotes().find(n => n.id === existingId);
+      ta.value = note ? note.comment : '';
+      delBtn.style.display = 'inline-block';
+    } else {
+      ta.value = '';
+      delBtn.style.display = 'none';
+    }
+    setTimeout(() => ta.focus(), 50);
+  }
+  function hidePopover() {
+    document.getElementById('note-popover').style.display = 'none';
+    activeId = null;
+    pendingRange = null;
+    pendingText = '';
+  }
+  function savePopover() {
+    const pop = document.getElementById('note-popover');
+    const comment = pop.querySelector('textarea').value.trim();
+    if (!comment) { hidePopover(); return; }
+    const notes = getNotes();
+    if (activeId) {
+      const n = notes.find(x => x.id === activeId);
+      if (n) {
+        n.comment = comment;
+        n.updated = Date.now();
+        const m = document.querySelector(`mark.cam-note[data-note-id="${activeId}"]`);
+        if (m) { m.dataset.comment = comment; m.title = comment; }
+      }
+    } else if (pendingRange) {
+      const id = uid();
+      const section = getSection(pendingRange.commonAncestorContainer);
+      wrapRange(pendingRange, comment, id);
+      notes.push({ id, text: pendingText.substr(0, 200), comment, section, created: Date.now() });
+    }
+    setNotes(notes);
+    hidePopover();
+    window.getSelection().removeAllRanges();
+  }
+  function deleteCurrent() {
+    if (!activeId) return;
+    const m = document.querySelector(`mark.cam-note[data-note-id="${activeId}"]`);
+    if (m) unwrapMark(m);
+    setNotes(getNotes().filter(n => n.id !== activeId));
+    hidePopover();
+    if (document.getElementById('notes-panel').classList.contains('open')) renderPanel();
+  }
+
+  // ====== Click on existing mark → edit ======
+  document.addEventListener('click', (e) => {
+    const m = e.target.closest('mark.cam-note');
+    if (m) {
+      e.preventDefault();
+      e.stopPropagation();
+      showPopover(m.getBoundingClientRect(), m.dataset.noteId);
+    }
+  });
+
+  // ====== Notes panel ======
+  function renderPanel() {
+    const list = document.getElementById('notes-panel-list');
+    const notes = getNotes().slice().sort((a,b) => b.created - a.created);
+    if (notes.length === 0) {
+      list.innerHTML = '<div class="notes-empty">No notes yet.<br><br>Highlight any text on the page to add one.</div>';
+      return;
+    }
+    list.innerHTML = notes.map(n => `
+      <div class="note-item" data-id="${escapeHtml(n.id)}">
+        ${n.section ? '<div class="note-section">' + escapeHtml(n.section) + '</div>' : ''}
+        <div class="note-quote">"${escapeHtml(n.text)}"</div>
+        <div class="note-comment">${escapeHtml(n.comment)}</div>
+      </div>
+    `).join('');
+    list.querySelectorAll('.note-item').forEach(it => {
+      it.addEventListener('click', () => {
+        const id = it.dataset.id;
+        const m = document.querySelector(`mark.cam-note[data-note-id="${id}"]`);
+        if (m) { m.scrollIntoView({ behavior: 'smooth', block: 'center' }); m.style.transition = 'background 0.5s'; m.style.background = '#ffd54f'; setTimeout(() => { m.style.background = ''; }, 1500); }
+      });
+    });
+  }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function togglePanel() {
+    const p = document.getElementById('notes-panel');
+    if (p.classList.contains('open')) p.classList.remove('open');
+    else { renderPanel(); p.classList.add('open'); }
+  }
+
+  function copyForAlbert() {
+    const notes = getNotes().slice().sort((a,b) => a.created - b.created);
+    if (notes.length === 0) { alert('No notes to copy yet.'); return; }
+    const md = '# Cameron\'s Notes on QGR Packet\n\n' +
+      notes.map((n, i) =>
+        `## Note ${i+1}` + (n.section ? ` — ${n.section}` : '') + '\n\n' +
+        `> "${n.text}"\n\n` +
+        `**${n.comment}**\n`
+      ).join('\n---\n\n');
+    navigator.clipboard.writeText(md).then(() => {
+      const btn = document.querySelector('.copy-notes-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied — paste in chat';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    }).catch(() => alert('Clipboard copy failed. Notes are saved — re-open the panel.'));
+  }
+
+  function clearAll() {
+    if (!confirm('Delete all notes? This cannot be undone.')) return;
+    getNotes().forEach(n => {
+      const m = document.querySelector(`mark.cam-note[data-note-id="${n.id}"]`);
+      if (m) unwrapMark(m);
+    });
+    setNotes([]);
+    renderPanel();
+  }
+
+  // ====== Save to file (so Albert can read notes directly) ======
+  let fileHandle = null;
+  async function saveToFile() {
+    const btn = document.querySelector('.save-file-btn');
+    const orig = btn.textContent;
+    try {
+      // First save: pick file location
+      if (!fileHandle && window.showSaveFilePicker) {
+        fileHandle = await window.showSaveFilePicker({
+          suggestedName: 'q1-2026-roundtable-packet.html',
+          types: [{ description: 'HTML', accept: { 'text/html': ['.html'] } }]
+        });
+      }
+
+      // Build clean HTML — strip dynamic injections
+      const clone = document.documentElement.cloneNode(true);
+      ['#note-popover', '#notes-panel', '.notes-fab', '.add-note-btn'].forEach(sel => {
+        clone.querySelectorAll(sel).forEach(el => el.remove());
+      });
+      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+
+      if (fileHandle) {
+        // FSA API path
+        const writable = await fileHandle.createWritable();
+        await writable.write(html);
+        await writable.close();
+        btn.textContent = '✓ Saved to file';
+      } else {
+        // Fallback: download
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'q1-2026-roundtable-packet.html';
+        a.click();
+        URL.revokeObjectURL(url);
+        btn.textContent = '✓ Downloaded';
+      }
+      setTimeout(() => { btn.textContent = orig; }, 2200);
+    } catch (err) {
+      if (err.name === 'AbortError') { btn.textContent = orig; return; }
+      console.error('Save failed', err);
+      btn.textContent = '✗ Save failed';
+      setTimeout(() => { btn.textContent = orig; }, 2200);
+    }
+  }
+
+  // ====== Init ======
+  document.addEventListener('DOMContentLoaded', () => {
+    // Popover
+    const pop = document.createElement('div');
+    pop.id = 'note-popover';
+    pop.innerHTML =
+      '<div class="pop-eyebrow">Cameron\'s note</div>' +
+      '<textarea placeholder="What\'s the question or comment?"></textarea>' +
+      '<div class="note-actions">' +
+        '<button class="delete-btn">Delete</button>' +
+        '<button class="cancel-btn">Cancel</button>' +
+        '<button class="save-btn">Save</button>' +
+      '</div>' +
+      '<div class="hint">⌘+Enter to save · Esc to cancel</div>';
+    document.body.appendChild(pop);
+    pop.querySelector('.save-btn').addEventListener('click', savePopover);
+    pop.querySelector('.cancel-btn').addEventListener('click', hidePopover);
+    pop.querySelector('.delete-btn').addEventListener('click', deleteCurrent);
+    pop.querySelector('textarea').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); savePopover(); }
+      if (e.key === 'Escape') hidePopover();
+    });
+
+    // FAB
+    const fab = document.createElement('button');
+    fab.className = 'notes-fab';
+    fab.innerHTML = 'My Notes <span class="count zero">0</span>';
+    fab.addEventListener('click', togglePanel);
+    document.body.appendChild(fab);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.id = 'notes-panel';
+    panel.innerHTML =
+      '<div class="panel-head"><h3>Your Notes</h3><button class="close-x">×</button></div>' +
+      '<div id="notes-panel-list" class="panel-list"></div>' +
+      '<div class="panel-footer">' +
+        '<button class="save-file-btn primary">💾 Save to File</button>' +
+        '<button class="copy-notes-btn">📋 Copy</button>' +
+        '<button class="clear-notes-btn">Clear</button>' +
+      '</div>';
+    document.body.appendChild(panel);
+    panel.querySelector('.close-x').addEventListener('click', () => panel.classList.remove('open'));
+    panel.querySelector('.save-file-btn').addEventListener('click', saveToFile);
+    panel.querySelector('.copy-notes-btn').addEventListener('click', copyForAlbert);
+    panel.querySelector('.clear-notes-btn').addEventListener('click', clearAll);
+
+    refreshCount();
+  });
+})();
+
+/* =========================================================
+   A11y — Grade Pill Screen Reader Upgrade
+   The .grade-pill elements are 14px color-only circles,
+   too small for inline letters. This upgrade adds role="img"
+   and an aria-label derived from CSS class + existing title
+   so screen readers announce each pill correctly.
+   ========================================================= */
+(function() {
+  const GRADE_LABELS = {
+    sg: 'Super Green',
+    g:  'Green',
+    r:  'Red',
+    ung: 'Ungraded'
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.grade-pill').forEach(function(pill) {
+      let gradeLabel = '';
+      ['sg','g','r','ung'].forEach(function(c) {
+        if (pill.classList.contains(c)) gradeLabel = GRADE_LABELS[c];
+      });
+      if (!gradeLabel) return;
+      const isCritical = pill.classList.contains('critical') ? ' (Critical Number)' : '';
+      const titleText = pill.getAttribute('title') || '';
+      const ariaLabel = titleText
+        ? gradeLabel + isCritical + ': ' + titleText
+        : gradeLabel + isCritical;
+      pill.setAttribute('role', 'img');
+      pill.setAttribute('aria-label', ariaLabel);
+    });
+    /* Mark grade-row containers as lists for screen readers */
+    document.querySelectorAll('.grade-row').forEach(function(row) {
+      row.setAttribute('role', 'list');
+      row.querySelectorAll('.grade-pill').forEach(function(pill) {
+        pill.setAttribute('role', 'listitem');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

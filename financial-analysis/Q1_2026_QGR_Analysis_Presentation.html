@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einstein Q1'26 QGR — Presentation Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --navy: #0d2b4e;
+    --navy-light: #1a3a5c;
+    --orange: #F9A825;
+    --orange-dark: #b85c00;
+    --orange-bg: #fff4e0;
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --red: #c62828;
+    --red-light: #ffebee;
+    --gray-50: #f8f9fa;
+    --gray-100: #f0f2f5;
+    --gray-200: #dde3e8;
+    --gray-300: #c8d0d8;
+    --gray-400: #b0bec5;
+    --gray-600: #5c6670;
+    --gray-800: #1a1a1a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.55;
+    margin: 0;
+    background: var(--gray-50);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+  /* Sidebar */
+  .sidebar {
+    background: var(--navy);
+    color: white;
+    padding: 24px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    font-size: 12.5px;
+  }
+  .sidebar h4 {
+    color: var(--orange);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 16px 0 8px 0;
+    font-weight: 700;
+  }
+  .sidebar h4:first-child { margin-top: 0; }
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 8px;
+    border-radius: 3px;
+    margin-bottom: 1px;
+    line-height: 1.35;
+  }
+  .sidebar a:hover {
+    background: rgba(249, 168, 37, 0.18);
+    color: var(--orange);
+  }
+  .sidebar .toc-section { margin-bottom: 14px; }
+  .sidebar .brand {
+    font-weight: 900;
+    font-size: 16px;
+    color: white;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .sidebar .brand .quarter {
+    display: block;
+    font-weight: 400;
+    font-size: 11.5px;
+    color: var(--gray-300);
+    margin-top: 2px;
+  }
+  /* Content */
+  .content {
+    padding: 32px 48px 48px 48px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  /* Title block */
+  .title-block {
+    border-left: 6px solid var(--orange);
+    padding: 4px 0 4px 18px;
+    margin-bottom: 24px;
+  }
+  .title-block h1 {
+    color: var(--navy);
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+  }
+  .title-block .subtitle {
+    color: var(--gray-600);
+    font-size: 13px;
+    margin: 0;
+  }
+  /* Headings */
+  h2 {
+    color: var(--navy);
+    font-size: 19px;
+    font-weight: 700;
+    margin: 36px 0 8px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--navy);
+  }
+  h3 {
+    color: var(--navy-light);
+    font-size: 15.5px;
+    font-weight: 700;
+    margin: 22px 0 6px 0;
+  }
+  h4 {
+    color: var(--gray-800);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 16px 0 4px 0;
+  }
+  p { margin: 6px 0 10px 0; }
+  ul, ol { margin: 6px 0 10px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  strong { color: var(--gray-800); font-weight: 700; }
+  code {
+    background: var(--gray-100);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'SF Mono', Monaco, monospace;
+  }
+  a { color: var(--navy); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin: 28px 0;
+  }
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 18px 0;
+    font-size: 12.5px;
+  }
+  th {
+    background: var(--navy);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  td {
+    padding: 6px 10px;
+    border: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--gray-50); }
+  /* Exec summary card */
+  .exec-card {
+    background: white;
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin: 16px 0 32px 0;
+    box-shadow: 0 4px 14px rgba(13,43,78,0.08);
+  }
+  .exec-card .exec-label {
+    color: var(--orange);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .exec-card h2 {
+    border: none;
+    margin: 0 0 18px 0;
+    padding: 0;
+    font-size: 22px;
+  }
+  /* Stat tiles */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .stat-tile {
+    background: var(--gray-50);
+    border-left: 4px solid var(--orange);
+    padding: 14px 16px;
+    border-radius: 0 4px 4px 0;
+  }
+  .stat-tile.green { border-left-color: var(--green); }
+  .stat-tile.red { border-left-color: var(--red); }
+  .stat-tile .stat-label {
+    color: var(--gray-600);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .stat-tile .stat-value {
+    color: var(--navy);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .stat-tile .stat-delta {
+    color: var(--gray-600);
+    font-size: 11.5px;
+    font-weight: 500;
+    margin-top: 3px;
+  }
+  .stat-tile .stat-delta.pos { color: var(--green); font-weight: 700; }
+  .stat-tile .stat-delta.neg { color: var(--red); font-weight: 700; }
+  /* Three-lens pills */
+  .lens-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .lens-card {
+    background: var(--gray-50);
+    border-radius: 6px;
+    padding: 14px 16px;
+    border-top: 4px solid var(--navy);
+  }
+  .lens-card .lens-grade {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .lens-card .lens-name {
+    color: var(--gray-600);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .lens-card .lens-rationale {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .progression {
+    text-align: center;
+    background: var(--orange-bg);
+    border: 1px dashed var(--orange);
+    border-radius: 4px;
+    padding: 10px;
+    margin: 14px 0;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+  }
+  /* Headlines */
+  .headline-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+    counter-reset: headline-counter;
+  }
+  .headline-list li {
+    counter-increment: headline-counter;
+    background: var(--gray-50);
+    border-left: 4px solid var(--orange);
+    padding: 12px 16px 12px 48px;
+    margin: 8px 0;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+  .headline-list li::before {
+    content: counter(headline-counter);
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    background: var(--orange);
+    color: white;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 12px;
+  }
+  /* Priority table inside exec card */
+  .priority-table {
+    margin-top: 14px;
+  }
+  .priority-table th { background: var(--navy-light); }
+  /* Section jumper pills */
+  .jump-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 24px 0;
+  }
+  .jump-pill {
+    background: var(--navy);
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .jump-pill:hover {
+    background: var(--orange);
+  }
+  /* Methodology callout */
+  .method-callout {
+    background: var(--orange-bg);
+    border: 1px solid var(--orange);
+    border-left: 6px solid var(--orange);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .method-callout h3 {
+    color: var(--orange-dark);
+    margin-top: 0;
+    font-size: 14px;
+  }
+  /* Plain-language explanation: <details> wrapping */
+  details.explainer {
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-400);
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  details.explainer[open] {
+    border-left-color: var(--orange);
+    background: var(--orange-bg);
+  }
+  details.explainer summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 13px;
+    list-style: none;
+    padding: 2px 0;
+  }
+  details.explainer summary::-webkit-details-marker { display: none; }
+  details.explainer summary::before {
+    content: '▸';
+    color: var(--orange);
+    margin-right: 6px;
+    font-size: 11px;
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  details.explainer[open] summary::before {
+    transform: rotate(90deg);
+  }
+  details.explainer .expl-body {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--gray-300);
+    font-size: 13px;
+  }
+  /* Chart containers */
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 16px 18px 12px 18px;
+    margin: 14px 0 22px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .chart-wrap .chart-title {
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 13.5px;
+    margin: 0 0 4px 0;
+  }
+  .chart-wrap .chart-sub {
+    color: var(--gray-600);
+    font-size: 11.5px;
+    margin: 0 0 10px 0;
+  }
+  .chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+  }
+  .chart-canvas-wrap.tall { height: 420px; }
+  .chart-canvas-wrap.short { height: 240px; }
+  /* Print-only static chart fallback (hidden on screen) */
+  .print-only { display: none; }
+  /* Strategic Conversation Starter */
+  .conversation-starter {
+    background: linear-gradient(135deg, var(--orange-bg) 0%, #fff8e7 100%);
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .conversation-starter h2 {
+    color: var(--orange-dark);
+    border: none;
+    padding: 0;
+    margin: 0 0 4px 0;
+    font-size: 20px;
+  }
+  .conversation-starter .cs-intro {
+    color: var(--gray-600);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .cs-question {
+    background: white;
+    border-left: 4px solid var(--orange);
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .cs-question .cs-num {
+    color: var(--orange-dark);
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .cs-question .cs-prompt {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--gray-800);
+  }
+  .cs-question .cs-context {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+  /* Caveats banner */
+  blockquote {
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-400);
+    margin: 8px 0;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+  blockquote em { font-style: normal; }
+  /* Footnote / verification flag */
+  .verify-flag {
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    border-left: 2px solid var(--gray-400);
+    margin: 6px 0;
+    display: inline-block;
+  }
+  /* Responsive */
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .content { padding: 24px 20px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .lens-row { grid-template-columns: 1fr; }
+  }
+  /* Print */
+  @media print {
+    body { background: white; font-size: 11px; }
+    .layout { grid-template-columns: 1fr; max-width: none; }
+    .sidebar, .jump-strip { display: none !important; }
+    .content { padding: 0; }
+    .exec-card { box-shadow: none; page-break-inside: avoid; }
+    .chart-wrap { page-break-inside: avoid; box-shadow: none; }
+    .chart-canvas-wrap { display: none; }
+    .print-only { display: block; }
+    details.explainer { background: white; border-left: 3px solid var(--orange); }
+    details.explainer[open] summary, details.explainer summary { color: var(--navy); }
+    details.explainer summary::before { content: ''; margin: 0; }
+    /* Force-open all details for print */
+    details:not([open]) > *:not(summary) { display: block !important; }
+    h1, h2, h3 { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+  }
+
+  /* === Personnel Budget Attainment (NEW v2.5) === */
+  .new-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+  }
+  .pa-intro {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-800);
+    margin: 8px 0 12px 0;
+  }
+  .pa-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--gray-600);
+    margin: 6px 0 16px 0;
+    padding: 8px 12px;
+    background: var(--gray-50);
+    border-radius: 4px;
+  }
+  .pa-legend-item { display: flex; align-items: center; gap: 6px; }
+  .pa-legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .pa-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 12px 0 16px 0;
+  }
+  .pa-tile {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-left-width: 4px;
+    border-radius: 4px;
+    padding: 10px 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .pa-tile.pa-crit { border-left-color: var(--red); }
+  .pa-tile.pa-warn { border-left-color: var(--orange); }
+  .pa-tile.pa-ok { border-left-color: var(--green); }
+  .pa-tile.pa-over { border-left-color: #1565c0; }
+  .pa-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .pa-branch {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--navy);
+  }
+  .pa-stats {
+    font-size: 11px;
+    color: var(--gray-600);
+  }
+  .pa-avg { font-weight: 700; color: var(--gray-800); }
+  .pa-under { font-weight: 600; }
+  .pa-tile.pa-crit .pa-under { color: var(--red); }
+  .sparkline {
+    width: 100%;
+    height: 50px;
+    display: block;
+    margin: 4px 0 6px 0;
+  }
+  .sparkline .target-line {
+    stroke: var(--gray-300);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+  .sparkline .line {
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .sparkline .line-crit { stroke: var(--red); }
+  .sparkline .line-warn { stroke: var(--orange); }
+  .sparkline .line-ok { stroke: var(--green); }
+  .sparkline .line-over { stroke: #1565c0; }
+  .sparkline .dot-crit { fill: var(--red); }
+  .sparkline .dot-warn { fill: var(--orange); }
+  .sparkline .dot-ok { fill: var(--green); }
+  .sparkline .dot-over { fill: #1565c0; }
+  .pa-legend-dot.dot-crit { background: var(--red); }
+  .pa-legend-dot.dot-warn { background: var(--orange); }
+  .pa-legend-dot.dot-ok { background: var(--green); }
+  .pa-legend-dot.dot-over { background: #1565c0; }
+  .pa-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--gray-600);
+    border-top: 1px solid var(--gray-100);
+    padding-top: 5px;
+  }
+  .pa-grade {
+    display: inline-block;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  .pa-grade-f { background: var(--red-light); color: var(--red); }
+  .pa-grade-d { background: #fff8e1; color: var(--orange-dark); }
+  .pa-grade-c { background: #fff3e0; color: var(--orange-dark); }
+  .pa-grade-b { background: var(--green-light); color: var(--green); }
+  .pa-grade-a { background: var(--green-light); color: var(--green); }
+  .pa-grade-app { background: #e3f2fd; color: #1565c0; }
+  .pa-period-labels {
+    font-family: monospace;
+    color: var(--gray-400);
+    font-size: 9.5px;
+  }
+  .pa-footnote {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-300);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    margin: 8px 0 16px 0;
+  }
+  @media (max-width: 760px) {
+    .pa-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      Einstein QGR
+      <span class="quarter">Q1'26 · Roundtable Edition</span>
+    </div>
+    <div class="toc-section">
+      <h4>At a Glance</h4>
+      <a href="#exec-summary">Executive Summary</a>
+      <a href="#three-lens">Three-Lens Grade</a>
+      <a href="#headlines">Top 3 Headlines</a>
+      <a href="#priorities">Top 3 Priorities</a>
+    </div>
+    <div class="toc-section">
+      <h4>Context</h4>
+      <a href="#caveats">Data Caveats</a>
+      <a href="#methodology">Methodology Changes</a>
+    </div>
+    <div class="toc-section">
+      <h4>Performance</h4>
+      <a href="#sec-financial">1 · Financial</a>
+      <a href="#sec-marketing">2 · Marketing</a>
+      <a href="#sec-sales">3 · Sales</a>
+      <a href="#sec-pricing">4 · Pricing</a>
+      <a href="#sec-nps">5 · NPS</a>
+      <a href="#sec-strategic">6 · Strategic Insights</a>
+    </div>
+    <div class="toc-section">
+      <h4>Discussion</h4>
+      <a href="#conversation-starter">Conversation Starter</a>
+    </div>
+    <div class="toc-section">
+      <h4>Reference</h4>
+      <a href="#appendix">Appendix · Data Audit</a>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- TITLE -->
+    <div class="title-block">
+      <h1>Einstein Moving Company — Q1'26 Quarterly Growth Review</h1>
+      <p class="subtitle">
+        <strong>Quarter:</strong> Q1'26 (Feb 1 – Apr 30, 2026) ·
+        <strong>Analysis Date:</strong> April 24, 2026 ·
+        <strong>Based on:</strong> Matisen's Mongo re-pull · Feb Actual / Mar Prelim / Apr Forecast · CRM through 4/18 (12-day lookback)
+      </p>
+    </div>
+
+    <!-- EXEC SUMMARY CARD -->
+    <section id="exec-summary" class="exec-card">
+      <div class="exec-label">Executive Summary — At a Glance</div>
+      <h2>A profitable growth quarter inside a missed plan.</h2>
+      <p>Einstein delivered <strong>+6.9% YoY revenue</strong> in a ~flat Texas housing market, with <strong>NOI up 37.5%</strong> and margin expanding <strong>+1.8 pts</strong>. We missed an ambitious NOI target by $340K — overwhelmingly a February cost-structure problem and CTXH below-plan execution, not a demand or pricing crisis. The Apr 5 autobooking form and Matisen's canonical conversion formula together changed YoY conversion comparability going forward.</p>
+
+      <!-- Stat tiles -->
+      <div class="stat-grid">
+        <div class="stat-tile green">
+          <div class="stat-label">Revenue</div>
+          <div class="stat-value">$5.47M</div>
+          <div class="stat-delta pos">+6.9% YoY</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">NOI</div>
+          <div class="stat-value">$454K</div>
+          <div class="stat-delta pos">+37.5% YoY</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">NOI Margin</div>
+          <div class="stat-value">8.31%</div>
+          <div class="stat-delta pos">+1.8 pts YoY</div>
+        </div>
+        <div class="stat-tile green">
+          <div class="stat-label">Avg Booked Ticket</div>
+          <div class="stat-value">$1,502</div>
+          <div class="stat-delta pos">+12.8% YoY</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">NPS</div>
+          <div class="stat-value">91.9</div>
+          <div class="stat-delta pos">+1.9 vs target</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Truck Utilization</div>
+          <div class="stat-value">66.2%</div>
+          <div class="stat-delta">on target (-0.1 pts)</div>
+        </div>
+        <div class="stat-tile red">
+          <div class="stat-label">NOI vs Target</div>
+          <div class="stat-value">57.2%</div>
+          <div class="stat-delta neg">-$340K gap</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Lead Volume</div>
+          <div class="stat-value">9,307</div>
+          <div class="stat-delta pos">+31.7% YoY*</div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--gray-600);margin:0 0 4px 0;">*Lead volume increase partly methodological — Apr 5 autobooking form widened lead capture. See Section 3.5 cohort analysis.</p>
+
+      <!-- Three-lens -->
+      <h3 id="three-lens" style="margin-top:22px;">Three-Lens Performance Assessment</h3>
+      <div class="lens-row">
+        <div class="lens-card" style="border-top-color:#cc7700;">
+          <div class="lens-grade" style="background:#cc7700;">C</div>
+          <div class="lens-name">Lens 1 · Absolute (vs Target)</div>
+          <div class="lens-rationale">Revenue 93.7% (B), NOI 57.2% (F drag), TUR / NPS / Margin on plan. Weighted: <strong>C</strong>.</div>
+        </div>
+        <div class="lens-card" style="border-top-color:var(--green);">
+          <div class="lens-grade" style="background:var(--green);">B</div>
+          <div class="lens-name">Lens 2 · Market-Adjusted</div>
+          <div class="lens-rationale">+6.9% revenue in flat Texas housing (~8 pt outperformance). Per rubric: <strong>B</strong>.</div>
+        </div>
+        <div class="lens-card" style="border-top-color:var(--green);">
+          <div class="lens-grade" style="background:var(--green);">B</div>
+          <div class="lens-name">Lens 3 · Historical Trend</div>
+          <div class="lens-rationale">Revenue +6.9%, NOI +37.5%, margin +1.8 pts = significant improvement. Per rubric: <strong>B</strong>.</div>
+        </div>
+      </div>
+      <div class="progression">Progression: C → B → B</div>
+      <p style="font-size:13px;color:var(--gray-600);margin:0 0 12px 0;">Translation: <em>"We set an ambitious plan and missed it, but we outgrew the market and outperformed last year."</em> A planning-calibration story, not an execution-failure story.</p>
+
+      <details class="explainer">
+        <summary>What a C → B → B progression actually means</summary>
+        <div class="expl-body">
+          <p>Three lenses, three different questions, three independent answers:</p>
+          <ul>
+            <li><strong>Lens 1 (C)</strong> asks "did we hit our plan?" — honest answer: no, the NOI target was 13.63% margin and we delivered 8.31%. Revenue got to 93.7% of target. Most other metrics hit. C is a fair absolute grade — not great, not catastrophic.</li>
+            <li><strong>Lens 2 (B)</strong> asks "did we outperform the market?" — Texas housing was roughly flat; Einstein revenue grew +6.9% YoY. ~8 pt outperformance vs peers who are treading water. B per rubric.</li>
+            <li><strong>Lens 3 (B)</strong> asks "did we improve on ourselves?" — Revenue up 6.9%, NOI up 37.5%, margin up 1.8 pts. Clear "significant metric improvement" on the rubric. B.</li>
+          </ul>
+          <p>The progression pattern matters more than any individual letter. <strong>C → B → B says: "we set an ambitious plan and missed it, but we outgrew the market and outperformed last year."</strong> Planning-calibration story, not an execution-failure story.</p>
+          <p>Compare to Q4'25's progression (B / A- / B+): we were ON plan then, and the big outperformance was market-adjusted (Texas housing had declined more sharply). Different story shape, different strategic response.</p>
+          <p><strong>What went right (the two B's):</strong> Underlying business grew, pricing held, margin expanded, NPS stayed at 91.9. Every structural health indicator moved the right direction. The market gave us a ~flat tailwind and we grew meaningfully above it.</p>
+          <p><strong>What went wrong (the C):</strong> February. The 13.63% NOI plan assumed costs would flex with seasonal revenue — they mostly don't. February ran a -2.3% NOI margin because fixed costs don't shrink in slow season. March and April recovered to 10.9% and 13.5%. Q1 is structurally back-loaded; the plan didn't account for that.</p>
+          <p><strong>Three threads worth pulling at the Ownership QGR:</strong></p>
+          <ol>
+            <li><strong>Q2'26 target calibration:</strong> If Q2 follows historical pattern, margins recover naturally (summer season). Don't "set harder Q2 targets to make up for Q1" — that's a planning error. Q1 is Q1, Q2 is Q2.</li>
+            <li><strong>Annual target math:</strong> Full-year NOI is still trackable to plan if Q2-Q4 execute. Worth modeling whether the overall target needs adjustment given Q1 data.</li>
+            <li><strong>Plan calibration for FY'27 (next fiscal year):</strong> The lesson isn't "execute harder" — it's "plan assumptions for February are wrong." Whoever sets FY'27 targets should explicitly bake in a February loss-month model rather than assuming linear margin flex across the quarter.</li>
+          </ol>
+        </div>
+      </details>
+
+      <!-- Headlines -->
+      <h3 id="headlines">Top 3 Headlines</h3>
+      <ol class="headline-list">
+        <li><strong>NOI up +37.5% YoY, margin expanded +1.8 pts, avg ticket up +12.8% YoY.</strong> Price increases are landing cleanly and margin is capturing the value. Revenue grew +6.9% in a flat Texas housing market.</li>
+        <li><strong>April 5 autobooking form is a demand-capture win disguised as a conversion problem.</strong> Lead volume jumped 31.7% YoY. Pre-Apr 5 cohort converted at 35.46% (normal). Post-Apr 5 surfaces lower-intent leads (27.38%) that would have previously evaporated at the inestimable gate.</li>
+        <li><strong>The NOI miss is not a DFWT story — it's a CTXH target-setting story.</strong> CTXH branches account for ~70% of the $340K miss. South Austin -$86K, Houston -$68K, Leander -$66K. DFWT's Fort Worth and Tampa had NEGATIVE planned NOI targets and came in close to plan. Two of those CTXH branches (Leander, Houston) are now <strong>confirmed availability-constrained</strong> via the Q1 personnel-budget critical number — chronic under-budget hiring (72% / 77% Q1 averages, 5/5 periods below) drove a meaningful share of the miss. <em>Company-wide personnel-budget attainment finished Q1 at 95% — C grade on this critical number. See Section 1.6.1.</em></li>
+      </ol>
+
+      <!-- Priorities -->
+      <h3 id="priorities">Top 3 Priorities — Next 30 Days</h3>
+      <table class="priority-table">
+        <thead><tr><th>#</th><th>Priority</th><th>Owner</th><th>Urgency</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Sales team capacity decision — 93% lead volume increase needs response strategy (part-time peak-hour coverage vs full-time hires)</td><td>Amanda Ware</td><td>Week of Apr 28</td></tr>
+          <tr><td>2</td><td>Leander + Houston hire-rate acceleration — both <strong>CONFIRMED availability-constrained</strong> per Q1 personnel review (Leander 72% avg, Houston 77% avg, both 5/5 periods below true budget). Anne + Brian to validate Indeed sponsored-posting funnel for both branches.</td><td>Anne + Brian</td><td>May 15</td></tr>
+          <tr><td>3</td><td>Lead triage framework — prioritize by move size × move date; don't waste rep time on leads we can't fulfill regardless</td><td>Amanda Ware + Matisen</td><td>May 15</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- JUMP STRIP -->
+    <div class="jump-strip">
+      <a href="#sec-financial" class="jump-pill">Financial</a>
+      <a href="#sec-marketing" class="jump-pill">Marketing</a>
+      <a href="#sec-sales" class="jump-pill">Sales</a>
+      <a href="#sec-pricing" class="jump-pill">Pricing</a>
+      <a href="#sec-nps" class="jump-pill">NPS</a>
+      <a href="#sec-strategic" class="jump-pill">Strategic Insights</a>
+      <a href="#conversation-starter" class="jump-pill">Conversation Starter</a>
+    </div>
+
+    <!-- DATA CAVEATS -->
+    <details id="caveats" class="explainer">
+      <summary>Data Caveats — Read Before Interpreting</summary>
+      <div class="expl-body">
+        <table>
+          <thead><tr><th>Source</th><th>Coverage</th><th>Gap/Caveat</th><th>Impact</th></tr></thead>
+          <tbody>
+            <tr><td>P&amp;L (Estimated Actuals)</td><td>Feb–Apr 2026</td><td>Feb = Actual · Mar = Prelim · Apr = Forecast full month</td><td>April numbers will shift at close; NOI may improve modestly</td></tr>
+            <tr><td>CRM (EMMA / Mongo direct pull)</td><td>Feb 1 – Apr 18, 2026 (77 days)</td><td>12-day lookback applied (4/30 close - 4/18 = 12 days; exceeds skill's 4-day minimum)</td><td>Matched 77-day window for both years. $ conversion rate is clean YoY. <strong>Booked+Serviced $ and Realization Rate have a measurement-timing caveat:</strong> Q1'25 measured fully-resolved; Q1'26 still has $1.73M in future-booked moves. The +11.6% Booked+Serviced growth is directional, not precise. Use Avg Ticket and P&amp;L-based metrics as primary YoY signals.</td></tr>
+            <tr><td>Marketing</td><td>Feb 1 – Apr 18, 2026</td><td>Partial period</td><td>Daily-rate projections applied for YoY</td></tr>
+            <tr><td>NPS</td><td>Feb 1 – Apr 18, 2026</td><td>Partial period</td><td>Response count may increase slightly; scores directionally final</td></tr>
+            <tr><td>Q1'25 P&amp;L comparison</td><td>Full quarter (closed)</td><td>N/A</td><td>Full YoY financial comparison available</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- METHODOLOGY CALLOUT -->
+    <div id="methodology" class="method-callout">
+      <h3>⚠️ Methodology Change Callout — New in v3.1 Reporting</h3>
+      <p style="margin-top:6px;"><strong>Two compounding methodology changes affect Q1'26 conversion rate comparability with prior periods.</strong></p>
+      <p><strong>1. April 5, 2026 autobooking form launch (mid-quarter CRM funnel change).</strong> Prior to April 5, users who got an "inestimable" quote result had to fill out a second form to be routed to sales. Many dropped off. After April 5, contact info is captured BEFORE the inestimable gate — those users now route directly to sales. Net effect: lead volume roughly doubled, with lower aggregate intent.</p>
+
+      <table>
+        <thead><tr><th>Cohort</th><th>Window</th><th>Conv Rate $</th><th>Lead Quality</th></tr></thead>
+        <tbody>
+          <tr><td>Cohort A (pre-change)</td><td>Feb 1 – Apr 4</td><td><strong>35.46%</strong></td><td>Normal (Einstein's historical 35-42% range)</td></tr>
+          <tr><td>Cohort B (post-change)</td><td>Apr 5 – Apr 18</td><td><strong>27.38%</strong></td><td>Dilution from inestimable-recapture flow</td></tr>
+          <tr><td>Cohort B: directBook subset</td><td>Apr 5 – Apr 18</td><td><strong>86.03%</strong>*</td><td>High-intent (user volunteers contact info)</td></tr>
+          <tr><td><strong>Q1'26 blended</strong></td><td>Feb 1 – Apr 18</td><td><strong>33.20%</strong></td><td>New baseline going forward</td></tr>
+        </tbody>
+      </table>
+      <div class="verify-flag">*directBook definition pending Matisen verification — current understanding is "self-serve auto-booking flow with no sales rep involvement." 86.03% reflects $790K booked of $918K quoted to that cohort.</div>
+
+      <p style="margin-top:10px;"><strong>2. Canonical $ conversion formula (Matisen 4/24 — adopted Einstein standard).</strong></p>
+      <p style="text-align:center;"><code>Conv % ($) = (Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $)</code></p>
+      <p>Wider denominator includes all quote lifecycle states. Both years retroactively recomputed on same formula. Prior reports using <code>Booked $ / Quoted $</code> (~85-90% range) measured a different concept and should NOT be compared to this report's numbers.</p>
+      <p><strong>Implication:</strong> The -10.6pt YoY conversion "decline" is partially methodological, not purely demand or pricing. Verified YoY metrics (Revenue +6.9%, NOI +37.5%, Avg Ticket +12.8%, margin +1.8 pts) tell a different, cleaner story.</p>
+    </div>
+
+    <hr>
+
+    <!-- SECTION 1 — FINANCIAL -->
+    <h2 id="sec-financial">Section 1 · Financial Performance</h2>
+
+    <h3>1.0 Target Attainment Summary</h3>
+    <blockquote><em>How we did against the plan across every headline metric.</em></blockquote>
+    <table>
+      <thead><tr><th>Metric</th><th>Target</th><th>Actual</th><th>Attainment</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue</td><td>$5,831,973</td><td>$5,465,959</td><td>93.7%</td><td>-$366,014</td></tr>
+        <tr><td>Einstein NOI ($)</td><td>$794,675</td><td>$454,479</td><td>57.2%</td><td>-$340,196</td></tr>
+        <tr><td>Einstein NOI (%)</td><td>13.63%</td><td>8.31%</td><td>—</td><td>-5.32 pts</td></tr>
+        <tr><td>Gross Margin %</td><td>~54%</td><td>53.9%</td><td>~100%</td><td>-0.1 pts</td></tr>
+        <tr><td>Avg Truck Count</td><td>76</td><td>77.2</td><td>101.6%</td><td>+1.2 trucks</td></tr>
+        <tr><td>Truck Utilization</td><td>66.3%</td><td>66.2%</td><td>99.8%</td><td>-0.1 pts</td></tr>
+        <tr><td><strong>NPS</strong></td><td><strong>90</strong></td><td><strong>91.9</strong></td><td><strong>102.2%</strong></td><td><strong>+1.9 pts</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Observation:</strong> Gross margin on plan, TUR on plan, NPS beat plan. The single material miss is NOI $ (57.2%), driven by operating expense structure running above plan as a % of revenue — concentrated in February (slow season) and below-plan branch execution.</p>
+
+    <!-- CHART 1: Monthly NOI Trajectory -->
+    <div class="chart-wrap">
+      <div class="chart-title">Monthly NOI Trajectory — The February Cost-Drag Story</div>
+      <div class="chart-sub">February ran a -$34K loss on slow-season fixed costs. March and April recovered. Target margin 13.63% (dashed line); April forecast nearly hits it.</div>
+      <div class="chart-canvas-wrap"><canvas id="chartNOITrajectory"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Month</th><th>Revenue</th><th>Einstein NOI</th><th>NOI Margin</th></tr></thead>
+      <tbody>
+        <tr><td>February (Actual)</td><td>$1,485,689</td><td><strong>-$34,323</strong></td><td><strong>-2.3%</strong></td></tr>
+        <tr><td>March (Preliminary)</td><td>$1,915,003</td><td><strong>+$209,615</strong></td><td><strong>10.9%</strong></td></tr>
+        <tr><td>April (Forecast)</td><td>$2,065,268</td><td><strong>+$279,187</strong></td><td><strong>13.5%</strong></td></tr>
+        <tr><td><strong>Q1 Total</strong></td><td><strong>$5,465,959</strong></td><td><strong>$454,479</strong></td><td><strong>8.3%</strong></td></tr>
+      </tbody>
+    </table>
+    <p>April forecast margin (13.5%) nearly hits the 13.63% target. Q1 is structurally back-loaded; February slow-season loss is the primary drag.</p>
+
+    <h3>1.1 Revenue Gap Waterfall</h3>
+    <p><strong>Target Revenue:</strong> $5,831,973 · <strong>Actual:</strong> $5,465,959 · <strong>Total Gap:</strong> -$366,014 (-6.3%)</p>
+    <table>
+      <thead><tr><th>Driver</th><th>Direction</th><th>Impact</th><th>% of Gap</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Lead volume (+31.7% YoY on daily rate)</td><td>Positive</td><td>+$1.1M</td><td>—</td><td>Autobooking form capturing new demand</td></tr>
+        <tr><td>Booked+Serviced $ growth (+11.6% YoY)</td><td>Positive</td><td>+$586K</td><td>—</td><td>Underlying business growing</td></tr>
+        <tr><td>Avg Ticket (+12.8% YoY)</td><td>Positive</td><td>+$170/move</td><td>—</td><td>Price increases landing</td></tr>
+        <tr><td>Conversion rate vs ambitious target</td><td>Negative</td><td>-$500K</td><td>137%</td><td>Target assumed higher conversion than methodology delivers</td></tr>
+        <tr><td>Mid-quarter funnel dilution (Apr 5 cohort)</td><td>Negative</td><td>-$250K</td><td>68%</td><td>Cohort B 27.38% vs Cohort A 35.46%</td></tr>
+        <tr><td>Service timing (980 Q1'26 moves pending completion)</td><td>Neutral</td><td>—</td><td>—</td><td>Will resolve in Q2'26</td></tr>
+        <tr><td><strong>Total Explained</strong></td><td></td><td><strong>-$366K</strong></td><td><strong>~100%</strong></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <details class="explainer">
+      <summary>What a 6.3% revenue miss actually means</summary>
+      <div class="expl-body">
+        <p>A 6.3% miss sounds small, and in absolute dollars it is ($366K). The more useful framing: <strong>revenue was up +6.9% YoY but came in ~6% short of a plan that expected higher growth.</strong> Einstein grew — just not as fast as the plan assumed. This is a planning-calibration story as much as an execution one.</p>
+        <p>One caveat on how to read the CRM comparison table: Matisen's Mongo pull shows $1.73M in future-scheduled Q1'26 bookings (980 moves with service dates beyond Apr 18). Q1'25 shows $0 in the equivalent field, but <strong>only because those bookings have since resolved (serviced or cancelled) — not because Q1'25 had no pipeline at its equivalent point in time.</strong> Treat the $1.73M as "visible Q2 service backlog we can track," not as "more pipeline than we had last year."</p>
+        <p><strong>Two forces pulling in opposite directions:</strong></p>
+        <ul>
+          <li><em>Pulling down:</em> Conversion rate dropped 10.6 pts YoY on the canonical formula. Some methodological (Apr 5 autobooking form), some real (pricing ceilings at specific branches).</li>
+          <li><em>Ticket growth partially offsetting:</em> Avg booked ticket grew +12.8% YoY ($1,332 → $1,502). Every lead that converts is worth more than a year ago.</li>
+        </ul>
+        <p><strong>Three distinct levers for Q2'26:</strong></p>
+        <ol>
+          <li><strong>Recover conversion on existing lead flow</strong> — better triage on Apr 5 cohort moves blended rate back toward 35-42% historical range.</li>
+          <li><strong>Set Q2'26 revenue targets using verified Q1'26 metrics</strong> — revenue +6.9% YoY, NOI +37.5%, ticket +12.8%. Don't bake $1.73M future-bookings into Q2 as "already-won."</li>
+          <li><strong>Decide whether the 93% lead volume jump is durable</strong> — if yes, build sales capacity. If partly one-time integration effect, don't over-build.</li>
+        </ol>
+      </div>
+    </details>
+
+    <h3>1.2 NOI Gap Waterfall</h3>
+    <p><strong>Target NOI:</strong> $794,675 (13.63%) · <strong>Actual:</strong> $454,479 (8.31%) · <strong>Total Gap:</strong> -$340,196 (-42.8%)</p>
+    <table>
+      <thead><tr><th>Driver</th><th>Impact</th><th>% of Gap</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue shortfall at target margin (-$366K × 13.63%)</td><td>-$50K</td><td>15%</td></tr>
+        <tr><td>Operating expense overrun vs plan (+5.2 pts as % of revenue)</td><td>-$284K</td><td>84%</td></tr>
+        <tr><td>Below-target branch NOI (SA, Houston, Leander, Dallas combined)</td><td>-$28K</td><td>8%</td></tr>
+        <tr><td>Favorable overhead (77.2 trucks vs 76 target)</td><td>+$22K</td><td>-6%</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>-$340K</strong></td><td><strong>~100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>The NOI story is cost structure, not volume.</strong> Even if revenue had hit target, Einstein would have missed NOI by ~$290K due to expense structure running above plan. February problem (-$34K company NOI in Feb alone) compounded by below-plan branch execution in CTXH.</p>
+
+    <details class="explainer">
+      <summary>What "expense structure running above plan" actually means</summary>
+      <div class="expl-body">
+        <p>The plan assumed costs at <strong>86.37%</strong> of revenue (the inverse of the 13.63% target NOI margin). What actually happened was costs at <strong>91.69%</strong> of revenue — <strong>5.32 percentage points higher than plan.</strong></p>
+        <p><strong>Only 15% of the NOI miss came from the revenue shortfall. 85% came from the cost structure being thicker than planned.</strong></p>
+        <p><strong>Why — the February fixed-cost problem:</strong> Think of a restaurant with $10K/month rent. Plan for 1,000 customers, get 900 — per-customer cost goes up because that $10K gets spread over fewer people. The restaurant didn't actually spend more; the costs just ate a bigger share of thinner revenue.</p>
+        <p>That's what happened to Einstein in February. Full-quarter fixed costs (trucks, insurance, salaried ops team, facilities) against thin winter revenue = -2.3% margin. March recovered to 10.9% and April to 13.5% (near-target). The 5.32 pt margin miss is concentrated in February, not spread evenly.</p>
+        <p><strong>Three planning options for FY'27:</strong></p>
+        <ol>
+          <li><strong>February revenue grows</strong> — marketing push, pricing strategy, or non-moving revenue pilot specifically for slow season.</li>
+          <li><strong>February costs become more variable</strong> — more contractor labor, fewer salaried fixed roles, facility/fleet right-sizing.</li>
+          <li><strong>Future quarterly targets adjust for February structurally</strong> — budget Feb as a cash-burn month, not a missed month.</li>
+        </ol>
+      </div>
+    </details>
+
+    <h3>1.3 Branch-Level Financial Performance</h3>
+    <blockquote><em>Per-branch NOI performance against plan.</em></blockquote>
+
+    <!-- CHART 2: Branch NOI Variance -->
+    <div class="chart-wrap">
+      <div class="chart-title">Branch NOI Variance vs Plan ($)</div>
+      <div class="chart-sub">Sorted worst to best. CTXH branches (orange) account for 70% of the company miss; DFWT planned-loss branches (gray) came in close to plan.</div>
+      <div class="chart-canvas-wrap tall"><canvas id="chartBranchVariance"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Branch</th><th>Revenue</th><th>NOI Actual</th><th>NOI Target</th><th>Variance $</th><th>Attainment</th><th>Region</th><th>Tier</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>$1,103,272</td><td>$170,279</td><td>$179,581</td><td>-$9,302</td><td>94.8%</td><td>CTXH</td><td>🟢 Close to plan</td></tr>
+        <tr><td>South Austin</td><td>$911,839</td><td>$134,785</td><td>$220,545</td><td><strong>-$85,760</strong></td><td>61.1%</td><td>CTXH</td><td>🔴 Biggest CTXH miss</td></tr>
+        <tr><td>Leander</td><td>$454,294</td><td>$67,598</td><td>$133,811</td><td><strong>-$66,213</strong></td><td>50.5%</td><td>CTXH</td><td>🔴 CONFIRMED availability-constrained (72% personnel avg, 5/5 periods below budget)</td></tr>
+        <tr><td>San Antonio</td><td>$559,611</td><td>$32,923</td><td>$39,571</td><td>-$6,648</td><td>83.2%</td><td>CTXH</td><td>🟢 Near plan</td></tr>
+        <tr><td>Houston</td><td>$564,436</td><td>$12,896</td><td>$81,381</td><td><strong>-$68,485</strong></td><td>15.8%</td><td>CTXH</td><td>🔴 Target was ambitious (92% TUR)</td></tr>
+        <tr><td>McKinney</td><td>$431,781</td><td>$46,257</td><td>$62,056</td><td>-$15,799</td><td>74.5%</td><td>DFWT</td><td>🟡 Moderate miss</td></tr>
+        <tr><td>Dallas</td><td>$855,592</td><td>$17,957</td><td>$73,867</td><td><strong>-$55,910</strong></td><td>24.3%</td><td>DFWT</td><td>🔴 Significant miss</td></tr>
+        <tr><td>Fort Worth</td><td>$271,168</td><td>-$20,530</td><td><strong>-$4,169</strong></td><td>-$16,361</td><td>n/a*</td><td>DFWT</td><td>🟡 Planned-loss quarter</td></tr>
+        <tr><td>Garland</td><td>$140,815</td><td>-$3,430</td><td>$8,693</td><td>-$12,123</td><td>Flip to loss</td><td>DFWT</td><td>🟡 Small miss</td></tr>
+        <tr><td>Tampa</td><td>$173,152</td><td>-$4,256</td><td><strong>-$661</strong></td><td>-$3,595</td><td>n/a*</td><td>DFWT</td><td>🟡 Planned-loss quarter</td></tr>
+        <tr><td><strong>Company Total</strong></td><td><strong>$5,465,959</strong></td><td><strong>$454,479</strong></td><td><strong>$794,675</strong></td><td><strong>-$340,196</strong></td><td><strong>57.2%</strong></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <blockquote>*Fort Worth and Tampa both had NEGATIVE planned NOI targets. These are planned-loss quarters — not structural failures. FW came in $16K below a planned-loss target; Tampa $4K below.</blockquote>
+
+    <h3>1.4 Regional Analysis — $ AND %</h3>
+    <table>
+      <thead><tr><th>Region</th><th>Revenue</th><th>% of Rev</th><th>Actual NOI</th><th>Target NOI</th><th>NOI Miss $</th><th>% of Co Miss</th><th>NOI Margin</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CTXH</strong></td><td>$3,593,452</td><td>65.8%</td><td>$418,481</td><td><strong>$654,889</strong></td><td><strong>-$236,408</strong></td><td><strong>69.6%</strong></td><td>11.6%</td></tr>
+        <tr><td><strong>DFWT</strong></td><td>$1,872,507</td><td>34.2%</td><td>$35,998</td><td><strong>$139,786</strong></td><td><strong>-$103,788</strong></td><td><strong>30.5%</strong></td><td>1.9%</td></tr>
+        <tr><td><strong>Company</strong></td><td>$5,465,959</td><td>100%</td><td>$454,479</td><td>$794,675</td><td>-$340,196</td><td>100%</td><td>8.3%</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Key finding — absolute dollars tell a different story than margins:</strong></p>
+    <ul>
+      <li><strong>DFWT has lower %-margins</strong> (1.9% vs CTXH 11.6%) but DFWT had lower NOI expectations going in. DFWT combined miss: -$104K.</li>
+      <li><strong>CTXH has higher %-margins</strong> but bigger absolute NOI misses. CTXH combined miss: -$236K — more than 2x DFWT.</li>
+      <li>Three of the four largest individual branch misses are CTXH (South Austin -$86K, Houston -$68K, Leander -$66K).</li>
+    </ul>
+    <p>The "DFWT drags company" framing common in prior analyses is a %-margin artifact. In absolute dollars driving the company-level miss, <strong>CTXH target-miss is the bigger story.</strong></p>
+
+    <h3>1.5 Year-over-Year Revenue Performance</h3>
+
+    <!-- CHART 3: YoY Revenue by Branch -->
+    <div class="chart-wrap">
+      <div class="chart-title">YoY Revenue Growth by Branch</div>
+      <div class="chart-sub">Newer/smaller branches (FW, Tampa, McKinney) are the growth story. Houston is the only material decliner (-5.6%).</div>
+      <div class="chart-canvas-wrap tall"><canvas id="chartYoYRevenue"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Branch</th><th>Q1'26 Revenue</th><th>Q1'25 Revenue</th><th>YoY Change</th><th>Tier</th></tr></thead>
+      <tbody>
+        <tr><td>McKinney</td><td>$431,781</td><td>$361,129</td><td><strong>+19.6%</strong></td><td>🚀 Breakout</td></tr>
+        <tr><td>Fort Worth</td><td>$271,168</td><td>$207,428</td><td><strong>+30.7%</strong></td><td>🚀 Breakout</td></tr>
+        <tr><td>Tampa</td><td>$173,152</td><td>$140,763</td><td><strong>+23.0%</strong></td><td>🚀 Breakout</td></tr>
+        <tr><td>Leander</td><td>$454,294</td><td>$390,494</td><td>+16.3%</td><td>↑ Strong</td></tr>
+        <tr><td>San Antonio</td><td>$559,611</td><td>$507,423</td><td>+10.3%</td><td>↑ Strong</td></tr>
+        <tr><td>Dallas</td><td>$855,592</td><td>$794,674</td><td>+7.7%</td><td>→ Stable</td></tr>
+        <tr><td>North Austin</td><td>$1,103,272</td><td>$1,047,471</td><td>+5.3%</td><td>→ Stable</td></tr>
+        <tr><td>South Austin</td><td>$911,839</td><td>$923,884</td><td>-1.3%</td><td>🟡 Flat</td></tr>
+        <tr><td>Garland</td><td>$140,815</td><td>$143,496</td><td>-1.9%</td><td>🟡 Flat</td></tr>
+        <tr><td>Houston</td><td>$564,436</td><td>$597,647</td><td>-5.6%</td><td>🔴 Decline</td></tr>
+        <tr><td><strong>Company</strong></td><td><strong>$5,465,959</strong></td><td><strong>$5,114,408</strong></td><td><strong>+6.9%</strong></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3>1.6 Capacity & Utilization Analysis</h3>
+    <table>
+      <thead><tr><th>Branch</th><th>Trucks</th><th>TUR Actual</th><th>TUR Target</th><th>vs Target</th><th>Flag</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>14</td><td>64%</td><td>59%</td><td>+5 pts</td><td>🟢 Above target</td></tr>
+        <tr><td>South Austin</td><td>11.7</td><td>59%</td><td>64%</td><td>-5 pts</td><td>🟡 Below target</td></tr>
+        <tr><td>Dallas</td><td>14</td><td>66%</td><td>60%</td><td>+6 pts</td><td>🟢 Above target</td></tr>
+        <tr><td>San Antonio</td><td>8</td><td>69%</td><td>67%</td><td>+2 pts</td><td>🟢 Above target</td></tr>
+        <tr><td>Houston</td><td>8</td><td>87%</td><td>92%</td><td>-5 pts</td><td>🟡 Below ambitious target</td></tr>
+        <tr><td>McKinney</td><td>6</td><td>68%</td><td>69%</td><td>-1 pt</td><td>➡️ On track</td></tr>
+        <tr><td><strong>Leander</strong></td><td><strong>6</strong></td><td><strong>72%</strong></td><td><strong>83%</strong></td><td><strong>-11 pts</strong></td><td><strong>🔴 Significantly below</strong></td></tr>
+        <tr><td>Fort Worth</td><td>4</td><td>58%</td><td>54%</td><td>+4 pts</td><td>🟢 Above target</td></tr>
+        <tr><td><strong>Tampa</strong></td><td><strong>2.5</strong></td><td><strong>72%</strong></td><td><strong>89%*</strong></td><td><strong>-17 pts</strong></td><td><strong>🟡 Target-calibration caveat</strong></td></tr>
+        <tr><td>Garland</td><td>3</td><td>52%</td><td>45%</td><td>+7 pts</td><td>🟢 Above target</td></tr>
+        <tr><td><strong>Company</strong></td><td><strong>77.2</strong></td><td><strong>66.2%</strong></td><td><strong>66.3%</strong></td><td><strong>-0.1 pts</strong></td><td><strong>🟢 On target</strong></td></tr>
+      </tbody>
+    </table>
+    <blockquote>*Tampa's 89% TUR target was set with 2 trucks; actual was 2.5 trucks (a half-truck added mid-quarter). Recalibrated: <strong>89% × (2/2.5) = 71.2% effective target vs 72% actual = essentially on-plan.</strong> Adding capacity without raising the target's demand denominator mathematically guarantees a TUR "decline" even if underlying utilization is identical. Going forward, target recalibration is required whenever truck count deviates from plan.</blockquote>
+    <p><strong>Availability flags — confirmed via personnel budget review (4/27 update):</strong> Leander and Houston are <strong>confirmed availability-constrained</strong> — both averaged below 85% of true personnel budget across all five Q1 biweekly periods, with hours-per-employee in the 95% range (people running full hours, no slack). Tampa is <strong>cleared</strong> — 106% of (stale 2-truck) budget, low hrs/emp = right-sized for 2.5-truck reality. See Section 6.2.1 for full Q1 personnel-budget attainment data.</p>
+
+
+    <h3>1.6.1 Personnel Budget Attainment — Q1'26 Critical Number <span class="new-badge">NEW</span></h3>
+    <p class="pa-intro">Q1's percent-to-personnel-budget critical number, sourced from the Current Employee Schedule "Budget Counter" using the canonical Forecaster comparison (Column C ÷ Column F). Each tile shows a branch's trajectory across the five Q1 biweekly periods; the dashed line marks the 100% target. Three chronic-F branches (5/5 periods below budget) — Leander, Houston, South Austin — drive the bulk of the company-level miss. <strong>Company finished Q1 at 95% personnel-budget attainment — C grade on this critical number.</strong></p>
+
+    <div class="pa-legend">
+      <span class="pa-legend-item"><span class="pa-legend-dot dot-crit"></span> Chronic under (avg &lt; 90%)</span>
+      <span class="pa-legend-item"><span class="pa-legend-dot dot-warn"></span> Below target (90–99%)</span>
+      <span class="pa-legend-item"><span class="pa-legend-dot dot-ok"></span> At/near target (100–110%)</span>
+      <span class="pa-legend-item"><span class="pa-legend-dot dot-over"></span> Overstaffed (&gt; 110%)</span>
+    </div>
+
+    <div class="pa-grid">
+    <div class="pa-tile pa-ok">
+      <div class="pa-head">
+        <span class="pa-branch">North Austin</span>
+        <span class="pa-stats"><span class="pa-avg">105%</span> avg · <span class="pa-under">1/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,30.4 55,23.1 100,38.3 145,34.3 190,31.0" class="line line-ok" fill="none"/>
+        <circle cx="10" cy="30.4" r="2.2" class="dot-ok"/>
+        <circle cx="55" cy="23.1" r="2.2" class="dot-ok"/>
+        <circle cx="100" cy="38.3" r="2.2" class="dot-ok"/>
+        <circle cx="145" cy="34.3" r="2.2" class="dot-ok"/>
+        <circle cx="190" cy="31.0" r="2.2" class="dot-ok"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-a">A</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-crit">
+      <div class="pa-head">
+        <span class="pa-branch">South Austin 🔴</span>
+        <span class="pa-stats"><span class="pa-avg">86%</span> avg · <span class="pa-under">5/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,44.9 55,42.9 100,48.2 145,45.6 190,40.3" class="line line-crit" fill="none"/>
+        <circle cx="10" cy="44.9" r="2.2" class="dot-crit"/>
+        <circle cx="55" cy="42.9" r="2.2" class="dot-crit"/>
+        <circle cx="100" cy="48.2" r="2.2" class="dot-crit"/>
+        <circle cx="145" cy="45.6" r="2.2" class="dot-crit"/>
+        <circle cx="190" cy="40.3" r="2.2" class="dot-crit"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-f">F</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-crit">
+      <div class="pa-head">
+        <span class="pa-branch">Leander 🔴</span>
+        <span class="pa-stats"><span class="pa-avg">72%</span> avg · <span class="pa-under">5/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,53.5 55,55.5 100,56.8 145,46.2 190,56.8" class="line line-crit" fill="none"/>
+        <circle cx="10" cy="53.5" r="2.2" class="dot-crit"/>
+        <circle cx="55" cy="55.5" r="2.2" class="dot-crit"/>
+        <circle cx="100" cy="56.8" r="2.2" class="dot-crit"/>
+        <circle cx="145" cy="46.2" r="2.2" class="dot-crit"/>
+        <circle cx="190" cy="56.8" r="2.2" class="dot-crit"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-f">F</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-warn">
+      <div class="pa-head">
+        <span class="pa-branch">San Antonio</span>
+        <span class="pa-stats"><span class="pa-avg">97%</span> avg · <span class="pa-under">4/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,36.3 55,37.6 100,38.3 145,31.7 190,41.6" class="line line-warn" fill="none"/>
+        <circle cx="10" cy="36.3" r="2.2" class="dot-warn"/>
+        <circle cx="55" cy="37.6" r="2.2" class="dot-warn"/>
+        <circle cx="100" cy="38.3" r="2.2" class="dot-warn"/>
+        <circle cx="145" cy="31.7" r="2.2" class="dot-warn"/>
+        <circle cx="190" cy="41.6" r="2.2" class="dot-warn"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-c">C</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-crit">
+      <div class="pa-head">
+        <span class="pa-branch">Houston 🔴</span>
+        <span class="pa-stats"><span class="pa-avg">77%</span> avg · <span class="pa-under">5/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,55.5 55,52.8 100,52.8 145,40.3 190,48.2" class="line line-crit" fill="none"/>
+        <circle cx="10" cy="55.5" r="2.2" class="dot-crit"/>
+        <circle cx="55" cy="52.8" r="2.2" class="dot-crit"/>
+        <circle cx="100" cy="52.8" r="2.2" class="dot-crit"/>
+        <circle cx="145" cy="40.3" r="2.2" class="dot-crit"/>
+        <circle cx="190" cy="48.2" r="2.2" class="dot-crit"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-f">F</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-ok">
+      <div class="pa-head">
+        <span class="pa-branch">Dallas</span>
+        <span class="pa-stats"><span class="pa-avg">102%</span> avg · <span class="pa-under">2/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,39.0 55,31.7 100,38.3 145,33.0 190,26.4" class="line line-ok" fill="none"/>
+        <circle cx="10" cy="39.0" r="2.2" class="dot-ok"/>
+        <circle cx="55" cy="31.7" r="2.2" class="dot-ok"/>
+        <circle cx="100" cy="38.3" r="2.2" class="dot-ok"/>
+        <circle cx="145" cy="33.0" r="2.2" class="dot-ok"/>
+        <circle cx="190" cy="26.4" r="2.2" class="dot-ok"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-b">B</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-ok">
+      <div class="pa-head">
+        <span class="pa-branch">McKinney</span>
+        <span class="pa-stats"><span class="pa-avg">105%</span> avg · <span class="pa-under">2/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,21.1 55,29.7 100,44.9 145,27.7 190,36.3" class="line line-ok" fill="none"/>
+        <circle cx="10" cy="21.1" r="2.2" class="dot-ok"/>
+        <circle cx="55" cy="29.7" r="2.2" class="dot-ok"/>
+        <circle cx="100" cy="44.9" r="2.2" class="dot-ok"/>
+        <circle cx="145" cy="27.7" r="2.2" class="dot-ok"/>
+        <circle cx="190" cy="36.3" r="2.2" class="dot-ok"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-a">A</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-over">
+      <div class="pa-head">
+        <span class="pa-branch">Fort Worth 🟦</span>
+        <span class="pa-stats"><span class="pa-avg">120%</span> avg · <span class="pa-under">0/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,15.2 55,13.9 100,24.4 145,33.0 190,21.8" class="line line-over" fill="none"/>
+        <circle cx="10" cy="15.2" r="2.2" class="dot-over"/>
+        <circle cx="55" cy="13.9" r="2.2" class="dot-over"/>
+        <circle cx="100" cy="24.4" r="2.2" class="dot-over"/>
+        <circle cx="145" cy="33.0" r="2.2" class="dot-over"/>
+        <circle cx="190" cy="21.8" r="2.2" class="dot-over"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-app">A++</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-over">
+      <div class="pa-head">
+        <span class="pa-branch">Garland 🟦</span>
+        <span class="pa-stats"><span class="pa-avg">115%</span> avg · <span class="pa-under">0/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,10.6 55,30.4 100,27.1 145,24.4 190,33.0" class="line line-over" fill="none"/>
+        <circle cx="10" cy="10.6" r="2.2" class="dot-over"/>
+        <circle cx="55" cy="30.4" r="2.2" class="dot-over"/>
+        <circle cx="100" cy="27.1" r="2.2" class="dot-over"/>
+        <circle cx="145" cy="24.4" r="2.2" class="dot-over"/>
+        <circle cx="190" cy="33.0" r="2.2" class="dot-over"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-app">A++</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    <div class="pa-tile pa-ok">
+      <div class="pa-head">
+        <span class="pa-branch">Tampa</span>
+        <span class="pa-stats"><span class="pa-avg">106%</span> avg · <span class="pa-under">1/5</span> below</span>
+      </div>
+      <svg class="sparkline" viewBox="0 0 200 70" preserveAspectRatio="none">
+        <line x1="0" y1="35" x2="200" y2="35" class="target-line"/>
+        <polyline points="10,24.4 55,20.5 100,45.6 145,32.4 190,33.0" class="line line-ok" fill="none"/>
+        <circle cx="10" cy="24.4" r="2.2" class="dot-ok"/>
+        <circle cx="55" cy="20.5" r="2.2" class="dot-ok"/>
+        <circle cx="100" cy="45.6" r="2.2" class="dot-ok"/>
+        <circle cx="145" cy="32.4" r="2.2" class="dot-ok"/>
+        <circle cx="190" cy="33.0" r="2.2" class="dot-ok"/>
+      </svg>
+      <div class="pa-foot">
+        <span class="pa-grade pa-grade-a">A</span>
+        <span class="pa-period-labels">2/9 · 2/23 · 3/9 · 3/23 · 4/6</span>
+      </div>
+    </div>
+    </div>
+
+    <p class="pa-footnote"><strong>How this confirms the availability flags:</strong> Two of the three chronic-F branches — Leander (72%) and Houston (77%) — also show full hours-per-employee in the 95% range. Both gates of the dual-gate availability test (≤85% personnel + ≥90% hrs/emp) clear → confirmed availability-constrained. Tampa appears overstaffed (106%) but only against a stale 2-truck budget; with actual 2.5 trucks and lower hrs/emp, Tampa is right-sized — not overstaffed. Fort Worth and Garland are genuinely over budget AND have lower hrs/emp (~64-77%), pointing to scheduling-fit issues (right people, wrong days) rather than a hiring problem.</p>
+
+    <h3>1.7 Unit Economics Dashboard</h3>
+    <table>
+      <thead><tr><th>Branch</th><th>Trucks</th><th>Rev/Truck</th><th>NOI/Truck</th><th>Moves/Truck</th><th>Rev/Move</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>14</td><td>$78,805</td><td>$12,163</td><td>62.8</td><td>$1,255</td></tr>
+        <tr><td>South Austin</td><td>11.7</td><td>$77,943</td><td>$11,520</td><td>56.8</td><td>$1,373</td></tr>
+        <tr><td>Leander</td><td>6</td><td>$75,716</td><td>$11,266</td><td>41.0</td><td>$1,846</td></tr>
+        <tr><td>McKinney</td><td>6</td><td>$71,964</td><td>$7,710</td><td>57.3</td><td>$1,256</td></tr>
+        <tr><td>Houston</td><td>8</td><td>$70,555</td><td>$1,612</td><td>48.1</td><td>$1,465</td></tr>
+        <tr><td>San Antonio</td><td>8</td><td>$69,951</td><td>$4,115</td><td>54.1</td><td>$1,292</td></tr>
+        <tr><td>Tampa</td><td>2.5</td><td>$69,261</td><td>-$1,702</td><td>56.0</td><td>$1,237</td></tr>
+        <tr><td>Fort Worth</td><td>4</td><td>$67,792</td><td>-$5,133</td><td>52.3</td><td>$1,297</td></tr>
+        <tr><td>Dallas</td><td>14</td><td>$61,114</td><td>$1,283</td><td>48.6</td><td>$1,258</td></tr>
+        <tr><td>Garland</td><td>3</td><td>$46,938</td><td>-$1,143</td><td>43.7</td><td>$1,074</td></tr>
+        <tr><td><strong>Company</strong></td><td><strong>77.2</strong></td><td><strong>$70,804</strong></td><td><strong>$5,888</strong></td><td><strong>53.2</strong></td><td><strong>$1,330</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Target NOI/Truck:</strong> $10,456 · <strong>Actual:</strong> $5,888 — 43.7% below target.</p>
+
+    <h3>1.8 Variance Decomposition — Booked $ and Hours (v3.1)</h3>
+    <table>
+      <thead><tr><th>Component</th><th>Impact</th><th>% of Total Miss</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Volume variance (booked $ vs target)</td><td>NOT CALCULABLE</td><td>—</td><td>Target booked $ not provided at branch level</td></tr>
+        <tr><td>Hours capacity variance</td><td>NOT CALCULABLE</td><td>—</td><td>Target booked hours not provided</td></tr>
+        <tr><td>Price variance (Dallas/FW/Garland under-target rates)</td><td>-$30K</td><td>9%</td><td>$10/hr gap on these three</td></tr>
+        <tr><td>Cost variance (expense % above plan, Feb drag)</td><td>-$284K</td><td>84%</td><td>Primary driver</td></tr>
+        <tr><td>Branch execution variance</td><td>-$28K</td><td>8%</td><td>SA, Houston, Leander, Dallas combined below-plan</td></tr>
+        <tr><td>Favorable overhead</td><td>+$22K</td><td>-6%</td><td>More trucks than target</td></tr>
+        <tr><td><strong>Total Explained</strong></td><td><strong>-$320K</strong></td><td><strong>94%</strong></td><td></td></tr>
+        <tr><td><strong>Unexplained</strong></td><td><strong>-$20K</strong></td><td><strong>6%</strong></td><td>Within acceptable variance</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Flagged:</strong> Target booked $ and target booked hours not provided in Cascading Goals at branch level. Follow-up to operations to add these inputs for Q2.</p>
+    <p><strong>Bottom line:</strong> This is a cost structure story, not a volume story. Dallas/FW/Garland underpricing contributes ~9% of the miss. Primary driver (84%) is operating expenses running above plan — February slow-season fixed cost drag plus CTXH below-plan execution.</p>
+
+    <details class="explainer">
+      <summary>Variance decomposition translated — four levers, four owners</summary>
+      <div class="expl-body">
+        <p>Variance decomposition is the CFO's version of asking "why did the recipe taste off?" — you decompose the outcome into independent ingredients (volume, price, mix, cost). Each ingredient is independent: fixing one doesn't automatically fix the others.</p>
+        <p><strong>In Q1'26: 84% cost structure, 9% under-pricing at three branches, 8% specific branch execution, volume neutral.</strong></p>
+        <ul>
+          <li><strong>Cost structure (-$284K):</strong> February. Company NOI was -$34K in Feb alone. Fixed costs don't shrink when revenue does.</li>
+          <li><strong>Under-pricing (-$30K):</strong> Dallas $183 vs $193 target, FW $173 vs $183 target, Garland $183 vs $193 target. $10/hr below target all quarter.</li>
+          <li><strong>Branch execution (-$28K):</strong> SA, Houston, Leander, Dallas individual NOI plans missed beyond rev-miss flow-through.</li>
+          <li><strong>Favorable overhead (+$22K):</strong> 77.2 trucks vs 76 plan.</li>
+        </ul>
+        <p>Two components came back "NOT CALCULABLE" because target booked $ and target booked hours weren't loaded at branch level in Cascading Goals. The analysis flagged this rather than defaulting to zero (which would hide the gap). Data gap, not analysis gap.</p>
+      </div>
+    </details>
+
+    <hr>
+
+    <!-- SECTION 2 — MARKETING -->
+    <h2 id="sec-marketing">Section 2 · Marketing Performance</h2>
+
+    <h3>2.1 Traffic & Funnel Overview</h3>
+    <table>
+      <thead><tr><th>Metric</th><th>Q1'26</th><th>YoY Change</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Total Sessions</td><td>54,241</td><td>-17%</td><td>Industry-wide trend (LLM/AI Overview disruption)</td></tr>
+        <tr><td>Organic Search</td><td>16,119</td><td>-28%</td><td>Same</td></tr>
+        <tr><td>Paid Search</td><td>7,955</td><td>-29%</td><td>Budget reduction</td></tr>
+        <tr><td>Direct</td><td>30,167</td><td>~-5%</td><td>Holding</td></tr>
+        <tr><td><strong>Quote Page Engagement %</strong></td><td><strong>34%</strong></td><td><strong>+8 pts</strong></td><td>More visitors reaching quote page</td></tr>
+        <tr><td><strong>Quote Form Fill %</strong></td><td><strong>19%</strong></td><td><strong>+4 pts</strong></td><td>Better form completion</td></tr>
+        <tr><td><strong>Quote-to-Book %</strong></td><td><strong>1.1%</strong></td><td><strong>+0.03 pts</strong></td><td>Slightly better booking rate</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Sessions are declining (expected industry trend), but funnel efficiency is IMPROVING.</strong> Einstein is capturing a higher % of each session's value than a year ago.</p>
+
+    <h3>2.2 Digital Ad Spend — YoY</h3>
+    <table>
+      <thead><tr><th>Channel</th><th>Q1'26 Projected</th><th>Q1'25</th><th>YoY $</th><th>YoY %</th></tr></thead>
+      <tbody>
+        <tr><td>Google Search</td><td>$141,253</td><td>$147,755</td><td>-$6,502</td><td>-4.4%</td></tr>
+        <tr><td>Microsoft/Bing</td><td>$21,443</td><td>$27,751</td><td>-$6,308</td><td>-22.7%</td></tr>
+        <tr><td>Meta/Facebook</td><td>$6,789</td><td>$579</td><td>+$6,210</td><td>+1,072%</td></tr>
+        <tr><td>Google Other</td><td>$5,201</td><td>$19,355</td><td>-$14,154</td><td>-73.1%</td></tr>
+        <tr><td>KickPoint Agency Fee</td><td>$44,664</td><td>$42,903</td><td>+$1,761</td><td>+4.1%</td></tr>
+        <tr><td><strong>Total (projected full Q1'26)</strong></td><td><strong>$219,221</strong></td><td><strong>$238,343</strong></td><td><strong>-$19,122</strong></td><td><strong>-8.0%</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>2.3 Marketing ROI</h3>
+
+    <!-- CHART 4: Marketing Efficiency -->
+    <div class="chart-wrap">
+      <div class="chart-title">Marketing Efficiency — Spending Less, Generating More</div>
+      <div class="chart-sub">Spend down -8.0% YoY, Quoted Revenue Generated up +58%, Booked+Serviced up +19.7%. ROI metrics are improving at every level.</div>
+      <div class="chart-canvas-wrap"><canvas id="chartMarketingROI"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Metric</th><th>Q1'26 Projected</th><th>Q1'25</th><th>YoY</th></tr></thead>
+      <tbody>
+        <tr><td>Total Spend</td><td>$219,221</td><td>$238,343</td><td>-8.0%</td></tr>
+        <tr><td>Quoted Revenue Generated</td><td>$18,185,000</td><td>$11,508,314</td><td><strong>+58.0%</strong></td></tr>
+        <tr><td>Quoted Rev per $ Spent</td><td>$82.95</td><td>$48.29</td><td><strong>+71.8%</strong></td></tr>
+        <tr><td>Booked+Serviced $ Generated</td><td>$6,037,000</td><td>$5,044,052</td><td>+19.7%</td></tr>
+        <tr><td>Booked+Serviced per $ Spent</td><td>$27.54</td><td>$21.16</td><td><strong>+30.1%</strong></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Marketing efficiency is genuinely improving.</strong> Spending 8% less and generating 20% more booked + serviced revenue. Funnel is working better at every stage.</p>
+
+    <h3>2.4 Annual Marketing Budget — Seasonality-Weighted</h3>
+    <blockquote><em>Methodology note: flat annual/4 implied budget is methodologically wrong (Q1 slow-season has higher PPC weighting). Until KickPoint provides monthly seasonality plan, showing flat reference only.</em></blockquote>
+    <table>
+      <thead><tr><th>Category</th><th>Annual Budget</th><th>% of Total</th></tr></thead>
+      <tbody>
+        <tr><td>PPC Spend &amp; Management</td><td>$767,640</td><td>71.8%</td></tr>
+        <tr><td>KickPoint fees (SEO, Social, PM)</td><td>$136,980</td><td>12.8%</td></tr>
+        <tr><td>Mailers</td><td>$65,000</td><td>6.1%</td></tr>
+        <tr><td>Billboards</td><td>$40,000</td><td>3.7%</td></tr>
+        <tr><td>Other</td><td>$59,386</td><td>5.6%</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>$1,069,006</strong></td><td>100%</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Flat annual/4 implied Q1 budget: $267,252.</strong> Actual Q1'26 projected: $219,221. Running $48K below flat-split budget; true seasonality-adjusted variance needs KickPoint monthly plan for proper calc.</p>
+
+    <hr>
+
+    <!-- SECTION 3 — SALES -->
+    <h2 id="sec-sales">Section 3 · Sales Performance & Efficacy</h2>
+
+    <h3>3.1 Quarterly Sales Metrics — Canonical Formula</h3>
+    <blockquote><em>All conversion metrics use canonical $-basis formula: (Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $).</em></blockquote>
+    <table>
+      <thead><tr><th>Metric</th><th>Q1'26</th><th>Q1'25</th><th>YoY</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>Leads (SQL Count)</td><td>9,307</td><td>7,065</td><td><strong>+31.7%</strong></td><td>⚠️ Partly methodology-driven (Apr 5 form)</td></tr>
+        <tr><td>Quoted $ (canonical)</td><td>$16,959,397</td><td>$11,508,314</td><td><strong>+47.4%</strong></td><td>Wider denominator</td></tr>
+        <tr><td>Booked $ (future moves)</td><td>$1,727,629</td><td>$0</td><td>+$1.73M</td><td>Q1'26 pipeline</td></tr>
+        <tr><td>Serviced $ (completed)</td><td>$3,902,692</td><td>$5,044,052</td><td>-22.6%</td><td>Timing artifact</td></tr>
+        <tr><td><strong>Booked + Serviced $</strong></td><td><strong>$5,630,322</strong></td><td><strong>$5,044,052</strong></td><td><strong>+11.6%*</strong></td><td>⚠️ Directional (timing caveat)</td></tr>
+        <tr><td>Actual Revenue (CRM)</td><td>$3,688,077</td><td>$4,829,163</td><td>-23.6%</td><td>Timing artifact</td></tr>
+        <tr><td>Completed Moves</td><td>2,768</td><td>3,787</td><td>-26.9%</td><td>Timing artifact (980 booked future)</td></tr>
+        <tr><td>Booked Moves (future)</td><td>980</td><td>0</td><td>+980</td><td>New pipeline</td></tr>
+        <tr><td><strong>Conversion Rate $ (canonical)</strong></td><td><strong>33.20%</strong></td><td><strong>43.83%</strong></td><td><strong>-10.63 pts</strong></td><td>Blended (see cohort 3.5)</td></tr>
+        <tr><td>Conversion Rate # (reference)</td><td>40.27%</td><td>53.60%</td><td>-13.33 pts</td><td>—</td></tr>
+        <tr><td>Cancellation Rate</td><td>14.10%</td><td>11.99%</td><td>+2.11 pts</td><td>⚠️ Monitor</td></tr>
+        <tr><td><strong>Avg Booked Ticket $</strong></td><td><strong>$1,502</strong></td><td><strong>$1,332</strong></td><td><strong>+$170 (+12.8%)</strong></td><td>✅ Price increases landing</td></tr>
+        <tr><td>Realization Rate</td><td>65.50%</td><td>95.74%</td><td>-30.24 pts</td><td>TIMING — not YoY comparable</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>North Star (Booked+Serviced $ / Lead):</strong> $605 (Q1'26) vs $714 (Q1'25) — down 15%. BUT: Q1'26 denominator includes the new autobooking form leads. Pre-Apr 5 cohort North Star: $4,331,043 / 6,600 = <strong>$656</strong>. Post-Apr 5 cohort: $1,299,279 / 2,707 = <strong>$480</strong>. Apr 5 funnel changes the denominator character.</p>
+
+    <details class="explainer">
+      <summary>What a -10.6 pt conversion drop actually means</summary>
+      <div class="expl-body">
+        <p>Conversion rate is the share of every dollar we quote that turns into a booked or serviced dollar. Q1'26 came in at 33.2%, down 10.6 pts from Q1'25's 43.8%.</p>
+        <p>The instinct when conversion drops is to read it as "customers are saying no more often." Partly true, but <strong>the bigger story in Q1'26 is the denominator changing character, not the customers.</strong> Same top funnel, new gate behavior. The April 5 form captures contact info BEFORE a user hits an "inestimable" dead-end — so people who would have dropped off last year now count as leads this year. Lower aggregate intent, same absolute volume of good bookings. Conversion arithmetic goes down even when booking behavior hasn't really changed.</p>
+        <p><strong>Avg Booked Ticket up +12.8% YoY ($1,332 → $1,502) is the cleanest signal in this table.</strong> Every dollar that does convert is a bigger dollar. Pricing working, alongside the "conversion decline."</p>
+        <p><strong>Three forces, compounding:</strong></p>
+        <ul>
+          <li><em>Methodology:</em> Post-Apr 5 autobooking form surfaces leads that previously evaporated. Cohort B 27.4% vs Cohort A 35.5%.</li>
+          <li><em>Pricing effects at specific branches:</em> North Austin elasticity at -1.03 (at ceiling on revenue, likely margin-favorable), Leander -24 pt drop compounded with <strong>confirmed</strong> availability constraints (72% personnel-budget avg).</li>
+          <li><em>Matched window change:</em> Matisen's re-pull uses 77-day matched windows. The prior draft compared different-length windows, artificially understating the YoY magnitude.</li>
+        </ul>
+      </div>
+    </details>
+
+    <h3>3.2 Conversion Rate by Branch — YoY</h3>
+
+    <!-- CHART 6: Branch Conv Rate YoY -->
+    <div class="chart-wrap">
+      <div class="chart-title">Conversion Rate by Branch — Q1'26 vs Q1'25</div>
+      <div class="chart-sub">Sorted by Q1'26 conversion. Leander posted the biggest drop (-24 pts); Fort Worth and San Antonio held conversion remarkably well.</div>
+      <div class="chart-canvas-wrap tall"><canvas id="chartConvByBranch"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Branch</th><th>Conv $ Q1'26</th><th>Conv $ Q1'25</th><th>YoY Δ</th><th>Flag</th></tr></thead>
+      <tbody>
+        <tr><td>Dallas</td><td>44.93%</td><td>52.25%</td><td>-7.32 pts</td><td>🟡 Moderate drop</td></tr>
+        <tr><td>North Austin</td><td>42.36%</td><td>56.82%</td><td><strong>-14.46 pts</strong></td><td>🔴 Large drop</td></tr>
+        <tr><td>South Austin</td><td>39.99%</td><td>50.19%</td><td>-10.20 pts</td><td>🔴 Large drop</td></tr>
+        <tr><td>McKinney</td><td>33.11%</td><td>38.92%</td><td>-5.81 pts</td><td>🟡 Moderate drop</td></tr>
+        <tr><td>Fort Worth</td><td>33.10%</td><td>34.27%</td><td><strong>-1.17 pts</strong></td><td>🟢 Held</td></tr>
+        <tr><td>San Antonio</td><td>32.62%</td><td>33.99%</td><td><strong>-1.37 pts</strong></td><td>🟢 Held</td></tr>
+        <tr><td>Tampa</td><td>31.77%</td><td>42.49%</td><td>-10.72 pts</td><td>🔴 Large drop</td></tr>
+        <tr><td>Houston</td><td>22.52%</td><td>31.18%</td><td>-8.66 pts</td><td>🟡 Low absolute + moderate drop</td></tr>
+        <tr><td>Garland</td><td>20.61%</td><td>40.29%</td><td><strong>-19.68 pts</strong></td><td>🔴 2nd biggest drop</td></tr>
+        <tr><td><strong>Leander</strong></td><td><strong>19.34%</strong></td><td><strong>43.33%</strong></td><td><strong>-23.99 pts</strong></td><td><strong>🔴 BIGGEST DROP</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>3.3 EMMA vs Team Performance</h3>
+    <table>
+      <thead><tr><th>Metric</th><th>EMMA Q1'26</th><th>Team Q1'26</th><th>EMMA Q1'25</th><th>Team Q1'25</th><th>EMMA YoY</th><th>Team YoY</th></tr></thead>
+      <tbody>
+        <tr><td>SQL Leads</td><td>1,514</td><td>7,793</td><td>1,681</td><td>5,384</td><td>-9.9%</td><td><strong>+44.7%</strong></td></tr>
+        <tr><td>Booked+Serviced $</td><td>$860,013</td><td>$4,770,309</td><td>$963,598</td><td>$4,080,454</td><td>-10.8%</td><td>+16.9%</td></tr>
+        <tr><td><strong>Conv Rate $</strong></td><td><strong>56.03%</strong></td><td><strong>30.93%</strong></td><td><strong>63.50%</strong></td><td><strong>40.84%</strong></td><td><strong>-7.47 pts</strong></td><td><strong>-9.91 pts</strong></td></tr>
+        <tr><td>Avg Booked Ticket</td><td>$976</td><td>$1,664</td><td>$883</td><td>$1,514</td><td>+10.5%</td><td>+9.9%</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Team took the bigger share of the lead increase</strong> (+44.7% vs EMMA -9.9%). EMMA held conversion better. Team handles larger/more complex moves (ticket $1,664 vs EMMA $976).</p>
+
+    <h3>3.4 Move Size Analysis</h3>
+    <table>
+      <thead><tr><th>Category</th><th>Quoted $ Q1'26</th><th>Quoted $ Q1'25</th><th>Conv $ Q1'26</th><th>Conv $ Q1'25</th><th>YoY Quoted</th><th>YoY Conv</th></tr></thead>
+      <tbody>
+        <tr><td>Small</td><td>$7,539,941</td><td>$4,590,549</td><td>33.66%</td><td>53.17%</td><td><strong>+64.3%</strong></td><td>-19.51 pts</td></tr>
+        <tr><td>Medium</td><td>$3,113,765</td><td>$2,133,976</td><td>31.23%</td><td>37.58%</td><td>+45.9%</td><td>-6.35 pts</td></tr>
+        <tr><td>Large</td><td>$4,079,870</td><td>$3,223,165</td><td>31.42%</td><td>31.30%</td><td>+26.6%</td><td><strong>+0.12 pts</strong></td></tr>
+        <tr><td>Other</td><td>$2,225,820</td><td>$1,560,624</td><td>37.65%</td><td>50.76%</td><td>+42.6%</td><td>-13.11 pts</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Large moves converted essentially flat YoY (+0.12 pts).</strong> Small moves dropped most (-19.5 pts) — consistent with Apr 5 funnel surfacing inestimable leads (mostly apartments/small homes where DIY alternatives are most available).</p>
+
+    <h3>3.5 Pre/Post April 5 Cohort Analysis (NEW in v3.1)</h3>
+
+    <!-- CHART 5: Cohort Analysis -->
+    <div class="chart-wrap">
+      <div class="chart-title">Pre/Post April 5 Cohort — Three Different Sales Motions</div>
+      <div class="chart-sub">Cohort A in normal historical range. Cohort B reflects new funnel reality. directBook subset converts at 86% — highest-ROI segment in the funnel.</div>
+      <div class="chart-canvas-wrap"><canvas id="chartCohort"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Metric</th><th>Cohort A (Feb 1-Apr 4)</th><th>Cohort B (Apr 5-Apr 18)</th><th>Cohort B: directBook</th></tr></thead>
+      <tbody>
+        <tr><td>SQL Leads</td><td>6,600</td><td>2,707</td><td>675</td></tr>
+        <tr><td>Quoted $</td><td>$12,213,993</td><td>$4,745,404</td><td>$918,364</td></tr>
+        <tr><td>Booked+Serviced $</td><td>$4,331,043</td><td>$1,299,279</td><td>$790,067</td></tr>
+        <tr><td><strong>Conv Rate $</strong></td><td><strong>35.46%</strong></td><td><strong>27.38%</strong></td><td><strong>86.03%</strong></td></tr>
+        <tr><td>Cancel Rate #</td><td>14.86%</td><td>11.36%</td><td>12.74%</td></tr>
+        <tr><td>Avg Booked Ticket</td><td>$1,491</td><td>$1,541</td><td>$1,341</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Three different businesses under one "conversion rate" number:</strong></p>
+    <ul>
+      <li><strong>Cohort A (35.46%)</strong> — old-funnel business, in Einstein's historical 35-42% normal range. If we hadn't launched the form, this would be the Q1'26 number.</li>
+      <li><strong>Cohort B (27.38%)</strong> — new-funnel business. Lower intent per lead, but a population we weren't even measuring before.</li>
+      <li><strong>directBook subset (86.03%)</strong> — users who self-served all the way through EMMA's auto-booking flow. Highest-intent segment in the company.</li>
+    </ul>
+
+    <p><strong>This is an opportunity, not a crisis</strong> — 2,707 additional leads in 14 days representing real demand previously lost. Strategic question is whether Einstein has sales capacity and ops capacity to service it productively.</p>
+
+    <details class="explainer">
+      <summary>Why the autobooking form changed what counts as a lead</summary>
+      <div class="expl-body">
+        <p><strong>Before April 5:</strong> user → quote flow → if inestimable, hits a wall, must submit second form → most drop off → CRM records "lead" only for users who completed the second form.</p>
+        <p><strong>After April 5:</strong> user → contact info captured upfront → quote flow → if inestimable, gets an auto-reach-out from sales → CRM records "lead" for everyone who got that far. More leads captured, but many are "tire-kickers" who would have left before.</p>
+        <p>The conversion rate drop from 35.5% to 27.4% is exactly what you'd predict when you widen the lead definition — same-ish numerator (real bookings), bigger denominator (old leads + newly-captured hesitators). <strong>The new baseline isn't 35%, it's whatever comes out of the post-Apr 5 system with proper triage.</strong></p>
+        <p><strong>Three decisions worth making explicit:</strong></p>
+        <ol>
+          <li><strong>Triage Cohort B differently.</strong> Don't measure reps against a 35% target when handling 27%-baseline leads.</li>
+          <li><strong>Maximize directBook subset value.</strong> 86% conversion on 675 leads/14 days. Losing a directBook lead to unavailability costs more than losing a Cohort B lead.</li>
+          <li><strong>Set a realistic Cohort B floor.</strong> The question isn't "can we get Cohort B to 35%?" It's "what's the floor below which Cohort B becomes unprofitable to serve?"</li>
+        </ol>
+      </div>
+    </details>
+
+    <hr>
+
+    <!-- SECTION 4 — PRICING -->
+    <h2 id="sec-pricing">Section 4 · Pricing Strategy</h2>
+
+    <h3>4.1 Prior-Period Price Elasticity Baseline</h3>
+    <blockquote><em>Methodology: Anchors elasticity to the specific price-change event (Nov 2024 → Nov 2025), not cumulative yearly drift. Per Matisen 4/24 alignment.</em></blockquote>
+
+    <!-- CHART 7: Elasticity Scatter -->
+    <div class="chart-wrap">
+      <div class="chart-title">Price Elasticity — Where Each Branch Sits Against the -1.0 Ceiling</div>
+      <div class="chart-sub">X-axis: price change %. Y-axis: conversion change in points. Diagonal dashed line = elasticity of -1.0 ("revenue ceiling"). Branches above the line have room; branches below are at/over.</div>
+      <div class="chart-canvas-wrap tall"><canvas id="chartElasticity"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Branch</th><th>Pre-Nov '25 Rate ($/hr)</th><th>Q1'26 Rate ($/hr)</th><th>Price Chg %</th><th>Conv Chg (pts)<sup style="font-size:9px;">†</sup></th><th>Elasticity</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>$180</td><td>$195</td><td>+8.3%</td><td>-8.6 pts</td><td><strong>-1.03</strong></td><td>🟡 AT CEILING (revenue framing)</td></tr>
+        <tr><td>South Austin</td><td>$180</td><td>$195</td><td>+8.3%</td><td>-1.2 pts</td><td>-0.15</td><td>🟢 HEALTHY</td></tr>
+        <tr><td>Dallas</td><td>$160</td><td>$195</td><td>+21.9%</td><td>-11.3 pts</td><td>-0.52</td><td>🟡 AT CEILING</td></tr>
+        <tr><td>San Antonio</td><td>$160</td><td>$170</td><td>+6.2%</td><td>-4.9 pts</td><td>-0.79</td><td>🟡 AT CEILING</td></tr>
+        <tr><td>Houston</td><td>$150</td><td>$170</td><td>+13.3%</td><td>-2.8 pts</td><td>-0.21</td><td>🟢 GOOD</td></tr>
+        <tr><td>McKinney</td><td>$160</td><td>$180</td><td>+12.5%</td><td>-3.5 pts</td><td>-0.28</td><td>🟢 GOOD</td></tr>
+        <tr><td>Leander</td><td>$160</td><td>$190</td><td>+18.8%</td><td>-2.1 pts</td><td>-0.11</td><td>🟢 GOOD</td></tr>
+        <tr><td>Fort Worth</td><td>$150</td><td>$180</td><td>+20.0%</td><td>-2.3 pts</td><td>-0.12</td><td>🟢 Good elasticity</td></tr>
+        <tr><td>Tampa</td><td>$160</td><td>$180</td><td>+12.5%</td><td>+0.3 pts</td><td>+0.03</td><td>🟢 ROOM TO GROW</td></tr>
+        <tr><td>Garland</td><td>$160</td><td>$190</td><td>+18.8%</td><td>-6.1 pts</td><td>-0.33</td><td>🟡 MODERATE</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Confidence Scoring:</strong> LOW (no control group in the Nov 2025 rate change — all branches adjusted). Recommendations MEDIUM CONFIDENCE / A-B test only.</p>
+    <p style="font-size:11.5px;color:var(--gray-600);"><sup>†</sup> <strong>Conv Chg interpretation note:</strong> "Conv Chg (pts)" here is the conversion-rate step from the period <em>before</em> the Nov '25 price change (Q4'25) to the period <em>after</em> (Q1'26) — NOT the full Q1'25 → Q1'26 YoY drop shown in §3.2. Tighter window isolates the price-change effect from the Apr 5 funnel change and other YoY drift. Example: N. Austin's full YoY conv drop is -14.46 pts (§3.2); the portion attributable to the price step is -8.6 pts (this table).</p>
+
+    <details class="explainer">
+      <summary>What an elasticity of -1.03 actually means — and why margin framing matters</summary>
+      <div class="expl-body">
+        <p>Elasticity measures how much customers flinch when price goes up. An elasticity of -1 is the "ceiling" — every 1% price increase costs exactly 1 point of conversion. Above -1 (closer to zero), customers don't flinch much — room to raise. Below -1 (more negative), pricing past what the market will bear.</p>
+        <p>North Austin's <strong>-1.03 puts it exactly at the pain point.</strong> +8.3% price → -8.6 pt conversion. Dollar-for-dollar trade. Raising further loses money; holding here is at the edge.</p>
+        <p><strong>"Over ceiling" — but only on the revenue framing.</strong> -1.03 means revenue is roughly flat. But the <strong>margin frame is more favorable:</strong></p>
+        <ul>
+          <li>At 8.3% higher ticket, variable costs don't scale 1-for-1 with price (labor + truck time are similar regardless of quoted rate)</li>
+          <li>Fewer-but-higher-margin moves can produce HIGHER gross margin even when revenue is flat</li>
+          <li>North Austin's 15.4% NOI margin suggests the rate increase is likely margin-accretive</li>
+        </ul>
+        <p>The decision depends on which metric we optimize for. <strong>Revenue</strong> framing → A/B rollback test makes sense. <strong>NOI/cash</strong> framing → holding is defensible, maybe good.</p>
+      </div>
+    </details>
+
+    <h3>4.2 Pricing Recommendations — Medium Confidence, A/B Test</h3>
+    <table>
+      <thead><tr><th>Branch</th><th>Situation</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>Elasticity -1.03 — revenue framing "at ceiling," margin framing likely still favorable. 15.4% NOI margin.</td><td><strong>Decision needed</strong> (metric choice) before A/B test</td></tr>
+        <tr><td>Dallas, Fort Worth, Garland</td><td>Running $10/hr below target on current Q1 rates</td><td>Raise to target ($193/$183/$193) in Q2'26</td></tr>
+        <tr><td>Tampa</td><td>Positive elasticity (+0.03) — ROOM TO GROW</td><td>Consider modest rate increase to test ceiling</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4.3 Value Communication Gap</h3>
+    <p>Einstein's <strong>$2,000 damage coverage advantage</strong> (included with no deductible) vs competitors' standard coverage (worthless $0.60/lb or extra $100-300 for full coverage) is NOT being articulated during the sales process.</p>
+    <p>At a $10-15/hr premium over competitors offering $0 coverage, the differential is <strong>economically justified</strong> when all-in cost is calculated. This is a <strong>value communication issue, not a pricing issue.</strong></p>
+    <p><strong>Action:</strong> Sales training on value communication — deliver by May 31. Don't roll back rates where the communication is the actual lever.</p>
+
+    <hr>
+
+    <!-- SECTION 5 — NPS -->
+    <h2 id="sec-nps">Section 5 · Customer Satisfaction (NPS)</h2>
+
+    <h3>5.1 Company NPS Trend</h3>
+    <table>
+      <thead><tr><th>Period</th><th>NPS</th><th>Responses</th><th>vs Target</th></tr></thead>
+      <tbody>
+        <tr><td>Q1'26*</td><td><strong>91.9</strong></td><td>1,035</td><td><strong>+1.9 above 90</strong></td></tr>
+        <tr><td>Q3'25</td><td>91</td><td>1,233</td><td>+1</td></tr>
+        <tr><td>Q1'25</td><td>90</td><td>1,595</td><td>On target</td></tr>
+        <tr><td>Full Year FY'25</td><td>91</td><td>5,208</td><td>+1</td></tr>
+      </tbody>
+    </table>
+    <blockquote>*Through Apr 18, 2026. Source: Matisen Mongo re-pull — user-confirmed actual data.</blockquote>
+    <p>NPS is Einstein's most consistent metric. Holding at 91.9 through a quarter with price increases, a conversion rate drop, and revenue pressure is a testament to service quality.</p>
+
+    <h3>5.2 Branch-Level NPS — Q1'26</h3>
+
+    <!-- CHART 8: NPS by Branch -->
+    <div class="chart-wrap">
+      <div class="chart-title">NPS by Branch — vs Target Line of 90</div>
+      <div class="chart-sub">9 of 10 branches above or within 1 pt of the 90 target. San Antonio is the only branch below target AND trending down.</div>
+      <div class="chart-canvas-wrap"><canvas id="chartNPS"></canvas></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Branch</th><th>NPS</th><th>Detractors</th><th>Passives</th><th>Promoters</th><th>Total</th><th>Moves</th><th>Feedback Rate</th><th>vs Target</th><th>Flag</th></tr></thead>
+      <tbody>
+        <tr><td>Tampa</td><td><strong>100.0</strong></td><td>0</td><td>0</td><td>45</td><td>45</td><td>117</td><td>38.5%</td><td>+10</td><td>🟢 Exceptional</td></tr>
+        <tr><td>Garland</td><td><strong>100.0</strong></td><td>0</td><td>0</td><td>32</td><td>32</td><td>99</td><td>32.3%</td><td>+10</td><td>🟢 Exceptional</td></tr>
+        <tr><td>Fort Worth</td><td>96.2</td><td>0</td><td>3</td><td>76</td><td>79</td><td>165</td><td>47.9%</td><td>+6.2</td><td>🟢 Strong</td></tr>
+        <tr><td>Houston</td><td>93.8</td><td>4</td><td>4</td><td>184</td><td>192</td><td>328</td><td><strong>58.5%*</strong></td><td>+3.8</td><td>🟢 Above target</td></tr>
+        <tr><td>McKinney</td><td>93.6</td><td>1</td><td>3</td><td>74</td><td>78</td><td>293</td><td>26.6%</td><td>+3.6</td><td>🟢 Above target</td></tr>
+        <tr><td>Dallas</td><td>91.4</td><td>3</td><td>6</td><td>130</td><td>139</td><td>560</td><td>24.8%</td><td>+1.4</td><td>🟢 Above target</td></tr>
+        <tr><td>North Austin</td><td>91.4</td><td>5</td><td>4</td><td>153</td><td>162</td><td>746</td><td>21.7%</td><td>+1.4</td><td>🟢 Above target</td></tr>
+        <tr><td>South Austin</td><td>89.7</td><td>6</td><td>1</td><td>119</td><td>126</td><td>572</td><td>22.0%</td><td>-0.3</td><td>🟡 Just below</td></tr>
+        <tr><td>Leander</td><td>87.8</td><td>4</td><td>1</td><td>69</td><td>74</td><td>214</td><td>34.6%</td><td>-2.2</td><td>🟡 Just below</td></tr>
+        <tr><td>San Antonio</td><td><strong>85.2</strong></td><td>4</td><td>8</td><td>96</td><td>108</td><td>365</td><td>29.6%</td><td><strong>-4.8</strong></td><td>🔴 Below target</td></tr>
+        <tr><td><strong>Company Total</strong></td><td><strong>91.9</strong></td><td><strong>27</strong></td><td><strong>30</strong></td><td><strong>978</strong></td><td><strong>1,035</strong></td><td><strong>3,459</strong></td><td><strong>29.9%</strong></td><td><strong>+1.9</strong></td><td></td></tr>
+      </tbody>
+    </table>
+    <blockquote>*Houston Feedback Rate previously reported as 114.63% (impossible) — Matisen's re-pull corrects to 58.5%.</blockquote>
+
+    <h3>5.3 QoQ NPS Trend</h3>
+    <table>
+      <thead><tr><th>Branch</th><th>Q3'25</th><th>Q1'26</th><th>QoQ Δ</th></tr></thead>
+      <tbody>
+        <tr><td>McKinney</td><td>88</td><td>93.6</td><td><strong>+5.6</strong></td></tr>
+        <tr><td>Fort Worth</td><td>91</td><td>96.2</td><td>+5.2</td></tr>
+        <tr><td>North Austin</td><td>86</td><td>91.4</td><td>+5.4</td></tr>
+        <tr><td>Houston</td><td>92</td><td>93.8</td><td>+1.8</td></tr>
+        <tr><td>Tampa</td><td>98</td><td>100.0</td><td>+2.0</td></tr>
+        <tr><td>Garland</td><td>94</td><td>100.0</td><td><strong>+6.0</strong></td></tr>
+        <tr><td>Dallas</td><td>93</td><td>91.4</td><td>-1.6</td></tr>
+        <tr><td>South Austin</td><td>91</td><td>89.7</td><td>-1.3</td></tr>
+        <tr><td>Leander</td><td>91</td><td>87.8</td><td>-3.2</td></tr>
+        <tr><td><strong>San Antonio</strong></td><td><strong>89</strong></td><td><strong>85.2</strong></td><td><strong>-3.8</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>5.4 Key NPS Insights</h3>
+    <ul>
+      <li><strong>San Antonio is the only branch below target AND trending down.</strong> Combined with holding conversion (-1.37 pts YoY, best in CTXH) it's a service-quality issue, not a pricing/demand issue. Focused operational review warranted.</li>
+      <li><strong>Houston biggest YoY NPS gain (+5.8 pts)</strong> despite lowest conversion rate in the company (22.52%). People who do choose Einstein in Houston love it. The conversion problem is happening before the move (availability / competition), not during it.</li>
+      <li><strong>Tampa 100 NPS on a planned-loss branch</strong> — service quality is excellent; economics are structural.</li>
+      <li><strong>No Triple Threat branches.</strong> Triple Threat = Over-ceiling pricing + Conversion dropping + NPS declining. North Austin has first two but NPS UP +5.4. No branch has all three.</li>
+    </ul>
+
+    <hr>
+
+    <!-- SECTION 6 — STRATEGIC -->
+    <h2 id="sec-strategic">Section 6 · Integrated Analysis & Strategic Insights</h2>
+
+    <h3>6.1 The Complete Story</h3>
+    <p>Einstein Q1'26 earns <strong>C → B → B</strong> across the Three-Lens framework — but the underlying narrative is more nuanced than any single grade captures.</p>
+    <p><strong>Demand generation is an A.</strong> Marketing is spending 8% less and generating 20% more booked + serviced revenue. The April 5 autobooking form is an unambiguous demand-capture win: 2,707 additional leads in 14 days, representing users who previously dropped off at the inestimable gate. <strong>Service quality is an A.</strong> NPS at 91.9, 9 of 10 branches at or above the 90 target.</p>
+    <p><strong>The operational challenges are concentrated and identifiable:</strong></p>
+    <ol>
+      <li><strong>February slow-season cost drag.</strong> Company NOI was -$34K in February alone — a structural cash-burn month at current cost structure. March and April recovered to 10.9% and 13.5% margins (April nearly on target). The Q1 NOI miss is largely a February problem compounded by CTXH below-plan execution.</li>
+      <li><strong>CTXH target-miss story, not a DFWT story.</strong> Regional framing by %-margin makes DFWT look like the culprit (1.9% margin vs CTXH 11.6%). But in absolute dollars driving the company-level miss, <strong>CTXH accounts for 70%</strong> (-$236K combined). Three largest individual misses all CTXH.</li>
+      <li><strong>Availability-constrained branches confirmed (4/27 personnel review).</strong> Leander (72% personnel avg, 5/5 below budget) and Houston (77%, 5/5 below) are confirmed availability-constrained — paired with full hours-per-employee (no slack), the dual-gate test holds. Confirmed at 4/27 leadership review. Tampa cleared (106% of stale 2-truck budget, right-sized for 2.5-truck reality). Q1 fix: hire-rate acceleration in Leander + Houston, not pricing.</li>
+      <li><strong>The mid-quarter autobooking form change impacts YoY conversion comparability going forward.</strong> Pre-Apr 5 cohort (35.46%) sits in Einstein's normal range. Post-Apr 5 (27.38%) is the new baseline. Replace "conversion crisis" framing with "new funnel, new baseline, need triage strategy."</li>
+    </ol>
+
+    <h3>6.2 Cross-Metric Correlation — Including Availability</h3>
+    <table>
+      <thead><tr><th>Branch</th><th>Elasticity</th><th>Conv Δ</th><th>NPS Trend</th><th>TUR vs Target</th><th>Root Cause Flag</th></tr></thead>
+      <tbody>
+        <tr><td>North Austin</td><td>AT CEILING (-1.03)</td><td>-14.5 pts</td><td>↑ +5.4 pts</td><td>+5 pts</td><td>Pricing at ceiling on revenue framing; likely margin-favorable</td></tr>
+        <tr><td>South Austin</td><td>HEALTHY (-0.15)</td><td>-10.2 pts</td><td>↓ -1.3 pts</td><td>-5 pts</td><td>Personnel chronically below budget (86% avg, 5/5 periods); contributing factor</td></tr>
+        <tr><td>San Antonio</td><td>AT CEILING (-0.79)</td><td>-1.4 pts</td><td>↓ -3.8 pts</td><td>+2 pts</td><td>Service quality — NPS watch (only branch below 90 NPS)</td></tr>
+        <tr><td><strong>Houston</strong></td><td>GOOD (-0.21)</td><td>-8.7 pts</td><td>↑ +5.8 pts</td><td>-5 pts vs 92%</td><td><strong>🔴 CONFIRMED availability-constrained (77% personnel avg, 5/5 periods below budget)</strong></td></tr>
+        <tr><td>Tampa</td><td>ROOM TO GROW (+0.03)</td><td>-10.7 pts</td><td>↑ +2.0 pts</td><td>-17 pts*</td><td>🟢 CLEARED — target-calibration artifact only (target with 2 trucks; actual 2.5)</td></tr>
+        <tr><td>McKinney</td><td>GOOD (-0.28)</td><td>-5.8 pts</td><td>↑ +5.6 pts</td><td>-1 pt</td><td>On track</td></tr>
+        <tr><td><strong>Leander</strong></td><td>GOOD (-0.11)</td><td><strong>-24.0 pts</strong></td><td>↓ -3.2 pts</td><td><strong>-11 pts</strong></td><td><strong>🔴 CONFIRMED availability-constrained (72% personnel avg, 5/5 periods below budget) — confirmed at 4/27 leadership review</strong></td></tr>
+        <tr><td>Dallas</td><td>AT CEILING (-0.52)</td><td>-7.3 pts</td><td>↓ -1.6 pts</td><td>+6 pts</td><td>Underpricing ($10 below target)</td></tr>
+        <tr><td>Fort Worth</td><td>GOOD (-0.12)</td><td>-1.2 pts</td><td>↑ +5.2 pts</td><td>+4 pts</td><td>Cost structure (planned-loss); overstaffed (120% avg) — scheduling-fit issue</td></tr>
+        <tr><td>Garland</td><td>MODERATE (-0.33)</td><td>-19.7 pts</td><td>↑ +6.0 pts</td><td>+7 pts</td><td>Demand/pricing — low Rev/Truck market; overstaffed (115% avg)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Triple Threat scan:</strong> No branch has all three (pricing at ceiling + conversion drop + NPS decline simultaneously). North Austin closest (pricing + conv) but NPS up. San Antonio closest from NPS angle.</p>
+
+    <h3>6.3 Recommendations by Confidence Level</h3>
+
+    <h4>High Confidence — Act Now</h4>
+    <table>
+      <thead><tr><th>#</th><th>Recommendation</th><th>Owner</th><th>Timeline</th><th>Success Metric</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Sales capacity decision — evaluate 2-3 FTE hires OR part-time peak-hour coverage for 93% lead volume increase</td><td>Amanda Ware</td><td>Decision May 1, staffing May 15</td><td>Response time maintained; conversion on new leads ≥25% by June</td></tr>
+        <tr><td>2</td><td>Raise Dallas, Fort Worth, Garland hourly rates to target ($193 / $183 / $193) — $10/hr below today</td><td>Cameron</td><td>May 1 (Q2 start)</td><td>All three at or above break-even NOI by May close</td></tr>
+        <tr><td>3</td><td>San Antonio service-quality review — only branch below NPS target (85.2) + declining QoQ</td><td>Brian</td><td>May 15</td><td>NPS recovery plan in place by June</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Medium Confidence — Investigate / A/B Test</h4>
+    <table>
+      <thead><tr><th>#</th><th>Recommendation</th><th>Owner</th><th>Timeline</th><th>What We Need to Learn</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Leander + Houston hire acceleration — both confirmed availability-constrained per dual-gate test. Validate Indeed sponsored-posting funnel for both branches; consider whether 2025 hire-rate budgets need revisiting against +6.9% revenue trajectory.</td><td>Anne + Brian + Mike</td><td>May 31</td><td>Can we close the hire gap by end of Q2 to avoid availability constraint repeating in busy season?</td></tr>
+        <tr><td>2</td><td>Tampa — recalibrate 2.5-truck TUR target for Q2 planning, no personnel investigation needed (data confirms appropriately staffed for actual truck count)</td><td>Mike + Paul</td><td>Q2 planning</td><td>What's the right TUR target at 2.5 trucks? Apply: <code>new = old × old_trucks/new_trucks</code></td></tr>
+        <tr><td>3</td><td>North Austin pricing A/B test ($185 vs $195) — over-ceiling elasticity</td><td>Cameron</td><td>May 1</td><td>Does 3+ pt conv recovery materialize within 30 days?</td></tr>
+        <tr><td>4</td><td>Lead triage framework — prioritize by move size × move date</td><td>Amanda Ware + Matisen</td><td>May 15</td><td>Which segments handled by auto-text agents vs human reps?</td></tr>
+        <tr><td>5</td><td>Recapture opportunity activation — ~56 EMMA-generated quotes with no follow-up; auto-text agent</td><td>Matisen</td><td>June 15</td><td>Does "Any questions on your quote?" text drive booking recovery?</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Section 7 · Annual Performance Review</h2>
+    <p style="color:var(--gray-600);font-style:italic;">Annual review is reported in Q4 only — not applicable to Q1'26. Placeholder kept for parity with the canonical structure; restored in Q4 cycle.</p>
+
+    <hr>
+
+    <!-- STRATEGIC CONVERSATION STARTER -->
+    <section id="conversation-starter" class="conversation-starter">
+      <h2>Strategic Conversation Starter</h2>
+      <p class="cs-intro">Five open questions worth pulling at the Roundtable. Not recommendations — actual unresolved decisions where the data has surfaced something but the call hasn't been made yet.</p>
+
+      <div class="cs-question">
+        <div class="cs-num">Question 1 · Planning calibration for February</div>
+        <div class="cs-prompt">The 13.63% Q1 NOI target assumed costs would flex with seasonal revenue. February ran at -2.3%. <strong>Do we want Q1's structure to be "plan for a loss month" going forward, or do we invest in Feb demand / variable costs to flatten the seasonality?</strong></div>
+        <div class="cs-context">Three real options: grow February revenue (marketing push, non-moving pilot), make February costs more variable (contractor labor, fewer salaried fixed roles), or budget Feb explicitly as cash-burn. All three are legitimate.</div>
+      </div>
+
+      <div class="cs-question">
+        <div class="cs-num">Question 2 · Cohort B floor and triage</div>
+        <div class="cs-prompt">The Apr 5 autobooking form surfaced 2,707 lower-intent leads in 14 days — most that would have evaporated previously. <strong>What's our floor for Cohort B conversion below which it stops being worth the sales effort? And do we measure reps differently when they're working Cohort B vs Cohort A leads?</strong></div>
+        <div class="cs-context">The current blended 33.2% averages two different sales motions. Without segmenting, we either over-staff for the wrong cohort or under-invest in the high-value one.</div>
+      </div>
+
+      <div class="cs-question">
+        <div class="cs-num">Question 3 · CTXH target calibration</div>
+        <div class="cs-prompt">CTXH accounts for 70% of the $340K NOI miss, not DFWT. CTXH's margin targets sit at 16-22%. <strong>Were those targets calibrated to reality, or do we need to reset them for Q2 — and does Q2 target-setting follow ambition or follow Q1 actuals + expected seasonal recovery?</strong></div>
+        <div class="cs-context">South Austin -$86K, Houston -$68K, Leander -$66K. Three different stories underneath: confirmed availability-constraint compounded by ambitious target (Houston 77% personnel avg + 92% TUR target), confirmed availability-constraint (Leander 72% personnel avg, biggest conv drop), and execution drift compounded by chronic 86% personnel under-budget (South Austin) — likely needing three different responses.</div>
+      </div>
+
+      <div class="cs-question">
+        <div class="cs-num">Question 4 · directBook elevation</div>
+        <div class="cs-prompt">The directBook subset converts at 86% — the single highest-ROI segment in the entire funnel. <strong>Does Einstein elevate directBook as a distinct operational priority (capacity / availability guarantees specifically for these leads), and who owns making sure a directBook lead never hits "no availability"?</strong></div>
+        <div class="cs-context">Right now directBook is a byproduct of EMMA's flow, not a protected customer segment. The reframe: instead of "elevate directBook as priority," ask "how do we expand who's eligible for directBook in the first place" — because once someone qualifies, we essentially print money on them.</div>
+      </div>
+    
+      <div class="cs-question">
+        <div class="cs-num">Question 5 · Hire-rate vs. Forecaster targets</div>
+        <div class="cs-prompt">Three branches were chronically below personnel budget every Q1 biweekly period (Leander 72%, Houston 77%, South Austin 86%). Company finished at 95%. <strong>Did we hire too slowly against an aggressive Forecaster, or is the Forecaster overshooting reality? Both have very different Q2 implications — and Q2 starts the busy season.</strong></div>
+        <div class="cs-context">Option A: hire-rate problem — Forecaster is right, accelerate hiring (Indeed funnel review for Leander + Houston, fast). Option B: Forecaster overshoots — re-baseline against actual Q1 demand for Q2. Option C: both, by branch — Leander/Houston hire faster, others recalibrate. Our updated methodology now codifies the canonical Forecaster comparison so future quarters answer this cleanly.</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- APPENDIX -->
+    <details id="appendix" class="explainer">
+      <summary>Appendix · Data Audit & External Market Sources</summary>
+      <div class="expl-body">
+        <h4>External Market Data Sources</h4>
+        <table>
+          <thead><tr><th>#</th><th>Source</th><th>Data Used</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Texas Real Estate Research Center / PR Newswire</td><td>"Texas Home Sales Increased Slightly Overall in Q1 of 2026"</td></tr>
+            <tr><td>2</td><td>CultureMap Austin / Redfin</td><td>Austin Q1'26: sales -1.8% YoY, median price -3.4% ($415,300)</td></tr>
+            <tr><td>3</td><td>HAR.com / Morningstar</td><td>Houston March 2026: single-family sales +3.7% YoY; Feb -2.8%; prices -1.2%</td></tr>
+            <tr><td>4</td><td>San Antonio Report / Redfin</td><td>San Antonio: sales down &lt;2% YoY; prices -2.8%; inventory +15-18%</td></tr>
+            <tr><td>5</td><td>Florida Realtors</td><td>FL Q1'26 closed sales +5.3% YoY; Tampa prices +4.8% YoY</td></tr>
+            <tr><td>6</td><td>Freddie Mac</td><td>30-yr mortgage rate: 6.30-6.46% April 2026 vs 6.83% April 2025 (-53 bps YoY)</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Market interpretation:</strong> Texas markets flat to slightly soft. Florida/Tampa positive. Mortgage rates down 53 bps YoY = meaningful tailwind for moving demand. Einstein's +6.9% revenue in this environment = ~8pt outperformance (Lens 2 grade: B).</p>
+
+        <h4>Source Files Used</h4>
+        <table>
+          <thead><tr><th>File</th><th>Purpose</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Q2 REFORECAST Fiscal 2026 - v2 04.23.2026.xlsx</td><td>P&amp;L extraction (10 branch tabs)</td><td>✅ Feb Actual, Mar Prelim, Apr Forecast</td></tr>
+            <tr><td>Mongo re-pull (Matisen 4/18)</td><td>Q1'26 + Q1'25 CRM metrics, canonical formula</td><td>✅ 77-day matched window</td></tr>
+            <tr><td>Looker Studio + KickPoint</td><td>Marketing spend + funnel metrics</td><td>✅ Cross-validated 0.4% delta</td></tr>
+            <tr><td>Price_Adjustments_and_Truck_Transfer.xlsx</td><td>Hourly rates</td><td>✅ Q4'25-Q4'26 baseline for elasticity</td></tr>
+            <tr><td>NPS Mongo re-pull (Matisen)</td><td>Actual survey data — fixes Houston 114.63%</td><td>✅ User-confirmed</td></tr>
+            <tr><td>Q1 2026 Cascading Team Goals sheet</td><td>Branch-level targets</td><td>✅ Pulled via Drive MCP</td></tr>
+            <tr><td>Q1 2025 Financial Actuals tab</td><td>Prior-year comparison</td><td>✅ Branch-level actuals</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Confidence Assessment</h4>
+        <table>
+          <thead><tr><th>Section</th><th>Confidence</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>Financial Performance</td><td><strong>High</strong></td><td>Feb/Mar actual, Apr forecast. NOI verified by Estimated Actuals file.</td></tr>
+            <tr><td>Marketing</td><td><strong>High</strong></td><td>Cross-validated Google spend within 0.4%</td></tr>
+            <tr><td>Sales/CRM</td><td><strong>High</strong></td><td>Matisen's Mongo re-pull with canonical formula. 77-day matched window.</td></tr>
+            <tr><td>Pricing / Elasticity</td><td><strong>Medium</strong></td><td>Prior-period baseline methodology. LOW confidence per skill — no control group.</td></tr>
+            <tr><td>NPS</td><td><strong>High</strong></td><td>Matisen's re-pull corrects Houston artifact. User-confirmed.</td></tr>
+            <tr><td>Variance Decomp (v3.1)</td><td><strong>Medium</strong></td><td>Target booked hours not provided at branch level.</td></tr>
+            <tr><td>Cohort Analysis (v3.1 NEW)</td><td><strong>High</strong></td><td>Matisen re-pull with explicit Cohort A/B segmentation.</td></tr>
+            <tr><td>Availability Analysis (v3.1 NEW)</td><td><strong>High</strong></td><td>Based on TUR miss + conv drop correlation; personnel review completed 4/27.</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Cross-Validations</h4>
+        <ul>
+          <li>Branch revenues sum to company total: ✅ Pass — $5,465,959</li>
+          <li>Einstein NOI = Net Ord Income - Overhead Allocation: ✅ Pass — verified each branch</li>
+          <li>P&amp;L revenue vs CRM Booked+Serviced $: ⚠️ $5.47M P&amp;L vs $5.63M CRM — within 3% (comparable)</li>
+          <li>Google Ads: KickPoint vs Looker: ✅ Pass — 0.4% delta</li>
+          <li>Booked $ ≠ Quoted $ integrity: ✅ Pass</li>
+          <li>Canonical conv formula applied both years: ✅ Pass</li>
+          <li>NPS Feedback Rate ≤ 100% every branch: ✅ Pass (Houston fixed 114.63% → 58.5%)</li>
+        </ul>
+      </div>
+    </details>
+
+    <p style="text-align:center;color:var(--gray-400);font-size:11px;margin-top:32px;font-style:italic;">Analysis produced using Einstein Financial Analysis methodology. Charts rendered via Chart.js. Print stylesheet hides interactive charts (data preserved in tables).</p>
+
+  </main>
+</div>
+
+<script>
+// Brand colors
+const BRAND = {
+  navy: '#0d2b4e',
+  navyLight: '#1a3a5c',
+  orange: '#F9A825',
+  orangeDark: '#b85c00',
+  green: '#2e7d32',
+  greenLight: '#66bb6a',
+  red: '#c62828',
+  redLight: '#ef5350',
+  gray: '#5c6670',
+  grayLight: '#b0bec5',
+};
+
+Chart.defaults.font.family = "'Roboto', Arial, sans-serif";
+Chart.defaults.color = '#1a1a1a';
+Chart.defaults.borderColor = '#dde3e8';
+
+// Chart 1: Monthly NOI Trajectory
+new Chart(document.getElementById('chartNOITrajectory'), {
+  type: 'bar',
+  data: {
+    labels: ['February (Actual)', 'March (Prelim)', 'April (Forecast)'],
+    datasets: [
+      {
+        label: 'NOI $',
+        data: [-34323, 209615, 279187],
+        backgroundColor: ['#c62828', '#66bb6a', '#2e7d32'],
+        borderRadius: 4,
+        yAxisID: 'y',
+      },
+      {
+        label: 'NOI Margin %',
+        data: [-2.3, 10.9, 13.5],
+        type: 'line',
+        borderColor: BRAND.orange,
+        backgroundColor: BRAND.orange,
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: BRAND.orange,
+        tension: 0.2,
+        yAxisID: 'y1',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.label === 'NOI $') return 'NOI: $' + ctx.parsed.y.toLocaleString();
+            return 'Margin: ' + ctx.parsed.y + '%';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        position: 'left',
+        title: { display: true, text: 'NOI $' },
+        ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K' }
+      },
+      y1: {
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'NOI Margin %' },
+        ticks: { callback: v => v + '%' },
+        suggestedMin: -5,
+        suggestedMax: 16,
+      }
+    }
+  },
+  plugins: [{
+    id: 'targetLine',
+    afterDraw: function(chart) {
+      const yScale = chart.scales.y1;
+      const targetY = yScale.getPixelForValue(13.63);
+      const ctx = chart.ctx;
+      ctx.save();
+      ctx.strokeStyle = BRAND.navy;
+      ctx.setLineDash([6, 4]);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(chart.chartArea.left, targetY);
+      ctx.lineTo(chart.chartArea.right, targetY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = BRAND.navy;
+      ctx.font = 'bold 11px Roboto';
+      ctx.fillText('Target margin 13.63%', chart.chartArea.right - 130, targetY - 5);
+      ctx.restore();
+    }
+  }]
+});
+
+// Chart 2: Branch NOI Variance (sorted ascending = worst at top)
+const branchVarData = [
+  { branch: 'South Austin', variance: -85760, region: 'CTXH' },
+  { branch: 'Houston', variance: -68485, region: 'CTXH' },
+  { branch: 'Leander', variance: -66213, region: 'CTXH' },
+  { branch: 'Dallas', variance: -55910, region: 'DFWT' },
+  { branch: 'Fort Worth', variance: -16361, region: 'DFWT-PL' },
+  { branch: 'McKinney', variance: -15799, region: 'DFWT' },
+  { branch: 'Garland', variance: -12123, region: 'DFWT' },
+  { branch: 'North Austin', variance: -9302, region: 'CTXH' },
+  { branch: 'San Antonio', variance: -6648, region: 'CTXH' },
+  { branch: 'Tampa', variance: -3595, region: 'DFWT-PL' },
+];
+new Chart(document.getElementById('chartBranchVariance'), {
+  type: 'bar',
+  data: {
+    labels: branchVarData.map(d => d.branch),
+    datasets: [{
+      label: 'NOI Variance vs Target ($)',
+      data: branchVarData.map(d => d.variance),
+      backgroundColor: branchVarData.map(d => {
+        if (d.region === 'CTXH') return BRAND.orange;
+        if (d.region === 'DFWT-PL') return BRAND.grayLight;
+        return BRAND.navyLight;
+      }),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => 'Variance: $' + ctx.parsed.x.toLocaleString()
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K' },
+        title: { display: true, text: 'NOI Miss vs Target ($)' }
+      }
+    }
+  }
+});
+
+// Chart 3: YoY Revenue by Branch
+const yoyData = [
+  { branch: 'Fort Worth', yoy: 30.7 },
+  { branch: 'Tampa', yoy: 23.0 },
+  { branch: 'McKinney', yoy: 19.6 },
+  { branch: 'Leander', yoy: 16.3 },
+  { branch: 'San Antonio', yoy: 10.3 },
+  { branch: 'Dallas', yoy: 7.7 },
+  { branch: 'Company', yoy: 6.9 },
+  { branch: 'North Austin', yoy: 5.3 },
+  { branch: 'South Austin', yoy: -1.3 },
+  { branch: 'Garland', yoy: -1.9 },
+  { branch: 'Houston', yoy: -5.6 },
+];
+new Chart(document.getElementById('chartYoYRevenue'), {
+  type: 'bar',
+  data: {
+    labels: yoyData.map(d => d.branch),
+    datasets: [{
+      label: 'YoY Revenue Growth (%)',
+      data: yoyData.map(d => d.yoy),
+      backgroundColor: yoyData.map(d => {
+        if (d.branch === 'Company') return BRAND.navy;
+        return d.yoy >= 0 ? BRAND.green : BRAND.red;
+      }),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => ctx.parsed.x.toFixed(1) + '%' }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { callback: v => v + '%' },
+        title: { display: true, text: 'YoY Revenue Change' }
+      }
+    }
+  }
+});
+
+// Chart 4: Marketing ROI
+new Chart(document.getElementById('chartMarketingROI'), {
+  type: 'bar',
+  data: {
+    labels: ['Spend', 'Quoted Revenue Generated', 'Booked+Serviced Generated', 'B+S per $ Spent'],
+    datasets: [
+      {
+        label: 'Q1\'25',
+        data: [238, 11508, 5044, 21.16],
+        backgroundColor: BRAND.grayLight,
+        borderRadius: 3,
+      },
+      {
+        label: 'Q1\'26',
+        data: [219, 18185, 6037, 27.54],
+        backgroundColor: BRAND.orange,
+        borderRadius: 3,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const idx = ctx.dataIndex;
+            const v = ctx.parsed.y;
+            if (idx === 3) return ctx.dataset.label + ': $' + v.toFixed(2);
+            return ctx.dataset.label + ': $' + v.toLocaleString() + 'K';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        type: 'logarithmic',
+        title: { display: true, text: '$ in thousands (log scale)' },
+      }
+    }
+  }
+});
+
+// Chart 5: Cohort Analysis (combined chart - bar for conv %, secondary for lead count)
+new Chart(document.getElementById('chartCohort'), {
+  type: 'bar',
+  data: {
+    labels: ['Cohort A\n(Pre-Apr 5)', 'Cohort B\n(Post-Apr 5)', 'Cohort B\ndirectBook subset'],
+    datasets: [
+      {
+        label: 'Conversion Rate $ (%)',
+        data: [35.46, 27.38, 86.03],
+        backgroundColor: [BRAND.navyLight, BRAND.orangeDark, BRAND.green],
+        borderRadius: 3,
+        yAxisID: 'y',
+      },
+      {
+        label: 'Lead Count',
+        data: [6600, 2707, 675],
+        type: 'line',
+        borderColor: BRAND.orange,
+        backgroundColor: BRAND.orange,
+        borderWidth: 3,
+        pointRadius: 6,
+        pointBackgroundColor: BRAND.orange,
+        yAxisID: 'y1',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.label.includes('Conversion')) return 'Conv: ' + ctx.parsed.y + '%';
+            return 'Leads: ' + ctx.parsed.y.toLocaleString();
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        title: { display: true, text: 'Conversion Rate %' },
+        ticks: { callback: v => v + '%' },
+        max: 100,
+      },
+      y1: {
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'Lead Count' },
+      }
+    }
+  }
+});
+
+// Chart 6: Conv Rate by Branch YoY
+const convData = [
+  { branch: 'Dallas', q126: 44.93, q125: 52.25 },
+  { branch: 'North Austin', q126: 42.36, q125: 56.82 },
+  { branch: 'South Austin', q126: 39.99, q125: 50.19 },
+  { branch: 'McKinney', q126: 33.11, q125: 38.92 },
+  { branch: 'Fort Worth', q126: 33.10, q125: 34.27 },
+  { branch: 'San Antonio', q126: 32.62, q125: 33.99 },
+  { branch: 'Tampa', q126: 31.77, q125: 42.49 },
+  { branch: 'Houston', q126: 22.52, q125: 31.18 },
+  { branch: 'Garland', q126: 20.61, q125: 40.29 },
+  { branch: 'Leander', q126: 19.34, q125: 43.33 },
+];
+new Chart(document.getElementById('chartConvByBranch'), {
+  type: 'bar',
+  data: {
+    labels: convData.map(d => d.branch),
+    datasets: [
+      {
+        label: 'Q1\'25',
+        data: convData.map(d => d.q125),
+        backgroundColor: BRAND.grayLight,
+        borderRadius: 3,
+      },
+      {
+        label: 'Q1\'26',
+        data: convData.map(d => d.q126),
+        backgroundColor: BRAND.orange,
+        borderRadius: 3,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.x.toFixed(2) + '%' } }
+    },
+    scales: {
+      x: {
+        ticks: { callback: v => v + '%' },
+        title: { display: true, text: 'Conversion Rate $' }
+      }
+    }
+  }
+});
+
+// Chart 7: Elasticity Scatter
+const elastData = [
+  { branch: 'North Austin', x: 8.3, y: -8.6, e: -1.03 },
+  { branch: 'South Austin', x: 8.3, y: -1.2, e: -0.15 },
+  { branch: 'Dallas', x: 21.9, y: -11.3, e: -0.52 },
+  { branch: 'San Antonio', x: 6.2, y: -4.9, e: -0.79 },
+  { branch: 'Houston', x: 13.3, y: -2.8, e: -0.21 },
+  { branch: 'McKinney', x: 12.5, y: -3.5, e: -0.28 },
+  { branch: 'Leander', x: 18.8, y: -2.1, e: -0.11 },
+  { branch: 'Fort Worth', x: 20.0, y: -2.3, e: -0.12 },
+  { branch: 'Tampa', x: 12.5, y: 0.3, e: 0.03 },
+  { branch: 'Garland', x: 18.8, y: -6.1, e: -0.33 },
+];
+new Chart(document.getElementById('chartElasticity'), {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'At/Over Ceiling (e ≤ -1.0)',
+        data: elastData.filter(d => d.e <= -1.0).map(d => ({ x: d.x, y: d.y, branch: d.branch, e: d.e })),
+        backgroundColor: BRAND.red,
+        pointRadius: 9,
+      },
+      {
+        label: 'Approaching (-0.5 to -1.0)',
+        data: elastData.filter(d => d.e <= -0.5 && d.e > -1.0).map(d => ({ x: d.x, y: d.y, branch: d.branch, e: d.e })),
+        backgroundColor: BRAND.orange,
+        pointRadius: 9,
+      },
+      {
+        label: 'Healthy (> -0.5)',
+        data: elastData.filter(d => d.e > -0.5).map(d => ({ x: d.x, y: d.y, branch: d.branch, e: d.e })),
+        backgroundColor: BRAND.green,
+        pointRadius: 9,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const d = ctx.raw;
+            return d.branch + ': +' + d.x + '% price → ' + d.y + ' pt conv (e=' + d.e + ')';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'Price Change %' },
+        ticks: { callback: v => '+' + v + '%' },
+        min: 0, max: 25,
+      },
+      y: {
+        title: { display: true, text: 'Conversion Change (pts)' },
+        ticks: { callback: v => v + ' pts' },
+        min: -14, max: 4,
+      }
+    }
+  },
+  plugins: [{
+    id: 'ceilingLine',
+    afterDraw: function(chart) {
+      const ctx = chart.ctx;
+      const xScale = chart.scales.x;
+      const yScale = chart.scales.y;
+      // Draw -1.0 elasticity ceiling line: y = -x (since elasticity = y/x = -1)
+      ctx.save();
+      ctx.strokeStyle = BRAND.red;
+      ctx.setLineDash([5, 4]);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      const x1 = xScale.getPixelForValue(0);
+      const y1 = yScale.getPixelForValue(0);
+      const x2 = xScale.getPixelForValue(14);
+      const y2 = yScale.getPixelForValue(-14);
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = BRAND.red;
+      ctx.font = 'bold 11px Roboto';
+      ctx.fillText('Elasticity = -1.0 (revenue ceiling)', x2 - 30, y2 + 14);
+      ctx.restore();
+
+      // Annotate each point with branch name
+      chart.data.datasets.forEach((ds, dsIdx) => {
+        ds.data.forEach((pt) => {
+          const px = xScale.getPixelForValue(pt.x);
+          const py = yScale.getPixelForValue(pt.y);
+          ctx.save();
+          ctx.fillStyle = BRAND.navy;
+          ctx.font = '10.5px Roboto';
+          ctx.fillText(pt.branch, px + 11, py + 4);
+          ctx.restore();
+        });
+      });
+    }
+  }]
+});
+
+// Chart 8: NPS by Branch
+const npsData = [
+  { branch: 'Tampa', nps: 100.0 },
+  { branch: 'Garland', nps: 100.0 },
+  { branch: 'Fort Worth', nps: 96.2 },
+  { branch: 'Houston', nps: 93.8 },
+  { branch: 'McKinney', nps: 93.6 },
+  { branch: 'Company', nps: 91.9 },
+  { branch: 'Dallas', nps: 91.4 },
+  { branch: 'North Austin', nps: 91.4 },
+  { branch: 'South Austin', nps: 89.7 },
+  { branch: 'Leander', nps: 87.8 },
+  { branch: 'San Antonio', nps: 85.2 },
+];
+new Chart(document.getElementById('chartNPS'), {
+  type: 'bar',
+  data: {
+    labels: npsData.map(d => d.branch),
+    datasets: [{
+      label: 'NPS',
+      data: npsData.map(d => d.nps),
+      backgroundColor: npsData.map(d => {
+        if (d.branch === 'Company') return BRAND.navy;
+        return d.nps >= 90 ? BRAND.green : (d.nps >= 87 ? BRAND.orange : BRAND.red);
+      }),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => 'NPS: ' + ctx.parsed.y } }
+    },
+    scales: {
+      y: {
+        suggestedMin: 80,
+        suggestedMax: 100,
+        title: { display: true, text: 'NPS Score' }
+      }
+    }
+  },
+  plugins: [{
+    id: 'npsTargetLine',
+    afterDraw: function(chart) {
+      const yScale = chart.scales.y;
+      const targetY = yScale.getPixelForValue(90);
+      const ctx = chart.ctx;
+      ctx.save();
+      ctx.strokeStyle = BRAND.navy;
+      ctx.setLineDash([6, 4]);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(chart.chartArea.left, targetY);
+      ctx.lineTo(chart.chartArea.right, targetY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = BRAND.navy;
+      ctx.font = 'bold 11px Roboto';
+      ctx.fillText('Target: 90', chart.chartArea.right - 64, targetY - 5);
+      ctx.restore();
+    }
+  }]
+});
+</script>
+
+</body>
+</html>
