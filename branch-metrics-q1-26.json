@@ -103,7 +103,7 @@
       "mover_enps": "SG: +30 or more above company avg. G: 0 to +30 above. W: -10 to 0 below. R: more than -10 below (intervention).",
       "recognition_pct": "SG: \u226590%. G: 75-89%. W: 60-74% (per Cameron 4/30: anything below 75% gets a watch flag). R: <60%.",
       "driver_safety_score": "v3.3.7: SG \u226590 AND <10% HR \u00b7 G \u226580 AND \u226420% HR \u00b7 W 70-79 OR (\u226580 AND >20% HR) \u00b7 R <70. Per-branch from Mike's Q1 Samsara breakdown sheet.",
-      "personnel_budget_pct": "G: 95-110% (on plan). W: 85-94% (under plan, one or two periods below) OR 110-125% (overstaffed but disciplined). R: chronic-F (5/5 below 95%) OR >125% (significant overstaffing). Planned-loss branches treated as W by default unless severely overstaffed."
+      "personnel_budget_pct": "SG: ≥95% AND not chronic-F. G: ≥95% (any over-budget allowed). W: 85-94% (under plan, one or two periods below). R: chronic-F (5/5 below 95%). Over-budget alone (>100%) does NOT dock — Cameron 5/4 ruling: branches over their personnel budget should not be penalized; overstaffing reflects demand response or planned-loss capacity, not poor discipline. Update applied to Fort Worth (1.20) + Garland (1.15): both lifted W → G."
     },
     "scorecard_completeness": {
       "_synced_at_version": "3.3.5",
@@ -2226,9 +2226,9 @@
         1.2
       ],
       "personnel_budget_chronic_f": false,
-      "personnel_budget_letter": "A++ over",
-      "personnel_budget_diagnosis": "Overstaffed (120% avg) \u2014 scheduling-fit issue; planned-loss cost structure",
-      "personnel_budget_grade": "W",
+      "personnel_budget_letter": "A",
+      "personnel_budget_diagnosis": "Over plan (120% avg) \u2014 Cameron 5/4: over-budget alone does not dock. Branch carrying full headcount through planned-loss quarter; not penalized for staffing above plan.",
+      "personnel_budget_grade": "G",
       "driver_safety_score": 96,
       "driver_safety_atrisk_pct": 0.0,
       "driver_safety_branch_specific": true,
@@ -2308,12 +2308,12 @@
         ],
         "source": "EMMA Mongo CSV pull (generated 9.csv) \u00b7 Q1 quarterly aggregate (Feb+Mar+Apr) \u00b7 canonical Matisen-scrubbed quarterly \u00b7 supersedes generated 2.csv which was understated (book revenue truncated mid-quarter)"
       },
-      "composite_score_v33": 67.0,
-      "composite_letter_v33": "C",
-      "composite_math_v33": "(20\u00b74 TUR + 10\u00b75 Sales + 15\u00b75 NPS + 15\u00b71 eNPS + 10\u00b71 Recog + 15\u00b75 DSS + 15\u00b72 Personnel) / 5 = 67.0",
-      "final_grade_score_v33": 77.0,
-      "final_grade_letter_v33": "B",
-      "final_grade_math_v33": "Composite 67.0 + Growth +10 = 77.0 (B)",
+      "composite_score_v33": 73.0,
+      "composite_letter_v33": "B-",
+      "composite_math_v33": "(20\u00b74 TUR + 10\u00b75 Sales + 15\u00b75 NPS + 15\u00b71 eNPS + 10\u00b71 Recog + 15\u00b75 DSS + 15\u00b74 Personnel) / 5 = 73.0",
+      "final_grade_score_v33": 83.0,
+      "final_grade_letter_v33": "B+",
+      "final_grade_math_v33": "Composite 73.0 + Growth +10 = 83.0 (B+)",
       "noi_per_truck_reference": {
         "actual_per_truck": -5133,
         "plan_per_truck": -1042.0,
@@ -2627,9 +2627,9 @@
         1.03
       ],
       "personnel_budget_chronic_f": false,
-      "personnel_budget_letter": "A++ over",
-      "personnel_budget_diagnosis": "Overstaffed (115% avg) \u2014 demand-side issue, low Rev/Truck market",
-      "personnel_budget_grade": "W",
+      "personnel_budget_letter": "A",
+      "personnel_budget_diagnosis": "Over plan (115% avg) \u2014 Cameron 5/4: over-budget alone does not dock. Demand-side mismatch (low Rev/Truck market) is real but separately tracked; staffing-vs-budget discipline is not penalized when over.",
+      "personnel_budget_grade": "G",
       "driver_safety_score": 86,
       "driver_safety_atrisk_pct": 0.25,
       "driver_safety_branch_specific": true,
@@ -2693,12 +2693,12 @@
         "source": "EMMA Mongo CSV pull (generated 9.csv) \u00b7 Q1 quarterly aggregate (Feb+Mar+Apr) \u00b7 canonical Matisen-scrubbed quarterly \u00b7 supersedes generated 2.csv which was understated (book revenue truncated mid-quarter)",
         "sample_size_caveat": "n=1 \u2014 only one branch-resident sales rep mapped (Joseph Mcreynolds). Branch grade is fully driven by this single rep. Add additional reps to mapping if branch grows; alternatively interpret with caveat that one rep's swings move the whole branch grade."
       },
-      "composite_score_v33": 70.0,
-      "composite_letter_v33": "B-",
-      "composite_math_v33": "(20\u00b75 TUR + 10\u00b75 Sales + 15\u00b75 NPS + 15\u00b71 eNPS + 10\u00b75 Recog + 15\u00b72 DSS + 15\u00b72 Personnel) / 5 = 70.0",
-      "final_grade_score_v33": 67.0,
-      "final_grade_letter_v33": "C",
-      "final_grade_math_v33": "Composite 70.0 + Growth -3 = 67.0 (C)",
+      "composite_score_v33": 76.0,
+      "composite_letter_v33": "B",
+      "composite_math_v33": "(20\u00b75 TUR + 10\u00b75 Sales + 15\u00b75 NPS + 15\u00b71 eNPS + 10\u00b75 Recog + 15\u00b72 DSS + 15\u00b74 Personnel) / 5 = 76.0",
+      "final_grade_score_v33": 73.0,
+      "final_grade_letter_v33": "B-",
+      "final_grade_math_v33": "Composite 76.0 + Growth -3 = 73.0 (B-)",
       "noi_per_truck_reference": {
         "actual_per_truck": -1143,
         "plan_per_truck": 2898.0,
