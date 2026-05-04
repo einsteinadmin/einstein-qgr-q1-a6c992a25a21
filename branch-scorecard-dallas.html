@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dallas — Q1'26 Branch Scorecard</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,6 +25,7 @@
     --gray-300: #c8d0d8;
     --gray-400: #b0bec5;
     --gray-600: #5c6670;
+    --gray-700: #3d4751;
     --gray-800: #1a1a1a;
     --blue: #1565c0;
     --blue-bg: #e3f2fd;
@@ -150,6 +150,663 @@
   .philosophy-grid .bucket p { font-size: 12px; color: var(--gray-800); line-height: 1.5; margin: 0; }
   .philosophy-close { font-size: 12.5px; color: var(--gray-800); font-style: italic; margin: 12px 0 0 0; line-height: 1.55; }
   @media (max-width: 720px) { .cover-hero { grid-template-columns: 1fr; text-align: center; } .composite-badge { margin: 0 auto; } .metric-grid { grid-template-columns: 1fr; } .hl-grid { grid-template-columns: 1fr; } .philosophy-grid { grid-template-columns: 1fr; } }
+  /* ============== VIEW TOGGLE (Manager / Mover) ============== */
+  .view-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .view-toggle-context {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .vtc-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .vtc-info {
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.4;
+  }
+  .vtc-info strong { color: var(--navy); font-weight: 700; }
+  .view-toggle {
+    display: inline-flex;
+    background: var(--gray-100);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 0;
+  }
+  .view-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-600);
+    border-radius: 999px;
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .view-toggle-btn:hover { color: var(--navy); }
+  .view-toggle-btn.is-active {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 2px 6px rgba(13,43,78,0.2);
+  }
+  @media (max-width: 540px) {
+    .view-toggle-wrap { flex-direction: column; align-items: stretch; }
+    .view-toggle { align-self: flex-start; }
+  }
+
+  /* ============== VIEW MODE — Manager / Mover element visibility ============== */
+  .mover-only { display: none; }
+  body.scorecard-view-mover .manager-only { display: none !important; }
+  body.scorecard-view-mover .mover-only   { display: block; }
+
+  /* ============== MOVER VIEW LAYOUT ============== */
+  .mover-view {
+    background: white;
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 22px;
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 2px 10px rgba(13,43,78,0.04);
+    overflow: hidden;
+  }
+
+  /* Mover hero — final grade big + branch name */
+  .mover-hero {
+    background: var(--navy);
+    color: white;
+    padding: 32px 30px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+  .mover-hero .grade-circle {
+    width: 140px; height: 140px;
+    background: var(--orange);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 6px 20px rgba(239,139,34,0.35);
+  }
+  .mover-hero .grade-circle .grade-letter { font-size: 64px; }
+  .mover-hero .grade-circle .grade-num { font-size: 14px; margin-top: 4px; opacity: 0.85; }
+  .mover-hero .hero-eyebrow {
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    margin: 0 0 8px 0;
+  }
+  .mover-hero h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    line-height: 1.1;
+  }
+  .mover-hero .hero-meta {
+    font-size: 13px;
+    color: var(--gray-300);
+    margin: 0;
+  }
+  .mover-hero .hero-meta strong { color: white; font-weight: 700; }
+
+  /* Mover body sections */
+  .mover-section {
+    padding: 24px 30px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .mover-section:first-of-type { border-top: none; }
+  .mover-section h2 {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+    margin: 0 0 4px 0;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--orange);
+    display: inline-block;
+  }
+  .mover-section .section-eyebrow-mover {
+    color: var(--orange);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    margin: 0 0 6px 0;
+  }
+  .mover-section .lede {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin: 12px 0 14px 0;
+    line-height: 1.55;
+  }
+  .mover-section p { font-size: 13.5px; line-height: 1.6; color: var(--gray-800); margin: 0 0 10px 0; }
+
+  /* Company composite (sits above the 3 lenses) */
+  .company-composite {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: var(--gray-50);
+    border-left: 4px solid var(--navy);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 14px 0 18px 0;
+  }
+  .company-composite .cc-grade-circle {
+    width: 88px; height: 88px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(13,43,78,0.25);
+  }
+  .company-composite .cc-letter { font-size: 36px; font-weight: 900; }
+  .company-composite .cc-num { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; opacity: 0.85; }
+  .company-composite .cc-body p { margin: 0; }
+  .company-composite .cc-headline {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px !important;
+  }
+  .company-composite .cc-headline strong { color: var(--orange); }
+  .company-composite .cc-explainer {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    line-height: 1.5;
+  }
+  .lens-divider-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 6px 0 !important;
+  }
+  @media (max-width: 540px) {
+    .company-composite { grid-template-columns: 1fr; text-align: center; }
+    .company-composite .cc-grade-circle { margin: 0 auto; }
+  }
+
+  /* 3-Lens Company Snapshot */
+  .lens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 12px 0;
+  }
+  .lens-card {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 16px;
+    border-top: 4px solid var(--gray-300);
+  }
+  .lens-card.grade-c { border-top-color: var(--amber); }
+  .lens-card.grade-b { border-top-color: #4caf50; }
+  .lens-card.grade-bplus { border-top-color: var(--green); }
+  .lens-card .lens-eyebrow {
+    color: var(--gray-600);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 6px 0;
+  }
+  .lens-card .lens-grade {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .lens-card .lens-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .lens-card .lens-explainer {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  /* Mover-relevant branch metrics */
+  .mover-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .mover-metric {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--gray-300);
+  }
+  .mover-metric.grade-sg { border-left-color: var(--green); }
+  .mover-metric.grade-g  { border-left-color: #4caf50; }
+  .mover-metric.grade-w  { border-left-color: var(--amber); }
+  .mover-metric.grade-r  { border-left-color: var(--red); }
+  .mover-metric .metric-label {
+    color: var(--gray-600);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .mover-metric .metric-value {
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .mover-metric .metric-grade-pill {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 999px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: 3px;
+  }
+  .mover-metric .metric-grade-pill.sg { background: var(--green); }
+  .mover-metric .metric-grade-pill.g  { background: #4caf50; }
+  .mover-metric .metric-grade-pill.w  { background: var(--amber); }
+  .mover-metric .metric-grade-pill.r  { background: var(--red); }
+  .mover-metric .metric-explainer {
+    font-size: 12px;
+    color: var(--gray-700);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .mover-metric .metric-display-only-tag {
+    display: inline-block;
+    background: var(--gray-200);
+    color: var(--gray-700);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+
+  /* Mover charts grid */
+  .mover-charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .mover-chart-card {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px 14px 16px;
+    border-top: 3px solid var(--orange);
+  }
+  .mover-chart-card.mover-chart-full {
+    grid-column: 1 / -1;
+  }
+  .mover-chart-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .mover-chart-card .chart-canvas-wrap {
+    position: relative;
+    height: 220px;
+  }
+  .mover-chart-card .chart-canvas-wrap.tall { height: 260px; }
+  .mover-chart-sub {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .mover-charts-grid { grid-template-columns: 1fr; }
+  }
+
+  /* "Why this matters" collapsible */
+  .why-it-matters {
+    margin-top: 10px;
+    border-top: 1px dashed var(--gray-300);
+    padding-top: 8px;
+  }
+  .why-it-matters > summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--orange-dark);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 0;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+  .why-it-matters > summary::-webkit-details-marker { display: none; }
+  .why-it-matters > summary::before {
+    content: "▶";
+    font-size: 9px;
+    color: var(--orange);
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+  .why-it-matters[open] > summary::before { transform: rotate(90deg); }
+  .why-it-matters > summary:hover { color: var(--navy); }
+  .why-it-matters > p {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    line-height: 1.55;
+    margin: 6px 0 4px 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--orange);
+  }
+  .mover-metric .why-it-matters { border-top-color: var(--gray-300); }
+  .mover-metric .why-it-matters > summary { color: var(--orange-dark); }
+
+  /* Quarterly theme poster */
+  .theme-poster {
+    text-align: center;
+    background: linear-gradient(135deg, #0d2b4e 0%, #1a3a66 100%);
+    padding: 28px 30px;
+    border-radius: 8px;
+    margin-top: 14px;
+  }
+  .theme-poster img {
+    max-width: 320px;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .theme-poster .poster-placeholder {
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed var(--orange);
+    border-radius: 8px;
+    padding: 40px 20px;
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .theme-poster .poster-caption {
+    color: var(--gray-300);
+    font-size: 12px;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  /* Vision Summary placeholder */
+  .vision-summary-block {
+    background: var(--orange-bg);
+    border: 2px dashed var(--orange);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-top: 14px;
+  }
+  .vision-summary-block .placeholder-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .vision-summary-block p {
+    font-size: 13px;
+    color: var(--gray-800);
+    line-height: 1.55;
+  }
+  .vision-summary-block .vision-cta-stub {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--gray-200);
+    color: var(--gray-600);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: not-allowed;
+    font-style: italic;
+  }
+
+  /* Einstein Games block (inline content) */
+  .einstein-games-block { margin-bottom: 26px; }
+  .einstein-games-block .lede { font-size: 13.5px; color: var(--gray-800); margin-bottom: 12px; }
+  .cameron-frame {
+    background: var(--navy);
+    color: white;
+    border-left: 4px solid var(--orange);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 14px 0 16px 0;
+  }
+  .games-subhead {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin: 18px 0 10px 0;
+  }
+  .games-new-tag {
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+  .games-conf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .games-conf {
+    background: var(--gray-50);
+    border-left: 3px solid var(--orange);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .games-conf-name {
+    color: var(--navy);
+    font-weight: 900;
+    font-size: 13.5px;
+    margin-bottom: 4px;
+  }
+  .games-conf-mgr {
+    color: var(--gray-600);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-left: 4px;
+  }
+  .games-conf-teams {
+    color: var(--gray-800);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .games-note {
+    font-size: 12.5px;
+    color: var(--gray-600);
+    font-style: italic;
+    margin: 6px 0 0 0;
+  }
+  .games-schedule {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .games-week {
+    background: var(--gray-50);
+    border-radius: 6px;
+    padding: 8px 10px;
+    border-top: 3px solid var(--gray-300);
+  }
+  .games-week-label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .games-week-date {
+    display: block;
+    font-size: 11px;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+  .games-week-cross    { border-top-color: var(--orange); background: var(--orange-bg); }
+  .games-week-rivalry  { border-top-color: #1565c0; background: #e3f2fd; }
+  .games-week-playoff  { border-top-color: var(--navy); background: white; }
+  .games-week-champ    { border-top-color: var(--orange); background: var(--navy); }
+  .games-week-champ .games-week-label,
+  .games-week-champ .games-week-date { color: white; }
+  .games-cards-list {
+    margin: 8px 0 12px 0;
+    padding-left: 22px;
+  }
+  .games-cards-list li {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .games-link-out {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .games-link-out a {
+    color: var(--orange-dark);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--orange-dark);
+  }
+  .games-link-out a:hover {
+    color: var(--navy);
+    border-bottom-color: var(--navy);
+  }
+
+  /* Bottom links section */
+  .mover-bottom-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .mover-bottom-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: white;
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    padding: 16px 18px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .mover-bottom-link:hover {
+    background: var(--orange-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239,139,34,0.18);
+  }
+  .mover-bottom-link.placeholder {
+    border-color: var(--gray-300);
+    border-style: dashed;
+    background: var(--gray-50);
+    cursor: not-allowed;
+  }
+  .mover-bottom-link.placeholder:hover { transform: none; box-shadow: none; background: var(--gray-50); }
+  .mover-bottom-link strong {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .mover-bottom-link span {
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .mover-bottom-link.placeholder strong { color: var(--gray-600); }
+
+  /* Mover comp informational block */
+  .mover-comp-info {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 14px;
+  }
+  .mover-comp-info ul { margin: 8px 0; padding-left: 22px; }
+  .mover-comp-info li { font-size: 13px; line-height: 1.6; color: var(--gray-800); margin-bottom: 4px; }
+
+  /* Mobile breakpoint for Mover View */
+  @media (max-width: 720px) {
+    .mover-hero { grid-template-columns: 1fr; text-align: center; }
+    .mover-hero .grade-circle { margin: 0 auto; }
+    .lens-grid { grid-template-columns: 1fr; }
+    .mover-metrics-grid { grid-template-columns: 1fr; }
+    .mover-bottom-links { grid-template-columns: 1fr; }
+  }
   @media print { @page { margin: 0.5in; } body { background: white; font-size: 11pt; } .wrap { max-width: none; padding: 0; } section, .cover-hero, .branch-header { box-shadow: none; page-break-inside: avoid; break-inside: avoid; } .back-link { display: none; } }
 </style>
 </head>
@@ -158,7 +815,19 @@
 
   <a class="back-link" href="./q1-2026-roundtable-packet.html">← Back to QGR Packet</a>
 
-  <div class="branch-header">
+  <!-- ============== VIEW TOGGLE (Manager / Mover) ============== -->
+  <div class="view-toggle-wrap" role="region" aria-label="Scorecard view selector">
+    <div class="view-toggle-context">
+      <span class="vtc-label">Viewing as:</span>
+      <span class="vtc-info">Toggle to <strong>Mover View</strong> for the slim, team-huddle layout.</span>
+    </div>
+    <div class="view-toggle" role="tablist">
+      <button type="button" class="view-toggle-btn is-active" data-view="manager" role="tab" aria-selected="true">Manager</button>
+      <button type="button" class="view-toggle-btn" data-view="mover" role="tab" aria-selected="false">Mover</button>
+    </div>
+  </div>
+
+  <div class="branch-header manager-only">
     <p class="branch-eyebrow">Q1 FY'26 Branch Scorecard</p>
     <h1 class="branch-title">Dallas</h1>
     <p class="branch-meta">
@@ -166,7 +835,252 @@
     </p>
   </div>
 
-  <div class="cover-hero">
+  <!-- ============== MOVER VIEW (slim · for huddle / team review) ============== -->
+  <div class="mover-view mover-only">
+
+    <!-- Mover Hero -->
+    <div class="mover-hero">
+      <div class="grade-circle">
+        <div class="grade-letter">B+</div>
+        <div class="grade-num">Final 84</div>
+      </div>
+      <div>
+        <p class="hero-eyebrow">Q1 FY'26 · How We Did</p>
+        <h1>Dallas</h1>
+        <p class="hero-meta">Branch Manager <strong>Chris Beattie</strong> · <strong>14 trucks</strong> · <strong>Feb 1 – Apr 18, 2026</strong></p>
+      </div>
+    </div>
+
+    <!-- 3-Lens Company Snapshot -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">The Big Picture</p>
+      <h2>How the Company Did in Q1</h2>
+      <p class="lede">Leadership grades the whole company through three lenses each quarter, then rolls those into a single composite. Here's where Einstein landed.</p>
+
+      <div class="company-composite">
+        <div class="cc-grade-circle">
+          <div class="cc-letter">B</div>
+          <div class="cc-num">Composite</div>
+        </div>
+        <div class="cc-body">
+          <p class="cc-headline">Company composite: <strong>B</strong></p>
+          <p class="cc-explainer">Solid mixed quarter. The financial plan slipped (Lens 1 dragged the average), but theme execution and people/customer health both held in B territory. Composite reflects the balance — not a victory lap, not a Red flag.</p>
+        </div>
+      </div>
+
+      <p class="lens-divider-label">Behind the composite — the three lenses:</p>
+      <div class="lens-grid">
+        <div class="lens-card grade-c">
+          <p class="lens-eyebrow">Lens 1 · Grade</p>
+          <div class="lens-grade">C</div>
+          <div class="lens-name">Cash &amp; Plan</div>
+          <p class="lens-explainer">Did we hit the financial plan we set? Revenue + NOI vs. plan, branch-by-branch. Q1 came in <strong>under plan</strong> — three branches drove most of the miss.</p>
+        </div>
+        <div class="lens-card grade-b">
+          <p class="lens-eyebrow">Lens 2 · Grade</p>
+          <div class="lens-grade">B</div>
+          <div class="lens-name">Theme Execution</div>
+          <p class="lens-explainer">Did we execute the quarterly theme? Q1 = <strong>Big Bubble Energy</strong> (fleet safety / Driver's Ed). Driver Safety Score landed at 80.2 company-wide — solid traction, room to lift.</p>
+        </div>
+        <div class="lens-card grade-b">
+          <p class="lens-eyebrow">Lens 3 · Grade</p>
+          <div class="lens-grade">B</div>
+          <div class="lens-name">People &amp; Customer</div>
+          <p class="lens-explainer">How are our people and customers doing? Mover eNPS, Customer NPS, Recognition. Both NPS scores held strong; Recognition is the one to watch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mover-relevant branch metrics -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Our Branch · Q1</p>
+      <h2>The Numbers That Matter to Movers</h2>
+      <p class="lede">These are the metrics movers and drivers most directly influence. The full 7-metric breakdown is in Manager View.</p>
+      <div class="mover-metrics-grid">
+        <div class="mover-metric grade-sg">
+          <div class="metric-label">Customer NPS <span class="metric-grade-pill sg">Super Green</span></div>
+          <div class="metric-value">91.4</div>
+          <div class="metric-explainer">Above the 90 target. Steady service quality keeps the score in the top tier.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>NPS measures how likely customers are to recommend Einstein after their move. It's calculated from post-move surveys: % of promoters minus % of detractors. NPS is the strongest leading indicator of revenue growth — high-NPS branches see more repeat bookings, more referrals, and better online reviews. Service quality on every move is what moves this number.</p>
+          </details>
+        </div>
+        <div class="mover-metric grade-g">
+          <div class="metric-label">Mover eNPS <span class="metric-grade-pill g">Green</span></div>
+          <div class="metric-value">+46</div>
+          <div class="metric-explainer">At the company average of +46. Anne's surveys this quarter are how leadership knows what's working — fill them out honestly.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>eNPS measures how likely movers are to recommend Einstein as a place to work. It's the employee equivalent of customer NPS. eNPS is one of the clearest signals of team health and tracks closely with retention. Honest survey responses make the score useful — leadership uses it to know what's working at each branch.</p>
+          </details>
+        </div>
+        <div class="mover-metric grade-r">
+          <div class="metric-label">Driver Safety <span class="metric-grade-pill r">Red</span></div>
+          <div class="metric-value">68 <span style="font-size:14px;color:var(--gray-600);">· 37% high-risk</span></div>
+          <div class="metric-explainer">More than 1 in 3 drivers flagged high-risk. Drivers — the Q2 priority is lifting the score back above 70 and shrinking the high-risk band.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Driver Safety Score combines a driver's Samsara harsh-event data with the % of drivers in the high-risk band. Safer driving lowers fleet insurance premiums, reduces accident-related downtime, and prevents claims. Drivers are the line of defense — every habit shows up here.</p>
+          </details>
+        </div>
+        <div class="mover-metric grade-g">
+          <div class="metric-label">Recognition <span class="metric-grade-pill g">Green</span> <span class="metric-display-only-tag">Manager-driven</span></div>
+          <div class="metric-value">78%</div>
+          <div class="metric-explainer">Nearly 8 in 10 movers said they'd been praised in the last 14 days. This is a number for managers to lift — shown here so you know where the branch landed.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Recognition tracks the % of movers who report being praised by a manager in the last 14 days. It's a leading indicator for retention and team morale — recognized teams stay longer, perform more consistently, and train new hires faster. This metric is manager-driven; it's shown in the mover view so the team knows where the branch landed.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Charts -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">The Visuals</p>
+      <h2>Branch Performance — At a Glance</h2>
+      <p class="lede">The same charts the leadership team reviews. The radar shows the branch's grade across all 7 composite metrics; the bars show how the branch ranks vs the other 9.</p>
+
+      <div class="mover-charts-grid">
+        <div class="mover-chart-card mover-chart-full">
+          <div class="mover-chart-title">Seven-Metric Radar — Dallas vs Target ("All Green" Shape)</div>
+          <p class="mover-chart-sub">Filled shape = Dallas Q1 grades; dashed line = "all Green" target shape. Where Dallas pushes outside the target line, the branch is exceeding; where it falls inside, the branch is missing.</p>
+          <div class="chart-canvas-wrap"><canvas id="moverChartRadar"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>The radar plots all seven scorecard metrics on one shape. The orange fill is the branch's actual Q1 grades; the dashed line is the "all Green" target. Anywhere the orange pushes outside the dashed line, the branch is exceeding target. Anywhere it falls inside, the branch is below target — those are the metrics worth focusing on next quarter.</p>
+          </details>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Truck Utilization Rate (TUR)</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartTUR"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>TUR (Truck Utilization Rate) is the % of available truck-hours that actually turned into booked moves. High TUR means trucks are earning revenue; low TUR means trucks sitting idle (cost without income). Drivers, dispatch, and sales all contribute. The bar chart shows where every branch landed.</p>
+          </details>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Revenue YoY · Trajectory</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartRevenueYoY"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Revenue YoY shows how much each branch's revenue grew (or shrank) compared to the same quarter last year. Growing branches build the case for more trucks, more hires, and reinvestment. Flat or declining branches get re-examined. The bars show the full company picture.</p>
+          </details>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Customer NPS</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartNPS"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Same metric as the Customer NPS tile above — this view shows how every branch's score ranks. NPS is the strongest leading indicator of revenue growth, so the cross-branch view helps everyone see where service quality is strongest and where there's room to lift.</p>
+          </details>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Mover eNPS</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartENPS"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Same metric as the Mover eNPS tile above — this view shows how every branch's eNPS compares. Higher-eNPS branches generally see better retention, lower turnover costs, and faster ramp-up for new hires.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quarterly Theme Poster -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Q2 Theme</p>
+      <h2>The Einstein Games Are Back</h2>
+      <p class="lede">Q2 mover theme is <strong>Einstein Games Season 3</strong>. 8 weeks of branch-vs-branch competition. Starts Saturday 5/23. National championship 7/11.</p>
+      <div class="theme-poster">
+        <img src="./assets/einstein-games-logo.png" alt="The Einstein Games — Season 3" id="einstein-games-poster">
+        <p class="poster-caption">"It's been a year since we've run a full season. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive." — Cameron</p>
+      </div>
+    </section>
+
+    <!-- Einstein Games inline content -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">How the Games Work</p>
+      <h2>Einstein Games — Season 3</h2>
+
+      <h3 class="games-subhead" style="margin-top:14px;">The Conferences</h3>
+      <div class="games-conf-grid">
+        <div class="games-conf">
+          <div class="games-conf-name">CTXH <span class="games-conf-mgr">Brian</span></div>
+          <div class="games-conf-teams">N. Austin · S. Austin · Leander · San Antonio · Houston</div>
+        </div>
+        <div class="games-conf">
+          <div class="games-conf-name">DFWT + Tampa <span class="games-conf-mgr">Mike</span></div>
+          <div class="games-conf-teams">Dallas · Fort Worth · Garland · McKinney · Tampa</div>
+        </div>
+      </div>
+      <p class="games-note">Each team plays <strong>4 conference + 2 cross-conference games</strong> over the regular season. Every matchup is reciprocal.</p>
+
+      <h3 class="games-subhead">The 8-Week Schedule</h3>
+      <div class="games-schedule">
+        <div class="games-week"><span class="games-week-label">W1</span><span class="games-week-date">5/23 – 5/29</span></div>
+        <div class="games-week"><span class="games-week-label">W2</span><span class="games-week-date">5/30 – 6/5</span></div>
+        <div class="games-week"><span class="games-week-label">W3</span><span class="games-week-date">6/6 – 6/12</span></div>
+        <div class="games-week games-week-cross"><span class="games-week-label">W4 ✱ Cross Showdown</span><span class="games-week-date">6/13 – 6/19</span></div>
+        <div class="games-week"><span class="games-week-label">W5</span><span class="games-week-date">6/20 – 6/26</span></div>
+        <div class="games-week games-week-rivalry"><span class="games-week-label">W6 ⚔ Rivalry Week</span><span class="games-week-date">6/27 – 7/3</span></div>
+        <div class="games-week games-week-playoff"><span class="games-week-label">W7 · Conf Champ</span><span class="games-week-date">7/4</span></div>
+        <div class="games-week games-week-champ"><span class="games-week-label">W8 · National</span><span class="games-week-date">7/11</span></div>
+      </div>
+
+      <h3 class="games-subhead">Multiplier Cards <span class="games-new-tag">NEW</span></h3>
+      <p>Each team gets <strong>5 multiplier cards</strong> for the regular season — one per scoring category. When you play a card, that category scores at <strong>+50%</strong> for that game week. <strong>One card max per week.</strong> Pick your spots — five cards across six regular-season weeks means one week you'll play none. Make it count.</p>
+      <ul class="games-cards-list">
+        <li><strong>CSAT / Reviews</strong> — reviews per move</li>
+        <li><strong>Damages</strong> — damages per hour</li>
+        <li><strong>Driver Score</strong> — Samsara composite</li>
+        <li><strong>Contract Efficiency</strong> — estimated vs actual</li>
+        <li><strong>Attendance</strong> — attendance points per hour</li>
+      </ul>
+
+      <h3 class="games-subhead" style="margin-top:18px;">Go Deeper</h3>
+      <div class="mover-bottom-links">
+        <a href="./einstein-games-s3/" target="_blank" class="mover-bottom-link">
+          <strong>→ Full Player Brief</strong>
+          <span>Conferences · 8-week schedule · matchup tables · multiplier cards · scoreboard app</span>
+        </a>
+        <a href="#" target="_blank" class="mover-bottom-link placeholder" id="games-deepdive-link" aria-disabled="true" onclick="event.preventDefault();">
+          <strong>→ Einstein Games Deep Dive (coming soon)</strong>
+          <span>How the games work · scorecard mechanics · how to be a winning branch — Google Slides link drops soon</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Vision Summary -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Where We're Going</p>
+      <h2>Vision Summary</h2>
+      <p class="lede">A slim version of the company's strategic plan — Core Values, Purpose, BHAG, this year's targets — built for movers and CX.</p>
+      <div class="vision-summary-block">
+        <span class="placeholder-tag">Placeholder — content lands soon</span>
+        <p>Cameron is filling in Page 9 of the Q2 Growth Toolkit (Vision Summary — slimmed-down OPSP for the team). Once filled in, this becomes a sequenced reveal walkthrough — same pattern as the OPSP walkthrough used in Roundtable.</p>
+        <span class="vision-cta-stub">Open Vision Summary Walkthrough → (placeholder)</span>
+      </div>
+    </section>
+
+    <!-- Mover Comp Review -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">FYI</p>
+      <h2>Mover Comp Review — Q2</h2>
+      <div class="mover-comp-info">
+        <p>Leadership is accelerating mover comp redesign from Q3 to Q2 (May / June / July). Three areas under review:</p>
+        <ul>
+          <li>Base + variable rates against current market</li>
+          <li>Total pay cap question</li>
+          <li>Sustained-performance promotion mechanic</li>
+        </ul>
+        <p>More information will come from Anne and the leadership team as the work progresses.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="cover-hero manager-only">
     <div class="composite-badge">
       <div class="composite-letter">B+</div>
       <div class="composite-score">Final 84</div>
@@ -193,7 +1107,7 @@
     </div>
   </div>
 
-  <section class="philosophy">
+  <section class="philosophy manager-only">
     <h2>How We Grade a Branch</h2>
     <p class="philosophy-lede">Final grade = composite + growth modifier. The composite measures where you landed; the growth modifier measures where you're going.</p>
     <div class="philosophy-grid">
@@ -213,17 +1127,17 @@
     <p class="philosophy-close">We grow by growing our people and customers — not at their expense. Critical Numbers carry 30% combined weight in the composite — the quarterly theme isn't a footnote, it's a structural anchor. Growth lives alongside as a separate signal. <strong>NOI/Truck</strong> sits in the Financial Engine top block as ungraded reference this quarter (actively calibrating). <strong>Strategic Weight</strong> tier on the cover hero is a parallel display lens — measures cash contribution scale, separate from the operational composite.</p>
   </section>
 
-  <div class="info-callout">
+  <div class="info-callout manager-only">
     <strong>How to read this scorecard:</strong> Cover hero shows the final letter grade (composite + growth) plus the breakdown beside it. Below: metric-by-metric breakdown grouped by Financial Engine, Critical Numbers, and People + Customer (the three buckets that roll into the 7-metric composite), then a dedicated Trajectory section for revenue YoY (the growth modifier). Drill-down on any tile for the plain-language explanation.
   </div>
 
-  <div class="cover-radar-wrap">
+  <div class="cover-radar-wrap manager-only">
     <p class="chart-title">Seven-Metric Radar — Dallas vs Target ("All Green" Shape)</p>
     <p class="chart-sub">Filled shape = Dallas Q1 grades; dashed line = "all Green" target shape. Where Dallas pushes outside the target line, the branch is exceeding (TUR SG, Sales SG, NPS SG). Where it falls inside, the branch is missing (Driver Safety Red is the lone R-grade axis).</p>
     <div class="chart-canvas-wrap"><canvas id="chartRadar"></canvas></div>
   </div>
 
-  <section>
+  <section class="manager-only">
     <h2>Financial Engine <span class="cat-grade">Category Grade <span class="pill sg">SG</span></span></h2>
     <div class="metric-grid">
 
@@ -272,7 +1186,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Critical Numbers · Q1 <span class="cat-grade">Category Grade <span class="pill w">W</span></span></h2>
     <div class="metric-grid">
 
@@ -319,7 +1233,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>People + Customer <span class="cat-grade">Category Grade <span class="pill g">G</span></span></h2>
     <div class="metric-grid">
 
@@ -380,7 +1294,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Trajectory · Revenue YoY <span class="cat-grade">Growth Modifier <span class="pill g">G · +4</span></span></h2>
     <div class="metric-grid">
 
@@ -420,7 +1334,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Reference Data <span class="cat-grade">(not graded — context only)</span></h2>
     <table class="ref-table">
       <thead>
@@ -444,7 +1358,7 @@
     <div class="data-source">📍 <strong>Reference data note:</strong> These metrics inform the conversation about Dallas's quarter but are not part of the composite grade. They explain <em>how</em> the branch got its grade rather than contributing to the grade itself. <strong>NOI/Truck</strong> is shown in the Financial Engine top block above (ungraded reference, actively calibrating). Per-rep Conversion + Cancellation are shown here as Reference because they're market-dependent — un-weighted comparisons mislead. Q2 build target: Weighted Conversion vs Market and Weighted Cancellation vs Market would become graded inputs once market-avg baselines are calculated per metro (see Wishlist).</div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Q1 Highlights &amp; Lowlights</h2>
     <div class="hl-grid">
       <div class="hl-card up">
@@ -470,7 +1384,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Q2 Watch — What to Track</h2>
     <div class="q2-watch">
       <h3>Q2 Action Items + Decision Points</h3>
@@ -487,7 +1401,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Q2+ Wishlist — Future Composite + Reference Candidates</h2>
     <p style="font-size: 12.5px; color: var(--gray-600); margin: 0 0 16px 0;">Metrics queued for future versions of the scorecard. Cameron's working list of components to add as data feeds stabilize. Each is unweighted today and will graduate into the graded composite, the growth modifier, or reference data once its data source is reliable per-branch.</p>
     <div class="metric-grid">
@@ -558,7 +1472,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="manager-only">
     <h2>Methodology &amp; Source Map</h2>
     <div class="data-source"><strong>How the grade is built:</strong> Branch grade = a 7-metric weighted composite plus a single growth-modifier adjustment. Each metric counts exactly once. Critical Numbers (Q1: Driver Safety + Personnel-Budget) preserved at 30% combined weight — the quarterly theme spine.
       <table class="ref-table" style="margin-top: 8px;">
@@ -614,7 +1528,41 @@ Chart.defaults.font.family = "'Roboto', sans-serif";
 Chart.defaults.font.size = 11;
 Chart.defaults.color = GRAY_600;
 
-new Chart(document.getElementById('chartRadar'), {
+// Deep-clone helper that preserves function callbacks (used for dual-rendering charts on Manager + Mover canvases)
+function cloneConfig(obj) {
+  if (Array.isArray(obj)) return obj.map(cloneConfig);
+  if (obj && typeof obj === 'object' && obj.constructor === Object) {
+    const out = {};
+    for (const k in obj) out[k] = cloneConfig(obj[k]);
+    return out;
+  }
+  return obj;
+}
+// Lazy mover-chart init: register configs at load time, instantiate only when Mover View becomes visible
+// (Chart.js stamps width=0/height=0 on canvases inside display:none containers, and resize() doesn't recover.)
+window.__pendingMoverCharts = window.__pendingMoverCharts || [];
+function dualChart(managerId, moverId, config) {
+  const managerEl = document.getElementById(managerId);
+  if (managerEl) new Chart(managerEl, config);
+  if (moverId) {
+    window.__pendingMoverCharts.push({moverId, config});
+  }
+}
+function instantiatePendingMoverCharts() {
+  if (!window.__pendingMoverCharts || !window.__pendingMoverCharts.length) return;
+  const remaining = [];
+  window.__pendingMoverCharts.forEach(({moverId, config}) => {
+    const el = document.getElementById(moverId);
+    if (!el) { remaining.push({moverId, config}); return; }
+    // Skip if a Chart instance already exists for this canvas
+    const exists = window.Chart && Object.values(Chart.instances).some(c => c.canvas?.id === moverId);
+    if (exists) return;
+    new Chart(el, cloneConfig(config));
+  });
+  window.__pendingMoverCharts = remaining;
+}
+
+dualChart('chartRadar', 'moverChartRadar', {
   type: 'radar',
   data: {
     labels: ['TUR (20%)', 'Sales Target (10%)', 'Customer NPS (15%)', 'Mover eNPS (15%)', 'Recognition (10%)', 'Driver Safety (15%)', 'Personnel-Budget (15%)'],
@@ -633,7 +1581,7 @@ new Chart(document.getElementById('chartRadar'), {
 const turBranches = ['North Austin', 'South Austin', 'Leander', 'San Antonio', 'Houston', 'McKinney', 'Dallas', 'Fort Worth', 'Tampa', 'Garland'];
 const turActual = [64, 59, 72, 69, 87, 68, 66, 58, 72, 52];
 const turTarget = [59, 64, 83, 67, 92, 69, 60, 54, 89, 45];
-new Chart(document.getElementById('chartTUR'), {
+dualChart('chartTUR', 'moverChartTUR', {
   type: 'bar',
   data: { labels: turBranches, datasets: [
     { label: 'TUR Actual %', data: turActual, backgroundColor: turBranches.map(branchColor), borderColor: turBranches.map(branchBorder), borderWidth: 1, order: 2 },
@@ -644,7 +1592,7 @@ new Chart(document.getElementById('chartTUR'), {
 
 const npsBranches = ['Tampa', 'Garland', 'Fort Worth', 'Houston', 'McKinney', 'Dallas', 'North Austin', 'South Austin', 'Leander', 'San Antonio'];
 const npsValues = [100, 100, 96.2, 93.8, 93.6, 91.4, 91.4, 89.7, 87.8, 85.2];
-new Chart(document.getElementById('chartNPS'), {
+dualChart('chartNPS', 'moverChartNPS', {
   type: 'bar',
   data: { labels: npsBranches, datasets: [{ label: 'Customer NPS', data: npsValues, backgroundColor: npsBranches.map(branchColor), borderColor: npsBranches.map(branchBorder), borderWidth: 1 }] },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => 'NPS: ' + ctx.parsed.y } }, annotation: {} }, scales: { y: { beginAtZero: true, max: 105, title: { display: true, text: 'Net Promoter Score' } }, x: { ticks: { maxRotation: 35, minRotation: 35, font: { size: 10 } } } } },
@@ -653,7 +1601,7 @@ new Chart(document.getElementById('chartNPS'), {
 
 const eNpsBranches = ['Tampa', 'Houston', 'S. Austin', 'North Austin', 'Leander', 'Dallas', 'McKinney', 'San Antonio', 'Fort Worth', 'Garland'];
 const eNpsValues = [100, 65, 62, 52, 47, 46, 41, 5, 0, 0];
-new Chart(document.getElementById('chartENPS'), {
+dualChart('chartENPS', 'moverChartENPS', {
   type: 'bar',
   data: { labels: eNpsBranches, datasets: [{ label: 'Mover eNPS', data: eNpsValues, backgroundColor: eNpsBranches.map(branchColor), borderColor: eNpsBranches.map(branchBorder), borderWidth: 1 }] },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => 'eNPS: +' + ctx.parsed.y } } }, scales: { y: { beginAtZero: true, max: 110, title: { display: true, text: 'Mover eNPS' } }, x: { ticks: { maxRotation: 35, minRotation: 35, font: { size: 10 } } } } },
@@ -669,12 +1617,49 @@ new Chart(document.getElementById('chartPersonnelBudget'), {
 
 const yoyBranches = ['Fort Worth', 'Tampa', 'McKinney', 'Leander', 'San Antonio', 'Dallas', 'North Austin', 'South Austin', 'Garland', 'Houston'];
 const yoyValues = [30.7, 23.0, 19.6, 16.3, 10.3, 7.7, 5.3, -1.3, -1.9, -5.6];
-new Chart(document.getElementById('chartRevenueYoY'), {
+dualChart('chartRevenueYoY', 'moverChartRevenueYoY', {
   type: 'bar',
   data: { labels: yoyBranches, datasets: [{ label: 'Revenue YoY %', data: yoyValues, backgroundColor: yoyBranches.map(branchColor), borderColor: yoyBranches.map(branchBorder), borderWidth: 1 }] },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => 'YoY: ' + (ctx.parsed.y >= 0 ? '+' : '') + ctx.parsed.y + '%' } } }, scales: { y: { title: { display: true, text: 'Revenue YoY %' }, ticks: { callback: (v) => (v >= 0 ? '+' : '') + v + '%' } }, x: { ticks: { maxRotation: 35, minRotation: 35, font: { size: 10 } } } } },
   plugins: [{ id: 'yoyRubricBands', beforeDatasetsDraw(chart) { const { ctx, chartArea: { left, right }, scales: { y } } = chart; ctx.save(); const ySG = y.getPixelForValue(20); ctx.strokeStyle = GREEN; ctx.lineWidth = 1; ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(left, ySG); ctx.lineTo(right, ySG); ctx.stroke(); ctx.fillStyle = GREEN; ctx.font = '10px Roboto'; ctx.fillText('+20% Breakout (SG)', left + 6, ySG - 4); const yG = y.getPixelForValue(3); ctx.strokeStyle = GRAY_400; ctx.beginPath(); ctx.moveTo(left, yG); ctx.lineTo(right, yG); ctx.stroke(); ctx.fillStyle = GRAY_600; ctx.fillText('+3% G floor', left + 6, yG - 4); const yR = y.getPixelForValue(-3); ctx.strokeStyle = RED; ctx.beginPath(); ctx.moveTo(left, yR); ctx.lineTo(right, yR); ctx.stroke(); ctx.fillStyle = RED; ctx.fillText('−3% R threshold', left + 6, yR + 12); const yZero = y.getPixelForValue(0); ctx.strokeStyle = GRAY_400; ctx.lineWidth = 1; ctx.setLineDash([]); ctx.beginPath(); ctx.moveTo(left, yZero); ctx.lineTo(right, yZero); ctx.stroke(); ctx.restore(); } }]
 });
+
+// ── View Toggle (Manager / Mover) ──
+// Per-page, per-session state. Defaults to Manager. Reflects in URL ?view=mover for shareability.
+(function () {
+  const buttons = document.querySelectorAll('.view-toggle-btn');
+  if (!buttons.length) return;
+
+  function applyView(mode) {
+    const isMover = mode === 'mover';
+    document.body.classList.toggle('scorecard-view-mover', isMover);
+    buttons.forEach(b => {
+      const isActive = b.dataset.view === mode;
+      b.classList.toggle('is-active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    // Reflect in URL without scroll jump
+    const url = new URL(window.location.href);
+    if (isMover) url.searchParams.set('view', 'mover'); else url.searchParams.delete('view');
+    window.history.replaceState({}, '', url.toString());
+    // Mover charts are lazily instantiated on first transition to mover view (when their canvases are visible)
+    if (isMover && typeof instantiatePendingMoverCharts === 'function') {
+      instantiatePendingMoverCharts();
+    }
+    // Resize all chart instances after layout settles (handles both view changes)
+    setTimeout(() => {
+      if (window.Chart && window.Chart.instances) {
+        Object.values(window.Chart.instances).forEach(c => { try { c.resize(); } catch (e) {} });
+      }
+    }, 50);
+  }
+
+  // Initial state from URL (per-page, per-session — no localStorage)
+  const initialMode = new URLSearchParams(window.location.search).get('view') === 'mover' ? 'mover' : 'manager';
+  applyView(initialMode);
+
+  buttons.forEach(b => b.addEventListener('click', () => applyView(b.dataset.view)));
+})();
 </script>
 
 </body>

@@ -1386,6 +1386,185 @@
     font-weight: 700;
     margin: 18px 0 4px 0;
   }
+  /* Branch Performance Leaderboard — horizontal bar viz above the tile grid */
+  .leaderboard {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 16px 18px 18px;
+    margin: 12px 0 18px;
+  }
+  .leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .leaderboard-title {
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+  }
+  .leaderboard-sub {
+    color: var(--gray-600);
+    font-size: 11.5px;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+  .leaderboard-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lb-row {
+    display: grid;
+    grid-template-columns: 26px 150px 1fr 56px 64px;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .lb-rank {
+    color: var(--gray-600);
+    font-weight: 800;
+    font-size: 11px;
+    text-align: right;
+  }
+  .lb-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+  }
+  .lb-name {
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lb-bm {
+    color: var(--gray-600);
+    font-size: 10.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lb-bar-track {
+    position: relative;
+    height: 22px;
+    background: var(--gray-100);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .lb-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 8px;
+    color: white;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .lb-bar-fill.tier-cash-leader { background: #0f9d58; }
+  .lb-bar-fill.tier-cash-contributor { background: #1a73e8; }
+  .lb-bar-fill.tier-cash-neutral { background: #f4b400; color: #2a2a2a; }
+  .lb-bar-fill.tier-growth-bet { background: #4285f4; }
+  .lb-bar-fill.tier-underperforming { background: #db4437; }
+  .lb-growth {
+    text-align: right;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .lb-growth.up { color: var(--green); }
+  .lb-growth.down { color: var(--red); }
+  .lb-growth.flat { color: var(--gray-600); }
+  .lb-final-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  .lb-final-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    padding: 2px 6px;
+    background: var(--orange);
+    color: var(--navy);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .lb-final-num {
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 12px;
+  }
+  .leaderboard-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--gray-200);
+    font-size: 10.5px;
+    color: var(--gray-600);
+  }
+  .lb-legend-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .lb-legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .lb-legend-swatch.tier-cash-leader { background: #0f9d58; }
+  .lb-legend-swatch.tier-cash-contributor { background: #1a73e8; }
+  .lb-legend-swatch.tier-cash-neutral { background: #f4b400; }
+  .lb-legend-swatch.tier-growth-bet { background: #4285f4; }
+  .lb-legend-swatch.tier-underperforming { background: #db4437; }
+  /* Rank pill on the existing tiles */
+  .scorecard-tile-rank {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--navy);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.3px;
+    line-height: 1;
+  }
+  /* Mobile leaderboard — collapse to 2 rows per branch */
+  @media (max-width: 600px) {
+    .lb-row {
+      grid-template-columns: 24px 1fr 60px;
+      grid-template-areas:
+        "rank name final"
+        "rank bar  growth";
+      row-gap: 4px;
+    }
+    .lb-rank { grid-area: rank; }
+    .lb-name-cell { grid-area: name; }
+    .lb-bar-track { grid-area: bar; }
+    .lb-final-cell { grid-area: final; }
+    .lb-growth { grid-area: growth; }
+  }
   /* Q2 Forward Look — theme placeholder pair (Sales + Claims) */
   .theme-pair {
     display: grid;
@@ -2372,89 +2551,200 @@
       <div class="data-source">📍 <strong>Source:</strong> Concept = Brian Herzig (CTXH Regional Manager) · v0 build = Albert (4/28) · Composite math: 8 graded metrics weighted (TUR 25% heaviest as guiding capacity metric), reference data shown but not graded, drill-downs in plain language · Audience: BM + branch managers (friendly + actionable), not Roundtable-evaluative · Sources for v0: QGR Packet + FA Presentation v2.7 + CLAUDE.md QGR thread · Roundtable ask: build for all 10 branches + departments in Q2?</div>
 
       <p class="scorecard-section-sub-title">Branch Scorecards · 10 locations</p>
+
+      <!-- Branch Performance Leaderboard — horizontal-bar viz, ranked by Final composite grade -->
+      <div class="leaderboard" role="region" aria-label="Branch Performance Leaderboard">
+        <div class="leaderboard-header">
+          <p class="leaderboard-title">Branch Performance — Q1'26 Ranked</p>
+        </div>
+        <p class="leaderboard-sub">All 10 branches sorted by final composite grade (composite + growth modifier). Strategic Weight tier shown via bar color.</p>
+        <div class="leaderboard-rows">
+
+          <div class="lb-row" title="Tampa · Growth Bet (planned-loss investment branch)">
+            <div class="lb-rank">#1</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Tampa</span>
+              <span class="lb-bm">BM Brandon Kelley</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-growth-bet" style="width:90%;">90 (80 + 10)</div>
+            </div>
+            <div class="lb-growth up">▲ +10</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">A</span>
+              <span class="lb-final-num">90</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="McKinney · Cash Contributor (8–20% of NOI)">
+            <div class="lb-rank">#2</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">McKinney</span>
+              <span class="lb-bm">BM Khevan Dueck</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-contributor" style="width:86%;">86 (79 + 7)</div>
+            </div>
+            <div class="lb-growth up">▲ +7</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">A−</span>
+              <span class="lb-final-num">86</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="Dallas · Cash Neutral (0–8% of NOI)">
+            <div class="lb-rank">#3</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Dallas</span>
+              <span class="lb-bm">BM Chris Beattie</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-neutral" style="width:84%;">84 (80 + 4)</div>
+            </div>
+            <div class="lb-growth up">▲ +4</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">B+</span>
+              <span class="lb-final-num">84</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="North Austin · Cash Leader (≥20% of NOI)">
+            <div class="lb-rank">#4</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">North Austin</span>
+              <span class="lb-bm">BM Calvin Hughes</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-leader" style="width:83%;">83 (79 + 4)</div>
+            </div>
+            <div class="lb-growth up">▲ +4</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">B+</span>
+              <span class="lb-final-num">83</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="Fort Worth · Growth Bet (planned-loss investment branch)">
+            <div class="lb-rank">#5</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Fort Worth</span>
+              <span class="lb-bm">BM Grant Hardison</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-growth-bet" style="width:77%;">77 (67 + 10)</div>
+            </div>
+            <div class="lb-growth up">▲ +10</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">B</span>
+              <span class="lb-final-num">77</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="San Antonio · Cash Neutral (0–8% of NOI)">
+            <div class="lb-rank">#6</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">San Antonio</span>
+              <span class="lb-bm">BM Dustin Street</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-neutral" style="width:71%;">71 (64 + 7)</div>
+            </div>
+            <div class="lb-growth up">▲ +7</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">B−</span>
+              <span class="lb-final-num">71</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="Garland · Underperforming (negative NOI, not designated as planned-loss)">
+            <div class="lb-rank">#7</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Garland</span>
+              <span class="lb-bm">BM Terrell McReynolds</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-underperforming" style="width:67%;">67 (70 − 3)</div>
+            </div>
+            <div class="lb-growth down">▼ −3</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">C</span>
+              <span class="lb-final-num">67</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="South Austin · Cash Leader (≥20% of NOI)">
+            <div class="lb-rank">#8</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">South Austin</span>
+              <span class="lb-bm">BM Chris Anderson</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-leader" style="width:65%;">65 (68 − 3)</div>
+            </div>
+            <div class="lb-growth down">▼ −3</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">C</span>
+              <span class="lb-final-num">65</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="Houston · Cash Neutral (0–8% of NOI)">
+            <div class="lb-rank">#9</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Houston</span>
+              <span class="lb-bm">BM Sergio Buenrostro</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-neutral" style="width:60%;">60 (67 − 7)</div>
+            </div>
+            <div class="lb-growth down">▼ −7</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">C</span>
+              <span class="lb-final-num">60</span>
+            </div>
+          </div>
+
+          <div class="lb-row" title="Leander · Cash Contributor (8–20% of NOI)">
+            <div class="lb-rank">#10</div>
+            <div class="lb-name-cell">
+              <span class="lb-name">Leander</span>
+              <span class="lb-bm">BM Frank Williams</span>
+            </div>
+            <div class="lb-bar-track">
+              <div class="lb-bar-fill tier-cash-contributor" style="width:45%;">45 (38 + 7)</div>
+            </div>
+            <div class="lb-growth up">▲ +7</div>
+            <div class="lb-final-cell">
+              <span class="lb-final-letter">F</span>
+              <span class="lb-final-num">45</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="leaderboard-legend" aria-label="Strategic Weight tier legend">
+          <span class="lb-legend-chip"><span class="lb-legend-swatch tier-cash-leader"></span>Cash Leader (≥20% NOI)</span>
+          <span class="lb-legend-chip"><span class="lb-legend-swatch tier-cash-contributor"></span>Cash Contributor (8–20%)</span>
+          <span class="lb-legend-chip"><span class="lb-legend-swatch tier-cash-neutral"></span>Cash Neutral (0–8%)</span>
+          <span class="lb-legend-chip"><span class="lb-legend-swatch tier-growth-bet"></span>Growth Bet (planned-loss)</span>
+          <span class="lb-legend-chip"><span class="lb-legend-swatch tier-underperforming"></span>Underperforming</span>
+        </div>
+      </div>
+
       <div class="scorecard-grid">
 
-        <a class="scorecard-tile live" href="branch-scorecard-naustin.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
-          <p class="scorecard-tile-name">North Austin</p>
-          <p class="scorecard-tile-meta">BM Calvin Hughes · 14 trucks · 14 personnel</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">B+</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-saustin.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
-          <p class="scorecard-tile-name">South Austin</p>
-          <p class="scorecard-tile-meta">BM Chris Anderson · 11.7 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">C</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-leander.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
-          <p class="scorecard-tile-name">Leander</p>
-          <p class="scorecard-tile-meta">BM Frank Williams · 6 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">F</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-sanantonio.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
-          <p class="scorecard-tile-name">San Antonio</p>
-          <p class="scorecard-tile-meta">BM Dustin Street · 8 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">B−</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-houston.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
-          <p class="scorecard-tile-name">Houston</p>
-          <p class="scorecard-tile-meta">BM Sergio Buenrostro · 8 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">C</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-dallas.html" target="_blank">
+        <a class="scorecard-tile live" href="branch-scorecard-tampa.html" target="_blank">
+          <span class="scorecard-tile-rank">#1</span>
           <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
-          <p class="scorecard-tile-name">Dallas</p>
-          <p class="scorecard-tile-meta">BM Chris Beattie · 14 trucks</p>
+          <p class="scorecard-tile-name">Tampa</p>
+          <p class="scorecard-tile-meta">BM Brandon Kelley · 2.5 trucks</p>
           <div class="scorecard-tile-bottom">
             <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">B+</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-fortworth.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
-          <p class="scorecard-tile-name">Fort Worth</p>
-          <p class="scorecard-tile-meta">BM Grant Hardison · 4 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">B</span>
-          </div>
-        </a>
-
-        <a class="scorecard-tile live" href="branch-scorecard-garland.html" target="_blank">
-          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
-          <p class="scorecard-tile-name">Garland</p>
-          <p class="scorecard-tile-meta">BM Terrell McReynolds · 3 trucks</p>
-          <div class="scorecard-tile-bottom">
-            <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">C</span>
+            <span class="scorecard-grade-badge">A</span>
           </div>
         </a>
 
         <a class="scorecard-tile live" href="branch-scorecard-mckinney.html" target="_blank">
+          <span class="scorecard-tile-rank">#2</span>
           <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
           <p class="scorecard-tile-name">McKinney</p>
           <p class="scorecard-tile-meta">BM Khevan Dueck · 6 trucks</p>
@@ -2464,13 +2754,91 @@
           </div>
         </a>
 
-        <a class="scorecard-tile live" href="branch-scorecard-tampa.html" target="_blank">
+        <a class="scorecard-tile live" href="branch-scorecard-dallas.html" target="_blank">
+          <span class="scorecard-tile-rank">#3</span>
           <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
-          <p class="scorecard-tile-name">Tampa</p>
-          <p class="scorecard-tile-meta">BM Brandon Kelley · 2.5 trucks</p>
+          <p class="scorecard-tile-name">Dallas</p>
+          <p class="scorecard-tile-meta">BM Chris Beattie · 14 trucks</p>
           <div class="scorecard-tile-bottom">
             <span>Live · Open →</span>
-            <span class="scorecard-grade-badge">A</span>
+            <span class="scorecard-grade-badge">B+</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-naustin.html" target="_blank">
+          <span class="scorecard-tile-rank">#4</span>
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">North Austin</p>
+          <p class="scorecard-tile-meta">BM Calvin Hughes · 14 trucks · 14 personnel</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B+</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-fortworth.html" target="_blank">
+          <span class="scorecard-tile-rank">#5</span>
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Fort Worth</p>
+          <p class="scorecard-tile-meta">BM Grant Hardison · 4 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-sanantonio.html" target="_blank">
+          <span class="scorecard-tile-rank">#6</span>
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">San Antonio</p>
+          <p class="scorecard-tile-meta">BM Dustin Street · 8 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">B−</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-garland.html" target="_blank">
+          <span class="scorecard-tile-rank">#7</span>
+          <p class="scorecard-tile-eyebrow">DFWT · Mike</p>
+          <p class="scorecard-tile-name">Garland</p>
+          <p class="scorecard-tile-meta">BM Terrell McReynolds · 3 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-saustin.html" target="_blank">
+          <span class="scorecard-tile-rank">#8</span>
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">South Austin</p>
+          <p class="scorecard-tile-meta">BM Chris Anderson · 11.7 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-houston.html" target="_blank">
+          <span class="scorecard-tile-rank">#9</span>
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">Houston</p>
+          <p class="scorecard-tile-meta">BM Sergio Buenrostro · 8 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">C</span>
+          </div>
+        </a>
+
+        <a class="scorecard-tile live" href="branch-scorecard-leander.html" target="_blank">
+          <span class="scorecard-tile-rank">#10</span>
+          <p class="scorecard-tile-eyebrow">CTXH · Brian</p>
+          <p class="scorecard-tile-name">Leander</p>
+          <p class="scorecard-tile-meta">BM Frank Williams · 6 trucks</p>
+          <div class="scorecard-tile-bottom">
+            <span>Live · Open →</span>
+            <span class="scorecard-grade-badge">F</span>
           </div>
         </a>
 
