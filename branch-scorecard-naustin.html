@@ -671,34 +671,405 @@
     color: var(--navy);
   }
 
-  /* ============== MOVER-VIEW INDICATOR ============== */
-  .mover-view-indicator {
-    background: var(--orange-bg);
-    border: 1px solid #f3d6a8;
-    border-left: 4px solid var(--orange);
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 18px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    font-size: 12.5px;
-    line-height: 1.5;
-    color: var(--gray-800);
+  /* ============== VIEW TOGGLE (Manager / Mover) ============== */
+  .view-toggle-wrap {
+    background: white;
+    border: 2px solid var(--orange);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(239,139,34,0.18);
   }
-  .mover-view-indicator .mvi-icon {
-    font-size: 18px;
-    line-height: 1.2;
-    flex-shrink: 0;
-  }
-  .mover-view-indicator .mvi-body strong { color: var(--navy); font-weight: 700; }
-  .mover-view-indicator a {
-    color: var(--orange-dark);
+  .view-toggle-label {
+    font-size: 11px;
     font-weight: 700;
-    text-decoration: none;
-    border-bottom: 1px dashed var(--orange-dark);
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
   }
-  .mover-view-indicator a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+  .view-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .view-toggle-btn {
+    background: var(--gray-50);
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .view-toggle-btn:hover {
+    border-color: var(--orange);
+    background: var(--orange-bg);
+  }
+  .view-toggle-btn.is-active {
+    background: var(--navy);
+    border-color: var(--navy);
+    box-shadow: 0 4px 12px rgba(13,43,78,0.25);
+  }
+  .view-toggle-btn .vt-icon {
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .view-toggle-btn .vt-text {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .view-toggle-btn .vt-sub {
+    font-size: 11px;
+    color: var(--gray-600);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .view-toggle-btn.is-active .vt-text { color: white; }
+  .view-toggle-btn.is-active .vt-sub  { color: var(--gray-300); }
+  .view-toggle-btn.is-active .vt-icon { filter: brightness(1.2); }
+
+  /* ============== VIEW MODE — Manager / Mover element visibility ============== */
+  /* Default = Manager View. Mover-only blocks hidden until the body class flips. */
+  .mover-only { display: none; }
+  body.scorecard-view-mover .manager-only { display: none !important; }
+  body.scorecard-view-mover .mover-only   { display: block; }
+
+  /* ============== MOVER VIEW LAYOUT ============== */
+  .mover-view {
+    background: white;
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 22px;
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 2px 10px rgba(13,43,78,0.04);
+    overflow: hidden;
+  }
+
+  /* Mover hero — final grade big + branch name */
+  .mover-hero {
+    background: var(--navy);
+    color: white;
+    padding: 32px 30px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+  .mover-hero .grade-circle {
+    width: 140px; height: 140px;
+    background: var(--orange);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 6px 20px rgba(239,139,34,0.35);
+  }
+  .mover-hero .grade-circle .grade-letter { font-size: 64px; }
+  .mover-hero .grade-circle .grade-num { font-size: 14px; margin-top: 4px; opacity: 0.85; }
+  .mover-hero .hero-eyebrow {
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    margin: 0 0 8px 0;
+  }
+  .mover-hero h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    line-height: 1.1;
+  }
+  .mover-hero .hero-meta {
+    font-size: 13px;
+    color: var(--gray-300);
+    margin: 0;
+  }
+  .mover-hero .hero-meta strong { color: white; font-weight: 700; }
+
+  /* Mover body sections */
+  .mover-section {
+    padding: 24px 30px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .mover-section:first-of-type { border-top: none; }
+  .mover-section h2 {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--navy);
+    margin: 0 0 4px 0;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--orange);
+    display: inline-block;
+  }
+  .mover-section .section-eyebrow-mover {
+    color: var(--orange);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    margin: 0 0 6px 0;
+  }
+  .mover-section .lede {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin: 12px 0 14px 0;
+    line-height: 1.55;
+  }
+  .mover-section p { font-size: 13.5px; line-height: 1.6; color: var(--gray-800); margin: 0 0 10px 0; }
+
+  /* 3-Lens Company Snapshot */
+  .lens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 12px 0;
+  }
+  .lens-card {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 16px;
+    border-top: 4px solid var(--gray-300);
+  }
+  .lens-card.grade-c { border-top-color: var(--amber); }
+  .lens-card.grade-b { border-top-color: #4caf50; }
+  .lens-card.grade-bplus { border-top-color: var(--green); }
+  .lens-card .lens-eyebrow {
+    color: var(--gray-600);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 6px 0;
+  }
+  .lens-card .lens-grade {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .lens-card .lens-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .lens-card .lens-explainer {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  /* Mover-relevant branch metrics */
+  .mover-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .mover-metric {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--gray-300);
+  }
+  .mover-metric.grade-sg { border-left-color: var(--green); }
+  .mover-metric.grade-g  { border-left-color: #4caf50; }
+  .mover-metric.grade-w  { border-left-color: var(--amber); }
+  .mover-metric.grade-r  { border-left-color: var(--red); }
+  .mover-metric .metric-label {
+    color: var(--gray-600);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .mover-metric .metric-value {
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .mover-metric .metric-grade-pill {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 999px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: 3px;
+  }
+  .mover-metric .metric-grade-pill.sg { background: var(--green); }
+  .mover-metric .metric-grade-pill.g  { background: #4caf50; }
+  .mover-metric .metric-grade-pill.w  { background: var(--amber); }
+  .mover-metric .metric-grade-pill.r  { background: var(--red); }
+  .mover-metric .metric-explainer {
+    font-size: 12px;
+    color: var(--gray-700);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .mover-metric .metric-display-only-tag {
+    display: inline-block;
+    background: var(--gray-200);
+    color: var(--gray-700);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+
+  /* Quarterly theme poster */
+  .theme-poster {
+    text-align: center;
+    background: linear-gradient(135deg, #0d2b4e 0%, #1a3a66 100%);
+    padding: 28px 30px;
+    border-radius: 8px;
+    margin-top: 14px;
+  }
+  .theme-poster img {
+    max-width: 320px;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .theme-poster .poster-placeholder {
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed var(--orange);
+    border-radius: 8px;
+    padding: 40px 20px;
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .theme-poster .poster-caption {
+    color: var(--gray-300);
+    font-size: 12px;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  /* Vision Summary placeholder (matches OPSP walkthrough pattern stub) */
+  .vision-summary-block {
+    background: var(--orange-bg);
+    border: 2px dashed var(--orange);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-top: 14px;
+  }
+  .vision-summary-block .placeholder-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .vision-summary-block p {
+    font-size: 13px;
+    color: var(--gray-800);
+    line-height: 1.55;
+  }
+  .vision-summary-block .vision-cta-stub {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--gray-200);
+    color: var(--gray-600);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: not-allowed;
+    font-style: italic;
+  }
+
+  /* Bottom links section */
+  .mover-bottom-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .mover-bottom-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: white;
+    border: 2px solid var(--orange);
+    border-radius: 8px;
+    padding: 16px 18px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .mover-bottom-link:hover {
+    background: var(--orange-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239,139,34,0.18);
+  }
+  .mover-bottom-link.placeholder {
+    border-color: var(--gray-300);
+    border-style: dashed;
+    background: var(--gray-50);
+    cursor: not-allowed;
+  }
+  .mover-bottom-link.placeholder:hover { transform: none; box-shadow: none; background: var(--gray-50); }
+  .mover-bottom-link strong {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .mover-bottom-link span {
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .mover-bottom-link.placeholder strong { color: var(--gray-600); }
+
+  /* Mover comp informational block */
+  .mover-comp-info {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 14px;
+  }
+  .mover-comp-info ul { margin: 8px 0; padding-left: 22px; }
+  .mover-comp-info li { font-size: 13px; line-height: 1.6; color: var(--gray-800); margin-bottom: 4px; }
+
+  /* Mobile breakpoint for Mover View */
+  @media (max-width: 720px) {
+    .mover-hero { grid-template-columns: 1fr; text-align: center; }
+    .mover-hero .grade-circle { margin: 0 auto; }
+    .lens-grid { grid-template-columns: 1fr; }
+    .mover-metrics-grid { grid-template-columns: 1fr; }
+    .mover-bottom-links { grid-template-columns: 1fr; }
+  }
 
   /* ============== SECTION 8 — Q2 FORWARD FOR YOUR TEAM ============== */
   #q2-forward-team {
@@ -991,17 +1362,25 @@
 
   <a class="back-link" href="./q1-2026-roundtable-packet.html">← Back to QGR Packet</a>
 
-  <!-- ============== MOVER-VIEW INDICATOR (heads-up for BMs sharing with their team) ============== -->
-  <div class="mover-view-indicator">
-    <span class="mvi-icon">📣</span>
-    <div class="mvi-body">
-      <strong>Sharing with your team?</strong>
-      The full scorecard above is fine for any audience. The <a href="#q2-forward-team">"Q2 Forward — For Your Team"</a> section at the bottom is the mover-facing payload — that's what to walk through with your team during huddles.
+  <!-- ============== VIEW TOGGLE (Manager / Mover) ============== -->
+  <div class="view-toggle-wrap" role="region" aria-label="Scorecard view selector">
+    <div class="view-toggle-label">View this scorecard as:</div>
+    <div class="view-toggle" role="tablist">
+      <button type="button" class="view-toggle-btn is-active" data-view="manager" role="tab" aria-selected="true">
+        <span class="vt-icon" aria-hidden="true">📊</span>
+        <span class="vt-text">Manager View</span>
+        <span class="vt-sub">Full scorecard · all 7 metrics</span>
+      </button>
+      <button type="button" class="view-toggle-btn" data-view="mover" role="tab" aria-selected="false">
+        <span class="vt-icon" aria-hidden="true">🚛</span>
+        <span class="vt-text">Mover View</span>
+        <span class="vt-sub">Slim · for huddle / team review</span>
+      </button>
     </div>
   </div>
 
   <!-- ============== HEADER ============== -->
-  <div class="branch-header">
+  <div class="branch-header manager-only">
     <p class="branch-eyebrow">Q1 FY'26 Branch Scorecard</p>
     <h1 class="branch-title">North Austin</h1>
     <p class="branch-meta">
@@ -1009,8 +1388,181 @@
     </p>
   </div>
 
+  <!-- ============== MOVER VIEW (slim · for huddle / team review) ============== -->
+  <div class="mover-view mover-only">
+
+    <!-- Mover Hero -->
+    <div class="mover-hero">
+      <div class="grade-circle">
+        <div class="grade-letter">B+</div>
+        <div class="grade-num">Final 83</div>
+      </div>
+      <div>
+        <p class="hero-eyebrow">Q1 FY'26 · How We Did</p>
+        <h1>North Austin</h1>
+        <p class="hero-meta">Branch Manager <strong>Calvin Hughes</strong> · <strong>14 trucks</strong> · <strong>Feb 1 – Apr 18, 2026</strong></p>
+      </div>
+    </div>
+
+    <!-- 3-Lens Company Snapshot -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">The Big Picture</p>
+      <h2>How the Company Did in Q1</h2>
+      <p class="lede">Leadership grades the whole company through three lenses each quarter. Here's where Einstein landed.</p>
+      <div class="lens-grid">
+        <div class="lens-card grade-c">
+          <p class="lens-eyebrow">Lens 1 · Grade</p>
+          <div class="lens-grade">C</div>
+          <div class="lens-name">Cash &amp; Plan</div>
+          <p class="lens-explainer">Did we hit the financial plan we set? Revenue + NOI vs. plan, branch-by-branch. Q1 came in <strong>under plan</strong> — three branches drove most of the miss.</p>
+        </div>
+        <div class="lens-card grade-b">
+          <p class="lens-eyebrow">Lens 2 · Grade</p>
+          <div class="lens-grade">B</div>
+          <div class="lens-name">Theme Execution</div>
+          <p class="lens-explainer">Did we execute the quarterly theme? Q1 = <strong>Big Bubble Energy</strong> (fleet safety / Driver's Ed). Driver Safety Score landed at 80.2 company-wide — solid traction, room to lift.</p>
+        </div>
+        <div class="lens-card grade-b">
+          <p class="lens-eyebrow">Lens 3 · Grade</p>
+          <div class="lens-grade">B</div>
+          <div class="lens-name">People &amp; Customer</div>
+          <p class="lens-explainer">How are our people and customers doing? Mover eNPS, Customer NPS, Recognition. Both NPS scores held strong; Recognition is the one to watch.</p>
+        </div>
+      </div>
+      <p>Three lenses, three grades. The company graded itself <strong>C → B → B</strong> for Q1. Now here's how N. Austin specifically performed.</p>
+    </section>
+
+    <!-- Mover-relevant branch metrics -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Our Branch · Q1</p>
+      <h2>The Numbers That Matter to Movers</h2>
+      <p class="lede">These are the metrics movers and drivers most directly influence. The full 7-metric breakdown is in Manager View.</p>
+      <div class="mover-metrics-grid">
+        <div class="mover-metric grade-sg">
+          <div class="metric-label">Customer NPS <span class="metric-grade-pill sg">Super Green</span></div>
+          <div class="metric-value">91.4</div>
+          <div class="metric-explainer">Customers love us. Service excellence on every move keeps that score where it is.</div>
+        </div>
+        <div class="mover-metric grade-g">
+          <div class="metric-label">Mover eNPS <span class="metric-grade-pill g">Green</span></div>
+          <div class="metric-value">+52</div>
+          <div class="metric-explainer">Above the company average of +46. Anne's surveys this quarter are how leadership knows what's working — fill them out honestly.</div>
+        </div>
+        <div class="mover-metric grade-w">
+          <div class="metric-label">Driver Safety <span class="metric-grade-pill w">Watch</span></div>
+          <div class="metric-value">72 <span style="font-size:14px;color:var(--gray-600);">· 18% high-risk</span></div>
+          <div class="metric-explainer">Drivers — keep doing the Q1 Driver's Ed work. Q2 is about holding the gains and tightening the high-risk band.</div>
+        </div>
+        <div class="mover-metric grade-w">
+          <div class="metric-label">Recognition <span class="metric-grade-pill w">Watch</span> <span class="metric-display-only-tag">Manager-driven</span></div>
+          <div class="metric-value">63%</div>
+          <div class="metric-explainer">6 in 10 movers said they'd been praised in the last 14 days. This is a number for managers to lift — shown here so you know where the branch landed.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quarterly Theme Poster -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Q2 Theme</p>
+      <h2>The Einstein Games Are Back</h2>
+      <p class="lede">Q2 mover theme is <strong>Einstein Games Season 3</strong>. 8 weeks of branch-vs-branch competition. Starts Saturday 5/23. National championship 7/11.</p>
+      <div class="theme-poster">
+        <div class="poster-placeholder" id="einstein-games-poster-slot">
+          📷 Einstein Games Quarterly Theme Poster<br>
+          <span style="font-size:11px;font-weight:500;letter-spacing:0.5px;">Drop image at <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;color:white;">Supporting Projects/Einstein Games Season 3/assets/einstein-games-logo.png</code> — markup will swap to <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;color:white;">&lt;img src=...&gt;</code> on next build.</span>
+        </div>
+        <p class="poster-caption">"It's been a year since we've ran a full season. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive." — Cameron</p>
+      </div>
+    </section>
+
+    <!-- Einstein Games inline content -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">How the Games Work</p>
+      <h2>Einstein Games — Season 3</h2>
+
+      <h3 class="games-subhead" style="margin-top:14px;">The Conferences</h3>
+      <div class="games-conf-grid">
+        <div class="games-conf">
+          <div class="games-conf-name">CTXH <span class="games-conf-mgr">Brian</span></div>
+          <div class="games-conf-teams">N. Austin · S. Austin · Leander · San Antonio · Houston</div>
+        </div>
+        <div class="games-conf">
+          <div class="games-conf-name">DFWT + Tampa <span class="games-conf-mgr">Mike</span></div>
+          <div class="games-conf-teams">Dallas · Fort Worth · Garland · McKinney · Tampa</div>
+        </div>
+      </div>
+      <p class="games-note">Each team plays <strong>4 conference + 2 cross-conference games</strong> over the regular season. Every matchup is reciprocal.</p>
+
+      <h3 class="games-subhead">The 8-Week Schedule</h3>
+      <div class="games-schedule">
+        <div class="games-week"><span class="games-week-label">W1</span><span class="games-week-date">5/23 – 5/29</span></div>
+        <div class="games-week"><span class="games-week-label">W2</span><span class="games-week-date">5/30 – 6/5</span></div>
+        <div class="games-week"><span class="games-week-label">W3</span><span class="games-week-date">6/6 – 6/12</span></div>
+        <div class="games-week games-week-cross"><span class="games-week-label">W4 ✱ Cross Showdown</span><span class="games-week-date">6/13 – 6/19</span></div>
+        <div class="games-week"><span class="games-week-label">W5</span><span class="games-week-date">6/20 – 6/26</span></div>
+        <div class="games-week games-week-rivalry"><span class="games-week-label">W6 ⚔ Rivalry Week</span><span class="games-week-date">6/27 – 7/3</span></div>
+        <div class="games-week games-week-playoff"><span class="games-week-label">W7 · Conf Champ</span><span class="games-week-date">7/4</span></div>
+        <div class="games-week games-week-champ"><span class="games-week-label">W8 · National</span><span class="games-week-date">7/11</span></div>
+      </div>
+
+      <h3 class="games-subhead">Multiplier Cards <span class="games-new-tag">NEW</span></h3>
+      <p>Each team gets <strong>5 multiplier cards</strong> for the regular season — one per scoring category. When you play a card, that category scores at <strong>+50%</strong> for that game week. <strong>One card max per week.</strong> Pick your spots — five cards across six regular-season weeks means one week you'll play none. Make it count.</p>
+      <ul class="games-cards-list">
+        <li><strong>CSAT / Reviews</strong> — reviews per move</li>
+        <li><strong>Damages</strong> — damages per hour</li>
+        <li><strong>Driver Score</strong> — Samsara composite</li>
+        <li><strong>Contract Efficiency</strong> — estimated vs actual</li>
+        <li><strong>Attendance</strong> — attendance points per hour</li>
+      </ul>
+    </section>
+
+    <!-- Vision Summary -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Where We're Going</p>
+      <h2>Vision Summary</h2>
+      <p class="lede">A slim version of the company's strategic plan — Core Values, Purpose, BHAG, this year's targets — built for movers and CX.</p>
+      <div class="vision-summary-block">
+        <span class="placeholder-tag">Placeholder — content lands soon</span>
+        <p>Cameron is filling in Page 9 of the Q2 Growth Toolkit (Vision Summary — slimmed-down OPSP for the team). Once filled in, this becomes a sequenced reveal walkthrough — same pattern as the OPSP walkthrough used in Roundtable.</p>
+        <span class="vision-cta-stub">Open Vision Summary Walkthrough → (placeholder)</span>
+      </div>
+    </section>
+
+    <!-- Mover Comp Review -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">FYI</p>
+      <h2>Mover Comp Review — Q2</h2>
+      <div class="mover-comp-info">
+        <p>Leadership is accelerating mover comp redesign from Q3 to Q2 (May / June / July). Three areas under review:</p>
+        <ul>
+          <li>Base + variable rates against current market</li>
+          <li>Total pay cap question</li>
+          <li>Sustained-performance promotion mechanic</li>
+        </ul>
+        <p>More information will come from Anne and the leadership team as the work progresses.</p>
+      </div>
+    </section>
+
+    <!-- Bottom links -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">Go Deeper</p>
+      <h2>Resources</h2>
+      <div class="mover-bottom-links">
+        <a href="./einstein-games-s3/" target="_blank" class="mover-bottom-link">
+          <strong>→ Full Einstein Games Player Brief</strong>
+          <span>Conferences · 8-week schedule · matchup tables · multiplier cards · scoreboard app</span>
+        </a>
+        <a href="#" target="_blank" class="mover-bottom-link placeholder" id="games-deepdive-link" aria-disabled="true" onclick="event.preventDefault();">
+          <strong>→ Einstein Games Deep Dive (coming soon)</strong>
+          <span>How the games work · scorecard mechanics · how to be a winning branch — Google Slides link drops soon</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
   <!-- ============== COVER HERO — COMPOSITE + GROWTH + STRATEGIC WEIGHT ============== -->
-  <div class="cover-hero">
+  <div class="cover-hero manager-only">
     <div class="composite-badge">
       <div class="composite-letter">B+</div>
       <div class="composite-score">Final 83</div>
@@ -1038,7 +1590,7 @@
   </div>
 
   <!-- ============== PHILOSOPHY ============== -->
-  <section class="philosophy">
+  <section class="philosophy manager-only">
     <h2>How We Grade a Branch</h2>
     <p class="philosophy-lede">Final grade = composite + growth modifier. The composite measures where you landed; the growth modifier measures where you're going.</p>
 
@@ -1075,7 +1627,7 @@
     <p class="philosophy-close">We grow by growing our people and customers — not at their expense. Critical Numbers carry 30% combined weight in the composite — the quarterly theme isn't a footnote, it's a structural anchor. Growth lives alongside as a separate signal so a strong-trajectory branch in a tough quarter (or a declining branch propped up by past plan) is read honestly. <strong>NOI/Truck</strong> sits in the Financial Engine top block as ungraded reference this quarter (actively calibrating; see methodology details in the QGR packet). <strong>Strategic Weight</strong> tier on the cover hero is a parallel display lens — measures cash contribution scale (NOI share / revenue share / truck share), separate from the operational composite.</p>
   </section>
 
-  <div class="info-callout">
+  <div class="info-callout manager-only">
     <strong>How to read this scorecard:</strong> Cover hero shows the final letter grade (composite + growth) plus the breakdown beside it. Below: metric-by-metric breakdown grouped by Financial Engine, Critical Numbers, and People + Customer (the three buckets that roll into the 7-metric composite), then a dedicated Trajectory section for revenue YoY (the growth modifier). Drill-down on any tile for the plain-language explanation.
   </div>
 
@@ -1086,7 +1638,7 @@
   </div>
 
   <!-- ============== FINANCIAL ENGINE ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Financial Engine <span class="cat-grade">Category Grade <span class="pill g">G</span></span></h2>
     <div class="metric-grid">
 
@@ -1136,7 +1688,7 @@
   </section>
 
   <!-- ============== CRITICAL NUMBERS (Q1) ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Critical Numbers · Q1 <span class="cat-grade">Category Grade <span class="pill g">G</span></span></h2>
     <div class="metric-grid">
 
@@ -1184,7 +1736,7 @@
   </section>
 
   <!-- ============== PEOPLE + CUSTOMER ============== -->
-  <section>
+  <section class="manager-only">
     <h2>People + Customer <span class="cat-grade">Category Grade <span class="pill g">G</span></span></h2>
     <div class="metric-grid">
 
@@ -1246,7 +1798,7 @@
   </section>
 
   <!-- ============== TRAJECTORY · GROWTH MODIFIER (v3.2) ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Trajectory · Revenue YoY <span class="cat-grade">Growth Modifier <span class="pill g">G · +4</span></span></h2>
     <div class="metric-grid">
 
@@ -1287,7 +1839,7 @@
   </section>
 
   <!-- ============== REFERENCE DATA (NOT GRADED) ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Reference Data <span class="cat-grade">(not graded — context only)</span></h2>
     <table class="ref-table">
       <thead>
@@ -1312,7 +1864,7 @@
   </section>
 
   <!-- ============== Q1 HIGHLIGHTS / LOWLIGHTS ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Q1 Highlights &amp; Lowlights</h2>
     <div class="hl-grid">
       <div class="hl-card up">
@@ -1339,7 +1891,7 @@
   </section>
 
   <!-- ============== Q2 WATCH ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Q2 Watch — What to Track</h2>
     <div class="q2-watch">
       <h3>Q2 Action Items + Decision Points</h3>
@@ -1356,7 +1908,7 @@
   </section>
 
   <!-- ============== Q2+ WISHLIST ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Q2+ Wishlist — Future Composite + Reference Candidates</h2>
     <p style="font-size: 12.5px; color: var(--gray-600); margin: 0 0 16px 0;">Metrics queued for future versions of the scorecard. Cameron's working list of components to add as data feeds stabilize. Each is unweighted today and will graduate into the graded composite, the growth modifier, or reference data once its data source is reliable per-branch.</p>
     <div class="metric-grid">
@@ -1482,7 +2034,7 @@
   </section>
 
   <!-- ============== METHODOLOGY ============== -->
-  <section>
+  <section class="manager-only">
     <h2>Methodology &amp; Source Map</h2>
     <div class="data-source"><strong>How the grade is built:</strong> Branch grade = a 7-metric weighted composite plus a single growth-modifier adjustment. Each metric counts exactly once. Critical Numbers (Q1: Driver Safety + Personnel-Budget) preserved at 30% combined weight — the quarterly theme spine.
       <table class="ref-table" style="margin-top: 8px;">
@@ -1510,79 +2062,6 @@
 
     <div class="audit-callout">
       <strong>✓ Data quality reviewed.</strong> Every datapoint is traced to its primary source — click "📍 Source" under any metric tile or hover the 📍 icon in the reference table to verify. Methodology + version log + open architectural questions live in the QGR packet's <strong>"How the Branch Scorecards Are Built"</strong> expandable section.
-    </div>
-  </section>
-
-  <!-- ============== SECTION 8 — Q2 FORWARD FOR YOUR TEAM ============== -->
-  <section id="q2-forward-team">
-    <p class="section-eyebrow">Section 8 · Mover-Facing</p>
-    <h2>Q2 Forward — For Your Team</h2>
-    <p class="section-lede">This section is the mover-facing payload. The data above is the full picture; this is what to walk through during a team huddle. Same URL, same data — just framed for the people doing the moves.</p>
-
-    <!-- Sub-section B: Vision Strategy -->
-    <div class="vision-block">
-      <h3>Where Einstein Is Going</h3>
-      <div class="vision-placeholder">
-        <span class="placeholder-tag">Placeholder — content lands 5/4</span>
-        <p>Cameron is filling in Page 9 of the Q2 Growth Toolkit (Vision Strategy — slimmed-down OPSP for movers + CX). Once filled in, this section embeds the page as an image with optional sequenced reveal mechanic similar to the OPSP walkthrough.</p>
-        <p class="placeholder-instruction">SWAP-IN: Replace this entire <code>.vision-placeholder</code> block with an embedded image of the Vision Strategy PDF page (extracted by Albert) + optional reveal mechanic.</p>
-      </div>
-    </div>
-
-    <!-- Sub-section C: Einstein Games Season 3 (inline content) -->
-    <div class="einstein-games-block">
-      <h3>Einstein Games — Season 3</h3>
-      <p class="lede">8-week season starts <strong>Saturday 5/23</strong>. National championship <strong>7/11</strong>. Two conferences play out a regular season + playoffs. New this season: <strong>Multiplier Cards</strong>.</p>
-      <p class="cameron-frame">"It's been a year since we've run a full season. Since then we've gotten much safer at driving. We've had a big focus on damages through Choose Your Own Adventure. We have new systems across the board with the guts to roll them out. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive."</p>
-
-      <h4 class="games-subhead">The Conferences</h4>
-      <div class="games-conf-grid">
-        <div class="games-conf">
-          <div class="games-conf-name">CTXH <span class="games-conf-mgr">Brian</span></div>
-          <div class="games-conf-teams">N. Austin · S. Austin · Leander · San Antonio · Houston</div>
-        </div>
-        <div class="games-conf">
-          <div class="games-conf-name">DFWT + Tampa <span class="games-conf-mgr">Mike</span></div>
-          <div class="games-conf-teams">Dallas · Fort Worth · Garland · McKinney · Tampa</div>
-        </div>
-      </div>
-      <p class="games-note">Each team plays <strong>4 conference + 2 cross-conference games</strong> over the regular season. Every matchup is reciprocal.</p>
-
-      <h4 class="games-subhead">The 8-Week Schedule</h4>
-      <div class="games-schedule">
-        <div class="games-week"><span class="games-week-label">W1</span><span class="games-week-date">5/23 – 5/29</span></div>
-        <div class="games-week"><span class="games-week-label">W2</span><span class="games-week-date">5/30 – 6/5</span></div>
-        <div class="games-week"><span class="games-week-label">W3</span><span class="games-week-date">6/6 – 6/12</span></div>
-        <div class="games-week games-week-cross"><span class="games-week-label">W4 ✱ Cross Showdown</span><span class="games-week-date">6/13 – 6/19</span></div>
-        <div class="games-week"><span class="games-week-label">W5</span><span class="games-week-date">6/20 – 6/26</span></div>
-        <div class="games-week games-week-rivalry"><span class="games-week-label">W6 ⚔ Rivalry Week</span><span class="games-week-date">6/27 – 7/3</span></div>
-        <div class="games-week games-week-playoff"><span class="games-week-label">W7 · Conf Champ</span><span class="games-week-date">7/4</span></div>
-        <div class="games-week games-week-champ"><span class="games-week-label">W8 · National</span><span class="games-week-date">7/11</span></div>
-      </div>
-
-      <h4 class="games-subhead">Multiplier Cards <span class="games-new-tag">NEW</span></h4>
-      <p>Each team gets <strong>5 multiplier cards</strong> for the regular season — one per scoring category. When you play a card, that category scores at <strong>+50%</strong> for that game week. <strong>One card max per week.</strong> Pick your spots — five cards across six regular-season weeks means one week you'll play none. Make it count.</p>
-      <ul class="games-cards-list">
-        <li><strong>CSAT / Reviews</strong> — reviews per move</li>
-        <li><strong>Damages</strong> — damages per hour</li>
-        <li><strong>Driver Score</strong> — Samsara composite</li>
-        <li><strong>Contract Efficiency</strong> — estimated vs actual</li>
-        <li><strong>Attendance</strong> — attendance points per hour</li>
-      </ul>
-
-      <p class="games-link-out"><a href="./einstein-games-s3/index.html" target="_blank">→ Full Player Brief (week-by-week schedule, scoreboard app, all rules)</a></p>
-    </div>
-
-    <!-- Sub-section D: Mover Comp Review (informational only) -->
-    <div class="mover-comp-block">
-      <h3>Mover Comp Review — Q2</h3>
-      <p>Leadership is accelerating mover comp redesign from Q3 to Q2 (May / June / July). Three areas under review:</p>
-      <ul>
-        <li>Base + variable rates against current market</li>
-        <li>Total pay cap question</li>
-        <li>Sustained-performance promotion mechanic</li>
-      </ul>
-      <p>More information will come from Anne and the leadership team as the work progresses.</p>
     </div>
   </section>
 
@@ -1958,6 +2437,37 @@ new Chart(document.getElementById('chartRevenueYoY'), {
     }
   }]
 });
+
+// ── View Toggle (Manager / Mover) ──
+// Per-page, per-session state. Defaults to Manager. Reflects in URL ?view=mover for shareability.
+(function () {
+  const buttons = document.querySelectorAll('.view-toggle-btn');
+  if (!buttons.length) return;
+
+  function applyView(mode) {
+    const isMover = mode === 'mover';
+    document.body.classList.toggle('scorecard-view-mover', isMover);
+    buttons.forEach(b => {
+      const isActive = b.dataset.view === mode;
+      b.classList.toggle('is-active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    // Reflect in URL without scroll jump
+    const url = new URL(window.location.href);
+    if (isMover) url.searchParams.set('view', 'mover'); else url.searchParams.delete('view');
+    window.history.replaceState({}, '', url.toString());
+    // If the layout shifted dramatically, redraw chart sizes (charts are in manager-only sections)
+    if (window.Chart && window.Chart.instances) {
+      Object.values(window.Chart.instances).forEach(c => { try { c.resize(); } catch (e) {} });
+    }
+  }
+
+  // Initial state from URL (per-page, per-session — no localStorage)
+  const initialMode = new URLSearchParams(window.location.search).get('view') === 'mover' ? 'mover' : 'manager';
+  applyView(initialMode);
+
+  buttons.forEach(b => b.addEventListener('click', () => applyView(b.dataset.view)));
+})();
 </script>
 
 </body>
