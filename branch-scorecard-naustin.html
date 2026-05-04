@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>North Austin — Q1'26 Branch Scorecard</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,6 +25,7 @@
     --gray-300: #c8d0d8;
     --gray-400: #b0bec5;
     --gray-600: #5c6670;
+    --gray-700: #3d4751;
     --gray-800: #1a1a1a;
     --blue: #1565c0;
     --blue-bg: #e3f2fd;
@@ -621,6 +621,301 @@
     line-height: 1.55;
   }
 
+  /* ============== MOVER-VIEW INDICATOR ============== */
+  .mover-view-indicator {
+    background: var(--orange-bg);
+    border: 1px solid #f3d6a8;
+    border-left: 4px solid var(--orange);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--gray-800);
+  }
+  .mover-view-indicator .mvi-icon {
+    font-size: 18px;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+  .mover-view-indicator .mvi-body strong { color: var(--navy); font-weight: 700; }
+  .mover-view-indicator a {
+    color: var(--orange-dark);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--orange-dark);
+  }
+  .mover-view-indicator a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+  /* ============== SECTION 8 — Q2 FORWARD FOR YOUR TEAM ============== */
+  #q2-forward-team {
+    background: white;
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 2px 10px rgba(13,43,78,0.04);
+  }
+  #q2-forward-team h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    margin: 0 0 8px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--orange);
+  }
+  #q2-forward-team .section-eyebrow {
+    color: var(--orange);
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+  }
+  #q2-forward-team .section-lede {
+    color: var(--gray-600);
+    font-size: 13.5px;
+    margin: 0 0 22px 0;
+    line-height: 1.55;
+  }
+  #q2-forward-team h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 10px 0;
+  }
+  #q2-forward-team h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin: 0 0 10px 0;
+  }
+  #q2-forward-team p { font-size: 13.5px; line-height: 1.6; color: var(--gray-800); margin: 0 0 10px 0; }
+  #q2-forward-team ul { margin: 0 0 10px 0; padding-left: 20px; }
+  #q2-forward-team li { font-size: 13.5px; line-height: 1.6; margin-bottom: 8px; color: var(--gray-800); }
+
+  /* Vision Strategy block — placeholder pending Cameron's page 9 */
+  .vision-block { margin-bottom: 26px; }
+  .vision-placeholder {
+    border: 2px dashed var(--orange);
+    border-radius: 8px;
+    padding: 16px 18px;
+    background: #fffaf2;
+  }
+  .vision-placeholder .placeholder-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .vision-placeholder p { font-size: 12.5px; color: var(--gray-800); margin: 0 0 8px 0; }
+  .vision-placeholder .placeholder-instruction {
+    background: var(--gray-100);
+    border-left: 3px solid var(--gray-400);
+    padding: 8px 10px;
+    font-size: 11.5px;
+    color: var(--gray-600);
+    font-family: monospace;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  .vision-placeholder code {
+    background: var(--navy);
+    color: white;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+
+  /* Einstein Games block (inline content) */
+  .einstein-games-block { margin-bottom: 26px; }
+  .einstein-games-block .lede { font-size: 13.5px; color: var(--gray-800); margin-bottom: 12px; }
+  #q2-forward-team .cameron-frame {
+    background: var(--navy);
+    color: white;
+    border-left: 4px solid var(--orange);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 14px 0 16px 0;
+  }
+  #q2-forward-team .games-subhead {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin: 18px 0 10px 0;
+  }
+  .games-new-tag {
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+  .games-conf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .games-conf {
+    background: var(--gray-50);
+    border-left: 3px solid var(--orange);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .games-conf-name {
+    color: var(--navy);
+    font-weight: 900;
+    font-size: 13.5px;
+    margin-bottom: 4px;
+  }
+  .games-conf-mgr {
+    color: var(--gray-600);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-left: 4px;
+  }
+  .games-conf-teams {
+    color: var(--gray-800);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  #q2-forward-team .games-note {
+    font-size: 12.5px;
+    color: var(--gray-600);
+    font-style: italic;
+    margin: 6px 0 0 0;
+  }
+  .games-schedule {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .games-week {
+    background: var(--gray-50);
+    border-radius: 6px;
+    padding: 8px 10px;
+    border-top: 3px solid var(--gray-300);
+  }
+  .games-week-label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .games-week-date {
+    display: block;
+    font-size: 11px;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+  .games-week-cross    { border-top-color: var(--orange); background: var(--orange-bg); }
+  .games-week-rivalry  { border-top-color: #1565c0; background: #e3f2fd; }
+  .games-week-playoff  { border-top-color: var(--navy); background: white; }
+  .games-week-champ    { border-top-color: var(--orange); background: var(--navy); }
+  .games-week-champ .games-week-label,
+  .games-week-champ .games-week-date { color: white; }
+  #q2-forward-team .games-cards-list {
+    margin: 8px 0 12px 0;
+  }
+  #q2-forward-team .games-cards-list li {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .games-link-out {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-200);
+  }
+  #q2-forward-team .games-link-out a {
+    color: var(--orange-dark);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--orange-dark);
+  }
+  #q2-forward-team .games-link-out a:hover {
+    color: var(--navy);
+    border-bottom-color: var(--navy);
+  }
+
+  /* Mover Comp Review */
+  .mover-comp-block {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 26px;
+  }
+
+  /* Branch Q2 block */
+  .branch-q2-block .data-section,
+  .branch-q2-block .action-section {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .branch-q2-block .action-section {
+    background: var(--orange-bg);
+    border-left: 4px solid var(--orange);
+  }
+  .branch-q2-block .lede { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 14px; }
+  .wifm-closing {
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 14px;
+    border-left: 4px solid var(--orange);
+  }
+  .wifm-closing strong { color: var(--orange); }
+  .wifm-closing p { color: white; margin: 0; font-size: 13.5px; line-height: 1.6; }
+  .wifm-variants {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .wifm-variant {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .wifm-variant .variant-label {
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
   @media (max-width: 720px) {
     .cover-hero { grid-template-columns: 1fr; text-align: center; }
     .composite-badge { margin: 0 auto; }
@@ -628,6 +923,8 @@
     .hl-grid { grid-template-columns: 1fr; }
     .philosophy-grid { grid-template-columns: 1fr; }
     .lens-breakdown { grid-template-columns: 1fr; }
+    .games-cta-grid { grid-template-columns: 1fr; }
+    .mover-view-indicator { flex-direction: column; gap: 6px; }
   }
 
   @media print {
@@ -643,6 +940,15 @@
 <div class="wrap">
 
   <a class="back-link" href="./q1-2026-roundtable-packet.html">← Back to QGR Packet</a>
+
+  <!-- ============== MOVER-VIEW INDICATOR (heads-up for BMs sharing with their team) ============== -->
+  <div class="mover-view-indicator">
+    <span class="mvi-icon">📣</span>
+    <div class="mvi-body">
+      <strong>Sharing with your team?</strong>
+      The full scorecard above is fine for any audience. The <a href="#q2-forward-team">"Q2 Forward — For Your Team"</a> section at the bottom is the mover-facing payload — that's what to walk through with your team during huddles.
+    </div>
+  </div>
 
   <!-- ============== HEADER ============== -->
   <div class="branch-header">
@@ -1139,6 +1445,79 @@
 
     <div class="audit-callout">
       <strong>✓ Data quality reviewed.</strong> Every datapoint is traced to its primary source — click "📍 Source" under any metric tile or hover the 📍 icon in the reference table to verify. Methodology + version log + open architectural questions live in the QGR packet's <strong>"How the Branch Scorecards Are Built"</strong> expandable section.
+    </div>
+  </section>
+
+  <!-- ============== SECTION 8 — Q2 FORWARD FOR YOUR TEAM ============== -->
+  <section id="q2-forward-team">
+    <p class="section-eyebrow">Section 8 · Mover-Facing</p>
+    <h2>Q2 Forward — For Your Team</h2>
+    <p class="section-lede">This section is the mover-facing payload. The data above is the full picture; this is what to walk through during a team huddle. Same URL, same data — just framed for the people doing the moves.</p>
+
+    <!-- Sub-section B: Vision Strategy -->
+    <div class="vision-block">
+      <h3>Where Einstein Is Going</h3>
+      <div class="vision-placeholder">
+        <span class="placeholder-tag">Placeholder — content lands 5/4</span>
+        <p>Cameron is filling in Page 9 of the Q2 Growth Toolkit (Vision Strategy — slimmed-down OPSP for movers + CX). Once filled in, this section embeds the page as an image with optional sequenced reveal mechanic similar to the OPSP walkthrough.</p>
+        <p class="placeholder-instruction">SWAP-IN: Replace this entire <code>.vision-placeholder</code> block with an embedded image of the Vision Strategy PDF page (extracted by Albert) + optional reveal mechanic.</p>
+      </div>
+    </div>
+
+    <!-- Sub-section C: Einstein Games Season 3 (inline content) -->
+    <div class="einstein-games-block">
+      <h3>Einstein Games — Season 3</h3>
+      <p class="lede">8-week season starts <strong>Saturday 5/23</strong>. National championship <strong>7/11</strong>. Two conferences play out a regular season + playoffs. New this season: <strong>Multiplier Cards</strong>.</p>
+      <p class="cameron-frame">"It's been a year since we've run a full season. Since then we've gotten much safer at driving. We've had a big focus on damages through Choose Your Own Adventure. We have new systems across the board with the guts to roll them out. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive."</p>
+
+      <h4 class="games-subhead">The Conferences</h4>
+      <div class="games-conf-grid">
+        <div class="games-conf">
+          <div class="games-conf-name">CTXH <span class="games-conf-mgr">Brian</span></div>
+          <div class="games-conf-teams">N. Austin · S. Austin · Leander · San Antonio · Houston</div>
+        </div>
+        <div class="games-conf">
+          <div class="games-conf-name">DFWT + Tampa <span class="games-conf-mgr">Mike</span></div>
+          <div class="games-conf-teams">Dallas · Fort Worth · Garland · McKinney · Tampa</div>
+        </div>
+      </div>
+      <p class="games-note">Each team plays <strong>4 conference + 2 cross-conference games</strong> over the regular season. Every matchup is reciprocal.</p>
+
+      <h4 class="games-subhead">The 8-Week Schedule</h4>
+      <div class="games-schedule">
+        <div class="games-week"><span class="games-week-label">W1</span><span class="games-week-date">5/23 – 5/29</span></div>
+        <div class="games-week"><span class="games-week-label">W2</span><span class="games-week-date">5/30 – 6/5</span></div>
+        <div class="games-week"><span class="games-week-label">W3</span><span class="games-week-date">6/6 – 6/12</span></div>
+        <div class="games-week games-week-cross"><span class="games-week-label">W4 ✱ Cross Showdown</span><span class="games-week-date">6/13 – 6/19</span></div>
+        <div class="games-week"><span class="games-week-label">W5</span><span class="games-week-date">6/20 – 6/26</span></div>
+        <div class="games-week games-week-rivalry"><span class="games-week-label">W6 ⚔ Rivalry Week</span><span class="games-week-date">6/27 – 7/3</span></div>
+        <div class="games-week games-week-playoff"><span class="games-week-label">W7 · Conf Champ</span><span class="games-week-date">7/4</span></div>
+        <div class="games-week games-week-champ"><span class="games-week-label">W8 · National</span><span class="games-week-date">7/11</span></div>
+      </div>
+
+      <h4 class="games-subhead">Multiplier Cards <span class="games-new-tag">NEW</span></h4>
+      <p>Each team gets <strong>5 multiplier cards</strong> for the regular season — one per scoring category. When you play a card, that category scores at <strong>+50%</strong> for that game week. <strong>One card max per week.</strong> Pick your spots — five cards across six regular-season weeks means one week you'll play none. Make it count.</p>
+      <ul class="games-cards-list">
+        <li><strong>CSAT / Reviews</strong> — reviews per move</li>
+        <li><strong>Damages</strong> — damages per hour</li>
+        <li><strong>Driver Score</strong> — Samsara composite</li>
+        <li><strong>Contract Efficiency</strong> — estimated vs actual</li>
+        <li><strong>Attendance</strong> — attendance points per hour</li>
+      </ul>
+
+      <p class="games-link-out"><a href="./einstein-games-s3/index.html" target="_blank">→ Full Player Brief (week-by-week schedule, scoreboard app, all rules)</a></p>
+    </div>
+
+    <!-- Sub-section D: Mover Comp Review (informational only) -->
+    <div class="mover-comp-block">
+      <h3>Mover Comp Review — Q2</h3>
+      <p>Leadership is accelerating mover comp redesign from Q3 to Q2 (May / June / July). Three areas under review:</p>
+      <ul>
+        <li>Base + variable rates against current market</li>
+        <li>Total pay cap question</li>
+        <li>Sustained-performance promotion mechanic</li>
+      </ul>
+      <p>More information will come from Anne and the leadership team as the work progresses.</p>
     </div>
   </section>
 
