@@ -673,68 +673,67 @@
 
   /* ============== VIEW TOGGLE (Manager / Mover) ============== */
   .view-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
     background: white;
-    border: 2px solid var(--orange);
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 14px rgba(239,139,34,0.18);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
   }
-  .view-toggle-label {
-    font-size: 11px;
+  .view-toggle-context {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .vtc-label {
+    font-size: 10px;
     font-weight: 700;
-    color: var(--orange-dark);
+    color: var(--gray-600);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin-bottom: 10px;
+    letter-spacing: 1px;
   }
+  .vtc-info {
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.4;
+  }
+  .vtc-info strong { color: var(--navy); font-weight: 700; }
   .view-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    display: inline-flex;
+    background: var(--gray-100);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 0;
   }
   .view-toggle-btn {
-    background: var(--gray-50);
-    border: 2px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 12px 14px;
+    background: transparent;
+    border: none;
+    padding: 6px 16px;
     cursor: pointer;
-    text-align: left;
-    transition: all 0.15s;
     font-family: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .view-toggle-btn:hover {
-    border-color: var(--orange);
-    background: var(--orange-bg);
-  }
-  .view-toggle-btn.is-active {
-    background: var(--navy);
-    border-color: var(--navy);
-    box-shadow: 0 4px 12px rgba(13,43,78,0.25);
-  }
-  .view-toggle-btn .vt-icon {
-    font-size: 18px;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .view-toggle-btn .vt-text {
-    font-size: 14px;
-    font-weight: 900;
-    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-600);
+    border-radius: 999px;
+    transition: all 0.15s;
     letter-spacing: 0.3px;
   }
-  .view-toggle-btn .vt-sub {
-    font-size: 11px;
-    color: var(--gray-600);
-    font-weight: 500;
-    line-height: 1.3;
+  .view-toggle-btn:hover { color: var(--navy); }
+  .view-toggle-btn.is-active {
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 2px 6px rgba(13,43,78,0.2);
   }
-  .view-toggle-btn.is-active .vt-text { color: white; }
-  .view-toggle-btn.is-active .vt-sub  { color: var(--gray-300); }
-  .view-toggle-btn.is-active .vt-icon { filter: brightness(1.2); }
+  @media (max-width: 540px) {
+    .view-toggle-wrap { flex-direction: column; align-items: stretch; }
+    .view-toggle { align-self: flex-start; }
+  }
 
   /* ============== VIEW MODE — Manager / Mover element visibility ============== */
   /* Default = Manager View. Mover-only blocks hidden until the body class flips. */
@@ -829,6 +828,58 @@
     line-height: 1.55;
   }
   .mover-section p { font-size: 13.5px; line-height: 1.6; color: var(--gray-800); margin: 0 0 10px 0; }
+
+  /* Company composite (sits above the 3 lenses) */
+  .company-composite {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: var(--gray-50);
+    border-left: 4px solid var(--navy);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 14px 0 18px 0;
+  }
+  .company-composite .cc-grade-circle {
+    width: 88px; height: 88px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(13,43,78,0.25);
+  }
+  .company-composite .cc-letter { font-size: 36px; font-weight: 900; }
+  .company-composite .cc-num { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; opacity: 0.85; }
+  .company-composite .cc-body p { margin: 0; }
+  .company-composite .cc-headline {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px !important;
+  }
+  .company-composite .cc-headline strong { color: var(--orange); }
+  .company-composite .cc-explainer {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    line-height: 1.5;
+  }
+  .lens-divider-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 6px 0 !important;
+  }
+  @media (max-width: 540px) {
+    .company-composite { grid-template-columns: 1fr; text-align: center; }
+    .company-composite .cc-grade-circle { margin: 0 auto; }
+  }
 
   /* 3-Lens Company Snapshot */
   .lens-grid {
@@ -939,6 +990,39 @@
     letter-spacing: 0.8px;
     text-transform: uppercase;
     margin-left: 6px;
+  }
+
+  /* Mover charts grid */
+  .mover-charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .mover-chart-card {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px 14px 16px;
+    border-top: 3px solid var(--orange);
+  }
+  .mover-chart-card.mover-chart-full {
+    grid-column: 1 / -1;
+  }
+  .mover-chart-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 10px;
+  }
+  .mover-chart-card .chart-canvas-wrap {
+    position: relative;
+    height: 220px;
+  }
+  .mover-chart-card .chart-canvas-wrap.tall { height: 260px; }
+  @media (max-width: 720px) {
+    .mover-charts-grid { grid-template-columns: 1fr; }
   }
 
   /* Quarterly theme poster */
@@ -1364,18 +1448,13 @@
 
   <!-- ============== VIEW TOGGLE (Manager / Mover) ============== -->
   <div class="view-toggle-wrap" role="region" aria-label="Scorecard view selector">
-    <div class="view-toggle-label">View this scorecard as:</div>
+    <div class="view-toggle-context">
+      <span class="vtc-label">Viewing as:</span>
+      <span class="vtc-info">Toggle to <strong>Mover View</strong> for the slim, team-huddle layout.</span>
+    </div>
     <div class="view-toggle" role="tablist">
-      <button type="button" class="view-toggle-btn is-active" data-view="manager" role="tab" aria-selected="true">
-        <span class="vt-icon" aria-hidden="true">📊</span>
-        <span class="vt-text">Manager View</span>
-        <span class="vt-sub">Full scorecard · all 7 metrics</span>
-      </button>
-      <button type="button" class="view-toggle-btn" data-view="mover" role="tab" aria-selected="false">
-        <span class="vt-icon" aria-hidden="true">🚛</span>
-        <span class="vt-text">Mover View</span>
-        <span class="vt-sub">Slim · for huddle / team review</span>
-      </button>
+      <button type="button" class="view-toggle-btn is-active" data-view="manager" role="tab" aria-selected="true">Manager</button>
+      <button type="button" class="view-toggle-btn" data-view="mover" role="tab" aria-selected="false">Mover</button>
     </div>
   </div>
 
@@ -1408,7 +1487,20 @@
     <section class="mover-section">
       <p class="section-eyebrow-mover">The Big Picture</p>
       <h2>How the Company Did in Q1</h2>
-      <p class="lede">Leadership grades the whole company through three lenses each quarter. Here's where Einstein landed.</p>
+      <p class="lede">Leadership grades the whole company through three lenses each quarter, then rolls those into a single composite. Here's where Einstein landed.</p>
+
+      <div class="company-composite">
+        <div class="cc-grade-circle">
+          <div class="cc-letter">B</div>
+          <div class="cc-num">Composite</div>
+        </div>
+        <div class="cc-body">
+          <p class="cc-headline">Company composite: <strong>B</strong></p>
+          <p class="cc-explainer">Solid mixed quarter. The financial plan slipped (Lens 1 dragged the average), but theme execution and people/customer health both held in B territory. Composite reflects the balance — not a victory lap, not a Red flag.</p>
+        </div>
+      </div>
+
+      <p class="lens-divider-label">Behind the composite — the three lenses:</p>
       <div class="lens-grid">
         <div class="lens-card grade-c">
           <p class="lens-eyebrow">Lens 1 · Grade</p>
@@ -1429,7 +1521,6 @@
           <p class="lens-explainer">How are our people and customers doing? Mover eNPS, Customer NPS, Recognition. Both NPS scores held strong; Recognition is the one to watch.</p>
         </div>
       </div>
-      <p>Three lenses, three grades. The company graded itself <strong>C → B → B</strong> for Q1. Now here's how N. Austin specifically performed.</p>
     </section>
 
     <!-- Mover-relevant branch metrics -->
@@ -1461,17 +1552,44 @@
       </div>
     </section>
 
+    <!-- Performance Charts -->
+    <section class="mover-section">
+      <p class="section-eyebrow-mover">The Visuals</p>
+      <h2>Branch Performance — At a Glance</h2>
+      <p class="lede">The same charts the leadership team reviews. The radar shows the branch's grade across all 7 composite metrics; the bars show how the branch ranks vs the other 9.</p>
+
+      <div class="mover-charts-grid">
+        <div class="mover-chart-card mover-chart-full">
+          <div class="mover-chart-title">Composite Grade Across the 7 Metrics</div>
+          <div class="chart-canvas-wrap"><canvas id="moverChartRadar"></canvas></div>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Truck Utilization Rate (TUR)</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartTUR"></canvas></div>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Revenue YoY · Trajectory</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartRevenueYoY"></canvas></div>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Customer NPS</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartNPS"></canvas></div>
+        </div>
+        <div class="mover-chart-card">
+          <div class="mover-chart-title">Mover eNPS</div>
+          <div class="chart-canvas-wrap tall"><canvas id="moverChartENPS"></canvas></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Quarterly Theme Poster -->
     <section class="mover-section">
       <p class="section-eyebrow-mover">Q2 Theme</p>
       <h2>The Einstein Games Are Back</h2>
       <p class="lede">Q2 mover theme is <strong>Einstein Games Season 3</strong>. 8 weeks of branch-vs-branch competition. Starts Saturday 5/23. National championship 7/11.</p>
       <div class="theme-poster">
-        <div class="poster-placeholder" id="einstein-games-poster-slot">
-          📷 Einstein Games Quarterly Theme Poster<br>
-          <span style="font-size:11px;font-weight:500;letter-spacing:0.5px;">Drop image at <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;color:white;">Supporting Projects/Einstein Games Season 3/assets/einstein-games-logo.png</code> — markup will swap to <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;color:white;">&lt;img src=...&gt;</code> on next build.</span>
-        </div>
-        <p class="poster-caption">"It's been a year since we've ran a full season. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive." — Cameron</p>
+        <img src="./assets/einstein-games-logo.png" alt="The Einstein Games — Season 3" id="einstein-games-poster">
+        <p class="poster-caption">"It's been a year since we've run a full season. We're better prepared than ever to run Einstein Games Season 3 — and to be competitive." — Cameron</p>
       </div>
     </section>
 
@@ -1514,6 +1632,18 @@
         <li><strong>Contract Efficiency</strong> — estimated vs actual</li>
         <li><strong>Attendance</strong> — attendance points per hour</li>
       </ul>
+
+      <h3 class="games-subhead" style="margin-top:18px;">Go Deeper</h3>
+      <div class="mover-bottom-links">
+        <a href="./einstein-games-s3/" target="_blank" class="mover-bottom-link">
+          <strong>→ Full Player Brief</strong>
+          <span>Conferences · 8-week schedule · matchup tables · multiplier cards · scoreboard app</span>
+        </a>
+        <a href="#" target="_blank" class="mover-bottom-link placeholder" id="games-deepdive-link" aria-disabled="true" onclick="event.preventDefault();">
+          <strong>→ Einstein Games Deep Dive (coming soon)</strong>
+          <span>How the games work · scorecard mechanics · how to be a winning branch — Google Slides link drops soon</span>
+        </a>
+      </div>
     </section>
 
     <!-- Vision Summary -->
@@ -1540,22 +1670,6 @@
           <li>Sustained-performance promotion mechanic</li>
         </ul>
         <p>More information will come from Anne and the leadership team as the work progresses.</p>
-      </div>
-    </section>
-
-    <!-- Bottom links -->
-    <section class="mover-section">
-      <p class="section-eyebrow-mover">Go Deeper</p>
-      <h2>Resources</h2>
-      <div class="mover-bottom-links">
-        <a href="./einstein-games-s3/" target="_blank" class="mover-bottom-link">
-          <strong>→ Full Einstein Games Player Brief</strong>
-          <span>Conferences · 8-week schedule · matchup tables · multiplier cards · scoreboard app</span>
-        </a>
-        <a href="#" target="_blank" class="mover-bottom-link placeholder" id="games-deepdive-link" aria-disabled="true" onclick="event.preventDefault();">
-          <strong>→ Einstein Games Deep Dive (coming soon)</strong>
-          <span>How the games work · scorecard mechanics · how to be a winning branch — Google Slides link drops soon</span>
-        </a>
       </div>
     </section>
 
@@ -2095,8 +2209,42 @@ Chart.defaults.font.family = "'Roboto', sans-serif";
 Chart.defaults.font.size = 11;
 Chart.defaults.color = GRAY_600;
 
+// Deep-clone helper that preserves function callbacks (used for dual-rendering charts on Manager + Mover canvases)
+function cloneConfig(obj) {
+  if (Array.isArray(obj)) return obj.map(cloneConfig);
+  if (obj && typeof obj === 'object' && obj.constructor === Object) {
+    const out = {};
+    for (const k in obj) out[k] = cloneConfig(obj[k]);
+    return out;
+  }
+  return obj;
+}
+// Lazy mover-chart init: register configs at load time, instantiate only when Mover View becomes visible
+// (Chart.js stamps width=0/height=0 on canvases inside display:none containers, and resize() doesn't recover.)
+window.__pendingMoverCharts = window.__pendingMoverCharts || [];
+function dualChart(managerId, moverId, config) {
+  const managerEl = document.getElementById(managerId);
+  if (managerEl) new Chart(managerEl, config);
+  if (moverId) {
+    window.__pendingMoverCharts.push({moverId, config});
+  }
+}
+function instantiatePendingMoverCharts() {
+  if (!window.__pendingMoverCharts || !window.__pendingMoverCharts.length) return;
+  const remaining = [];
+  window.__pendingMoverCharts.forEach(({moverId, config}) => {
+    const el = document.getElementById(moverId);
+    if (!el) { remaining.push({moverId, config}); return; }
+    // Skip if a Chart instance already exists for this canvas
+    const exists = window.Chart && Object.values(Chart.instances).some(c => c.canvas?.id === moverId);
+    if (exists) return;
+    new Chart(el, cloneConfig(config));
+  });
+  window.__pendingMoverCharts = remaining;
+}
+
 // ── 1. Cover Radar Chart — N. Austin vs all-Green target shape ──
-new Chart(document.getElementById('chartRadar'), {
+dualChart('chartRadar', 'moverChartRadar', {
   type: 'radar',
   data: {
     labels: ['TUR (20%)', 'Sales Target (10%)', 'Customer NPS (15%)', 'Mover eNPS (15%)', 'Recognition (10%)', 'Driver Safety (15%)', 'Personnel-Budget (15%)'],
@@ -2157,7 +2305,7 @@ new Chart(document.getElementById('chartRadar'), {
 const turBranches = ['North Austin', 'South Austin', 'Leander', 'San Antonio', 'Houston', 'McKinney', 'Dallas', 'Fort Worth', 'Tampa', 'Garland'];
 const turActual = [64, 59, 72, 69, 87, 68, 66, 58, 72, 52];
 const turTarget = [59, 64, 83, 67, 92, 69, 60, 54, 89, 45];
-new Chart(document.getElementById('chartTUR'), {
+dualChart('chartTUR', 'moverChartTUR', {
   type: 'bar',
   data: {
     labels: turBranches,
@@ -2200,7 +2348,7 @@ new Chart(document.getElementById('chartTUR'), {
 // ── 3. Customer NPS by Branch ──
 const npsBranches = ['Tampa', 'Garland', 'Fort Worth', 'Houston', 'McKinney', 'Dallas', 'North Austin', 'South Austin', 'Leander', 'San Antonio'];
 const npsValues = [100, 100, 96.2, 93.8, 93.6, 91.4, 91.4, 89.7, 87.8, 85.2];
-new Chart(document.getElementById('chartNPS'), {
+dualChart('chartNPS', 'moverChartNPS', {
   type: 'bar',
   data: {
     labels: npsBranches,
@@ -2249,7 +2397,7 @@ new Chart(document.getElementById('chartNPS'), {
 // ── 4. Mover eNPS by Branch ──
 const eNpsBranches = ['Tampa', 'Houston', 'S. Austin', 'North Austin', 'Leander', 'Dallas', 'McKinney', 'San Antonio', 'Fort Worth', 'Garland'];
 const eNpsValues = [100, 65, 62, 52, 47, 46, 41, 5, 0, 0];
-new Chart(document.getElementById('chartENPS'), {
+dualChart('chartENPS', 'moverChartENPS', {
   type: 'bar',
   data: {
     labels: eNpsBranches,
@@ -2364,7 +2512,7 @@ new Chart(document.getElementById('chartPersonnelBudget'), {
 // ── 6. Revenue YoY by Branch — ranked, N. Austin highlighted ──
 const yoyBranches = ['Fort Worth', 'Tampa', 'McKinney', 'Leander', 'San Antonio', 'Dallas', 'North Austin', 'South Austin', 'Garland', 'Houston'];
 const yoyValues = [30.7, 23.0, 19.6, 16.3, 10.3, 7.7, 5.3, -1.3, -1.9, -5.6];
-new Chart(document.getElementById('chartRevenueYoY'), {
+dualChart('chartRevenueYoY', 'moverChartRevenueYoY', {
   type: 'bar',
   data: {
     labels: yoyBranches,
@@ -2456,10 +2604,16 @@ new Chart(document.getElementById('chartRevenueYoY'), {
     const url = new URL(window.location.href);
     if (isMover) url.searchParams.set('view', 'mover'); else url.searchParams.delete('view');
     window.history.replaceState({}, '', url.toString());
-    // If the layout shifted dramatically, redraw chart sizes (charts are in manager-only sections)
-    if (window.Chart && window.Chart.instances) {
-      Object.values(window.Chart.instances).forEach(c => { try { c.resize(); } catch (e) {} });
+    // Mover charts are lazily instantiated on first transition to mover view (when their canvases are visible)
+    if (isMover && typeof instantiatePendingMoverCharts === 'function') {
+      instantiatePendingMoverCharts();
     }
+    // Resize all chart instances after layout settles (handles both view changes)
+    setTimeout(() => {
+      if (window.Chart && window.Chart.instances) {
+        Object.values(window.Chart.instances).forEach(c => { try { c.resize(); } catch (e) {} });
+      }
+    }, 50);
   }
 
   // Initial state from URL (per-page, per-session — no localStorage)
