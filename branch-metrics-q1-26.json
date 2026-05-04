@@ -467,7 +467,36 @@
         "total": 45,
         "interpretation": "Per-pair audit catches per-card errors. Final cross-card sweep catches template-propagation bugs and cross-card consistency. Post-publish callout pass catches loaded-language and cross-branch-callout patterns the per-card audits accept as factual. All three layers are needed."
       },
-      "skill_implementation_note": "Future qgr-packet-builder skill (Q3'26 build target) should bake this registry into the audit-agent system prompt. Three parallel agent waves: (1) N parallel build-agents, (2) N parallel per-card audit-agents loaded with this registry as the checklist, (3) ONE final cross-card sweep agent with extra emphasis on template-propagation patterns + the post-publish callout pass criteria. Estimated wall-clock: 3-5 min for all 10 cards vs the 5+ hours of sequential pair-N execution we did in Q1'26."
+      "must_include_blocks_per_scorecard": {
+        "purpose": "Content blocks that EVERY scorecard must include when built or batched. Each block lists the source-of-truth template + per-branch swap-in instructions. Audit agent should fail any scorecard missing one of these blocks.",
+        "blocks": [
+          {
+            "block_id": "composite_math_explainer",
+            "added": "2026-05-03 (canary build)",
+            "source_template": "branch-scorecard-naustin.html — `.composite-math` div inside `section.philosophy`, sitting between the `.philosophy-grid` and `.philosophy-close` paragraph.",
+            "purpose": "Demystifies the Composite = Σ(weight × grade points) ÷ 5 formula for non-spreadsheet readers. Walks through max-points = 100 × 5 = 500, divided by 5 → 0–100 scale. Explains why grade scale is SG=5 / G=4 / W=2 / R=1 (skipping 3) so all-Green = 80 baseline.",
+            "per_branch_swap_in": "The 'N. Austin worked example' paragraph is the only branch-specific element. For each branch, replace the example with that branch's actual: (a) per-metric weight × grade-points sum, (b) divide by 5 to get composite score, (c) add growth modifier, (d) state final letter grade. Pull values from JSON `_branch_summaries[branch].composite_v33` and the per-metric grades.",
+            "audit_check": "Every batched scorecard must have a `.composite-math` div inside the methodology section with: (1) the 4 grade-pill spans (SG=5/G=4/W=2/R=1), (2) the formula box, (3) a worked example with that branch's actual numbers (not N. Austin's), (4) the math result matching JSON's `composite_v33` for that branch."
+          },
+          {
+            "block_id": "mover_view_indicator",
+            "added": "2026-05-03 (canary build)",
+            "source_template": "branch-scorecard-naustin.html — `.mover-view-indicator` div at the top of `.wrap`, immediately after the `.back-link`.",
+            "purpose": "Heads-up to BMs sharing the scorecard with their team that the Q2 Forward section at the bottom is the mover-facing payload.",
+            "per_branch_swap_in": "Block is identical across all 10 scorecards — no per-branch text. Anchor link `#q2-forward-team` must match the Section 8 anchor on each card.",
+            "audit_check": "Verify presence + the anchor link resolves to the Section 8 element."
+          },
+          {
+            "block_id": "section_8_q2_forward_for_team",
+            "added": "2026-05-03 (canary build)",
+            "source_template": "branch-scorecard-naustin.html — `#q2-forward-team` section at the end of `.wrap`, before the `.footer` div.",
+            "purpose": "Mover-facing Q2 forward content. Three sub-blocks: (a) Vision Strategy placeholder, (b) Einstein Games inline content (conferences + 8-week schedule + multiplier cards + Cameron quote + link out to full brief), (c) Mover Comp Review (informational only, no survey ask).",
+            "per_branch_swap_in": "All three sub-blocks are IDENTICAL across all 10 scorecards — same Einstein Games content, same Cameron quote, same Mover Comp Review block. NO per-branch personalization in this section (the previous 'What's Coming for [Branch] in Q2' branch-specific block was REMOVED on Cameron's call — do not re-add it).",
+            "audit_check": "Verify the section ID `q2-forward-team`, the 5 multiplier-card list items, the 8 schedule weeks, the 2 conference blocks, and the link-out href `./einstein-games-s3/` (NOT cross-folder relative path)."
+          }
+        ]
+      },
+      "skill_implementation_note": "Future qgr-packet-builder skill (Q3'26 build target) should bake this registry into the audit-agent system prompt. Three parallel agent waves: (1) N parallel build-agents, (2) N parallel per-card audit-agents loaded with this registry as the checklist, (3) ONE final cross-card sweep agent with extra emphasis on template-propagation patterns + the post-publish callout pass criteria. Estimated wall-clock: 3-5 min for all 10 cards vs the 5+ hours of sequential pair-N execution we did in Q1'26. **Batch checklist:** must_include_blocks_per_scorecard contains the canonical block list with per-branch swap-in instructions — audit agent must verify all blocks present + content correctly swapped."
     },
     "driver_safety_q1_2026_canonical_source": {
       "drive_id": "1J6YnA-Bl398Eq8cV7nIh19Tglv2w-TE69w0kQ8KTrMs",
