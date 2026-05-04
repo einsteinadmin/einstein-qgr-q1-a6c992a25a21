@@ -1021,9 +1021,59 @@
     height: 220px;
   }
   .mover-chart-card .chart-canvas-wrap.tall { height: 260px; }
+  .mover-chart-sub {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+    font-style: italic;
+  }
   @media (max-width: 720px) {
     .mover-charts-grid { grid-template-columns: 1fr; }
   }
+
+  /* "Why this matters" collapsible (used on every mover metric tile + chart card) */
+  .why-it-matters {
+    margin-top: 10px;
+    border-top: 1px dashed var(--gray-300);
+    padding-top: 8px;
+  }
+  .why-it-matters > summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--orange-dark);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 0;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+  .why-it-matters > summary::-webkit-details-marker { display: none; }
+  .why-it-matters > summary::before {
+    content: "▶";
+    font-size: 9px;
+    color: var(--orange);
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+  .why-it-matters[open] > summary::before { transform: rotate(90deg); }
+  .why-it-matters > summary:hover { color: var(--navy); }
+  .why-it-matters > p {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    line-height: 1.55;
+    margin: 6px 0 4px 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--orange);
+  }
+  /* Inside metric tile (light-bg) — use slightly different border treatment */
+  .mover-metric .why-it-matters { border-top-color: var(--gray-300); }
+  .mover-metric .why-it-matters > summary { color: var(--orange-dark); }
 
   /* Quarterly theme poster */
   .theme-poster {
@@ -1533,21 +1583,37 @@
           <div class="metric-label">Customer NPS <span class="metric-grade-pill sg">Super Green</span></div>
           <div class="metric-value">91.4</div>
           <div class="metric-explainer">Customers love us. Service excellence on every move keeps that score where it is.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>NPS is the leading indicator of revenue growth. High NPS = repeat customers, referrals, better Google reviews, and right-fit customers who pay full price. It's also the metric BMs care about most because it tracks closely with bookings next quarter. N. Austin's 91.4 (+5.4 YoY) is best-in-class — protect it on every move.</p>
+          </details>
         </div>
         <div class="mover-metric grade-g">
           <div class="metric-label">Mover eNPS <span class="metric-grade-pill g">Green</span></div>
           <div class="metric-value">+52</div>
           <div class="metric-explainer">Above the company average of +46. Anne's surveys this quarter are how leadership knows what's working — fill them out honestly.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>eNPS is your voice in leadership decisions. The Q2 mover comp redesign + hiring + promotion choices are all influenced by what surveys say. Branches with stronger eNPS get heard louder — and protected from changes that hurt their teams. The +52 here puts N. Austin above the company average; keep it honest, keep it high.</p>
+          </details>
         </div>
         <div class="mover-metric grade-w">
           <div class="metric-label">Driver Safety <span class="metric-grade-pill w">Watch</span></div>
           <div class="metric-value">72 <span style="font-size:14px;color:var(--gray-600);">· 18% high-risk</span></div>
           <div class="metric-explainer">Drivers — keep doing the Q1 Driver's Ed work. Q2 is about holding the gains and tightening the high-risk band.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Drivers carry the financial risk for the whole branch — every accident, claim, and insurance hike traces back here. Q1's company-wide theme (Big Bubble Energy / Driver's Ed) was about building safer habits. N. Austin landed at 72 with 18% of drivers flagged high-risk. Holding the gains in Q2 means lower premiums + fewer claims-driven downtime hours for the team.</p>
+          </details>
         </div>
         <div class="mover-metric grade-w">
           <div class="metric-label">Recognition <span class="metric-grade-pill w">Watch</span> <span class="metric-display-only-tag">Manager-driven</span></div>
           <div class="metric-value">63%</div>
           <div class="metric-explainer">6 in 10 movers said they'd been praised in the last 14 days. This is a number for managers to lift — shown here so you know where the branch landed.</div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>Recognition tracks closely with eNPS and retention. When managers consistently call out good work, movers stay longer, train new hires faster, and trust the system more. Whether or not you've been praised in the last 14 days is a manager-controlled signal — you're seeing the branch number here so you know how to read what's coming in Q2.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -1560,24 +1626,45 @@
 
       <div class="mover-charts-grid">
         <div class="mover-chart-card mover-chart-full">
-          <div class="mover-chart-title">Composite Grade Across the 7 Metrics</div>
+          <div class="mover-chart-title">Seven-Metric Radar — N. Austin vs Target ("All Green" Shape)</div>
+          <p class="mover-chart-sub">Filled shape = N. Austin Q1 grades; dashed line = "all Green" target shape. Where N. Austin pushes outside the target line, the branch is exceeding (TUR Super Green, Sales Target Super Green, NPS Super Green); where it falls inside, the branch is missing (Driver Safety + Recognition are the two inside-target axes this quarter).</p>
           <div class="chart-canvas-wrap"><canvas id="moverChartRadar"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>The radar is a quick way to see all seven metrics at once instead of scrolling through tables. Each axis is one metric. A perfect quarter would push the orange shape all the way out to the dashed green line. Where the orange dips inside the dashed line, that's where the branch came up short — those are the two metrics worth a focused conversation in Q2.</p>
+          </details>
         </div>
         <div class="mover-chart-card">
           <div class="mover-chart-title">Truck Utilization Rate (TUR)</div>
           <div class="chart-canvas-wrap tall"><canvas id="moverChartTUR"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>TUR is the % of available truck-hours that actually turned into booked moves. High TUR = trucks earning revenue; low TUR = trucks sitting idle (cost without income). Drivers, dispatch, and sales all contribute. N. Austin landed at 64% (Super Green) — top of company. The bar chart shows where every branch landed for context.</p>
+          </details>
         </div>
         <div class="mover-chart-card">
           <div class="mover-chart-title">Revenue YoY · Trajectory</div>
           <div class="chart-canvas-wrap tall"><canvas id="moverChartRevenueYoY"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>How much did revenue grow vs. the same quarter last year? Branches that grow get reinvested in (more trucks, more hires, better tools). Flat or declining branches get re-examined. N. Austin grew +5.3% YoY (Stable) — kept pace with the company. Find your branch's bar to see the trajectory.</p>
+          </details>
         </div>
         <div class="mover-chart-card">
           <div class="mover-chart-title">Customer NPS</div>
           <div class="chart-canvas-wrap tall"><canvas id="moverChartNPS"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>NPS is the most direct measure of how customers feel about us. Movers are the face of every move — ratings, reviews, and word-of-mouth all flow from how the move felt. A high NPS turns into more bookings next quarter and more right-fit customers (the kind who don't haggle on price). N. Austin at 91.4 lands in the top tier company-wide.</p>
+          </details>
         </div>
         <div class="mover-chart-card">
           <div class="mover-chart-title">Mover eNPS</div>
           <div class="chart-canvas-wrap tall"><canvas id="moverChartENPS"></canvas></div>
+          <details class="why-it-matters">
+            <summary>Why this matters</summary>
+            <p>How likely are you to recommend Einstein as a place to work? This is your voice in leadership decisions. Anne's surveys this quarter directly shape Q2 mover comp redesign + hiring/promotion decisions. A strong eNPS at the branch means the team is being heard. N. Austin's +52 sits above the company average of +46.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -1745,7 +1832,7 @@
     <strong>How to read this scorecard:</strong> Cover hero shows the final letter grade (composite + growth) plus the breakdown beside it. Below: metric-by-metric breakdown grouped by Financial Engine, Critical Numbers, and People + Customer (the three buckets that roll into the 7-metric composite), then a dedicated Trajectory section for revenue YoY (the growth modifier). Drill-down on any tile for the plain-language explanation.
   </div>
 
-  <div class="cover-radar-wrap">
+  <div class="cover-radar-wrap manager-only">
     <p class="chart-title">Seven-Metric Radar — N. Austin vs Target ("All Green" Shape)</p>
     <p class="chart-sub">Filled shape = N. Austin Q1 grades; dashed line = "all Green" target shape. Where N. Austin pushes outside the target line, the branch is exceeding (TUR Super Green, Sales Target Super Green, NPS Super Green); where it falls inside, the branch is missing (Driver Safety + Recognition are the two inside-target axes this quarter).</p>
     <div class="chart-canvas-wrap"><canvas id="chartRadar"></canvas></div>
