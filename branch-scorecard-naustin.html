@@ -621,6 +621,56 @@
     line-height: 1.55;
   }
 
+  /* Composite math explainer (under the philosophy grid) */
+  .composite-math {
+    background: var(--orange-bg);
+    border-left: 4px solid var(--orange);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 16px 0 0 0;
+  }
+  .composite-math h4 {
+    font-size: 12px;
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+  }
+  .composite-math p {
+    font-size: 12.5px;
+    color: var(--gray-800);
+    line-height: 1.55;
+    margin: 0 0 8px 0;
+  }
+  .composite-math p:last-child { margin-bottom: 0; }
+  .composite-math .math-formula {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Roboto Mono', Menlo, monospace;
+    font-size: 12px;
+    color: var(--navy);
+    margin: 6px 0;
+    text-align: center;
+  }
+  .composite-math .math-grades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0 8px 0;
+  }
+  .composite-math .grade-pill {
+    background: white;
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
   /* ============== MOVER-VIEW INDICATOR ============== */
   .mover-view-indicator {
     background: var(--orange-bg);
@@ -1005,6 +1055,21 @@
         <h3>Final Grade · Composite + Modifier</h3>
         <p>Final score = composite + growth. Breakout YoY can lift a branch by a full letter; declining can drop one. Cover shows both halves so the BM can read landing AND trajectory at once.</p>
       </div>
+    </div>
+
+    <div class="composite-math">
+      <h4>How the composite math works</h4>
+      <p>Each metric has a weight (the seven weights sum to <strong>100</strong>) and a grade worth points: Super Green = <strong>5</strong>, Green = <strong>4</strong>, Watch = <strong>2</strong>, Red = <strong>1</strong>.</p>
+      <div class="math-grades">
+        <span class="grade-pill">SG = 5</span>
+        <span class="grade-pill">G = 4</span>
+        <span class="grade-pill">W = 2</span>
+        <span class="grade-pill">R = 1</span>
+      </div>
+      <p>For each metric we multiply <em>weight × grade points</em>, then sum across all seven. A perfect Super Green sweep = <strong>100 × 5 = 500</strong>, the maximum possible. We divide by 5 to bring that back down to a familiar 0–100 scale.</p>
+      <div class="math-formula">Composite = Σ(weight × grade points) ÷ 5</div>
+      <p><strong>N. Austin worked example:</strong> TUR (20×5) + Sales (10×5) + NPS (15×5) + eNPS (15×4) + Recog (10×2) + DSS (15×2) + Personnel-Budget (15×4) = <strong>395</strong>. Then 395 ÷ 5 = <strong>79</strong> (B composite). Add the +4 growth modifier → <strong>83 (B+ final)</strong>.</p>
+      <p>Why <em>SG=5, G=4, W=2, R=1</em> and not 5/4/3/2/1? The skip from G to W creates a real penalty for Watch — a Watch metric isn't "halfway between Green and Red," it's noticeably off pace. An all-Green branch lands at 80 (B+ baseline). All-Watch lands at 40. All-Red lands at 20. Hitting plan should read as above-average; this scale enforces that.</p>
     </div>
 
     <p class="philosophy-close">We grow by growing our people and customers — not at their expense. Critical Numbers carry 30% combined weight in the composite — the quarterly theme isn't a footnote, it's a structural anchor. Growth lives alongside as a separate signal so a strong-trajectory branch in a tough quarter (or a declining branch propped up by past plan) is read honestly. <strong>NOI/Truck</strong> sits in the Financial Engine top block as ungraded reference this quarter (actively calibrating; see methodology details in the QGR packet). <strong>Strategic Weight</strong> tier on the cover hero is a parallel display lens — measures cash contribution scale (NOI share / revenue share / truck share), separate from the operational composite.</p>
