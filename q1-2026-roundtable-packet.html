@@ -1792,9 +1792,10 @@
       <a href="#c4-bbe">4 · BBE / Driver's Ed</a>
       <a href="#c5-enps-mover">5 · eNPS — Movers</a>
       <a href="#c6-enps-salaried">6 · eNPS — Salaried</a>
-      <a href="#c7-nps">7 · Customer NPS</a>
-      <a href="#c8-sales-lookback">8 · CX Sales Lookback</a>
-      <a href="#c9-claims-mm-lookback">9 · Claims &amp; Magic Moments</a>
+      <a href="#c7-praise">7 · Praise Tracker</a>
+      <a href="#c7-nps">8 · Customer NPS &amp; Reviews</a>
+      <a href="#c8-sales-lookback">9 · CX Sales Lookback</a>
+      <a href="#c9-claims-mm-lookback">10 · Claims &amp; Magic Moments</a>
     </div>
 
     <div class="toc-section">
@@ -1810,7 +1811,6 @@
     <div class="toc-section">
       <h4>Wishlist</h4>
       <a href="#lb-abc">A/B/C Player Distribution</a>
-      <a href="#lb-praise">Praise Tracker</a>
     </div>
 
     <div class="toc-section">
@@ -2049,7 +2049,7 @@
     </section>
 
     <!-- ============== COMPONENTS ============== -->
-    <h2>Component Cards — The Q1 Story in Nine Pieces</h2>
+    <h2>Component Cards — The Q1 Story in Ten Pieces</h2>
     <p>Each card embeds the headline data + key numbers + a one-click deep link to the full artifact. Read left-to-right, top-to-bottom.</p>
 
     <div class="comp-grid">
@@ -2443,11 +2443,53 @@
         </div>
       </div>
 
-      <!-- ===== 7 · CUSTOMER NPS ===== -->
-      <div class="comp-card green" id="c7-nps">
+      <!-- ===== 7 · PRAISE TRACKER ===== -->
+      <div class="comp-card full" id="c7-praise">
         <div class="comp-head">
           <div>
             <p class="comp-num">Component 7</p>
+            <h3 class="comp-title">Manager + Salaried Praise Tracker</h3>
+          </div>
+          <span class="badge orange">Q1 · Praise Given Live</span>
+        </div>
+        <p class="comp-summary">
+          Praise distribution across managers + salaried staff — who gives recognition, how much, and how each person tracks against the per-role quarterly goal. Final Q1 state from the Prepare for Praise board lifecycle (Pending → Delivered → Done/Logged). Sister metric to Magic Moments Effectiveness (claims-side; in <a href="#c9-claims-mm-lookback">Component 10</a> below).
+        </p>
+
+        <figure class="praise-figure">
+          <img src="./assets/praise-tracker-q1.jpg" alt="Praise Tracker Q1 — count of praise given, by person, against per-role quarterly goal lines" class="praise-img lightbox-trigger" id="praise-tracker-img" tabindex="0" role="button" aria-label="Click to expand praise tracker chart full-screen">
+          <figcaption class="praise-caption">Praise Given (by logger) for Q1. Dashed lines = per-role quarterly + monthly goals: BM/Exp/Regional/Dept Head Quarterly 48 · OPS/Flex/FM Quarterly 36 · CET Quarterly 12 · monthly fractions shown for in-quarter cadence reads. <em>Click the chart to expand full-screen.</em></figcaption>
+        </figure>
+
+        <div class="theme-pair">
+          <div class="theme-pair-half">
+            <p class="tp-tag">Coverage Gap</p>
+            <p class="tp-name">Praise Received (by Recipient)</p>
+            <p class="tp-context">Distribution across salaried staff · who's being recognized vs who's invisible · pairs with eNPS detractor analysis to flag morale risk · Q2 build target</p>
+          </div>
+          <div class="theme-pair-half">
+            <p class="tp-tag">Coverage Gap</p>
+            <p class="tp-name">Themes</p>
+            <p class="tp-context">What gets celebrated — values delivery · ownership moments · cross-functional support · innovation · client saves · trend vs core values rollout · Q2 build target</p>
+          </div>
+        </div>
+
+        <div class="info-callout">
+          <strong>Roundtable ask:</strong> Q2 cadence — monthly recognition rollup, weekly leaderboard, or quarterly QGR-aligned distillation? And visibility: leadership-only insight or shared with the team being recognized?
+        </div>
+
+        <div class="data-source">📍 <strong>Source:</strong> Prepare for Praise board (Pending → Delivered → Done/Logged lifecycle) · Q1 final state captured 5/5/2026 · Per-role goal lines per Cameron's submission workflow · Sister metric: Magic Moments Effectiveness (claims-side; <a href="#c9-claims-mm-lookback">Component 10</a> below)</div>
+
+        <div class="comp-meta">
+          <span class="meta-source">Owner: Cameron + Roundtable · Q1 distill complete · Q2 cadence + Praise Received + Themes views still pending</span>
+        </div>
+      </div>
+
+      <!-- ===== 8 · CUSTOMER NPS AND REVIEWS ===== -->
+      <div class="comp-card green" id="c7-nps">
+        <div class="comp-head">
+          <div>
+            <p class="comp-num">Component 8</p>
             <h3 class="comp-title">Customer NPS and Reviews</h3>
           </div>
           <span class="badge green">Q1 Live · NPS + Reviews</span>
@@ -2478,7 +2520,7 @@
       <div class="comp-card full" id="c8-sales-lookback">
         <div class="comp-head">
           <div>
-            <p class="comp-num">Component 8</p>
+            <p class="comp-num">Component 9</p>
             <h3 class="comp-title">CX Sales Performance Lookback</h3>
           </div>
           <span class="badge green">Q1 Captured · CX Sales Side</span>
@@ -2557,7 +2599,7 @@
       <div class="comp-card full" id="c9-claims-mm-lookback">
         <div class="comp-head">
           <div>
-            <p class="comp-num">Component 9</p>
+            <p class="comp-num">Component 10</p>
             <h3 class="comp-title">Claims &amp; Magic Moments Lookback</h3>
           </div>
           <span class="badge green">Q1 Captured · CX Claims Side</span>
@@ -2968,12 +3010,12 @@
     <!-- ============== LOOKBACK WISHLIST ============== -->
     <section id="lookback-wishlist">
       <h2>Wishlist — Org Health</h2>
-      <p>Two placeholders for organization-wide health metrics not yet captured at packet altitude. CX Sales + Claims data is now in <a href="#c8-sales-lookback">Component 8</a> and <a href="#c9-claims-mm-lookback">Component 9</a>; what's left below is the cross-department people picture (A/B/C Player distribution) and the recognition culture distill view (Praise Tracker).</p>
-      <div class="data-source">📍 <strong>Source:</strong> A/B/C Players = People Analyzers in collection (branch + department QGRs over next ~1 week) · Praise Tracker = Prepare for Praise board lifecycle data, no quarterly distill view yet · Both are Q2 collection / build targets</div>
+      <p>One placeholder for an organization-wide health metric not yet captured at packet altitude. CX Sales + Claims + Praise Tracker have all graduated into Components (<a href="#c7-praise">7</a>, <a href="#c8-sales-lookback">9</a>, <a href="#c9-claims-mm-lookback">10</a>); what's left below is the cross-department people picture (A/B/C Player distribution).</p>
+      <div class="data-source">📍 <strong>Source:</strong> A/B/C Players = People Analyzers in collection (branch + department QGRs over next ~1 week) · Q2 collection / build target</div>
 
       <div class="comp-grid" style="grid-template-columns: 1fr;">
 
-        <!-- (CX Sales Lookback promoted to Component 8 · Claims & Magic Moments Lookback promoted to Component 9 — see comp-grid above) -->
+        <!-- (Praise Tracker promoted to Component 7 · CX Sales Lookback to Component 9 · Claims & Magic Moments Lookback to Component 10 — see comp-grid above) -->
 
         <!-- ===== A/B/C PLAYER DISTRIBUTION ===== -->
         <div class="comp-card placeholder full" id="lb-abc">
@@ -3018,47 +3060,7 @@
           </div>
         </div>
 
-        <!-- ===== MANAGER + SALARIED PRAISE TRACKER ===== -->
-        <div class="comp-card full" id="lb-praise">
-          <div class="comp-head">
-            <div>
-              <p class="comp-num">Org Health · Recognition Culture</p>
-              <h3 class="comp-title">Manager + Salaried Praise Tracker</h3>
-            </div>
-            <span class="badge orange">Q1 · Praise Given Live</span>
-          </div>
-          <p class="comp-summary">
-            Praise distribution across managers + salaried staff — who gives recognition, how much, and how each person tracks against the per-role quarterly goal. Final Q1 state from the Prepare for Praise board lifecycle (Pending → Delivered → Done/Logged). Sister metric to Magic Moments Effectiveness (claims-side; in Card 2 above).
-          </p>
-
-          <figure class="praise-figure">
-            <img src="./assets/praise-tracker-q1.jpg" alt="Praise Tracker Q1 — count of praise given, by person, against per-role quarterly goal lines" class="praise-img" id="praise-tracker-img" tabindex="0" role="button" aria-label="Click to expand praise tracker chart full-screen">
-            <figcaption class="praise-caption">Praise Given (by logger) for Q1. Dashed lines = per-role quarterly + monthly goals: BM/Exp/Regional/Dept Head Quarterly 48 · OPS/Flex/FM Quarterly 36 · CET Quarterly 12 · monthly fractions shown for in-quarter cadence reads. <em>Click the chart to expand full-screen.</em></figcaption>
-          </figure>
-
-          <div class="theme-pair">
-            <div class="theme-pair-half">
-              <p class="tp-tag">Coverage Gap</p>
-              <p class="tp-name">Praise Received (by Recipient)</p>
-              <p class="tp-context">Distribution across salaried staff · who's being recognized vs who's invisible · pairs with eNPS detractor analysis to flag morale risk · Q2 build target</p>
-            </div>
-            <div class="theme-pair-half">
-              <p class="tp-tag">Coverage Gap</p>
-              <p class="tp-name">Themes</p>
-              <p class="tp-context">What gets celebrated — values delivery · ownership moments · cross-functional support · innovation · client saves · trend vs core values rollout · Q2 build target</p>
-            </div>
-          </div>
-
-          <div class="info-callout">
-            <strong>Roundtable ask:</strong> Q2 cadence — monthly recognition rollup, weekly leaderboard, or quarterly QGR-aligned distillation? And visibility: leadership-only insight or shared with the team being recognized?
-          </div>
-
-          <div class="data-source">📍 <strong>Source:</strong> Prepare for Praise board (Pending → Delivered → Done/Logged lifecycle) · Q1 final state captured 5/5/2026 · Per-role goal lines per Cameron's submission workflow · Sister metric: Magic Moments Effectiveness (claims-side; in Card 2)</div>
-
-          <div class="comp-meta">
-            <span class="meta-source">Owner: Cameron + Roundtable · Q1 distill complete · Q2 cadence + Praise Received + Themes views still pending</span>
-          </div>
-        </div>
+        <!-- ===== Praise Tracker promoted to Component 7 — see comp-grid above ===== -->
 
       </div>
     </section>
