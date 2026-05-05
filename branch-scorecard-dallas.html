@@ -234,12 +234,7 @@
   .mover-hero {
     background: var(--navy);
     color: white;
-    padding: 32px 30px;
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 26px;
-    align-items: center;
-  }
+    padding: 32px 30px;}
   .mover-hero .grade-circle {
     width: 140px; height: 140px;
     background: var(--orange);
@@ -802,7 +797,6 @@
   /* Mobile breakpoint for Mover View */
   @media (max-width: 720px) {
     .mover-hero { grid-template-columns: 1fr; text-align: center; }
-    .mover-hero .grade-circle { margin: 0 auto; }
     .lens-grid { grid-template-columns: 1fr; }
     .mover-metrics-grid { grid-template-columns: 1fr; }
     .mover-bottom-links { grid-template-columns: 1fr; }
@@ -840,10 +834,6 @@
 
     <!-- Mover Hero -->
     <div class="mover-hero">
-      <div class="grade-circle">
-        <div class="grade-letter">B+</div>
-        <div class="grade-num">Final 84</div>
-      </div>
       <div>
         <p class="hero-eyebrow">Q1 FY'26 · How We Did</p>
         <h1>Dallas</h1>
