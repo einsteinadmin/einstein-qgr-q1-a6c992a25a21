@@ -103,7 +103,7 @@
       "mover_enps": "SG: +30 or more above company avg. G: 0 to +30 above. W: -10 to 0 below. R: more than -10 below (intervention).",
       "recognition_pct": "SG: \u226590%. G: 75-89%. W: 60-74% (per Cameron 4/30: anything below 75% gets a watch flag). R: <60%.",
       "driver_safety_score": "v3.3.7: SG \u226590 AND <10% HR \u00b7 G \u226580 AND \u226420% HR \u00b7 W 70-79 OR (\u226580 AND >20% HR) \u00b7 R <70. Per-branch from Mike's Q1 Samsara breakdown sheet.",
-      "personnel_budget_pct": "SG: >110% (over plan — exceeded budget reflects demand strength or planned-loss capacity; rewarded as exceeding the goal, not docked). G: 95-110% (on plan — meeting the budget goal). W: 85-94% (under plan, one or two periods below). R: chronic-F (5/5 below 95%). Cameron 5/4 ruling (LOCKED): over-budget alone does NOT dock; branches above 100% are not penalized. Cameron 5/4 follow-up (LOCKED): over plan (>110%) earns SG, not just G — exceeding the staffing-vs-budget plan is a positive read, same as exceeding any other plan. Q1 application: Fort Worth (1.20) and Garland (1.15) lifted to SG. N. Austin (1.05), McKinney (1.05), Dallas (1.02), Tampa (1.06) remain G (within on-plan band 95-110%). Future quarters: this rubric is canonical — do not reintroduce 110-125% Watch band or any framing that 'overstaffed' is a discipline issue."
+      "personnel_budget_pct": "SG: >110% (over plan \u2014 exceeded budget reflects demand strength or planned-loss capacity; rewarded as exceeding the goal, not docked). G: 95-110% (on plan \u2014 meeting the budget goal). W: 85-94% (under plan, one or two periods below). R: chronic-F (5/5 below 95%). Cameron 5/4 ruling (LOCKED): over-budget alone does NOT dock; branches above 100% are not penalized. Cameron 5/4 follow-up (LOCKED): over plan (>110%) earns SG, not just G \u2014 exceeding the staffing-vs-budget plan is a positive read, same as exceeding any other plan. Q1 application: Fort Worth (1.20) and Garland (1.15) lifted to SG. N. Austin (1.05), McKinney (1.05), Dallas (1.02), Tampa (1.06) remain G (within on-plan band 95-110%). Future quarters: this rubric is canonical \u2014 do not reintroduce 110-125% Watch band or any framing that 'overstaffed' is a discipline issue."
     },
     "scorecard_completeness": {
       "_synced_at_version": "3.3.5",
@@ -364,7 +364,7 @@
         "Should there be a velocity (\u0394 from prior quarter) modifier added to the final grade once we have Q2 data?",
         "CHRONIC-FLAG MODIFIER: Should branches that have been Watch/Red on the same metric for \u22653 consecutive quarters get a compounding penalty? Q1 surfaced Garland as a chronic case \u2014 eNPS, growth, People Analyzer all stuck on the same flags multi-quarter, but Q1 single-quarter snapshot doesn't penalize that pattern. The growth modifier captures revenue YoY direction but not 'this branch has been bad on the same axes for 4+ quarters.' Cameron 5/2: 'my issue with Garland is that its velocity is unchanged for so long across a number of their bad things \u2014 I guess we will catch that more as quarters progress.' Calibration window: needs \u22653 quarters of data to apply meaningfully.",
         "MARKET-STAGE NORMALIZATION: Should the scorecard normalize for market-stage variables (metro cost structure, brand-pricing-power maturity) the same way it caveats planned-loss for Tampa and Fort Worth? Surfaced by Dallas Q1: 10-year-old branch with A operational grade across all 7 axes but compressed margin reflecting DFW cost structure + brand maturity. Cost-of-living and pricing-power maturity vary by metro and aren't operational levers, but NOI/Truck and margin penalize them. Cameron 5/2: 'dallas is 10 years old. So it may be partly brand presence but also market based.' Would require: (a) per-metro cost-structure baseline, (b) brand-pricing-power maturity score, (c) decision on whether to apply as caveat (current Tampa/FW pattern), modifier (penalty/bonus), or full normalization (subtract structural variance from raw metric).",
-        "QGR-PACKET-BUILDER SKILL DESIGN (Q3'26 build target): Q1'26 build pattern was sequential pair-N (build-then-audit per pair, 5 pairs across the session). Cameron 5/2 design note: future skill should accept (branch_ids[], canonical_json_path, canonical_template_html_path, sparse_narrative_principle) and execute three parallel waves: (1) N parallel build-agents (one per branch) — each receives JSON branch object + template + sparse-narrative principle as inputs and writes one scorecard HTML. (2) N parallel audit-agents (one per built scorecard) — each receives built HTML + JSON + _rankings_q1_26 for superlative verification + per-card rubric checks. (3) Main thread batches fixes from structured audit findings. (4) ONE final cross-card consistency agent reads all N + JSON + checks chart-label naming, ranking claims that reference each other, rubric language, and version-tag drift. Estimated: ~10 build + 10 audit + 1 final sweep = 3-5 min total wall-clock vs 30+ min sequential. Cost trade is worth it. Bake the sparse-narrative principle + the most common audit failure modes (false superlatives, lift-math errors at 10%/15% weights, causal inference, cross-card naming) into the audit-agent prompt as a checklist. Q1'26 audit-fix counts per pair: P1=6, P2=7, P3=3, P4=7, P5=3 + final sweep=6 = ~32 fixes total across 10 cards."
+        "QGR-PACKET-BUILDER SKILL DESIGN (Q3'26 build target): Q1'26 build pattern was sequential pair-N (build-then-audit per pair, 5 pairs across the session). Cameron 5/2 design note: future skill should accept (branch_ids[], canonical_json_path, canonical_template_html_path, sparse_narrative_principle) and execute three parallel waves: (1) N parallel build-agents (one per branch) \u2014 each receives JSON branch object + template + sparse-narrative principle as inputs and writes one scorecard HTML. (2) N parallel audit-agents (one per built scorecard) \u2014 each receives built HTML + JSON + _rankings_q1_26 for superlative verification + per-card rubric checks. (3) Main thread batches fixes from structured audit findings. (4) ONE final cross-card consistency agent reads all N + JSON + checks chart-label naming, ranking claims that reference each other, rubric language, and version-tag drift. Estimated: ~10 build + 10 audit + 1 final sweep = 3-5 min total wall-clock vs 30+ min sequential. Cost trade is worth it. Bake the sparse-narrative principle + the most common audit failure modes (false superlatives, lift-math errors at 10%/15% weights, causal inference, cross-card naming) into the audit-agent prompt as a checklist. Q1'26 audit-fix counts per pair: P1=6, P2=7, P3=3, P4=7, P5=3 + final sweep=6 = ~32 fixes total across 10 cards."
       ],
       "driver_safety_rubric": {
         "SG": "\u226590 score AND <10% high-risk (drivers below 70)",
@@ -479,30 +479,30 @@
           {
             "block_id": "composite_math_explainer",
             "added": "2026-05-03 (canary build)",
-            "source_template": "branch-scorecard-naustin.html — `.composite-math` div inside `section.philosophy`, sitting between the `.philosophy-grid` and `.philosophy-close` paragraph.",
-            "purpose": "Demystifies the Composite = Σ(weight × grade points) ÷ 5 formula for non-spreadsheet readers. Walks through max-points = 100 × 5 = 500, divided by 5 → 0–100 scale. Explains why grade scale is SG=5 / G=4 / W=2 / R=1 (skipping 3) so all-Green = 80 baseline.",
-            "per_branch_swap_in": "The 'N. Austin worked example' paragraph is the only branch-specific element. For each branch, replace the example with that branch's actual: (a) per-metric weight × grade-points sum, (b) divide by 5 to get composite score, (c) add growth modifier, (d) state final letter grade. Pull values from JSON `_branch_summaries[branch].composite_v33` and the per-metric grades.",
+            "source_template": "branch-scorecard-naustin.html \u2014 `.composite-math` div inside `section.philosophy`, sitting between the `.philosophy-grid` and `.philosophy-close` paragraph.",
+            "purpose": "Demystifies the Composite = \u03a3(weight \u00d7 grade points) \u00f7 5 formula for non-spreadsheet readers. Walks through max-points = 100 \u00d7 5 = 500, divided by 5 \u2192 0\u2013100 scale. Explains why grade scale is SG=5 / G=4 / W=2 / R=1 (skipping 3) so all-Green = 80 baseline.",
+            "per_branch_swap_in": "The 'N. Austin worked example' paragraph is the only branch-specific element. For each branch, replace the example with that branch's actual: (a) per-metric weight \u00d7 grade-points sum, (b) divide by 5 to get composite score, (c) add growth modifier, (d) state final letter grade. Pull values from JSON `_branch_summaries[branch].composite_v33` and the per-metric grades.",
             "audit_check": "Every batched scorecard must have a `.composite-math` div inside the methodology section with: (1) the 4 grade-pill spans (SG=5/G=4/W=2/R=1), (2) the formula box, (3) a worked example with that branch's actual numbers (not N. Austin's), (4) the math result matching JSON's `composite_v33` for that branch."
           },
           {
             "block_id": "mover_view_indicator",
             "added": "2026-05-03 (canary build)",
-            "source_template": "branch-scorecard-naustin.html — `.mover-view-indicator` div at the top of `.wrap`, immediately after the `.back-link`.",
+            "source_template": "branch-scorecard-naustin.html \u2014 `.mover-view-indicator` div at the top of `.wrap`, immediately after the `.back-link`.",
             "purpose": "Heads-up to BMs sharing the scorecard with their team that the Q2 Forward section at the bottom is the mover-facing payload.",
-            "per_branch_swap_in": "Block is identical across all 10 scorecards — no per-branch text. Anchor link `#q2-forward-team` must match the Section 8 anchor on each card.",
+            "per_branch_swap_in": "Block is identical across all 10 scorecards \u2014 no per-branch text. Anchor link `#q2-forward-team` must match the Section 8 anchor on each card.",
             "audit_check": "Verify presence + the anchor link resolves to the Section 8 element."
           },
           {
             "block_id": "section_8_q2_forward_for_team",
             "added": "2026-05-03 (canary build)",
-            "source_template": "branch-scorecard-naustin.html — `#q2-forward-team` section at the end of `.wrap`, before the `.footer` div.",
+            "source_template": "branch-scorecard-naustin.html \u2014 `#q2-forward-team` section at the end of `.wrap`, before the `.footer` div.",
             "purpose": "Mover-facing Q2 forward content. Three sub-blocks: (a) Vision Strategy placeholder, (b) Einstein Games inline content (conferences + 8-week schedule + multiplier cards + Cameron quote + link out to full brief), (c) Mover Comp Review (informational only, no survey ask).",
-            "per_branch_swap_in": "All three sub-blocks are IDENTICAL across all 10 scorecards — same Einstein Games content, same Cameron quote, same Mover Comp Review block. NO per-branch personalization in this section (the previous 'What's Coming for [Branch] in Q2' branch-specific block was REMOVED on Cameron's call — do not re-add it).",
+            "per_branch_swap_in": "All three sub-blocks are IDENTICAL across all 10 scorecards \u2014 same Einstein Games content, same Cameron quote, same Mover Comp Review block. NO per-branch personalization in this section (the previous 'What's Coming for [Branch] in Q2' branch-specific block was REMOVED on Cameron's call \u2014 do not re-add it).",
             "audit_check": "Verify the section ID `q2-forward-team`, the 5 multiplier-card list items, the 8 schedule weeks, the 2 conference blocks, and the link-out href `./einstein-games-s3/` (NOT cross-folder relative path)."
           }
         ]
       },
-      "skill_implementation_note": "Future qgr-packet-builder skill (Q3'26 build target) should bake this registry into the audit-agent system prompt. Three parallel agent waves: (1) N parallel build-agents, (2) N parallel per-card audit-agents loaded with this registry as the checklist, (3) ONE final cross-card sweep agent with extra emphasis on template-propagation patterns + the post-publish callout pass criteria. Estimated wall-clock: 3-5 min for all 10 cards vs the 5+ hours of sequential pair-N execution we did in Q1'26. **Batch checklist:** must_include_blocks_per_scorecard contains the canonical block list with per-branch swap-in instructions — audit agent must verify all blocks present + content correctly swapped."
+      "skill_implementation_note": "Future qgr-packet-builder skill (Q3'26 build target) should bake this registry into the audit-agent system prompt. Three parallel agent waves: (1) N parallel build-agents, (2) N parallel per-card audit-agents loaded with this registry as the checklist, (3) ONE final cross-card sweep agent with extra emphasis on template-propagation patterns + the post-publish callout pass criteria. Estimated wall-clock: 3-5 min for all 10 cards vs the 5+ hours of sequential pair-N execution we did in Q1'26. **Batch checklist:** must_include_blocks_per_scorecard contains the canonical block list with per-branch swap-in instructions \u2014 audit agent must verify all blocks present + content correctly swapped."
     },
     "driver_safety_q1_2026_canonical_source": {
       "drive_id": "1J6YnA-Bl398Eq8cV7nIh19Tglv2w-TE69w0kQ8KTrMs",
@@ -560,6 +560,66 @@
         ],
         "pattern_corrections_count_v3_3_to_v3_4": 5
       }
+    },
+    "damages_per_hour_q1_26": {
+      "unit": "USD per crew labor hour",
+      "lower_is_better": true,
+      "company_avg": 1.66,
+      "ranking_best_to_worst": [
+        {
+          "rank": 1,
+          "branch": "fort_worth",
+          "damages_per_hour": 0.49
+        },
+        {
+          "rank": 2,
+          "branch": "san_antonio",
+          "damages_per_hour": 1.29
+        },
+        {
+          "rank": 3,
+          "branch": "houston",
+          "damages_per_hour": 1.34
+        },
+        {
+          "rank": 4,
+          "branch": "garland",
+          "damages_per_hour": 1.49
+        },
+        {
+          "rank": 5,
+          "branch": "leander",
+          "damages_per_hour": 1.63
+        },
+        {
+          "rank": 6,
+          "branch": "tampa",
+          "damages_per_hour": 1.82
+        },
+        {
+          "rank": 7,
+          "branch": "n_austin",
+          "damages_per_hour": 1.9
+        },
+        {
+          "rank": 8,
+          "branch": "mckinney",
+          "damages_per_hour": 1.92
+        },
+        {
+          "rank": 9,
+          "branch": "dallas",
+          "damages_per_hour": 2.19
+        },
+        {
+          "rank": 10,
+          "branch": "s_austin",
+          "damages_per_hour": 2.57
+        }
+      ],
+      "source": "Einstein Games tracking \u2014 per-hour ratio (damages dollars / labor hours). Q1 final state captured 5/5/2026 from Cameron.",
+      "q1_status": "Reference only (not graded). Q2 candidate for graded inclusion via Einstein Games scoring once methodology + data feed validated per-branch.",
+      "rubric_note": "No grade rubric applied yet \u2014 single-quarter sample is too thin to calibrate SG/G/W/R thresholds. Range Q1: $0.49 (Fort Worth, best) \u2192 $2.57 (South Austin, worst). Company avg $1.66/hr."
     }
   },
   "company": {
@@ -838,7 +898,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.9
     },
     "s_austin": {
       "name": "South Austin",
@@ -1060,7 +1121,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 2.57
     },
     "leander": {
       "name": "Leander",
@@ -1263,7 +1325,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.63
     },
     "san_antonio": {
       "name": "San Antonio",
@@ -1485,7 +1548,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.29
     },
     "houston": {
       "name": "Houston",
@@ -1708,7 +1772,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.34
     },
     "mckinney": {
       "name": "McKinney",
@@ -1909,7 +1974,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.92
     },
     "dallas": {
       "name": "Dallas",
@@ -2164,7 +2230,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 2.19
     },
     "fort_worth": {
       "name": "Fort Worth",
@@ -2368,7 +2435,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 0.49
     },
     "tampa": {
       "name": "Tampa",
@@ -2563,7 +2631,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.82
     },
     "garland": {
       "name": "Garland",
@@ -2752,7 +2821,8 @@
         },
         "source": "Praise Tracker board 6601150575 \u00b7 groups: Manager Queue + Mover/CET Queue + Ready for Morning Circle Ups + Logged Q1 '26 \u00b7 X-axis (logger) = person column \u00b7 sums logs by branch team members per Cameron's bar chart view 144293059",
         "method_note": "Counts praise LOGGED BY branch team members (BM + Ops Mgr + branch-resident sales reps). Per-driver normalization removed from prior version: Mike's mover-driver count is the wrong denominator for praise (recipients include FMs, sales reps, Ops Mgrs, not just movers) and the eNPS Recognition survey already has its own denominator (n=46 N. Austin respondents). Read absolute logger totals + the survey % side by side as separate signals."
-      }
+      },
+      "damages_per_hour": 1.49
     }
   },
   "_rankings_q1_26": {
