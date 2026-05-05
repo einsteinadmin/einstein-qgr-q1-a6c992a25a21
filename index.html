@@ -2448,20 +2448,29 @@
         <div class="comp-head">
           <div>
             <p class="comp-num">Component 7</p>
-            <h3 class="comp-title">Customer NPS</h3>
+            <h3 class="comp-title">Customer NPS and Reviews</h3>
           </div>
-          <span class="badge green">In Financial Analysis §5</span>
+          <span class="badge green">Q1 Live · NPS + Reviews</span>
         </div>
         <p class="comp-summary">
-          Customer NPS lives inside the Financial Analysis Presentation, Section 5 (KPI deep-dives). Headline: branch-level NPS continues to track above the moving-industry benchmark across both regions. The 90-line target is met by most CTXH branches; DFWT improving but mixed. Detail and chart in the linked artifact — no need to duplicate here.
+          Customer NPS deep-dive lives in the Financial Analysis Presentation, Section 5 (linked below). Headline: branch-level NPS continues to track above the moving-industry benchmark across both regions; the 90-line target is met by most CTXH branches and DFWT is improving but mixed. <strong>Reviews</strong> tell a parallel story — surfaced here as two charts: how each branch tracks against its review target, and total review volume across the company.
         </p>
-        <div class="info-callout">
-          The financial analysis skill includes Customer NPS as a top-line KPI. Embedded chart "NPS by Branch" (with 90 target line) is in §5.3 of the Presentation HTML — open below.
-        </div>
-        <div class="data-source">📍 <strong>Source:</strong> Customer NPS feed embedded in Financial Analysis Skill v3.2 §5.3 · Branch-level rollups (CTXH + DFWT) · 90-line target per company NPS standard · Chart "NPS by Branch" rendered in linked Presentation, not duplicated here · Data window mirrors Q1'26 financial cut</div>
+
+        <figure class="praise-figure">
+          <img src="./assets/reviews-branch-pct-to-target-q1.png" alt="Branch % to Target — review attainment by branch, Q1 2026" class="praise-img lightbox-trigger" tabindex="0" role="button" aria-label="Click to expand Branch % to Target chart full-screen">
+          <figcaption class="praise-caption">Branch % to Target — review attainment vs target, Q1. Tampa 567% leads; Fort Worth + Houston + S. Austin all over 180%. N. Austin (73%) is the only branch under 100%. Dashed lines show weekly + cumulative goal lines. <em>Click to expand full-screen.</em></figcaption>
+        </figure>
+
+        <figure class="praise-figure">
+          <img src="./assets/reviews-leaderboard-q1.png" alt="Review Leaderboard — total review volume by branch, Q1 2026" class="praise-img lightbox-trigger" tabindex="0" role="button" aria-label="Click to expand Review Leaderboard chart full-screen">
+          <figcaption class="praise-caption">Review Leaderboard — total reviews by branch, Q1. South Austin 169 leads on absolute volume; Houston 88 + N. Austin 79 round out the top three. Garland 25 + Leander 31 sit at the bottom on volume. Read alongside the % to Target chart above for the full story (volume + target-relative). <em>Click to expand full-screen.</em></figcaption>
+        </figure>
+
+        <div class="data-source">📍 <strong>Source:</strong> Customer NPS feed embedded in Financial Analysis §5.3 (Branch-level rollups CTXH + DFWT, 90-line target per company NPS standard) · Reviews charts pulled from the Monday.com chart views (Branch % to Target + Review Leaderboard), Q1 final state captured 5/5/2026 · Data window mirrors Q1'26 financial cut</div>
+
         <div class="comp-meta">
-          <span class="meta-source">Source: NPS data feed · Financial Analysis Skill v3.2 §5</span>
-          <a class="open-link" href="./financial-analysis/Q1_2026_QGR_Analysis_Presentation.html#nps" target="_blank">Open NPS Section →</a>
+          <span class="meta-source">Source: NPS data feed (FA §5) + Monday.com Reviews chart views · Q1 captured 5/5/2026</span>
+          <a class="open-link" href="./financial-analysis/Q1_2026_QGR_Analysis_Presentation.html#nps" target="_blank">Open NPS Deep Dive →</a>
         </div>
       </div>
 
@@ -3680,19 +3689,23 @@
   });
 })();
 
-// ── Praise Tracker lightbox (click-to-expand) ──
+// ── Lightbox (click-to-expand) — generic, triggers on any .lightbox-trigger img ──
 (function () {
-  const img = document.getElementById('praise-tracker-img');
-  if (!img) return;
-  // Build overlay once
+  const triggers = document.querySelectorAll('.lightbox-trigger, #praise-tracker-img');
+  if (!triggers.length) return;
+  // Build a single shared overlay; swap src + alt per click
   const overlay = document.createElement('div');
   overlay.className = 'lightbox-overlay';
   overlay.setAttribute('role', 'dialog');
   overlay.setAttribute('aria-modal', 'true');
-  overlay.setAttribute('aria-label', 'Praise tracker chart — full-screen view');
-  overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">×</button><img class="lightbox-img" src="' + img.getAttribute('src') + '" alt="' + img.getAttribute('alt') + '">';
+  overlay.setAttribute('aria-label', 'Image — full-screen view');
+  overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">×</button><img class="lightbox-img" alt="">';
   document.body.appendChild(overlay);
-  function open() {
+  const overlayImg = overlay.querySelector('.lightbox-img');
+
+  function open(srcImg) {
+    overlayImg.src = srcImg.getAttribute('src');
+    overlayImg.alt = srcImg.getAttribute('alt') || '';
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -3700,8 +3713,11 @@
     overlay.classList.remove('is-open');
     document.body.style.overflow = '';
   }
-  img.addEventListener('click', open);
-  img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+
+  triggers.forEach((img) => {
+    img.addEventListener('click', () => open(img));
+    img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
+  });
   overlay.addEventListener('click', close);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(); });
 })();
