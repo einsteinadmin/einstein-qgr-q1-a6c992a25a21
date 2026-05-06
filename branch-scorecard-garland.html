@@ -802,7 +802,45 @@ body.scorecard-view-mover .mover-only   { display: block; }
   .mover-bottom-links { grid-template-columns: 1fr; }
 }
   @media print { @page { margin: 0.5in; } body { background: white; font-size: 11pt; } .wrap { max-width: none; padding: 0; } section, .cover-hero, .branch-header { box-shadow: none; page-break-inside: avoid; break-inside: avoid; } .back-link { display: none; } }
-</style>
+
+  /* Collapsible source attributions (Cameron 5/5: minimize source-clog) */
+  details.data-source-collapsible {
+    margin: 12px 0;
+  }
+  details.data-source-collapsible summary {
+    cursor: pointer;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 5px 11px;
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-300);
+    border-radius: 0 4px 4px 0;
+    color: var(--gray-700);
+    list-style: none;
+    user-select: none;
+    display: inline-block;
+  }
+  details.data-source-collapsible summary::-webkit-details-marker { display: none; }
+  details.data-source-collapsible summary::after {
+    content: ' \25B8';
+    font-size: 10px;
+    color: var(--gray-500);
+    margin-left: 6px;
+  }
+  details.data-source-collapsible[open] summary::after { content: ' \25BE'; }
+  details.data-source-collapsible .data-source-content {
+    margin-top: 6px;
+    font-size: 11.5px;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-left: 3px solid var(--gray-300);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -1450,7 +1488,7 @@ body.scorecard-view-mover .mover-only   { display: block; }
         <tr><td>Damages per Hour</td><td><strong>$1.49</strong></td><td>Garland per-hour damage cost — ranks <strong>#4 of 10</strong> (4th). <strong>$0.17 better</strong> than company avg ($1.66). Lower is better. Company range Q1: $0.49 (Fort Worth, best) → $2.57 (South Austin, worst). Reference only — not in the composite. Q2 candidate for graded inclusion via Einstein Games scoring. <span class="ref-source-icon" title="Einstein Games tracking · per-hour ratio (damages dollars / labor hours)">📍 Einstein Games tracking</span></td></tr>
       </tbody>
     </table>
-    <div class="data-source">📍 <strong>Reference data note:</strong> These metrics inform the conversation about Garland's quarter but are not part of the composite grade. They explain <em>how</em> the branch got its grade rather than contributing to the grade itself. <strong>NOI/Truck</strong> is shown in the Financial Engine top block above (ungraded reference, actively calibrating). Per-rep Conversion + Cancellation are shown here as Reference because they're market-dependent — un-weighted comparisons mislead. Q2 build target: Weighted Conversion vs Market and Weighted Cancellation vs Market would become graded inputs once market-avg baselines are calculated per metro (see Wishlist).</div>
+    <details class="data-source-collapsible"><summary>📍 Reference data note</summary><div class="data-source-content">These metrics inform the conversation about Garland's quarter but are not part of the composite grade. They explain <em>how</em> the branch got its grade rather than contributing to the grade itself. <strong>NOI/Truck</strong> is shown in the Financial Engine top block above (ungraded reference, actively calibrating). Per-rep Conversion + Cancellation are shown here as Reference because they're market-dependent — un-weighted comparisons mislead. Q2 build target: Weighted Conversion vs Market and Weighted Cancellation vs Market would become graded inputs once market-avg baselines are calculated per metro (see Wishlist).</div></details>
   </section>
 
   <section class="manager-only">
@@ -1571,28 +1609,27 @@ body.scorecard-view-mover .mover-only   { display: block; }
 
   <section class="manager-only">
     <h2>Methodology &amp; Source Map</h2>
-    <div class="data-source"><strong>How the grade is built:</strong> Branch grade = a 7-metric weighted composite plus a single growth-modifier adjustment. Each metric counts exactly once. Critical Numbers (Q1: Driver Safety + Personnel-Budget) preserved at 30% combined weight — the quarterly theme spine.
-      <table class="ref-table" style="margin-top: 8px;">
-        <thead><tr><th>Component</th><th>Inputs</th><th>Garland</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Composite</strong></td><td>7 metrics: TUR 20% · Sales Target 10% · NPS 15% · eNPS 15% · Recognition 10% · DSS 15% · Personnel-Budget 15%. Σ(weight × grade) / 5.</td><td><strong>70 (B−)</strong></td></tr>
-          <tr><td><strong>Growth Modifier</strong></td><td>Revenue YoY → Slight decline tier (−3 to 0% band) → −3 added to composite</td><td><strong>−3</strong></td></tr>
-          <tr><td><strong>Final Grade</strong></td><td>Composite + Growth Modifier</td><td><strong>76 → B</strong></td></tr>
-          <tr><td><strong>Strategic Weight</strong></td><td>Parallel display lens (NOT in grade math). Negative NOI ($−3,430) — flip-to-loss vs +$8,693 plan. NOT planned-loss (`investment_designated: false`). Revenue share 2.6% / Truck share 3.9%.</td><td><strong>Underperforming</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="data-source"><strong>Composite Math:</strong> SG=5, G=4, W=2 (Watch), R=1. Score = (Σ weight × grade) / 5. <strong>Garland composite = (20·5 TUR + 10·5 Sales + 15·5 NPS + 15·1 eNPS + 10·5 Recog + 15·2 DSS + 15·5 Personnel) / 5 = 395 / 5 = 79</strong>. Anchor points: all-Green = 80 (B+ baseline), all-Super Green = 100 (A+), all-Red = 20 (F floor).</div>
-    <div class="data-source"><strong>Growth Modifier Rubric:</strong> Breakout (≥+20%) <strong>+10</strong> · Strong (+10-20%) <strong>+7</strong> · Stable growth (+3-10%) <strong>+4</strong> · Flat (0-3%) <strong>0</strong> · Slight decline (−3-0%) <strong>−3</strong> · Declining (&lt;−3%) <strong>−7</strong>. Garland's −1.9% YoY → Slight decline → −3. <strong>Final 70 + (−3) = 67 → C.</strong></div>
-    <div class="data-source"><strong>Letter thresholds:</strong> 95+ A+ · 90+ A · 85+ A− · 80+ B+ · 75+ B · 70+ B− · 60+ C · 50+ D · &lt;50 F.</div>
-    <div class="data-source"><strong>Sales Target rubric (v3.3.5):</strong> SG ≥100% · G 80-100% · W 60-80% · R &lt;60%. Per Cameron 5/2: "Green should be 80 to 100. Red is 60 or less." Source: EMMA Mongo CSV (canonical Q1 quarterly = <code>generated (9).csv</code>, matches Feb+Mar+Apr monthly sum). Branch grade = team avg of BM + branch-resident Ops/FM/sales reps. <strong>Garland caveat:</strong> n=1 (Terrell McReynolds — CSV alias Joseph Mcreynolds — sole branch-resident rep) — branch grade fully driven by single rep.</div>
-    <div class="data-source"><strong>NOI/Truck — actively calibrating:</strong> Shown as Reference (ungraded) in the Financial Engine top block. Single-quarter data is too thin to calibrate the ratio-to-plan rubric. Revisit Q3 once we have multi-quarter data. The NOI/Truck tile shows the would-be grade under the v3.3 ratio-to-plan candidate rubric for transparency. NOI/Truck remains the OPSP "profit per truck" economic denominator. <strong>Flip-to-loss caveat:</strong> Garland is NOT planned-loss; plan was +$8,693 NOI, actual −$3,430 = $12K below plan. Strategic Weight chip = Underperforming (only branch in tier this quarter).</div>
-    <div class="data-source"><strong>Mover eNPS rubric (v3.4.2):</strong> SG ≥+60 · G +40-59 · W +30-39 · R &lt;+30 (or intervention-flagged in Component 5). Locked by Cameron 5/2 evening: "Green floor is 40. 40 to 30 is watch. Below 30 is Red. Above 60 is supergreen." 15% composite weight (heaviest tied with Customer NPS). Source: QGR Packet v1.25 Component 5 (Mover eNPS Survey 4/8-15/2026, n=227 company-wide responses).</div>
-    <div class="data-source"><strong>Driver Safety Score rubric (v3.3.7):</strong> SG ≥90 score AND &lt;10% high-risk · G ≥80 AND ≤20% HR · W 70-79 OR (≥80 AND &gt;20% HR) · R &lt;70. Adapted from Mike's Q1 BBE Critical # rubric. Source: Mike's canonical Q1 Samsara breakdown sheet (<code>1J6YnA-Bl398Eq8cV7nIh19Tglv2w-TE69w0kQ8KTrMs</code>) — time-bounded to BBE theme period · reconciles to packet's 80.2 at the simple-branch-avg level (Mike: 79.6).</div>
-    <div class="data-source"><strong>Personnel-Budget rubric (v3.4.4, Cameron 5/4 ruling — LOCKED):</strong> SG &gt;110% (over plan — exceeded budget reflects demand strength or planned-loss capacity; rewarded as exceeding the goal, not docked) · G 95-110% (on plan — meeting the budget goal) · W 85-94% (under plan, one or two periods below) · R chronic-F (5/5 below 95%). Over-budget alone does NOT dock; branches above 100% are not penalized. This rubric supersedes the prior 110-125% Watch band — future quarters must not reintroduce any framing that "overstaffed" is a discipline issue. Q1 application: Fort Worth (1.20) + Garland (1.15) at SG; N. Austin (1.05), McKinney (1.05), Dallas (1.02), Tampa (1.06) at G (within on-plan band).</div>
-    <div class="data-source"><strong>Strategic Weight (v3.3.2 lens):</strong> Cover-hero chip frames each branch's cash-contribution scale separately from the operational composite. Tiers: Cash Leader (≥20% NOI) · Cash Contributor (8-20%) · Cash Neutral (0-8%) · Growth Bet (negative NOI, planned-loss / new market) · Underperforming (negative NOI, NOT designated investment). NO impact on grade math — parallel display only. Garland = Underperforming (only branch in this tier Q1'26).</div>
-    <div class="data-source"><strong>Sources:</strong> Financial Analysis Presentation v2.7 (<code>1Sff7S7qQnqOC76CQpoY9wnJIO6hMjMaU</code>) — §1.4 Branch Revenue + NOI · §1.5 Revenue YoY · §1.6 TUR by branch · §1.7 Unit Economics · §3.2 + §3.5 Conversion + Pricing · §5.3 NPS by branch · §6.2 Cross-metric correlations. QGR Packet v1.26 — Component 5 mover eNPS, Component 4 BBE / Driver's Ed. EMMA Mongo CSV (Sales Target Attainment). JSON central data bus <code>branch-metrics-q1-26.json</code>.</div>
-    <div class="data-source"><strong>Known data gaps (Q2 collection target):</strong> Branch-level damages per hour · Magic Moments per Move data feed · On-Site Eval coverage + score · QGR Rock Performance per branch · People Analyzer A/B/C player mix · Velocity column on all-10 ranking · BBE per-branch sum reconciliation (685 vs reported 672) · Direct Samsara API per-branch DSS pull (Q2 mechanic).</div>
+    <details class="data-source-collapsible"><summary>📍 How the grade is built</summary><div class="data-source-content">Branch grade = a 7-metric weighted composite plus a single growth-modifier adjustment. Each metric counts exactly once. Critical Numbers (Q1: Driver Safety + Personnel-Budget) preserved at 30% combined weight — the quarterly theme spine.
+ <table class="ref-table" style="margin-top: 8px;">
+ <thead><tr><th>Component</th><th>Inputs</th><th>Garland</th></tr></thead>
+ <tbody>
+ <tr><td><strong>Composite</strong></td><td>7 metrics: TUR 20% · Sales Target 10% · NPS 15% · eNPS 15% · Recognition 10% · DSS 15% · Personnel-Budget 15%. Σ(weight × grade) / 5.</td><td><strong>70 (B−)</strong></td></tr>
+ <tr><td><strong>Growth Modifier</strong></td><td>Revenue YoY → Slight decline tier (−3 to 0% band) → −3 added to composite</td><td><strong>−3</strong></td></tr>
+ <tr><td><strong>Final Grade</strong></td><td>Composite + Growth Modifier</td><td><strong>76 → B</strong></td></tr>
+ <tr><td><strong>Strategic Weight</strong></td><td>Parallel display lens (NOT in grade math). Negative NOI ($−3,430) — flip-to-loss vs +$8,693 plan. NOT planned-loss (`investment_designated: false`). Revenue share 2.6% / Truck share 3.9%.</td><td><strong>Underperforming</strong></td></tr>
+ </tbody>
+ </table></div></details>
+    <details class="data-source-collapsible"><summary>📍 Composite Math</summary><div class="data-source-content">SG=5, G=4, W=2 (Watch), R=1. Score = (Σ weight × grade) / 5. <strong>Garland composite = (20·5 TUR + 10·5 Sales + 15·5 NPS + 15·1 eNPS + 10·5 Recog + 15·2 DSS + 15·5 Personnel) / 5 = 395 / 5 = 79</strong>. Anchor points: all-Green = 80 (B+ baseline), all-Super Green = 100 (A+), all-Red = 20 (F floor).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Growth Modifier Rubric</summary><div class="data-source-content">Breakout (≥+20%) <strong>+10</strong> · Strong (+10-20%) <strong>+7</strong> · Stable growth (+3-10%) <strong>+4</strong> · Flat (0-3%) <strong>0</strong> · Slight decline (−3-0%) <strong>−3</strong> · Declining (&lt;−3%) <strong>−7</strong>. Garland's −1.9% YoY → Slight decline → −3. <strong>Final 70 + (−3) = 67 → C.</strong></div></details>
+    <details class="data-source-collapsible"><summary>📍 Letter thresholds</summary><div class="data-source-content">95+ A+ · 90+ A · 85+ A− · 80+ B+ · 75+ B · 70+ B− · 60+ C · 50+ D · &lt;50 F.</div></details>
+    <details class="data-source-collapsible"><summary>📍 Sales Target rubric (v3.3.5)</summary><div class="data-source-content">SG ≥100% · G 80-100% · W 60-80% · R &lt;60%. Per Cameron 5/2: "Green should be 80 to 100. Red is 60 or less." Source: EMMA Mongo CSV (canonical Q1 quarterly = <code>generated (9).csv</code>, matches Feb+Mar+Apr monthly sum). Branch grade = team avg of BM + branch-resident Ops/FM/sales reps. <strong>Garland caveat:</strong> n=1 (Terrell McReynolds — CSV alias Joseph Mcreynolds — sole branch-resident rep) — branch grade fully driven by single rep.</div></details>
+    <details class="data-source-collapsible"><summary>📍 NOI/Truck — actively calibrating</summary><div class="data-source-content">Shown as Reference (ungraded) in the Financial Engine top block. Single-quarter data is too thin to calibrate the ratio-to-plan rubric. Revisit Q3 once we have multi-quarter data. The NOI/Truck tile shows the would-be grade under the v3.3 ratio-to-plan candidate rubric for transparency. NOI/Truck remains the OPSP "profit per truck" economic denominator. <strong>Flip-to-loss caveat:</strong> Garland is NOT planned-loss; plan was +$8,693 NOI, actual −$3,430 = $12K below plan. Strategic Weight chip = Underperforming (only branch in tier this quarter).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Mover eNPS rubric (v3.4.2)</summary><div class="data-source-content">SG ≥+60 · G +40-59 · W +30-39 · R &lt;+30 (or intervention-flagged in Component 5). Locked by Cameron 5/2 evening: "Green floor is 40. 40 to 30 is watch. Below 30 is Red. Above 60 is supergreen." 15% composite weight (heaviest tied with Customer NPS). Source: QGR Packet v1.25 Component 5 (Mover eNPS Survey 4/8-15/2026, n=227 company-wide responses).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Driver Safety Score rubric (v3.3.7)</summary><div class="data-source-content">SG ≥90 score AND &lt;10% high-risk · G ≥80 AND ≤20% HR · W 70-79 OR (≥80 AND &gt;20% HR) · R &lt;70. Adapted from Mike's Q1 BBE Critical # rubric. Source: Mike's canonical Q1 Samsara breakdown sheet — time-bounded to BBE theme period · reconciles to packet's 80.2 at the simple-branch-avg level (Mike: 79.6).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Personnel-Budget rubric (v3.4.4, Cameron 5/4 ruling — LOCKED)</summary><div class="data-source-content">SG &gt;110% (over plan — exceeded budget reflects demand strength or planned-loss capacity; rewarded as exceeding the goal, not docked) · G 95-110% (on plan — meeting the budget goal) · W 85-94% (under plan, one or two periods below) · R chronic-F (5/5 below 95%). Over-budget alone does NOT dock; branches above 100% are not penalized. This rubric supersedes the prior 110-125% Watch band — future quarters must not reintroduce any framing that "overstaffed" is a discipline issue. Q1 application: Fort Worth (1.20) + Garland (1.15) at SG; N. Austin (1.05), McKinney (1.05), Dallas (1.02), Tampa (1.06) at G (within on-plan band).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Strategic Weight (v3.3.2 lens)</summary><div class="data-source-content">Cover-hero chip frames each branch's cash-contribution scale separately from the operational composite. Tiers: Cash Leader (≥20% NOI) · Cash Contributor (8-20%) · Cash Neutral (0-8%) · Growth Bet (negative NOI, planned-loss / new market) · Underperforming (negative NOI, NOT designated investment). NO impact on grade math — parallel display only. Garland = Underperforming (only branch in this tier Q1'26).</div></details>
+    <details class="data-source-collapsible"><summary>📍 Sources</summary><div class="data-source-content">Financial Analysis Presentation v2.7 — §1.4 Branch Revenue + NOI · §1.5 Revenue YoY · §1.6 TUR by branch · §1.7 Unit Economics · §3.2 + §3.5 Conversion + Pricing · §5.3 NPS by branch · §6.2 Cross-metric correlations. QGR Packet v1.26 — Component 5 mover eNPS, Component 4 BBE / Driver's Ed. EMMA Mongo CSV (Sales Target Attainment). JSON central data bus <code>branch-metrics-q1-26.json</code>.</div></details>
+    <details class="data-source-collapsible"><summary>📍 Known data gaps (Q2 collection target)</summary><div class="data-source-content">Branch-level damages per hour · Magic Moments per Move data feed · On-Site Eval coverage + score · QGR Rock Performance per branch · People Analyzer A/B/C player mix · Velocity column on all-10 ranking · BBE per-branch sum reconciliation (685 vs reported 672) · Direct Samsara API per-branch DSS pull (Q2 mechanic).</div></details>
 
     <div class="audit-callout">
       <strong>✓ Data quality reviewed.</strong> Every datapoint is traced to its primary source — click "📍 Source" under any metric tile or hover the 📍 icon in the reference table to verify. Methodology + version log + open architectural questions live in the QGR packet's <strong>"How the Branch Scorecards Are Built"</strong> expandable section.
