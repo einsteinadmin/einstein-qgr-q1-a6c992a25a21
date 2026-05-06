@@ -2282,37 +2282,6 @@
         </div>
         <div class="data-source">📍 <strong>Source:</strong> Samsara raw events × <code>coachingState</code>, grouped by <code>behaviorLabels[].name</code> per branch · Dismiss rate = dismissed / total events for that behavior at that branch</div>
 
-        <h4>Per-Event Weight Tables — Three Sources of Truth, None Aligned</h4>
-        <p style="font-size:13px;">Cameron's other hypothesis: <em>"We increased the per-event penalty and scores still went up."</em> We can't directly prove this — three internal weight tables are in active use today and they don't agree. The Samsara Scoring QA Brief documented this 4/12, and it's the reason the BBE narrative for Q1 stands on enforcement strictness alone (which is independently strong) rather than on a weight-change story. The visualization below makes the disagreement concrete.</p>
-        <div class="weight-grid">
-          <div class="wh">Behavior</div>
-          <div class="wh">Policy Table</div>
-          <div class="wh">Mike's Protocol</div>
-          <div class="wh">Bonus Calculator</div>
-
-          <div class="wb">Harsh Brake</div>
-          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
-          <div class="wprotocol">HIGH (8-15 pts) <span class="weight-bar protocol" style="width:36px;"></span></div>
-          <div class="wcalc">25 <span class="weight-bar calc" style="width:25px;"></span></div>
-
-          <div class="wb">Harsh Turn</div>
-          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
-          <div class="wprotocol">MEDIUM (3-7 pts) <span class="weight-bar protocol" style="width:18px;"></span></div>
-          <div class="wcalc">25 <span class="weight-bar calc" style="width:25px;"></span></div>
-
-          <div class="wb">Mobile Usage</div>
-          <div class="wpolicy">100 <span class="weight-bar policy" style="width:80px;"></span></div>
-          <div class="wprotocol">CRITICAL (15-25 pts) <span class="weight-bar protocol" style="width:60px;"></span></div>
-          <div class="wcalc">75 <span class="weight-bar calc" style="width:60px;"></span></div>
-
-          <div class="wb">Forward Collision Warning</div>
-          <div class="wpolicy">50 <span class="weight-bar policy" style="width:50px;"></span></div>
-          <div class="wprotocol">Low/Advisory <span class="weight-bar protocol" style="width:6px;"></span></div>
-          <div class="miss">— Missing entirely</div>
-        </div>
-        <p style="font-size:11.5px;color:var(--gray-600);margin-top:6px;"><em>Bar widths approximate the relative weight in each system. Forward Collision Warning is the cleanest break — it's a documented behavior in policy and protocol but is absent from the bonus calculator code entirely. That alone is enough to invalidate any "weights changed Q4 → Q1" claim until reconciliation lands.</em></p>
-        <div class="data-source">📍 <strong>Source:</strong> Samsara Scoring QA Brief (Albert, 4/12/2026) · <code>Supporting Projects/Mike - Operations/Samsara Weighting/samsara-scoring-qa-brief.md</code> · Cross-references: Policy = HR Driver Safety Policy v2026 · Protocol = Mike's Enhanced Samsara Scoring Protocol · Calculator = bonus calculator JavaScript code in EMMA</div>
-
         <div class="comp-meta">
           <span class="meta-source">Source: Samsara API across 7 orgs · Driver's Ed Dashboard 18397855324 · QGR Packet Handover</span>
           <span class="open-link disabled-link">Full Handover (internal — QGR_Packet_Handover.md)</span>
