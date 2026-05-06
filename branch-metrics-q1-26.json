@@ -642,6 +642,164 @@
       "over_goal_multiplier": "3.9x",
       "note": "Goal Hit metric (9/9) tracks whether each Claims team member hit their individual quarterly goal of 3 magic moments. Total Delivered (35) is the absolute volume \u2014 team delivered 3.9x the goal-sum across the quarter. Both data points captured in QGR packet Component 9 mini-stat row. Source: Carly + Nhel CET tracking sheet (Drive 1b_GYrrot60fZivVTjLjKXoE7-ru0zGTN2wLEuEjqnuY).",
       "source_added_to_packet": "2026-05-05 (Cameron 5/5: total volume not previously surfaced)"
+    },
+    "honors_q1_26": {
+      "purpose": "Branch trophy strip \u2014 awards and reviews surfaced near the branch name on each scorecard. Renders in both manager and mover view. Data window: cumulative through Q1 2026 (years that branch has won).",
+      "source": "Awards & Events spreadsheet \u2014 Drive 1ttb6r1gA14a530HrHuC1-lluD5c7WS58XGr7tf0G82g (Awards tab) \u00b7 Logos in Drive folder 1g_Pr3uOMiBDmu-cqxSPgZr-iI93JV7re (organized by award organization)",
+      "review_data_status": "PLACEHOLDER \u2014 Google + Yelp review counts pending Cameron's per-branch numbers (static final-state snapshot per quarter, not live API)",
+      "logo_registry": {
+        "best_of_austin": "./assets/awards/best-of-austin.png",
+        "inc_5000": "./assets/awards/inc-5000.png",
+        "best_of_the_best_statesman": "./assets/awards/best-of-the-best-statesman.jpg",
+        "angi": "TBD \u2014 letter icon (orange A) until logo downloaded",
+        "google": "TBD \u2014 letter icon (blue G) until logo downloaded",
+        "yelp": "TBD \u2014 letter icon (red Y) until logo downloaded",
+        "nextdoor": "TBD",
+        "best_of_san_antonio": "TBD",
+        "best_of_houston": "TBD",
+        "best_in_dfw": "TBD",
+        "fw_star_telegram": "TBD",
+        "aggie_100": "TBD",
+        "fast_50": "TBD",
+        "best_of_frisco": "TBD"
+      },
+      "company_wide": [
+        {
+          "id": "inc_5000",
+          "headline": "7\u00d7 Inc. 5000",
+          "sub": "Fastest-Growing \u00b7 2018-2024",
+          "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
+          "logo_key": "inc_5000",
+          "organization": "Inc. Magazine",
+          "applies_to": "all_branches"
+        },
+        {
+          "id": "aggie_100",
+          "headline": "4\u00d7 Aggie 100",
+          "sub": "Texas A&M \u00b7 2017-2020",
+          "years": [2017, 2018, 2019, 2020],
+          "logo_key": "aggie_100",
+          "organization": "Texas A&M",
+          "applies_to": "all_branches",
+          "note": "Not yet rendered on N. Austin canary \u2014 pending Cameron review of strip density"
+        }
+      ],
+      "per_branch": {
+        "n_austin": {
+          "awards": [
+            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024", "logo_key": "best_of_austin"},
+            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman \u00b7 2019-2021", "logo_key": "best_of_the_best_statesman"},
+            {"id": "angi_super_service", "headline": "3\u00d7 Super Service", "sub": "Angi \u00b7 2020-2022", "logo_key": "angi"}
+          ],
+          "additional_awards_in_sheet_not_rendered": [
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "note": "Available \u2014 Cameron to decide if it makes the cut"}
+          ],
+          "reviews": {
+            "google": {"rating": 4.9, "count": "800+", "status": "placeholder"},
+            "yelp": {"rating": 5.0, "count": "300+", "status": "placeholder"}
+          }
+        },
+        "s_austin": {
+          "awards": [
+            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024", "logo_key": "best_of_austin"},
+            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman \u00b7 2019-2021", "logo_key": "best_of_the_best_statesman"},
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "logo_key": "nextdoor"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "leander": {
+          "awards": [
+            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024 (Austin metro)", "logo_key": "best_of_austin"}
+          ],
+          "note": "Newer branch \u2014 limited branch-specific awards in sheet. Inherits Austin-region recognition through company.",
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "dallas": {
+          "awards": [
+            {"id": "best_in_dfw", "headline": "4\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2021-2024", "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
+            {"id": "best_of_frisco", "headline": "Best of Frisco", "sub": "Star Local Media \u00b7 2022", "logo_key": "best_of_frisco"},
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "logo_key": "nextdoor"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "fort_worth": {
+          "awards": [
+            {"id": "best_in_dfw", "headline": "3\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2022-2024", "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
+            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram \u00b7 2024", "logo_key": "fw_star_telegram"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "mckinney": {
+          "awards": [
+            {"id": "best_in_dfw_gold", "headline": "Best in DFW \u2014 Gold", "sub": "The Dallas Morning News \u00b7 2025", "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
+            {"id": "fw_customer_service", "headline": "Best Customer Service \u2014 Silver", "sub": "Fort Worth Star-Telegram \u00b7 2026", "logo_key": "fw_star_telegram"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "garland": {
+          "awards": [
+            {"id": "best_in_dfw", "headline": "2\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2023-2024", "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "2\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2025", "logo_key": "fw_star_telegram"},
+            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram \u00b7 2024", "logo_key": "fw_star_telegram"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "houston": {
+          "awards": [
+            {"id": "best_of_houston", "headline": "3\u00d7 Best of the Best", "sub": "Houston Chronicle \u00b7 2022-2024 (Gold 2024) + 2025 Finalist", "logo_key": "best_of_houston"},
+            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor \u00b7 2023", "logo_key": "nextdoor"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "san_antonio": {
+          "awards": [
+            {"id": "best_of_sa", "headline": "4\u00d7 Best of San Antonio", "sub": "San Antonio Current \u00b7 2022-2025 (Gold 2024-2025)", "logo_key": "best_of_san_antonio"},
+            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor \u00b7 2023", "logo_key": "nextdoor"}
+          ],
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        },
+        "tampa": {
+          "awards": [],
+          "note": "Newest branch \u2014 no Tampa-specific awards in sheet yet. Trophy strip will lean on company-wide (Inc. 5000, Aggie 100) until local recognition lands.",
+          "reviews": {
+            "google": {"rating": null, "count": null, "status": "pending"},
+            "yelp": {"rating": null, "count": null, "status": "pending"}
+          }
+        }
+      },
+      "rendering_notes": {
+        "n_austin_canary": "Built 2026-05-06. 6 badges total (3 logos + 3 letter-icons). Inc. 5000 rendered as branch-level in canary, but should be company-wide per JSON structure.",
+        "logo_status": "3 of 14 logos downloaded (best_of_austin, inc_5000, best_of_the_best_statesman). Others use letter-circle icons until Cameron approves design + asset pull continues.",
+        "cascade_strategy": "Each scorecard reads from per_branch[branch_key] + appends company_wide entries. Caps display at ~5-7 items to keep strip from wrapping into 3+ rows on desktop.",
+        "review_count_collection": "Cameron to provide static snapshot per branch \u2014 Google + Yelp ratings + counts. Once provided, populate `reviews` blocks above and re-render."
+      }
     }
   },
   "company": {
