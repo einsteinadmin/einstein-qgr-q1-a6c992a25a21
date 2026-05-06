@@ -919,6 +919,88 @@
     line-height: 1.5;
   }
 
+  /* Trophy Strip — branch honors + reviews */
+  .trophy-strip {
+    background: linear-gradient(180deg, #fafaf9 0%, #fffdf8 100%);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin: 0 0 18px 0;
+    box-shadow: 0 1px 3px rgba(13, 43, 78, 0.04);
+  }
+  .trophy-eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin: 0 0 12px 0;
+  }
+  .trophy-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px 26px;
+    align-items: center;
+  }
+  .trophy {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .trophy-logo {
+    flex-shrink: 0;
+    height: 38px;
+    width: auto;
+    max-width: 64px;
+    object-fit: contain;
+  }
+  .trophy-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    background: var(--gray-100);
+    border-radius: 50%;
+    color: var(--orange-dark);
+    letter-spacing: 0;
+  }
+  .trophy-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .trophy-headline {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .trophy-sub {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--gray-600);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .trophy.review-google .trophy-icon { background: #4285F4; color: white; }
+  .trophy.review-yelp .trophy-icon { background: #d32323; color: white; }
+  .trophy.review-angi .trophy-icon { background: var(--orange); color: white; }
+
+  @media (max-width: 720px) {
+    .trophy-strip { padding: 14px 16px; }
+    .trophy-grid { gap: 14px 18px; }
+    .trophy-logo { height: 32px; }
+    .trophy-icon { width: 32px; height: 32px; font-size: 14px; }
+    .trophy-headline { font-size: 12px; }
+    .trophy-sub { font-size: 9px; }
+  }
+
   /* Mover-relevant branch metrics */
   .mover-metrics-grid {
     display: grid;
@@ -1549,6 +1631,55 @@
     </p>
   </div>
 
+  <!-- ============== TROPHY STRIP (manager view) ============== -->
+  <section class="trophy-strip manager-only">
+    <p class="trophy-eyebrow">Honors &amp; Reviews · North Austin</p>
+    <div class="trophy-grid">
+      <div class="trophy">
+        <img src="./assets/awards/best-of-austin.png" alt="Best of Austin Winner" class="trophy-logo">
+        <div class="trophy-text">
+          <span class="trophy-headline">9× Best of Austin</span>
+          <span class="trophy-sub">Austin Chronicle · 2016-2024</span>
+        </div>
+      </div>
+      <div class="trophy">
+        <img src="./assets/awards/inc-5000.png" alt="Inc. 5000 Honoree" class="trophy-logo">
+        <div class="trophy-text">
+          <span class="trophy-headline">7× Inc. 5000</span>
+          <span class="trophy-sub">Fastest-Growing · 2018-2024</span>
+        </div>
+      </div>
+      <div class="trophy">
+        <img src="./assets/awards/best-of-the-best-statesman.jpg" alt="Best of the Best — First Place" class="trophy-logo">
+        <div class="trophy-text">
+          <span class="trophy-headline">3× Best of the Best</span>
+          <span class="trophy-sub">Austin American-Statesman</span>
+        </div>
+      </div>
+      <div class="trophy review-angi">
+        <span class="trophy-icon">A</span>
+        <div class="trophy-text">
+          <span class="trophy-headline">3× Super Service</span>
+          <span class="trophy-sub">Angi · 2020-2022</span>
+        </div>
+      </div>
+      <div class="trophy review-google">
+        <span class="trophy-icon">G</span>
+        <div class="trophy-text">
+          <span class="trophy-headline">4.9 ★ · 800+ reviews</span>
+          <span class="trophy-sub">Google · placeholder</span>
+        </div>
+      </div>
+      <div class="trophy review-yelp">
+        <span class="trophy-icon">Y</span>
+        <div class="trophy-text">
+          <span class="trophy-headline">5.0 ★ · 300+ reviews</span>
+          <span class="trophy-sub">Yelp · placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============== MOVER VIEW (slim · for huddle / team review) ============== -->
   <div class="mover-view mover-only">
 
@@ -1560,6 +1691,55 @@
         <p class="hero-meta">Branch Manager <strong>Calvin Hughes</strong> · <strong>14 trucks</strong> · <strong>Feb 1 – Apr 18, 2026</strong></p>
       </div>
     </div>
+
+    <!-- ============== TROPHY STRIP (mover view) ============== -->
+    <section class="trophy-strip">
+      <p class="trophy-eyebrow">Honors &amp; Reviews · North Austin</p>
+      <div class="trophy-grid">
+        <div class="trophy">
+          <img src="./assets/awards/best-of-austin.png" alt="Best of Austin Winner" class="trophy-logo">
+          <div class="trophy-text">
+            <span class="trophy-headline">9× Best of Austin</span>
+            <span class="trophy-sub">Austin Chronicle · 2016-2024</span>
+          </div>
+        </div>
+        <div class="trophy">
+          <img src="./assets/awards/inc-5000.png" alt="Inc. 5000 Honoree" class="trophy-logo">
+          <div class="trophy-text">
+            <span class="trophy-headline">7× Inc. 5000</span>
+            <span class="trophy-sub">Fastest-Growing · 2018-2024</span>
+          </div>
+        </div>
+        <div class="trophy">
+          <img src="./assets/awards/best-of-the-best-statesman.jpg" alt="Best of the Best — First Place" class="trophy-logo">
+          <div class="trophy-text">
+            <span class="trophy-headline">3× Best of the Best</span>
+            <span class="trophy-sub">Austin American-Statesman</span>
+          </div>
+        </div>
+        <div class="trophy review-angi">
+          <span class="trophy-icon">A</span>
+          <div class="trophy-text">
+            <span class="trophy-headline">3× Super Service</span>
+            <span class="trophy-sub">Angi · 2020-2022</span>
+          </div>
+        </div>
+        <div class="trophy review-google">
+          <span class="trophy-icon">G</span>
+          <div class="trophy-text">
+            <span class="trophy-headline">4.9 ★ · 800+ reviews</span>
+            <span class="trophy-sub">Google · placeholder</span>
+          </div>
+        </div>
+        <div class="trophy review-yelp">
+          <span class="trophy-icon">Y</span>
+          <div class="trophy-text">
+            <span class="trophy-headline">5.0 ★ · 300+ reviews</span>
+            <span class="trophy-sub">Yelp · placeholder</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 3-Lens Company Snapshot -->
     <section class="mover-section">
