@@ -663,11 +663,12 @@
         "fast_50": "TBD",
         "best_of_frisco": "TBD"
       },
+      "display_rule_year_range": "Show count (e.g., '10\u00d7 Best of Austin') in headline. Do NOT show year ranges in sub. Sub = organization name (and optional descriptor). Years preserved in `years` array for audit only.",
       "company_wide": [
         {
           "id": "inc_5000",
           "headline": "7\u00d7 Inc. 5000",
-          "sub": "Fastest-Growing \u00b7 2018-2024",
+          "sub": "Inc. Magazine \u00b7 Fastest-Growing",
           "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
           "logo_key": "inc_5000",
           "organization": "Inc. Magazine",
@@ -676,7 +677,7 @@
         {
           "id": "aggie_100",
           "headline": "4\u00d7 Aggie 100",
-          "sub": "Texas A&M \u00b7 2017-2020",
+          "sub": "Texas A&M",
           "years": [2017, 2018, 2019, 2020],
           "logo_key": "aggie_100",
           "organization": "Texas A&M",
@@ -687,23 +688,23 @@
       "per_branch": {
         "n_austin": {
           "awards": [
-            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024", "logo_key": "best_of_austin"},
-            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman \u00b7 2019-2021", "logo_key": "best_of_the_best_statesman"},
-            {"id": "angi_super_service", "headline": "3\u00d7 Super Service", "sub": "Angi \u00b7 2020-2022", "logo_key": "angi"}
+            {"id": "best_of_austin", "headline": "10\u00d7 Best of Austin", "sub": "Austin Chronicle", "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "logo_key": "best_of_austin"},
+            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman", "years": [2019, 2020, 2021], "logo_key": "best_of_the_best_statesman"},
+            {"id": "angi_super_service", "headline": "3\u00d7 Super Service", "sub": "Angi", "years": [2020, 2021, 2022], "logo_key": "angi"}
           ],
           "additional_awards_in_sheet_not_rendered": [
-            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "note": "Available \u2014 Cameron to decide if it makes the cut"}
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor", "years": [2021, 2022, 2023], "note": "Available \u2014 Cameron to decide if it makes the cut"}
           ],
           "reviews": {
-            "google": {"rating": 4.9, "count": "800+", "status": "placeholder"},
-            "yelp": {"rating": 5.0, "count": "300+", "status": "placeholder"}
+            "google": {"rating": 4.9, "count": 1434, "status": "captured", "source": "Cameron 5/6/2026 manual pull"},
+            "yelp": {"rating": 5.0, "count": 668, "status": "captured", "source": "Cameron 5/6/2026 manual pull"}
           }
         },
         "s_austin": {
           "awards": [
-            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024", "logo_key": "best_of_austin"},
-            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman \u00b7 2019-2021", "logo_key": "best_of_the_best_statesman"},
-            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "logo_key": "nextdoor"}
+            {"id": "best_of_austin", "headline": "10\u00d7 Best of Austin", "sub": "Austin Chronicle", "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "logo_key": "best_of_austin"},
+            {"id": "best_of_the_best_statesman", "headline": "3\u00d7 Best of the Best", "sub": "Austin American-Statesman", "years": [2019, 2020, 2021], "logo_key": "best_of_the_best_statesman"},
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor", "years": [2021, 2022, 2023], "logo_key": "nextdoor"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -712,7 +713,7 @@
         },
         "leander": {
           "awards": [
-            {"id": "best_of_austin", "headline": "9\u00d7 Best of Austin", "sub": "Austin Chronicle \u00b7 2016-2024 (Austin metro)", "logo_key": "best_of_austin"}
+            {"id": "best_of_austin", "headline": "10\u00d7 Best of Austin", "sub": "Austin Chronicle (Austin metro)", "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "logo_key": "best_of_austin"}
           ],
           "note": "Newer branch \u2014 limited branch-specific awards in sheet. Inherits Austin-region recognition through company.",
           "reviews": {
@@ -722,10 +723,10 @@
         },
         "dallas": {
           "awards": [
-            {"id": "best_in_dfw", "headline": "4\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2021-2024", "logo_key": "best_in_dfw"},
-            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
-            {"id": "best_of_frisco", "headline": "Best of Frisco", "sub": "Star Local Media \u00b7 2022", "logo_key": "best_of_frisco"},
-            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor \u00b7 2021-2023", "logo_key": "nextdoor"}
+            {"id": "best_in_dfw", "headline": "4\u00d7 Best in DFW", "sub": "The Dallas Morning News", "years": [2021, 2022, 2023, 2024], "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram", "years": [2024, 2025, 2026], "logo_key": "fw_star_telegram"},
+            {"id": "best_of_frisco", "headline": "Best of Frisco", "sub": "Star Local Media", "years": [2022], "logo_key": "best_of_frisco"},
+            {"id": "nextdoor", "headline": "3\u00d7 Neighborhood Favorite", "sub": "Nextdoor", "years": [2021, 2022, 2023], "logo_key": "nextdoor"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -734,9 +735,9 @@
         },
         "fort_worth": {
           "awards": [
-            {"id": "best_in_dfw", "headline": "3\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2022-2024", "logo_key": "best_in_dfw"},
-            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
-            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram \u00b7 2024", "logo_key": "fw_star_telegram"}
+            {"id": "best_in_dfw", "headline": "3\u00d7 Best in DFW", "sub": "The Dallas Morning News", "years": [2022, 2023, 2024], "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram", "years": [2024, 2025, 2026], "logo_key": "fw_star_telegram"},
+            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram", "years": [2024], "logo_key": "fw_star_telegram"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -745,9 +746,9 @@
         },
         "mckinney": {
           "awards": [
-            {"id": "best_in_dfw_gold", "headline": "Best in DFW \u2014 Gold", "sub": "The Dallas Morning News \u00b7 2025", "logo_key": "best_in_dfw"},
-            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2026", "logo_key": "fw_star_telegram"},
-            {"id": "fw_customer_service", "headline": "Best Customer Service \u2014 Silver", "sub": "Fort Worth Star-Telegram \u00b7 2026", "logo_key": "fw_star_telegram"}
+            {"id": "best_in_dfw_gold", "headline": "Best in DFW \u2014 Gold", "sub": "The Dallas Morning News", "years": [2025], "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "3\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram", "years": [2024, 2025, 2026], "logo_key": "fw_star_telegram"},
+            {"id": "fw_customer_service", "headline": "Best Customer Service \u2014 Silver", "sub": "Fort Worth Star-Telegram", "years": [2026], "logo_key": "fw_star_telegram"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -756,9 +757,9 @@
         },
         "garland": {
           "awards": [
-            {"id": "best_in_dfw", "headline": "2\u00d7 Best in DFW", "sub": "The Dallas Morning News \u00b7 2023-2024", "logo_key": "best_in_dfw"},
-            {"id": "fw_moving_gold", "headline": "2\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram \u00b7 2024-2025", "logo_key": "fw_star_telegram"},
-            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram \u00b7 2024", "logo_key": "fw_star_telegram"}
+            {"id": "best_in_dfw", "headline": "2\u00d7 Best in DFW", "sub": "The Dallas Morning News", "years": [2023, 2024], "logo_key": "best_in_dfw"},
+            {"id": "fw_moving_gold", "headline": "2\u00d7 Best Moving \u2014 Gold", "sub": "Fort Worth Star-Telegram", "years": [2024, 2025], "logo_key": "fw_star_telegram"},
+            {"id": "fw_place_to_work", "headline": "Best Place to Work \u2014 Bronze", "sub": "Fort Worth Star-Telegram", "years": [2024], "logo_key": "fw_star_telegram"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -767,8 +768,8 @@
         },
         "houston": {
           "awards": [
-            {"id": "best_of_houston", "headline": "3\u00d7 Best of the Best", "sub": "Houston Chronicle \u00b7 2022-2024 (Gold 2024) + 2025 Finalist", "logo_key": "best_of_houston"},
-            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor \u00b7 2023", "logo_key": "nextdoor"}
+            {"id": "best_of_houston", "headline": "3\u00d7 Best of the Best", "sub": "Houston Chronicle", "years": [2022, 2023, 2024], "years_note": "Gold in 2024 \u00b7 Finalist 2025 (not counted in win-count)", "logo_key": "best_of_houston"},
+            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor", "years": [2023], "logo_key": "nextdoor"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
@@ -777,8 +778,8 @@
         },
         "san_antonio": {
           "awards": [
-            {"id": "best_of_sa", "headline": "4\u00d7 Best of San Antonio", "sub": "San Antonio Current \u00b7 2022-2025 (Gold 2024-2025)", "logo_key": "best_of_san_antonio"},
-            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor \u00b7 2023", "logo_key": "nextdoor"}
+            {"id": "best_of_sa", "headline": "4\u00d7 Best of San Antonio", "sub": "San Antonio Current", "years": [2022, 2023, 2024, 2025], "years_note": "Gold in 2024-2025", "logo_key": "best_of_san_antonio"},
+            {"id": "nextdoor", "headline": "Neighborhood Favorite", "sub": "Nextdoor", "years": [2023], "logo_key": "nextdoor"}
           ],
           "reviews": {
             "google": {"rating": null, "count": null, "status": "pending"},
