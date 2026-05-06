@@ -651,9 +651,9 @@
         "best_of_austin": "./assets/awards/best-of-austin.png",
         "inc_5000": "./assets/awards/inc-5000.png",
         "best_of_the_best_statesman": "./assets/awards/best-of-the-best-statesman.jpg",
-        "angi": "TBD \u2014 letter icon (orange A) until logo downloaded",
-        "google": "TBD \u2014 letter icon (blue G) until logo downloaded",
-        "yelp": "TBD \u2014 letter icon (red Y) until logo downloaded",
+        "angi": "./assets/awards/angi.svg",
+        "google": "./assets/awards/google.svg",
+        "yelp": "./assets/awards/yelp.svg",
         "nextdoor": "TBD",
         "best_of_san_antonio": "TBD",
         "best_of_houston": "TBD",
@@ -662,6 +662,14 @@
         "aggie_100": "TBD",
         "fast_50": "TBD",
         "best_of_frisco": "TBD"
+      },
+      "logo_sources": {
+        "best_of_austin": "Drive folder 1BCypb3I_8vbWHSht557gPUwl_RBsknyS \u00b7 BOA 2022 Winner.png",
+        "inc_5000": "Drive folder 16ef7j8ymG6z58242rXhWarnmnfUeKHFH/2020 Inc. 5000 \u00b7 Inc5000_PrimaryBlackStackedLogo.png",
+        "best_of_the_best_statesman": "Drive folder 1tnca46b8Xq0fSva5xxOLWPBWfT6RS3K1 \u00b7 2019 BOB FIRST PLACE LOGO.jpg",
+        "angi": "Wikimedia Commons \u00b7 Angi_Wordmark_1C_Heart_RGB.svg",
+        "google": "Wikimedia Commons \u00b7 Google_G_logo.svg",
+        "yelp": "Wikimedia Commons \u00b7 Yelp_Logo.svg"
       },
       "display_rule_year_range": "Show count (e.g., '10\u00d7 Best of Austin') in headline. Do NOT show year ranges in sub. Sub = organization name (and optional descriptor). Years preserved in `years` array for audit only.",
       "company_wide": [
