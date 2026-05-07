@@ -1766,45 +1766,7 @@
     line-height: 1;
   }
   .lightbox-close:hover { background: var(--orange); color: white; }
-
-  /* Collapsible source attributions (Cameron 5/5: minimize source-clog) */
-  details.data-source-collapsible {
-    margin: 12px 0;
-  }
-  details.data-source-collapsible summary {
-    cursor: pointer;
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 5px 11px;
-    background: var(--gray-50);
-    border-left: 3px solid var(--gray-300);
-    border-radius: 0 4px 4px 0;
-    color: var(--gray-700);
-    list-style: none;
-    user-select: none;
-    display: inline-block;
-  }
-  details.data-source-collapsible summary::-webkit-details-marker { display: none; }
-  details.data-source-collapsible summary::after {
-    content: ' \25B8';
-    font-size: 10px;
-    color: var(--gray-500);
-    margin-left: 6px;
-  }
-  details.data-source-collapsible[open] summary::after { content: ' \25BE'; }
-  details.data-source-collapsible .data-source-content {
-    margin-top: 6px;
-    font-size: 11.5px;
-    color: var(--gray-600);
-    background: var(--gray-50);
-    border-left: 3px solid var(--gray-300);
-    padding: 10px 14px;
-    border-radius: 0 4px 4px 0;
-    font-style: italic;
-    line-height: 1.55;
-  }
-
-  </style>
+</style>
 </head>
 <body>
 <div class="layout">
@@ -1970,7 +1932,7 @@
           <div class="stat-delta">35 / 51 graded · just below 70-80% band</div>
         </div>
       </div>
-      <details class="data-source-collapsible"><summary>📍 Source map</summary><div class="data-source-content">Revenue / NOI / Margin / Avg Ticket — Skill v3.2 § Financial KPIs (Component 1). Personnel-Budget — Brian's 4/27 walkthrough + Forecaster v5 (Component 2). eNPS — Mover eNPS Survey 4/8-15 (Component 5). Fleet Events / Claims — Samsara API + Cameron 4/27 (Component 4). Conversion — EMMA / Mongo direct pull, canonical $-formula (Component 1). QG Success — Cascading Goals Sheet self-grades (single source of truth) + Cameron's 2 overrides (Component 3).</div></details>
+      <div class="data-source">📍 <strong>Source map:</strong> Revenue / NOI / Margin / Avg Ticket — Skill v3.2 § Financial KPIs (Component 1). Personnel-Budget — Brian's 4/27 walkthrough + Forecaster v5 (Component 2). eNPS — Mover eNPS Survey 4/8-15 (Component 5). Fleet Events / Claims — Samsara API + Cameron 4/27 (Component 4). Conversion — EMMA / Mongo direct pull, canonical $-formula (Component 1). QG Success — Cascading Goals Sheet self-grades (single source of truth) + Cameron's 2 overrides (Component 3).</div>
 
       <h3 id="quarter-highlights">Quarter Highlights</h3>
       <p style="margin:0 0 12px 0;">The big moves of Q1 — branch-side and department-side together. The wins worth opening on.</p>
@@ -2032,7 +1994,7 @@
         </ul>
       </div>
 
-      <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Pillars locked at 4/14/2026 strategy day with Rob Lynch / Burst Consulting · Internal Strategic Pillars doc · Flywheel components confirmed at same session · OPSP rebuild due during 4/28-29 Roundtable</div></details>
+      <div class="data-source">📍 <strong>Source:</strong> Pillars locked at 4/14/2026 strategy day with Rob Lynch / Burst Consulting · Internal Strategic Pillars doc (Drive <code>1dfsJQqtKf2FV1R1BwrqvK5WIHHnblzm8_8FytnRgrgE</code>) · Flywheel components confirmed at same session · OPSP rebuild due during 4/28-29 Roundtable</div>
     </section>
 
     <!-- ============== COMPONENTS ============== -->
@@ -2057,7 +2019,7 @@
           <strong>All conversion uses the canonical $ formula</strong> (Matisen 4/24 standard): <code>(Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $)</code>. The Presentation's two N. Austin numbers are both $-basis but measure different things: §3.2 (-14.5 pts) = full Q1'26 vs Q1'25 YoY; §3.5 (-8.6 pts) = portion attributed to the +8.3% price step.
         </div>
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">EMMA / Mongo direct pull · Window Feb 1 – Apr 18, 2026 (CRM cut-off) · 12-day lookback applied per Skill v3.2 · QuickBooks P&amp;L for NOI / Margin · Pricing Sheet v3 for Avg Ticket · Marketing ROI Tracker for spend + ROAS</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> EMMA / Mongo direct pull · Window Feb 1 – Apr 18, 2026 (CRM cut-off) · 12-day lookback applied per Skill v3.2 · QuickBooks P&amp;L for NOI / Margin · Pricing Sheet v3 for Avg Ticket · Marketing ROI Tracker for spend + ROAS</div>
         <div class="comp-stat-row four">
           <div class="mini-stat green"><div class="ms-label">Revenue</div><div class="ms-value">$5.47M</div><div class="ms-sub">+6.9% YoY</div></div>
           <div class="mini-stat green"><div class="ms-label">NOI</div><div class="ms-value">$454K</div><div class="ms-sub">+37.5% YoY · 8.31% margin</div></div>
@@ -2094,7 +2056,7 @@
         <p class="comp-summary">
           95% of personnel budget company-wide (C grade), under in 5/5 biweekly periods. Leander (72%), Houston (77%), and South Austin (86%) all chronic-F — availability-constrained, severity ranking Leander > Houston > S. Austin. Leander + Houston confirmed via the dual-gate availability test, ~$135K of the $340K Q1 NOI miss. <strong>Confirmed at 4/27 leadership review.</strong> <strong>Houston caveat:</strong> TUR plan of 92% was aggressive given the availability ramp — part of the miss is plan-side. Same lever for all three: hire-rate / Indeed funnel review, priority calibrated to severity.
         </p>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">"Budget Counter" tab in <em>Current Employee Schedule</em> Numerator = Column C (Actual FTE) · Denominator = Column F (Sales Forecaster FTE Budget, biweekly slice) · Forecaster source: Sales Forecaster v5 · NOT Column Z (drifts 3-5 pts easier — pulse 11859699107 for cleanup)</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> "Budget Counter" tab in <em>Current Employee Schedule</em> (Drive <code>1wnBbFiGlH1xQNXoLqwcfk1s_ZvxdqVtwIVePLHjiZSw</code>) · Numerator = Column C (Actual FTE) · Denominator = Column F (Sales Forecaster FTE Budget, biweekly slice) · Forecaster source: Sales Forecaster v5 (Drive <code>1f7BmmgugOsMxYZoqlXE47iw2pnzDcF10tBugws_xqAc</code>) · NOT Column Z (drifts 3-5 pts easier — pulse 11859699107 for cleanup)</div>
         <div class="comp-stat-row">
           <div class="mini-stat red"><div class="ms-label">Leander</div><div class="ms-value">72%</div><div class="ms-sub">5/5 under · F · CONFIRMED</div></div>
           <div class="mini-stat red"><div class="ms-label">Houston</div><div class="ms-value">77%</div><div class="ms-sub">5/5 under · F · CONFIRMED</div></div>
@@ -2126,7 +2088,7 @@
           <span class="pct-bar amber" style="margin-left:8px;width:36px;"><span class="pct-fill" style="width:55%;"></span></span> 85–99%
           <span class="pct-bar over" style="margin-left:8px;width:36px;"><span class="pct-fill" style="width:65%;"></span></span> ≥100%
         </p>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Per-period values pulled directly from Budget Counter Column C (Actual Count, fractional FTE) ÷ Column F (Forecaster FTE Budget) · Branch FTE budgets verified against Sales Forecaster v5 within rounding 4/27 · Q1 measurement window 2/9 → 4/19 (Q1 fiscal itself runs Feb 1 – Apr 30; the 4/20-5/3 period falls in Q2)</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Per-period values pulled directly from Budget Counter Column C (Actual Count, fractional FTE) ÷ Column F (Forecaster FTE Budget) · Branch FTE budgets verified against Sales Forecaster v5 within rounding 4/27 · Q1 measurement window 2/9 → 4/19 (Q1 fiscal itself runs Feb 1 – Apr 30; the 4/20-5/3 period falls in Q2)</div>
         <div class="method-callout">
           <strong>Methodology lock:</strong> Numerator = Column C (Actual FTE), Denominator = Column F (Forecaster FTE Budget). NOT Column Z, which drifts 3-5 pts easier and is scheduled for cleanup (Sky Board pulse 11859699107, due 5/25).
         </div>
@@ -2148,7 +2110,7 @@
         <p class="comp-summary">
           11 leaders, 57 rocks (51 graded + 6 Controllers ungraded — pending Cameron's final cut). Cameron + Paul + Controllers grade live at QGR Days 2-3. Two Cameron overrides locked: Cameron #1 Fleet Safety SG→G (Driver's Ed: 19.8% at-risk doesn't hit &lt;10% SG bar), Mike #5 Sell Trucks R→G ($58K late-Q sales).
         </p>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Q1 Cascading Goals Sheet (, gid) — single source of truth for grades · Leader self-grades pulled via openpyxl color-cell parse · AAR comments via Drive <code>listComments</code> API · Cameron's 2 overrides (Cameron Fleet Safety, Mike Trucks) applied 4/27</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Q1 Cascading Goals Sheet (Drive <code>1BuA4XcANZwQ3Hfds-1fpthE6QOO3UeZQtrTcTT8nQSk</code>, gid <code>242346082</code>) — single source of truth for grades · Leader self-grades pulled via openpyxl color-cell parse · AAR comments via Drive <code>listComments</code> API · Cameron's 2 overrides (Cameron Fleet Safety, Mike Trucks) applied 4/27</div>
         <p class="legend">
           <span class="grade-pill sg"></span> Super Green
           &nbsp; <span class="grade-pill g"></span> Green
@@ -2166,7 +2128,7 @@
             <li><strong>Brian — Manager Conference under budget</strong>, 100% attendance, 3.74/5 satisfaction. AI-tooling unlock — Replit-built apps drove most of his Greens.</li>
             <li><strong>Amanda — Concierge Capstone MBA <span class="grade-pill sg" title="Super Green"></span>.</strong> Knocked the presentation out of the park.</li>
           </ul>
-          <p style="margin:10px 0 0 0; font-size:11.5px; color:var(--gray-600);"><em>Full breakdown — Wins · Trends · Highlights · Landmines · Day 2-3 Conversation Points — lives in the QG Tracker (link below). Per-rock AAR threads open directly from the Cascading Goals sheet (leadership Drive) — read live during Days 2-3.</em></p>
+          <p style="margin:10px 0 0 0; font-size:11.5px; color:var(--gray-600);"><em>Full breakdown — Wins · Trends · Highlights · Landmines — lives in the QG Tracker (link below). Per-rock AAR threads open directly from the Cascading Goals sheet (leadership Drive).</em></p>
         </div>
         <table class="qg-scorecard">
           <tbody>
@@ -2218,7 +2180,7 @@
           <div class="mini-stat green"><div class="ms-label">Insurance Claims</div><div class="ms-value">1</div><div class="ms-sub">$15K total Q1 cost</div></div>
           <div class="mini-stat amber"><div class="ms-label">At-Risk %</div><div class="ms-value">19.8%</div><div class="ms-sub">Green; SG bar = &lt;10%</div></div>
         </div>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Samsara API direct pull across 7 orgs (DFW + 6 standalone branches) · Endpoint <code>GET /fleet/safety-events</code> Q1 window <code>2026-02-01 → 2026-04-19</code> Q4 window <code>2025-11-01 → 2026-01-31</code> Driver's Ed Dashboard board for at-risk % · Insurance claim count confirmed by Cameron 4/27</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara API direct pull across 7 orgs (DFW + 6 standalone branches) · Endpoint <code>GET /fleet/safety-events</code> · Q1 window <code>2026-02-01 → 2026-04-19</code> · Q4 window <code>2025-11-01 → 2026-01-31</code> · Driver's Ed Dashboard board <code>18397855324</code> for at-risk % · Insurance claim count confirmed by Cameron 4/27</div>
 
         <h4>8-Behavior Validation — 6 Align with Protocol Intent, 2 Explained by Stricter Enforcement</h4>
         <div class="table-scroll">
@@ -2236,7 +2198,7 @@
           </tbody>
         </table>
         </div>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Samsara <code>behaviorLabels[].name</code> field, aggregated by org · 8 of 11 tracked behaviors shown (Crash, Drowsy, Lane Departure excluded — see caveat below) · Pull scripts <code>/tmp/samsara_pull.py</code> + <code>/tmp/samsara_dismissals.py</code></div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>behaviorLabels[].name</code> field, aggregated by org · 8 of 11 tracked behaviors shown (Crash, Drowsy, Lane Departure excluded — see caveat below) · Pull scripts <code>/tmp/samsara_pull.py</code> + <code>/tmp/samsara_dismissals.py</code></div>
 
         <h4>Coaching Volume vs Raw Events — How "Stricter Standards" Looks in the Math</h4>
         <p style="font-size:13px;">Cameron's hypothesis at the 4/9 huddle: <em>"We're coaching more, dismissing less, and the score still went up."</em> The two contested behaviors validate it directly. Coaching volume grew far faster than the raw event count grew — meaning we caught more of the same behavior, not that drivers regressed.</p>
@@ -2267,7 +2229,7 @@
           </div>
         </div>
         <p style="font-size:12.5px;color:var(--gray-600);margin-top:4px;"><em>Read this as: even where raw event counts ticked up, the underlying behavior was likely flat — we just kept more of them on the books. Mobile Usage shows the inverse pattern: events fell hard, but the events that remained were taken more seriously (dismissed at half the prior rate).</em></p>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Samsara <code>coachingState</code> field per event · Coaching count = events where state ∈ {<code>coached</code>, <code>needsCoaching</code>} · Dismissed count = state == <code>dismissed</code> Cross-validated against Mike's Enhanced Samsara Scoring Protocol</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>coachingState</code> field per event · Coaching count = events where state ∈ {<code>coached</code>, <code>needsCoaching</code>} · Dismissed count = state == <code>dismissed</code> · Cross-validated against Mike's Enhanced Samsara Scoring Protocol</div>
 
         <h4>Branch Dismissal Rates — Where the Enforcement Lives</h4>
         <div class="table-scroll">
@@ -2288,7 +2250,7 @@
           </tbody>
         </table>
         </div>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Samsara <code>coachingState</code> per branch tag (DFW org) or per standalone org (CTXH branches) · Dismissed = <code>dismissed</code> Coached/Needs = <code>coached</code> + <code>needsCoaching</code></div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara <code>coachingState</code> per branch tag (DFW org) or per standalone org (CTXH branches) · Dismissed = <code>dismissed</code> · Coached/Needs = <code>coached</code> + <code>needsCoaching</code></div>
 
         <h4>Top Dismissed Behaviors by Branch — Where the Leniency Lives</h4>
         <p style="font-size:13px;">Where dismissal rates are high <em>and</em> sample size is meaningful, the data tells a coaching-calibration story. Following Distance is the universal soft spot — 6 of 10 branches dismiss 40%+ of these events. Worth a Q2 conversation about whether following-distance enforcement needs a calibration pass, or whether the events are genuinely false positives in city traffic.</p>
@@ -2312,7 +2274,7 @@
           </tbody>
         </table>
         </div>
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Samsara raw events × <code>coachingState</code>, grouped by <code>behaviorLabels[].name</code> per branch · Dismiss rate = dismissed / total events for that behavior at that branch</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Samsara raw events × <code>coachingState</code>, grouped by <code>behaviorLabels[].name</code> per branch · Dismiss rate = dismissed / total events for that behavior at that branch</div>
 
         <div class="comp-meta">
           <span class="meta-source">Source: Samsara API across 7 orgs · Driver's Ed Dashboard 18397855324 · QGR Packet Handover</span>
@@ -2378,31 +2340,31 @@
           <div style="border-left:4px solid var(--orange); background:var(--orange-bg); border-radius:0 6px 6px 0; padding:12px 14px;">
             <p style="margin:0 0 6px 0; font-size:11px; font-weight:800; letter-spacing:0.15em; color:var(--orange-dark); text-transform:uppercase;">START — More of</p>
             <ul style="font-size:12.5px; padding-left:18px; margin:0;">
-              <li>Pay raises &amp; cost-of-living adjustments</li>
-              <li>Better estimates &amp; mandatory virtual walkthroughs</li>
-              <li>Weekly pay &amp; faster tip payouts</li>
-              <li>More training depth — driver, lead, sales</li>
-              <li>Lead-role clarity &amp; cleaner promotion path</li>
+              <li>Pay raises &amp; cost-of-living adjustments <em>(~30)</em></li>
+              <li>Better estimates &amp; mandatory virtual walkthroughs <em>(~13)</em></li>
+              <li>Weekly pay &amp; faster tip payouts <em>(~10)</em></li>
+              <li>More training depth — driver, lead, sales <em>(~6)</em></li>
+              <li>Lead-role clarity &amp; cleaner promotion path <em>(~6)</em></li>
             </ul>
           </div>
           <div style="border-left:4px solid var(--red); background:#fdecea; border-radius:0 6px 6px 0; padding:12px 14px;">
             <p style="margin:0 0 6px 0; font-size:11px; font-weight:800; letter-spacing:0.15em; color:var(--red); text-transform:uppercase;">STOP — Less of</p>
             <ul style="font-size:12.5px; padding-left:18px; margin:0;">
-              <li>Underquoting &amp; outsourced/inaccurate estimates</li>
-              <li>Samsara strictness &amp; surveillance feel</li>
-              <li>Slack spam &amp; repetitive training-day content</li>
-              <li>Half-baked rollouts &amp; corporate disconnect</li>
-              <li>Stacking same-day jobs &amp; last-minute schedule changes</li>
+              <li>Underquoting &amp; outsourced/inaccurate estimates <em>(~13)</em></li>
+              <li>Samsara strictness &amp; surveillance feel <em>(~10)</em></li>
+              <li>Slack spam &amp; repetitive training-day content <em>(~6)</em></li>
+              <li>Half-baked rollouts &amp; corporate disconnect <em>(~5)</em></li>
+              <li>Stacking same-day jobs &amp; last-minute schedule changes <em>(~5)</em></li>
             </ul>
           </div>
           <div style="border-left:4px solid var(--green); background:#e8f5ec; border-radius:0 6px 6px 0; padding:12px 14px;">
             <p style="margin:0 0 6px 0; font-size:11px; font-weight:800; letter-spacing:0.15em; color:var(--green); text-transform:uppercase;">KEEP — Love it</p>
             <ul style="font-size:12.5px; padding-left:18px; margin:0;">
-              <li>Bonuses</li>
-              <li>Company parties &amp; quarterly events</li>
-              <li>Hiring quality &amp; trial days</li>
-              <li>Praise &amp; recognition culture / Hall of Fame</li>
-              <li>Flexible scheduling &amp; mover autonomy</li>
+              <li>Bonuses <em>(~20)</em></li>
+              <li>Company parties &amp; quarterly events <em>(~15)</em></li>
+              <li>Hiring quality &amp; trial days <em>(~12)</em></li>
+              <li>Praise &amp; recognition culture / Hall of Fame <em>(~10)</em></li>
+              <li>Flexible scheduling &amp; mover autonomy <em>(~7)</em></li>
             </ul>
           </div>
         </div>
@@ -2480,11 +2442,11 @@
           <div style="border-left:4px solid var(--orange); background:var(--orange-bg); border-radius:0 6px 6px 0; padding:12px 14px;">
             <p style="margin:0 0 6px 0; font-size:11px; font-weight:800; letter-spacing:0.15em; color:var(--orange-dark); text-transform:uppercase;">START — Invest in Growth</p>
             <ul style="font-size:12.5px; padding-left:18px; margin:0;">
-              <li>Leadership Development &amp; Training</li>
-              <li>Professional Growth &amp; Upskilling</li>
-              <li>Compensation &amp; Tenure Recognition</li>
-              <li>Manager Get-Togethers</li>
-              <li>Process Improvements &amp; Tools</li>
+              <li>Leadership Development &amp; Training <em>(9)</em></li>
+              <li>Professional Growth &amp; Upskilling <em>(7)</em></li>
+              <li>Compensation &amp; Tenure Recognition <em>(6)</em></li>
+              <li>Manager Get-Togethers <em>(5)</em></li>
+              <li>Process Improvements &amp; Tools <em>(4)</em></li>
             </ul>
           </div>
           <div style="border-left:4px solid var(--red); background:#fdecea; border-radius:0 6px 6px 0; padding:12px 14px;">
@@ -2524,7 +2486,7 @@
           <a href="https://enps-survey-results-presentation.replit.app/" target="_blank" style="background:var(--orange); color:white; padding:14px 28px; border-radius:6px; text-decoration:none; font-weight:900; font-size:14px; letter-spacing:0.5px; white-space:nowrap; box-shadow:0 4px 12px rgba(239,139,34,0.3);">Open Results Deck →</a>
         </div>
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Q1'26 Salaried eNPS Results presentation (Anne, Jan 2026) · 45 unique responses · Window matches January cycle · Source file <code>Supporting Projects/eNPS/salaried-enps-survey-results-jan2026.docx</code> Trend baseline back to Jul 2024</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Q1'26 Salaried eNPS Results presentation (Anne, Jan 2026) · 45 unique responses · Window matches January cycle · Source file <code>Supporting Projects/eNPS/salaried-enps-survey-results-jan2026.docx</code> · Trend baseline back to Jul 2024</div>
         <div class="comp-meta">
           <span class="meta-source">Owner: Anne · 45 responses · Jan 2026 cycle</span>
         </div>
@@ -2548,7 +2510,7 @@
           <figcaption class="praise-caption">Praise Given (by logger) for Q1. Dashed lines = per-role quarterly + monthly goals: BM/Exp/Regional/Dept Head Quarterly 48 · OPS/Flex/FM Quarterly 36 · CET Quarterly 12 · monthly fractions shown for in-quarter cadence reads. <em>Click the chart to expand full-screen.</em></figcaption>
         </figure>
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Prepare for Praise board (Pending → Delivered → Done/Logged lifecycle) · Per-role goal lines per Cameron's submission workflow · Sister metric: Magic Moments Effectiveness (claims-side; <a href="#c9-claims-mm-lookback">Component 10</a> below)</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Prepare for Praise board (Pending → Delivered → Done/Logged lifecycle) · Q1 final state captured 5/5/2026 · Per-role goal lines per Cameron's submission workflow · Sister metric: Magic Moments Effectiveness (claims-side; <a href="#c9-claims-mm-lookback">Component 10</a> below)</div>
       </div>
 
       <!-- ===== 8 · CUSTOMER NPS AND REVIEWS ===== -->
@@ -2574,7 +2536,7 @@
           <figcaption class="praise-caption">Review Leaderboard — total reviews by branch, Q1. South Austin 169 leads on absolute volume; Houston 88 + N. Austin 79 round out the top three. Garland 25 + Leander 31 sit at the bottom on volume. Read alongside the % to Target chart above for the full story (volume + target-relative). <em>Click to expand full-screen.</em></figcaption>
         </figure>
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Customer NPS feed embedded in Financial Analysis §5.3 (Branch-level rollups CTXH + DFWT, 90-line target per company NPS standard) · Reviews charts pulled from the Monday.com chart views (Branch % to Target + Review Leaderboard), Q1 final state captured 5/5/2026 · Data window mirrors Q1'26 financial cut</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> Customer NPS feed embedded in Financial Analysis §5.3 (Branch-level rollups CTXH + DFWT, 90-line target per company NPS standard) · Reviews charts pulled from the Monday.com chart views (Branch % to Target + Review Leaderboard), Q1 final state captured 5/5/2026 · Data window mirrors Q1'26 financial cut</div>
 
         <div class="comp-meta">
           <span class="meta-source">Source: NPS data feed (FA §5) + Monday.com Reviews chart views · Q1 captured 5/5/2026</span>
@@ -2650,7 +2612,7 @@
         </div>
 
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">CET tracking sheet tabs "Sales Q1 '26" + "Estimate Accuracy" · Sales Targets scope = Customer Experience Team sales reps only (front-line managers have separate branch-level targets) · Estimate Accuracy bar revised mid-quarter to 54%/56% after calculation correction · One rep excluded — left mid-April · Realization Rate pending Q2+ collection</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> CET tracking sheet (Drive <code>1b_GYrrot60fZivVTjLjKXoE7-ru0zGTN2wLEuEjqnuY</code>) tabs "Sales Q1 '26" + "Estimate Accuracy" · Sales Targets scope = Customer Experience Team sales reps only (front-line managers have separate branch-level targets) · Estimate Accuracy bar revised mid-quarter to 54%/56% after calculation correction · One rep excluded — left mid-April · Realization Rate pending Q2+ collection</div>
 
         <div class="comp-meta">
           <span class="meta-source">Owners: Amanda Ware · Nhel · Carly + Nhel's CET sheet</span>
@@ -2698,7 +2660,7 @@
         </div>
 
 
-        <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">CET tracking sheet tabs "Claims Q1 '26" + "Claims Q1 '26 A&amp;D Scorecard" · Time to Close = weekly averages Feb 6 → Apr 23, outliers excluded · A&amp;D Scorecard = Stephanie + Jaci, 12 audits each, 100-point rubric · Wall Damages = move-date basis, snapshot 4/10 · CET Board for raw claims data</div></details>
+        <div class="data-source">📍 <strong>Source:</strong> CET tracking sheet (Drive <code>1b_GYrrot60fZivVTjLjKXoE7-ru0zGTN2wLEuEjqnuY</code>) tabs "Claims Q1 '26" + "Claims Q1 '26 A&amp;D Scorecard" · Time to Close = weekly averages Feb 6 → Apr 23, outliers excluded · A&amp;D Scorecard = Stephanie + Jaci, 12 audits each, 100-point rubric · Wall Damages = move-date basis, snapshot 4/10 · CET Board <code>18319980089</code> for raw claims data</div>
 
         <div class="comp-meta">
           <span class="meta-source">Owners: Amanda Ware · Carly · Carly + Nhel's CET sheet</span>
@@ -2726,7 +2688,7 @@
     <section id="scorecards">
       <h2>Scorecards — Branch + Department</h2>
       <p>Brian's idea: collapse all the branch-by-branch tables in this packet into one rolled-up scorecard <em>per branch</em>, so a BM and their managers can see <strong>their</strong> Financial · Operational · Customer · People metrics in one place with a composite grade. Same logic extends to departments (Sales, Claims, IT, etc.). <strong>All 10 branch scorecards are live</strong>; department scorecards are placeholders pending Roundtable greenlight.</p>
-      <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Concept = Brian Herzig (CTXH Regional Manager)· Composite math: <strong>7 graded metrics</strong> weighted — TUR 20% · Sales Target 10% · Customer NPS 15% · Mover eNPS 15% · Recognition 10% · Driver Safety 15% · Personnel-Budget 15% (sum = 100%) · Σ(weight × grade) ÷ 5 → 0–100 score; SG=5 G=4 W=2 R=1 grade points · Plus Growth Modifier (Revenue YoY tier: Breakout +10 · Strong +7 · Stable +4 · Flat 0 · Slight decline −3 · Declining −7) · Plus Strategic Weight tier (parallel display lens, ungraded) · Reference data shown but not graded (NOI/Truck, Damages/hr, per-rep Conversion + Cancellation, etc.) · Drill-downs in plain language · Audience: BM + branch managers (friendly + actionable), not Roundtable-evaluative · Sources: QGR Packet + FA Presentation v2.7 + CLAUDE.md QGR thread + JSON central data bus (<code>branch-metrics-q1-26.json</code>) · Roundtable ask: build department scorecards in Q2?</div></details>
+      <div class="data-source">📍 <strong>Source:</strong> Concept = Brian Herzig (CTXH Regional Manager) · v0 build = Albert (4/28); evolved to v3.4.4 (5/4) · Composite math: <strong>7 graded metrics</strong> weighted — TUR 20% · Sales Target 10% · Customer NPS 15% · Mover eNPS 15% · Recognition 10% · Driver Safety 15% · Personnel-Budget 15% (sum = 100%) · Σ(weight × grade) ÷ 5 → 0–100 score; SG=5 G=4 W=2 R=1 grade points · Plus Growth Modifier (Revenue YoY tier: Breakout +10 · Strong +7 · Stable +4 · Flat 0 · Slight decline −3 · Declining −7) · Plus Strategic Weight tier (parallel display lens, ungraded) · Reference data shown but not graded (NOI/Truck, Damages/hr, per-rep Conversion + Cancellation, etc.) · Drill-downs in plain language · Audience: BM + branch managers (friendly + actionable), not Roundtable-evaluative · Sources: QGR Packet + FA Presentation v2.7 + CLAUDE.md QGR thread + JSON central data bus (<code>branch-metrics-q1-26.json</code>)</div>
 
       <p class="scorecard-section-sub-title">Branch Scorecards · 10 locations</p>
 
@@ -3068,7 +3030,7 @@
     <section id="lookback-wishlist">
       <h2>Wishlist — Org Health</h2>
       <p>One placeholder for an organization-wide health metric not yet captured at packet altitude. CX Sales + Claims + Praise Tracker have all graduated into Components (<a href="#c7-praise">7</a>, <a href="#c8-sales-lookback">9</a>, <a href="#c9-claims-mm-lookback">10</a>); what's left below is the cross-department people picture (A/B/C Player distribution).</p>
-      <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">A/B/C Players = People Analyzers in collection (branch + department QGRs over next ~1 week) · Q2 collection / build target</div></details>
+      <div class="data-source">📍 <strong>Source:</strong> A/B/C Players = People Analyzers in collection (branch + department QGRs over next ~1 week) · Q2 collection / build target</div>
 
       <div class="comp-grid" style="grid-template-columns: 1fr;">
 
@@ -3106,7 +3068,7 @@
           </div>
 
 
-          <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">People Analyzers in collection — branches + departments complete prior to their regional/department QGRs (rolling next ~1 week) · First company read = Q2 · Future home: Rippling Performance Mgmt module (~$20K/yr; pending decision per Anne's existing thread) · Owner: Anne · Pairs with Ideal Team Player rollout (Rob Lynch, Q2 — pulse)</div></details>
+          <div class="data-source">📍 <strong>Source:</strong> People Analyzers in collection — branches + departments complete prior to their regional/department QGRs (rolling next ~1 week) · First company read = Q2 · Future home: Rippling Performance Mgmt module (~$20K/yr; pending decision per Anne's existing thread) · Owner: Anne · Pairs with Ideal Team Player rollout (Rob Lynch, Q2 — pulse <code>11752596124</code>)</div>
 
           <div class="comp-meta">
             <span class="meta-source">Owner: Anne · Q2-Q3 first read · Pairs with ITP rollout</span>
@@ -3132,13 +3094,13 @@
         </div>
         <a href="opsp-walkthrough/" target="_blank" style="background:var(--orange); color:white; padding:14px 28px; border-radius:6px; text-decoration:none; font-weight:900; font-size:14px; letter-spacing:0.5px; white-space:nowrap; box-shadow:0 4px 12px rgba(239,139,34,0.3);">Open OPSP Walkthrough →</a>
       </div>
-      <details class="data-source-collapsible" style="margin-top:14px;"><summary>📍 Source</summary><div class="data-source-content">Cam's Q1 26 Growth Toolkit (Cameron's desktop) · Annual OPSP locked at 4/14 strategy day with Rob Lynch · Quarterly OPSP refresh during 4/28-29 Roundtable · Sequenced-reveal HTML at <code>opsp-walkthrough/</code></div></details>
+      <div class="data-source" style="margin-top:14px;">📍 <strong>Source:</strong> Cam's Q1 26 Growth Toolkit (Cameron's desktop) · Annual OPSP locked at 4/14 strategy day with Rob Lynch · Quarterly OPSP refresh during 4/28-29 Roundtable · Sequenced-reveal HTML at <code>opsp-walkthrough/</code></div>
     </section>
 
     <section id="q2-forward">
       <h2>Quarterly Theme Deepdive — Q2 Forward Look</h2>
-      <p>What we already know about Q2 going into Days 2-3. Mover branches compete in <strong>Einstein Games Season 3</strong> (locked, launching 5/23). CX teams (Sales + Claims) set their own themes — they don't have branch-vs-branch metrics, so the Games structure doesn't apply. Their theme placeholders hold until Day 3.</p>
-      <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Einstein Games S3 Roundtable Brief 4/27 (Cameron + Paul + Matisen prep, ~1.5 hrs, plan locked, production gates 4/29) · CX themes outstanding — Amanda Ware + Nhel + Carly to define Day 3 · Q2 cascading goals scaffold at · Q2 starts 5/1; full goals lock by Day 3</div></details>
+      <p>What we already know about Q2. Mover branches compete in <strong>Einstein Games Season 3</strong> (locked, launching 5/23). CX teams (Sales + Claims) set their own themes — they don't have branch-vs-branch metrics, so the Games structure doesn't apply. Their theme placeholders finalize during Q2 planning.</p>
+      <div class="data-source">📍 <strong>Source:</strong> Einstein Games S3 Roundtable Brief 4/27 (Cameron + Paul + Matisen prep, ~1.5 hrs, plan locked, production gates 4/29) · CX themes outstanding — Amanda Ware + Nhel + Carly to define Day 3 · Q2 cascading goals scaffold at Drive <code>1CEwbltgyvNbpl5_1pVsWL70qaCMGgDE9Jk7RGm1eAsM</code> · Q2 starts 5/1; full goals lock by Day 3</div>
 
       <div class="comp-grid" style="grid-template-columns: 1fr;">
 
@@ -3169,7 +3131,7 @@
             <strong>Production readiness gate — Wed 4/29:</strong> Robert (PM on dashboards) committed DB + MCP in production by then. Vlad's calculations QA'd. Trust recovery rule: if it's not working, it's not visible. Hard gate before launch.
           </div>
 
-          <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">Roundtable Brief 4/27 · Conference split = Cameron's call (regional, not size-based) · Multiplier card mechanic = locked concept, execution open · Scoring = win-loss primary; hybrid points TBD before launch · Display layer = Replit + EMMA OpenSearch DB · Playoff format = Top 2 per conf advance, Wk 7 = conf championships, Wk 8 = company championship</div></details>
+          <div class="data-source">📍 <strong>Source:</strong> Roundtable Brief 4/27 · Conference split = Cameron's call (regional, not size-based) · Multiplier card mechanic = locked concept, execution open · Scoring = win-loss primary; hybrid points TBD before launch · Display layer = Replit + EMMA OpenSearch DB · Playoff format = Top 2 per conf advance, Wk 7 = conf championships, Wk 8 = company championship</div>
 
           <div class="comp-meta">
             <span class="meta-source">Owner: Cameron + Matisen · Brief signed 4/27</span>
@@ -3204,32 +3166,22 @@
           </div>
 
 
-          <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">No locked content this cycle — explicit Day 3 deliverable · CX team structure: Amanda Ware (Director) → Nhel (Sales Team Lead) + Carly (Claims Mgr) · Q2 cascading goals sheet is the destination once themes set · Treat absence as a calendar item, not noise</div></details>
+          <div class="data-source">📍 <strong>Source:</strong> No locked content this cycle — themes finalize during Q2 planning · CX team structure: Amanda Ware (Director) → Nhel (Sales Team Lead) + Carly (Claims Mgr) · Q2 cascading goals sheet is the destination once themes set</div>
 
           <div class="comp-meta">
-            <span class="meta-source">Owners: Amanda Ware · Nhel · Carly · Day 3 deliverable</span>
+            <span class="meta-source">Owners: Amanda Ware · Nhel · Carly · Q2 finalize</span>
             <span class="open-link disabled-link">Q2 Cascading Goals (leadership Drive — 1CEwbltgyvNbpl5…)</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Open for Roundtable input — pulled from S3 Roundtable Brief -->
-      <div class="method-callout">
-        <strong>Open for Day 2-3 input — Einstein Games execution:</strong>
-        <ul style="margin:8px 0 0 0; padding-left:20px;">
-          <li><strong>Multiplier card execution complexity</strong> — Go for Season 3, or defer to Season 4? Paul wary of operational lift; Cameron wants the engagement lift for low-performing teams.</li>
-          <li><strong>Conference scheduling math</strong> — 5 teams / 6-game regular season — confirm distribution (4 in-conference + 2 cross-conference, or different rotation).</li>
-          <li><strong>Hybrid scoring</strong> — Pure win-loss, or layer in rank-based points (5 / 4 / 3 / 2 / 1) to reward consistency?</li>
-          <li><strong>Contract sync ownership</strong> — Apr 1-23 contracts not syncing distorts every games metric. Matisen heads-down on dashboards through 4/29; needs an owner outside Matisen.</li>
-        </ul>
-      </div>
     </section>
 
     <!-- ============== REFERENCES ============== -->
     <section id="references">
       <h2>References — Files, IDs, Pulses</h2>
-      <details class="data-source-collapsible"><summary>📍 Source</summary><div class="data-source-content">This table is the canonical source map for the packet — every Drive ID, file path, and pulse number cited above resolves here · Drive IDs open at <code>https://drive.google.com/file/d/{id}</code> Monday board / pulse IDs open at <code>https://einsteinmoving.monday.com/boards/{board}/pulses/{pulse}</code> Local file paths are relative to the EMC Projects workspace</div></details>
+      <div class="data-source">📍 <strong>Source:</strong> This table is the canonical source map for the packet — every Drive ID, file path, and pulse number cited above resolves here · Drive IDs open at <code>https://drive.google.com/file/d/{id}</code> · Monday board / pulse IDs open at <code>https://einsteinmoving.monday.com/boards/{board}/pulses/{pulse}</code> · Local file paths are relative to the EMC Projects workspace</div>
       <div class="table-scroll">
       <table class="refs">
         <thead><tr><th>Reference</th><th>ID / Path</th></tr></thead>

@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Einstein Q1'26 QGR — Presentation Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -692,10 +691,6 @@
       <a href="#sec-strategic">6 · Strategic Insights</a>
     </div>
     <div class="toc-section">
-      <h4>Discussion</h4>
-      <a href="#conversation-starter">Conversation Starter</a>
-    </div>
-    <div class="toc-section">
       <h4>Reference</h4>
       <a href="#appendix">Appendix · Data Audit</a>
     </div>
@@ -836,7 +831,6 @@
       <a href="#sec-pricing" class="jump-pill">Pricing</a>
       <a href="#sec-nps" class="jump-pill">NPS</a>
       <a href="#sec-strategic" class="jump-pill">Strategic Insights</a>
-      <a href="#conversation-starter" class="jump-pill">Conversation Starter</a>
     </div>
 
     <!-- DATA CAVEATS -->
@@ -1298,6 +1292,7 @@
     </table>
     <p><strong>Target NOI/Truck:</strong> $10,456 · <strong>Actual:</strong> $5,888 — 43.7% below target.</p>
 
+    <!-- Section 1.8 Variance Decomposition — HIDDEN from shared view per Cameron 5/7. Hard to explain, scope ambiguous, two components came back NOT CALCULABLE. Preserved as a Q2 placeholder for refinement once target booked $ and target booked hours are loaded at branch level in Cascading Goals. To restore: remove the wrapping HTML comment.
     <h3>1.8 Variance Decomposition — Booked $ and Hours (v3.1)</h3>
     <table>
       <thead><tr><th>Component</th><th>Impact</th><th>% of Total Miss</th><th>Notes</th></tr></thead>
@@ -1329,6 +1324,7 @@
         <p>Two components came back "NOT CALCULABLE" because target booked $ and target booked hours weren't loaded at branch level in Cascading Goals. The analysis flagged this rather than defaulting to zero (which would hide the gap). Data gap, not analysis gap.</p>
       </div>
     </details>
+    -->
 
     <hr>
 
@@ -1405,23 +1401,19 @@
     <h2 id="sec-sales">Section 3 · Sales Performance & Efficacy</h2>
 
     <h3>3.1 Quarterly Sales Metrics — Canonical Formula</h3>
-    <blockquote><em>All conversion metrics use canonical $-basis formula: (Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $).</em></blockquote>
+    <blockquote><em>All conversion metrics use canonical $-basis formula: (Booked $ + Serviced $) / (Quote $ + Booked $ + Serviced $). Leads-and-conversion view shown here. Revenue-recognition metrics (Serviced $, Actual Revenue, Completed Moves, Realization Rate) are reported on a full-quarter basis only — they live in §1 Financial. Pre-quarter-close pulls of those four lines distort YoY comparability, so they're omitted from this table by design.</em></blockquote>
     <table>
       <thead><tr><th>Metric</th><th>Q1'26</th><th>Q1'25</th><th>YoY</th><th>Signal</th></tr></thead>
       <tbody>
         <tr><td>Leads (SQL Count)</td><td>9,307</td><td>7,065</td><td><strong>+31.7%</strong></td><td>⚠️ Partly methodology-driven (Apr 5 form)</td></tr>
         <tr><td>Quoted $ (canonical)</td><td>$16,959,397</td><td>$11,508,314</td><td><strong>+47.4%</strong></td><td>Wider denominator</td></tr>
         <tr><td>Booked $ (future moves)</td><td>$1,727,629</td><td>$0</td><td>+$1.73M</td><td>Q1'26 pipeline</td></tr>
-        <tr><td>Serviced $ (completed)</td><td>$3,902,692</td><td>$5,044,052</td><td>-22.6%</td><td>Timing artifact</td></tr>
-        <tr><td><strong>Booked + Serviced $</strong></td><td><strong>$5,630,322</strong></td><td><strong>$5,044,052</strong></td><td><strong>+11.6%*</strong></td><td>⚠️ Directional (timing caveat)</td></tr>
-        <tr><td>Actual Revenue (CRM)</td><td>$3,688,077</td><td>$4,829,163</td><td>-23.6%</td><td>Timing artifact</td></tr>
-        <tr><td>Completed Moves</td><td>2,768</td><td>3,787</td><td>-26.9%</td><td>Timing artifact (980 booked future)</td></tr>
+        <tr><td><strong>Booked + Serviced $</strong></td><td><strong>$5,630,322</strong></td><td><strong>$5,044,052</strong></td><td><strong>+11.6%</strong></td><td>Pipeline + completed combined</td></tr>
         <tr><td>Booked Moves (future)</td><td>980</td><td>0</td><td>+980</td><td>New pipeline</td></tr>
         <tr><td><strong>Conversion Rate $ (canonical)</strong></td><td><strong>33.20%</strong></td><td><strong>43.83%</strong></td><td><strong>-10.63 pts</strong></td><td>Blended (see cohort 3.5)</td></tr>
         <tr><td>Conversion Rate # (reference)</td><td>40.27%</td><td>53.60%</td><td>-13.33 pts</td><td>—</td></tr>
         <tr><td>Cancellation Rate</td><td>14.10%</td><td>11.99%</td><td>+2.11 pts</td><td>⚠️ Monitor</td></tr>
         <tr><td><strong>Avg Booked Ticket $</strong></td><td><strong>$1,502</strong></td><td><strong>$1,332</strong></td><td><strong>+$170 (+12.8%)</strong></td><td>✅ Price increases landing</td></tr>
-        <tr><td>Realization Rate</td><td>65.50%</td><td>95.74%</td><td>-30.24 pts</td><td>TIMING — not YoY comparable</td></tr>
       </tbody>
     </table>
 
@@ -1584,6 +1576,7 @@
       </div>
     </details>
 
+    <!-- Section 4.2 Pricing Recommendations — HIDDEN from shared view per Cameron 5/7. Recommendations don't fit Einstein's context: Variable Pricing Phase 1 is already live (day-of-week), and the team has internal experience that supersedes any branch-level rate-raise table. Elasticity baseline (4.1) stays as a diagnostic; recommendations come out. To restore: remove the wrapping HTML comment.
     <h3>4.2 Pricing Recommendations — Medium Confidence, A/B Test</h3>
     <table>
       <thead><tr><th>Branch</th><th>Situation</th><th>Recommendation</th></tr></thead>
@@ -1593,6 +1586,7 @@
         <tr><td>Tampa</td><td>Positive elasticity (+0.03) — ROOM TO GROW</td><td>Consider modest rate increase to test ceiling</td></tr>
       </tbody>
     </table>
+    -->
 
     <h3>4.3 Value Communication Gap</h3>
     <p>Einstein's <strong>$2,000 damage coverage advantage</strong> (included with no deductible) vs competitors' standard coverage (worthless $0.60/lb or extra $100-300 for full coverage) is NOT being articulated during the sales process.</p>
@@ -1734,41 +1728,7 @@
 
     <hr>
 
-    <!-- STRATEGIC CONVERSATION STARTER -->
-    <section id="conversation-starter" class="conversation-starter">
-      <h2>Strategic Conversation Starter</h2>
-      <p class="cs-intro">Five open questions worth pulling at the Roundtable. Not recommendations — actual unresolved decisions where the data has surfaced something but the call hasn't been made yet.</p>
-
-      <div class="cs-question">
-        <div class="cs-num">Question 1 · Planning calibration for February</div>
-        <div class="cs-prompt">The 13.63% Q1 NOI target assumed costs would flex with seasonal revenue. February ran at -2.3%. <strong>Do we want Q1's structure to be "plan for a loss month" going forward, or do we invest in Feb demand / variable costs to flatten the seasonality?</strong></div>
-        <div class="cs-context">Three real options: grow February revenue (marketing push, non-moving pilot), make February costs more variable (contractor labor, fewer salaried fixed roles), or budget Feb explicitly as cash-burn. All three are legitimate.</div>
-      </div>
-
-      <div class="cs-question">
-        <div class="cs-num">Question 2 · Cohort B floor and triage</div>
-        <div class="cs-prompt">The Apr 5 autobooking form surfaced 2,707 lower-intent leads in 14 days — most that would have evaporated previously. <strong>What's our floor for Cohort B conversion below which it stops being worth the sales effort? And do we measure reps differently when they're working Cohort B vs Cohort A leads?</strong></div>
-        <div class="cs-context">The current blended 33.2% averages two different sales motions. Without segmenting, we either over-staff for the wrong cohort or under-invest in the high-value one.</div>
-      </div>
-
-      <div class="cs-question">
-        <div class="cs-num">Question 3 · CTXH target calibration</div>
-        <div class="cs-prompt">CTXH accounts for 70% of the $340K NOI miss, not DFWT. CTXH's margin targets sit at 16-22%. <strong>Were those targets calibrated to reality, or do we need to reset them for Q2 — and does Q2 target-setting follow ambition or follow Q1 actuals + expected seasonal recovery?</strong></div>
-        <div class="cs-context">South Austin -$86K, Houston -$68K, Leander -$66K. Three different stories underneath: confirmed availability-constraint compounded by ambitious target (Houston 77% personnel avg + 92% TUR target), confirmed availability-constraint (Leander 72% personnel avg, biggest conv drop), and execution drift compounded by chronic 86% personnel under-budget (South Austin) — likely needing three different responses.</div>
-      </div>
-
-      <div class="cs-question">
-        <div class="cs-num">Question 4 · directBook elevation</div>
-        <div class="cs-prompt">The directBook subset converts at 86% — the single highest-ROI segment in the entire funnel. <strong>Does Einstein elevate directBook as a distinct operational priority (capacity / availability guarantees specifically for these leads), and who owns making sure a directBook lead never hits "no availability"?</strong></div>
-        <div class="cs-context">Right now directBook is a byproduct of EMMA's flow, not a protected customer segment. The reframe: instead of "elevate directBook as priority," ask "how do we expand who's eligible for directBook in the first place" — because once someone qualifies, we essentially print money on them.</div>
-      </div>
-    
-      <div class="cs-question">
-        <div class="cs-num">Question 5 · Hire-rate vs. Forecaster targets</div>
-        <div class="cs-prompt">Three branches were chronically below personnel budget every Q1 biweekly period (Leander 72%, Houston 77%, South Austin 86%). Company finished at 95%. <strong>Did we hire too slowly against an aggressive Forecaster, or is the Forecaster overshooting reality? Both have very different Q2 implications — and Q2 starts the busy season.</strong></div>
-        <div class="cs-context">Option A: hire-rate problem — Forecaster is right, accelerate hiring (Indeed funnel review for Leander + Houston, fast). Option B: Forecaster overshoots — re-baseline against actual Q1 demand for Q2. Option C: both, by branch — Leander/Houston hire faster, others recalibrate. Our updated methodology now codifies the canonical Forecaster comparison so future quarters answer this cleanly.</div>
-      </div>
-    </section>
+    <!-- Strategic Conversation Starter section — REMOVED from shared view per Cameron 5/7. These were leadership-only Day 2-3 prompts; same structural sweep removed Discuss/Open-Asks/Day-2-3 callouts from the Roundtable Packet. Content preserved in change log + git history if a future quarter wants to revive a leadership-only annex. -->
 
     <hr>
 
