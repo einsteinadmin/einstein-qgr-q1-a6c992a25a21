@@ -491,13 +491,82 @@
     margin: 6px 0;
     display: inline-block;
   }
+  /* Mobile menu (hamburger) — defaults hidden on desktop */
+  .menu-fab { display: none; }
+  .menu-scrim { display: none; }
   /* Responsive */
   @media (max-width: 980px) {
     .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
+    /* Sidebar becomes a fixed slide-in drawer from the right */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      width: 280px;
+      max-width: 85vw;
+      transform: translateX(100%);
+      transition: transform 220ms ease;
+      z-index: 1001;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.25);
+      display: block;
+    }
+    .sidebar.open { transform: translateX(0); }
+    /* Floating menu button — bottom-right, thumb-reachable */
+    .menu-fab {
+      display: flex;
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.32);
+      cursor: pointer;
+      z-index: 1000;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+    }
+    .menu-fab:hover, .menu-fab:focus-visible { background: var(--orange-dark); outline: none; }
+    .menu-fab:focus-visible { box-shadow: 0 0 0 3px rgba(249,168,37,0.4), 0 6px 18px rgba(0,0,0,0.32); }
+    /* Backdrop scrim shown when drawer open */
+    .menu-scrim {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+    .menu-scrim.open { opacity: 1; pointer-events: auto; }
     .content { padding: 24px 20px; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .lens-row { grid-template-columns: 1fr; }
+    /* Wide data tables get horizontal scroll affordance on mobile */
+    table { font-size: 11.5px; }
+    .table-scroll, table {
+      max-width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+  }
+  @media (max-width: 640px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .content { padding: 20px 14px 48px 14px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 17px; }
+    h3 { font-size: 15px; }
+    .menu-fab { width: 48px; height: 48px; font-size: 20px; }
   }
   /* Print */
   @media print {
@@ -2311,6 +2380,35 @@ new Chart(document.getElementById('chartNPS'), {
     }
   }]
 });
+</script>
+
+<!-- Mobile hamburger menu — appears below 980px -->
+<button class="menu-fab" aria-label="Open navigation menu" aria-controls="sidebar-nav" aria-expanded="false">☰</button>
+<div class="menu-scrim" aria-hidden="true"></div>
+<script>
+(function() {
+  const fab = document.querySelector('.menu-fab');
+  const sidebar = document.querySelector('.sidebar');
+  const scrim = document.querySelector('.menu-scrim');
+  if (!fab || !sidebar || !scrim) return;
+  if (!sidebar.id) sidebar.id = 'sidebar-nav';
+  function open() {
+    sidebar.classList.add('open');
+    scrim.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    sidebar.classList.remove('open');
+    scrim.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  fab.addEventListener('click', open);
+  scrim.addEventListener('click', close);
+  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sidebar.classList.contains('open')) close(); });
+})();
 </script>
 
 </body>
