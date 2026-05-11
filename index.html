@@ -1680,7 +1680,21 @@
     .pillar-grid { grid-template-columns: 1fr; }
     .flywheel-grid { grid-template-columns: 1fr; }
     .scorecard-grid { grid-template-columns: 1fr; }
-    .comp-stat-row { grid-template-columns: 1fr; }
+    /* Force ALL comp-stat-row variants to single column (override .two and .four specificity) */
+    .comp-stat-row,
+    .comp-stat-row.two,
+    .comp-stat-row.four { grid-template-columns: 1fr !important; }
+    /* Component card head — let title + badge stack instead of squeezing side-by-side */
+    .comp-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .comp-card { padding: 16px 14px; }
+    .comp-num { font-size: 10px; }
+    .comp-title { font-size: 15px; line-height: 1.3; }
+    .comp-summary { font-size: 12.5px; }
+    /* Wide-table horizontal scroll — ensure overflow actually fires on mobile */
+    .table-scroll { max-width: 100%; overflow-x: auto; }
+    .table-scroll table { min-width: 100%; width: max-content; }
+    /* Info / warn / method callouts within components — tighter padding */
+    .info-callout, .warn-callout, .method-callout { padding: 10px 12px; font-size: 11.5px; }
     .hero-grade-mega { flex-direction: column; gap: 10px; align-items: flex-start; }
     .hero-grade-mega .grade-circle, .hero-grade-mega .grade-badge-mega { font-size: 60px !important; }
     .title-block h1 { font-size: 22px; }

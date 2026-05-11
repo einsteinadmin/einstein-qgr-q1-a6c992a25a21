@@ -1606,10 +1606,64 @@
     .theme-pair { grid-template-columns: 1fr; }
     .theme-pair.three { grid-template-columns: 1fr; }
   }
+  /* Mobile menu (hamburger) — defaults hidden on desktop */
+  .menu-fab { display: none; }
+  .menu-scrim { display: none; }
   /* Responsive */
   @media (max-width: 980px) {
     .layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; }
+    /* Sidebar becomes a fixed slide-in drawer from the right */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      width: 280px;
+      max-width: 85vw;
+      transform: translateX(100%);
+      transition: transform 220ms ease;
+      z-index: 1001;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.25);
+    }
+    .sidebar.open { transform: translateX(0); }
+    /* Floating menu button — bottom-right, thumb-reachable */
+    .menu-fab {
+      display: flex;
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.32);
+      cursor: pointer;
+      z-index: 1000;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0;
+    }
+    .menu-fab:hover, .menu-fab:focus-visible { background: #d97a18; outline: none; }
+    .menu-fab:focus-visible { box-shadow: 0 0 0 3px rgba(239,139,34,0.4), 0 6px 18px rgba(0,0,0,0.32); }
+    /* Backdrop scrim shown when drawer open */
+    .menu-scrim {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+    .menu-scrim.open { opacity: 1; pointer-events: auto; }
+    /* Content + component sizing tweaks */
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .lens-row { grid-template-columns: 1fr; }
     .hero-headline-row { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -1619,6 +1673,36 @@
     .convo-list { grid-template-columns: 1fr; }
     .pillar-grid { grid-template-columns: repeat(2, 1fr); }
     .content { padding: 24px 22px 48px 22px; }
+  }
+  @media (max-width: 640px) {
+    /* Tighter mobile breakpoints — single-column stacking + density relief */
+    .stat-grid { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .flywheel-grid { grid-template-columns: 1fr; }
+    .scorecard-grid { grid-template-columns: 1fr; }
+    /* Force ALL comp-stat-row variants to single column (override .two and .four specificity) */
+    .comp-stat-row,
+    .comp-stat-row.two,
+    .comp-stat-row.four { grid-template-columns: 1fr !important; }
+    /* Component card head — let title + badge stack instead of squeezing side-by-side */
+    .comp-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .comp-card { padding: 16px 14px; }
+    .comp-num { font-size: 10px; }
+    .comp-title { font-size: 15px; line-height: 1.3; }
+    .comp-summary { font-size: 12.5px; }
+    /* Wide-table horizontal scroll — ensure overflow actually fires on mobile */
+    .table-scroll { max-width: 100%; overflow-x: auto; }
+    .table-scroll table { min-width: 100%; width: max-content; }
+    /* Info / warn / method callouts within components — tighter padding */
+    .info-callout, .warn-callout, .method-callout { padding: 10px 12px; font-size: 11.5px; }
+    .hero-grade-mega { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-grade-mega .grade-circle, .hero-grade-mega .grade-badge-mega { font-size: 60px !important; }
+    .title-block h1 { font-size: 22px; }
+    .content { padding: 20px 16px 48px 16px; }
+    h2 { font-size: 18px; margin-top: 32px; }
+    h3 { font-size: 15px; }
+    table { font-size: 11.5px; }
+    .menu-fab { width: 48px; height: 48px; font-size: 20px; }
   }
   /* Print */
   @media print {
@@ -3710,6 +3794,36 @@
   });
   overlay.addEventListener('click', close);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(); });
+})();
+</script>
+
+<!-- Mobile hamburger menu — appears below 980px -->
+<button class="menu-fab" aria-label="Open navigation menu" aria-controls="sidebar-nav" aria-expanded="false">☰</button>
+<div class="menu-scrim" aria-hidden="true"></div>
+<script>
+(function() {
+  const fab = document.querySelector('.menu-fab');
+  const sidebar = document.querySelector('.sidebar');
+  const scrim = document.querySelector('.menu-scrim');
+  if (!fab || !sidebar || !scrim) return;
+  if (!sidebar.id) sidebar.id = 'sidebar-nav';
+  function open() {
+    sidebar.classList.add('open');
+    scrim.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    sidebar.classList.remove('open');
+    scrim.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  fab.addEventListener('click', open);
+  scrim.addEventListener('click', close);
+  // Close when any anchor in the sidebar is tapped (so navigation completes cleanly)
+  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sidebar.classList.contains('open')) close(); });
 })();
 </script>
 </body>
