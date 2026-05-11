@@ -1690,9 +1690,17 @@
     .comp-num { font-size: 10px; }
     .comp-title { font-size: 15px; line-height: 1.3; }
     .comp-summary { font-size: 12.5px; }
-    /* Wide-table horizontal scroll — ensure overflow actually fires on mobile */
-    .table-scroll { max-width: 100%; overflow-x: auto; }
-    .table-scroll table { min-width: 100%; width: max-content; }
+    /* Wide-table horizontal scroll — must override CSS grid's min-width: auto
+       on .comp-card or the wrapper stretches to fit the table instead of scrolling */
+    .comp-grid { min-width: 0; }
+    .comp-card { min-width: 0; overflow: hidden; }
+    .table-scroll {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-scroll table { width: max-content; min-width: 100%; margin: 0; }
     /* Info / warn / method callouts within components — tighter padding */
     .info-callout, .warn-callout, .method-callout { padding: 10px 12px; font-size: 11.5px; }
     .hero-grade-mega { flex-direction: column; gap: 10px; align-items: flex-start; }

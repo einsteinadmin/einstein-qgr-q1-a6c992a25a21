@@ -549,15 +549,26 @@
       transition: opacity 220ms ease;
     }
     .menu-scrim.open { opacity: 1; pointer-events: auto; }
-    .content { padding: 24px 20px; }
+    /* Parent containers must allow narrow-fit or wide tables stretch the page */
+    .layout, .content, main, section, .exec-card { min-width: 0; }
+    .content { padding: 24px 20px; overflow-x: hidden; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .lens-row { grid-template-columns: 1fr; }
-    /* Wide data tables get horizontal scroll affordance on mobile */
-    table { font-size: 11.5px; }
-    .table-scroll, table {
+    /* Wide data tables get horizontal scroll affordance on mobile.
+       width: max-content lets the table render at natural width; max-width: 100%
+       caps it at parent width and the overflow scroll engages when content exceeds. */
+    table {
+      display: block;
+      width: max-content;
       max-width: 100%;
       overflow-x: auto;
-      display: block;
+      -webkit-overflow-scrolling: touch;
+      font-size: 11.5px;
+    }
+    .table-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
   }
   @media (max-width: 640px) {
